@@ -1,0 +1,11 @@
+{
+  "application_title" : {
+    "message" : "DyslexDisorthGame beta",
+    "description" : "The title of the application, displayed in the web store."
+  },
+  "application_description" : {
+    "message" : "An on/offline game for dyslexia diagnosis developed by the Child Phonology Lab - McGill, gamified by iLanguage Lab LTD",
+    "description" : "The description of the application, displayed in the web store."
+  }
+  
+}

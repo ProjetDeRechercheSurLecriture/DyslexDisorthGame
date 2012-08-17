@@ -1,0 +1,25 @@
+{
+  "name": "__MSG_application_title__",
+  "version": "1.1",
+  "description": "__MSG_application_description__",
+  "default_locale": "fr",
+  
+  "app": {
+    "launch": {
+      "local_path": "dashboard.html"
+    }
+  },
+  "offline_enabled": true,
+  "permissions": [
+    "unlimitedStorage",
+    "https://dyslexdisorthgame.ilanguage.ca/*",
+    "https://ilanguagedyslexdisorthgame.iriscouch.com/*",
+    "https://localhost:3001/*",
+    "https://localhost:6984/*"
+  ],
+   "icons": { 
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png" 
+  }
+}

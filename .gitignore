@@ -1,0 +1,89 @@
+#ignore compiled handlebars
+release
+compiled_handlebars.js
+*.handlebars.js
+
+#ignore security certificates
+sails.key
+sails.csr
+sails.crt
+
+#ignore config files
+couchkeys.js
+everyauthconfig.js
+
+# Experimental Design Files #
+#############################
+audio_stimuli
+image_stimuli
+*design.json
+
+
+.idea
+.project
+.settings
+.classpath
+proguard.cfg
+
+node_modules
+
+# Android files #
+bin/
+gen/
+
+
+
+# LaTeX output #
+################
+*.dvi
+*.log
+*.aux
+*.toc
+*.bbl
+*.blg
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.ist
+*.ps
+*(busy)
+
+# Compiled source #
+###################
+target
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+#*.log
+#*.sql
+#*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+*.swp
