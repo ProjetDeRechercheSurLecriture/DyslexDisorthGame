@@ -10,12 +10,14 @@ public class DyslexDisorthGame extends Application {
 	protected static final String TAG = "DyslexDisorthGame";
 	public static final boolean D = true;
 	Locale language;
-	private String outputDir = "/sdcard/DyslexDisorthGame/";
+	private String  outputDir= "/sdcard/DyslexDisorthGame/";
 
 	@Override
 	public void onCreate() {
 		super.onCreate();
-
+		
+		outputDir = "file:///sdcard"+this.getFilesDir().getAbsolutePath() + File.separator;
+		
 		language = Locale.getDefault();
 
 		new File(outputDir + "video/").mkdirs();
@@ -69,4 +71,13 @@ public class DyslexDisorthGame extends Application {
 	public void setOutputDir(String outputDir) {
 		this.outputDir = outputDir;
 	}
+
+	public static boolean isD() {
+		return D;
+	}
+
+	public static String getTag() {
+		return TAG;
+	}
+	
 }

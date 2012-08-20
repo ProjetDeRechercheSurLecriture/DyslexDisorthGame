@@ -24,7 +24,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name="com.github.childphonologylabmcgill.android.alltests.AllTestsActivity"
+            android:name=".activity.DyslexDisorthGameActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,6 +32,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="ca.ilanguage.oprime.activity.HTML5GameActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="ca.ilanguage.oprime.intent.action.START_HTML5_SUB_EXPERIMENT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+         </activity>
     </application>
 
 </manifest>
