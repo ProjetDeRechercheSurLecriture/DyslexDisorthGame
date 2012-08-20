@@ -1,5 +1,6 @@
 package com.github.childphonologylabmcgill.android.alltests.activity;
 
+import ca.ilanguage.oprime.content.JavaScriptInterface;
 import ca.ilanguage.oprime.content.OPrime;
 
 import com.github.childphonologylabmcgill.android.alltests.content.DyslexDisorthGame;
@@ -25,6 +26,8 @@ public class DyslexDisorthGameActivity extends Activity {
 						.getLanguage().getLanguage());
 		intent.putExtra(OPrime.EXTRA_HTML5_SUB_EXPERIMENT_INITIAL_URL,
 				"file:///android_asset/public/dashboard.html");
+		intent.putExtra(OPrime.EXTRA_HTML5_JAVASCRIPT_INTERFACE,
+				new JavaScriptInterface());
 
 		startActivity(intent);
 		finish();
