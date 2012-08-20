@@ -94,7 +94,7 @@ require([ "backbone", "libs/Utils" ], function(
 	var runSAILS = function() {
 		Utils.playAudioFile("test-audio-player-source");
 //		alert("runSAILS");
-		Android.showToast("runSails testincontext");
+		Android.showToast("runSails test extended html5 view");
 	}
 	var runTCPP = function() {
 		alert("runTCPP");
