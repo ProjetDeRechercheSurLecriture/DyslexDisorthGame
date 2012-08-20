@@ -93,14 +93,37 @@ require([ "backbone", "libs/Utils" ], function(
 	Utils.debug(navigator.userAgent);
 	var runSAILS = function() {
 		Utils.playAudioFile("test-audio-player-source");
-//		alert("runSAILS");
-		Android.showToast("runSails test extended html5 view");
+		if(Utils.androidApp()){
+			Android.runSAILS();
+		}else{
+			alert("TODO runSAILS")
+		}
 	}
 	var runTCPP = function() {
-		alert("runTCPP");
+		if(Utils.androidApp()){
+			Android.runTCPP();
+		}else{
+			alert("TODO runTCPP")
+		}
+	}
+	var runTDFP = function() {
+		if(Utils.androidApp()){
+			Android.runTDFP();
+		}else{
+			alert("TODO runTDFP")
+		}
+	}
+	var runTDFM = function() {
+		if(Utils.androidApp()){
+			Android.runTDFM();
+		}else{
+			alert("TODO runTDFM")
+		}
 	}
 
 	$(".run-sails").click(runSAILS);
 	$(".run-tcpp").click(runTCPP);
+	$(".run-tdfp").click(runTDFP);
+	$(".run-tdfm").click(runTDFM);
 
 });

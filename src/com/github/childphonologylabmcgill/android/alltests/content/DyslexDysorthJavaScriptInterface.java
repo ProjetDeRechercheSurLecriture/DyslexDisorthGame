@@ -16,11 +16,25 @@ public class DyslexDysorthJavaScriptInterface extends JavaScriptInterface {
 	public DyslexDysorthJavaScriptInterface() {
 		super();
 	}
-	public void showToast(String toast) {
-		Toast.makeText(mContext, toast+" in extended JSI", Toast.LENGTH_LONG).show();
+	public void runSAILS() {
+		Toast.makeText(mContext, "Running SAILS", Toast.LENGTH_LONG).show();
 		if (D)
-			Log.d(TAG, "Showing toast " + toast);
-
+			Log.d(TAG, "Running SAILS");
+	}
+	public void runTCPP() {
+		Toast.makeText(mContext, "Running TCPP", Toast.LENGTH_LONG).show();
+		if (D)
+			Log.d(TAG, "Running TCPP");
+	}
+	public void runTDFP() {
+		Toast.makeText(mContext, "Running TDFP", Toast.LENGTH_LONG).show();
+		if (D)
+			Log.d(TAG, "Running TDFP");
+	}
+	public void runTDFM() {
+		Toast.makeText(mContext, "Running TDFM", Toast.LENGTH_LONG).show();
+		if (D)
+			Log.d(TAG, "Running TDFM");
 	}
 
 }
