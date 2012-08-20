@@ -9,7 +9,7 @@
  */
 var Utils = Utils || {};
 
-Utils.debugMode = false;
+Utils.debugMode = true;
 
 
 //Utils.couchUrl = "https://ilanguage.iriscouch.com/default";
@@ -230,21 +230,6 @@ Utils.onlineOnly = function() {
 	return !this.androidApp() && !this.chromeApp();
 };
 
-Utils.hasClass = function(ele, cls) {
-	return ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
-};
-
-Utils.addClass = function(ele, cls) {
-	if(!this.hasClass(ele, cls))
-		ele.className += " " + cls;
-};
-
-Utils.removeClass = function(ele, cls) {
-	if(this.hasClass(ele, cls)) {
-		var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)', 'g');
-		ele.className = ele.className.replace(reg, ' ');
-	}
-};
 Utils.getVersion = function(callback) {
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.open('GET', 'manifest.json');
@@ -254,5 +239,36 @@ Utils.getVersion = function(callback) {
   };
   xmlhttp.send(null);
 };
+Utils.playAudioFile = function(divid){
+	Utils.debug("Playing Audio from "+ divid);
 
+	if( Utils.androidApp() ){
+		Android.playAudio(document.getElementById(divid).src);
+	}else{
+		document.getElementById(divid).play();
+	}
+}
+Utils.pauseAudioFile = function(divid){
+	Utils.debug("Pausing Audio." );
 
+	if( Utils.androidApp()  ){
+		Android.pauseAudio();
+	}else{
+		document.getElementById(divid).pause();
+	}
+}
+Utils.setAudioUrl = function(audiourl){
+	if( Utils.androidApp() ){
+		var dir = Android.getAudioDir();
+		if (dir.length > 0){
+			
+		}else{
+			dir =  audiourl;
+		}
+		localStorage.setItem("audioUrl",dir);
+	}else{
+		// localStorage.setItem("audioUrl","./../"); //same host
+		localStorage.setItem("audioUrl",audiourl);
+	}
+	Utils.debug("Audio url is set to "+localStorage.getItem("audioUrl") );
+};
