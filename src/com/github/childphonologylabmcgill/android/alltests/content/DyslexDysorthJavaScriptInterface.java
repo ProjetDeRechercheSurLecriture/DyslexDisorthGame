@@ -1,5 +1,9 @@
 package com.github.childphonologylabmcgill.android.alltests.content;
 
+import com.github.childphonologylabmcgill.android.sails.SAILSActivity;
+
+import android.content.Intent;
+import android.sax.StartElementListener;
 import android.util.Log;
 import android.widget.Toast;
 import ca.ilanguage.oprime.content.JavaScriptInterface;
@@ -20,6 +24,8 @@ public class DyslexDysorthJavaScriptInterface extends JavaScriptInterface {
 		Toast.makeText(mContext, "Running SAILS", Toast.LENGTH_LONG).show();
 		if (D)
 			Log.d(TAG, "Running SAILS");
+		Intent i = new Intent("com.github.childphonologylabmcgill.android.START_SAILS_SUB_EXPERIMENT");
+		mContext.startActivity(i);
 	}
 	public void runTCPP() {
 		Toast.makeText(mContext, "Running TCPP", Toast.LENGTH_LONG).show();
