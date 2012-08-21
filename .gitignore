@@ -1,12 +1,15 @@
-#ignore compiled handlebars
+#ignore compiled js files
 release
 compiled_handlebars.js
 *.handlebars.js
 
+#ignore copied js files
+android/assets/release
+
 #ignore security certificates
-sails.key
-sails.csr
-sails.crt
+dyslexdisorthgame_debug.key
+dyslexdisorthgame_debug.csr
+dyslexdisorthgame_debug.crt
 
 #ignore config files
 couchkeys.js

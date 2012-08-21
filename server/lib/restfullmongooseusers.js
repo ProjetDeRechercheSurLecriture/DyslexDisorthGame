@@ -21,9 +21,12 @@ var everyauth       = require('everyauth')
       ,Backbone   = require('backbone')
       ,util       = require('util');
 
+if(productionMode){
+	everyauthconf  = require('./everyauthconfig');
+    couchkeys      = require('./couchkeys');
+}
 
 console.log("Loading the User Authentication and Permissions Module");
-
 
 /**
  * this function compares the client and server's version of the user, combines them, saves them to the server and returns the user.
