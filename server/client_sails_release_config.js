@@ -1,6 +1,6 @@
 ({
   baseUrl : "./public",
-  dir : "./release",
+  dir : "./releasesails",
 //  optimize : 'none',
   optimize : 'uglify',
   uglify: {
@@ -17,8 +17,8 @@
 //    start: "(function() {",
 //    end: "}());"
 //  },
-  mainConfigFile : "public/main_dashboard.js",
+  mainConfigFile : "public/main_sails.js",
   modules : [ {
-    name : "main_dashboard"
+    name : "main_sails"
   } ]
 })

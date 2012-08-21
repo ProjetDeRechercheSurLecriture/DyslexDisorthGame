@@ -11,11 +11,11 @@
   },
   "offline_enabled": true,
   "permissions": [
-    "unlimitedStorage",
-    "https://dyslexdisorthgame.ilanguage.ca/*",
-    "https://ilanguagedyslexdisorthgame.iriscouch.com/*",
-    "https://localhost:3001/*",
-    "https://localhost:6984/*"
+    "unlimitedStorage"
+    ,"https://dyslexdisorthgame.ilanguage.ca/*"
+    ,"https://ilanguagedyslexdisorthgame.iriscouch.com/*"
+    ,"https://localhost:3001/*"
+    ,"https://localhost:6984/*"
   ],
    "icons": { 
     "16": "icon16.png",
