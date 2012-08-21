@@ -3,17 +3,45 @@
  *        around the app.
  * 
  * @property {Boolean} debugMode This boolean can be changed from true to
- *           false for production mode to speed up the app.
- *
+ *           false to speed up the app.
+ * @property {Boolean} productionMode This boolean can be changed from false to
+ *           true to point the app to production servers rather than development servers.
  * @constructs
  */
 var Utils = Utils || {};
 
 Utils.debugMode = true;
+Utils.productionMode = false;
 
+Utils.couchUrl = "https://localhost:6984/default";
+Utils.activityFeedCouchUrl = "https://localhost:6984/activity_feed";
+Utils.authUrl = "https://localhost:3036";
+/**
+ * The parameters of the default couch server.
+ */
+Utils.defaultCouchConnection = function() {
+  return {
+    protocol : "https://",
+    domain : "localhost",
+    port : "6984",
+    pouchname : "default"
+  }; 
+};
 
-//Utils.couchUrl = "https://ilanguage.iriscouch.com/default";
-Utils.couchUrl = "http://localhost:5984/default";
+if(Utils.productionMode){
+	Utils.authUrl = "https://dyslexdisorthgame.ilanguage.ca";
+	Utils.couchUrl = "https://dyslexdisorthgame.iriscouch.com/default";
+	Utils.activityFeedCouchUrl = "https://dyslexdisorthgame.iriscouch.com/activity_feed";
+	
+	Utils.defaultCouchConnection = function() {
+	  return {
+	    protocol : "https://",
+	    domain : "dyslexdisorthgame.iriscouch.com",
+	    port : "443",
+	    pouchname : "default"
+	  }; 
+	};
+}
 /**
  * The address of the TouchDB-Android database on the Android.
  */
@@ -23,44 +51,6 @@ Utils.touchUrl = "http://localhost:8888/db";
  * The address of the PouchDB database on the browser.
  */
 Utils.pouchUrl = "idb://db";
-
-
-//Utils.activityFeedCouchUrl = "https://ilanguage.iriscouch.com/activity_feed";
-Utils.activityFeedCouchUrl = "http://localhost:5984/activity_feed";
-/**
- * The address of the TouchDB-Android database on the Android.
- * @Deprecated now using pouchUrl for all
- */
-//Utils.activityFeedTouchUrl = "http://localhost:8888/activity_feed_db";
-
-/**
- * The address of the PouchDB database on the browser.
- * @Deprecated now using pouchUrl for all
- */
-//Utils.activityFeedPouchUrl = "idb://activity_feed_db";
-
-/**
- * The url of the authentication server.
- */
-
-//Utils.authUrl = "https://dyslexdisorthgame.ilanguage.ca";//"https://localhost:3001";
-Utils.authUrl = "https://localhost:3001";
-/**
- * The parameters of the default couch server.
- */
-Utils.defaultCouchConnection = function() {
-  return {
-//    protocol : "https://",
-//    domain : "ilanguage.iriscouch.com",
-//    port : "443",
-//    pouchname : "default"
-//  }; 
-    protocol : "http://",
-    domain : "localhost",
-    port : "5984",
-    pouchname : "default"
-  }; 
-};
 /**
  * A message for users if they need help which brings them to our contact us form
  */
@@ -159,8 +149,7 @@ Utils.publisher = {
   }
 };
 Utils.makePublisher = function(o) {
-  var i;
-  for (i in Utils.publisher) {
+  for (var i in Utils.publisher) {
     if (Utils.publisher.hasOwnProperty(i)
         && typeof Utils.publisher[i] === "function") {
       o[i] = Utils.publisher[i];
@@ -247,7 +236,7 @@ Utils.playAudioFile = function(divid){
 	}else{
 		document.getElementById(divid).play();
 	}
-}
+};
 Utils.pauseAudioFile = function(divid){
 	Utils.debug("Pausing Audio." );
 
@@ -256,7 +245,7 @@ Utils.pauseAudioFile = function(divid){
 	}else{
 		document.getElementById(divid).pause();
 	}
-}
+};
 Utils.setAudioUrl = function(audiourl){
 	if( Utils.androidApp() ){
 		var dir = Android.getAudioDir();

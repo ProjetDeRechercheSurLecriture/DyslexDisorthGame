@@ -4,6 +4,6 @@ var express = require('express');
 //http://stackoverflow.com/questions/7450940/automatic-https-connection-redirect-with-node-js-express
 var http = express.createServer();
 http.get('*',function(req,res){  
-    res.redirect('https://dyslexdisorthgame.ilanguage.ca'+req.url)
-})
+    res.redirect('https://dyslexdisorthgame.ilanguage.ca'+req.url);
+});
 http.listen(8080);

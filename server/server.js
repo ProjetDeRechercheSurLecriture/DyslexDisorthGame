@@ -8,12 +8,20 @@ var express     = require('express')
     ,crypto     = require('crypto')
     ,fs         = require('fs');
 
-var apphttpsdomain = "https://localhost:3001";
-//var apphttpsdomain = "https://dyslexdisorthgame.ilanguage.ca";
+var apphttpsdomain = "https://localhost:3036";
+var httpsOptions = {
+	key : fs.readFileSync('dyslexdisorthgame_debug.key'),
+	cert : fs.readFileSync('dyslexdisorthgame_debug.crt')
+};
 
-var httpsOptions ={
-    key: fs.readFileSync('dyslexdisorthgame_debug.key'),
-    cert: fs.readFileSync('dyslexdisorthgame_debug.crt')};
+var productionMode = false;
+if (productionMode) {
+	apphttpsdomain = "https://dyslexdisorthgame.ilanguage.ca";
+	httpsOptions = {
+		key : fs.readFileSync('dyslexdisorthgame.key'),
+		cert : fs.readFileSync('dyslexdisorthgame.crt')
+	};
+}
 var app = express.createServer(httpsOptions);
 
 app.configure(function() {
@@ -30,6 +38,6 @@ app.configure(function() {
 
 mongooseAuth.helpExpress(app);
 
-port = "3001";
+port = "3036";
 app.listen(port);
-console.log("Listening on " + port)
+console.log("Listening on " + apphttpsdomain)
