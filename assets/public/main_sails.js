@@ -90,43 +90,5 @@ require([ "backbone", "libs/Utils" ], function(
 		// new user, let them register or login as themselves or sallytomato
 	}
 
-	Utils.debug(navigator.userAgent);
-	var runSAILS = function(e) {
-		Utils.playAudioFile("test-audio-player-source");
-		if(Utils.androidApp()){
-			if(e){
-				e.preventDefault();
-			}
-			Android.runSAILS();
-		}else{
-//			alert("TODO runSAILS")
-		}
-	}
-	var runTCPP = function() {
-		if(Utils.androidApp()){
-			Android.runTCPP();
-		}else{
-			alert("TODO runTCPP")
-		}
-	}
-	var runTDFP = function() {
-		if(Utils.androidApp()){
-			Android.runTDFP();
-		}else{
-			alert("TODO runTDFP")
-		}
-	}
-	var runTDFM = function() {
-		if(Utils.androidApp()){
-			Android.runTDFM();
-		}else{
-			alert("TODO runTDFM")
-		}
-	}
-
-	$(".run-sails").click(runSAILS);
-	$(".run-tcpp").click(runTCPP);
-	$(".run-tdfp").click(runTDFP);
-	$(".run-tdfm").click(runTDFM);
 
 });
