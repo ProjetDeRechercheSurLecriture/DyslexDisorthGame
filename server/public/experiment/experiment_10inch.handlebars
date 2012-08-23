@@ -1,0 +1,41 @@
+<!-- Black Navigation Bar Across the Top (if any) -->
+
+<!-- The main area of the page -->
+<div class="container_fluid main">
+	<div id="experiment_dashboard" class="row-fluid">
+		<!-- Elements on Left Hand side -->
+		<div class="span3">
+			<h3>{{title}}</h3>
+			<strong class="participant_glimpse"> </strong>
+			{{description}}
+			<strong class="experimenter_glimpse"> </strong>
+		</div>
+		<!--Elements in the middle -->
+		<div class="span6">
+			<div id="image_stimuli_presentation_area" class="well">
+				{{instructions}} 
+				<img src="{{imageFile}}" height="500" width="500" border=0 />
+			</div>
+			<div id="results_dashboard" class="well ">
+				<h3 class="locale_results_title">Results:</h3>
+				TODO
+			</div>
+			<div id="audio_stimuli_presentation_area" class="">
+				<audio id="audio_stimuli_player_source" src="{{audioFile}}">
+				</audio>
+			</div>
+		</div>
+		<!--/span-->
+		<!-- right hand side -->
+		<div class="span3">
+			<div id="reinforcement_area" class="well"></div>
+		</div>
+		<!--/span-->
+	</div>
+	<!--/row-->
+
+	<!-- FullScreen Views (if any)-->
+</div>
+
+<!-- Modals are windows which pop over the active app to take focus -->
+<div id="new_participant" data-backdrop="static" class="modal hide"></div>

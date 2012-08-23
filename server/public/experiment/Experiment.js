@@ -1,9 +1,14 @@
 define([ 
-    "backbone" 
+    "libs/backbone.model.parsable",
+    "experimenter/Experimenter",
+    "participant/Participant",
+    "libs/Utils"
 ], function(
-    Backbone
+    ParseableModel,
+    Experimenter,
+    Participant
 ) {
-  var Experiment = Backbone.Model.extend(
+  var Experiment = ParseableModel(
   /** @lends Experiment.prototype */
   {
     /**
@@ -11,11 +16,19 @@ define([
      * 
      * @description Initialize function
      * 
-     * @extends Backbone.Model
+     * @extends ParseableModel
      * 
      * @constructs
      */
     initialize : function() {
+      ParseableModel.__super__.initialize.call(this, attributes);
+
+      if(!this.get("experimenter")){
+        this.set("experimenter", new Experimenter());
+      }
+      if(!this.get("participant")){
+        this.set("participant", new Participant());
+      }
     },
     
     defaults : {
@@ -24,7 +37,8 @@ define([
     
     // Internal models: used by the parse function
     internalModels : {
-      // There are no nested models
+      participant: Participant,
+      experimenter : Experimenter
     }
   });
 

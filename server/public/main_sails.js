@@ -71,8 +71,17 @@ require.config({
 });
 
 // Initialization
-require([ "backbone", "libs/Utils" ], function(
-		requiringbackboneearlytoensureallisloaded) {
+require([ "backbone", 
+          "experiment/Experiment",
+          "experiment/ExperimentView",
+          "experiment/ExperimentRouter",
+          "libs/Utils" 
+  ], function(
+		requiringbackboneearlytoensureallisloaded,
+		Experiment,
+		ExperimentView,
+		ExperimentRouter
+) {
 
 	/*
 	 * Start the pub sub hub
@@ -90,5 +99,18 @@ require([ "backbone", "libs/Utils" ], function(
 		// new user, let them register or login as themselves or sallytomato
 	}
 
+	window.experiment = new Experiment({
+		"title" : "SAILS"
+	});
+	window.experimentView = new ExperimentView({
+		"model" : window.experiment
+	});
+	window.experimentView.render();
+	
+	Utils.debug("Starting the router");
+	// Start the Router
+	window.experiment.router = new ExperimentRouter();
+  Backbone.history.start();
+	
 
 });
