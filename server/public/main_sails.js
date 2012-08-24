@@ -122,7 +122,6 @@ require([ "backbone",
 	window.experimentView = new ExperimentView({
 		"model" : window.experiment
 	});
-	window.experimentView.render();
 	
 	Utils.debug("Starting the router");
 	// Start the Router

@@ -77,7 +77,7 @@ define([
       }else {
         Utils.debug("EXPERIMENTER VIEW GLIMPSE render: ");
 
-        this.setElement($("#experimenter_glimpse"));
+        this.setElement($(".experimenter_glimpse"));
         $(this.el).html(this.templateGlimpse(this.model.toJSON()));
       }
       return this;

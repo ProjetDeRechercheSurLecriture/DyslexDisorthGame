@@ -21,7 +21,7 @@ define([
     routes : {
       "results/:participantid"        : "showResults",
       "experiment/:subexperimentid"   : "showExperiment",
-      ""                              : "showExperiment"//"showNewParticipant"
+      ""                              : "showNewParticipant"
     },
 
     /**
@@ -32,10 +32,13 @@ define([
     showExperiment : function(subexperimentid) {
       Utils.debug("In showExperiment: " + subexperimentid);
       this.hideEverything();
-      $("#experiment-dashboard").show();
+      $("#image_stimuli_presentation_area").show();
       if (!subexperimentid) {
         subexperimentid = "";
       }
+      
+      window.experimentView.render();
+
       //this is to be sure that the parameters in the url are properly formed
 //      window.location.href = "#experiment/" + subexperimentid;
     },
@@ -46,7 +49,8 @@ define([
       Utils.debug("In showNewParticipant: ");
 
       this.hideEverything();
-      $('#new-participant').modal("show");
+      window.experimentView.newParticipantView.render();
+      $('#new_participant').modal("show");
 //      window.location.href = "#";
     },
 
@@ -68,15 +72,15 @@ define([
         participantid = window.ex.get("currentParticipant");
       }
       this.hideEverything();
-      $('#results-dashboard').modal("show");
+      $('#results_dashboard').modal("show");
 //      window.location.href = "#results/" + participantid;
     },
     /*
      * Hides all divs that can appear in the middle div area, this gives the dashboard effect
      */
     hideEverything : function() {
-      $("#experiment-dashboard").hide();
-      $("#results-dashboard").hide();
+      $("#image_stimuli_presentation_area").hide();
+      $("#results_dashboard").hide();
     }
   });
 
