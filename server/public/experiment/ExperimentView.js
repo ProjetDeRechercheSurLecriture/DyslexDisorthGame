@@ -2,6 +2,7 @@ define([
     "backbone",
     "handlebars", 
     "experiment/Experiment",
+    "experimenter/Experimenter",
     "experimenter/ExperimenterView",
     "participant/ParticipantView",
     "libs/Utils"
@@ -9,6 +10,7 @@ define([
     Backbone,
     Handlebars, 
     Experiment,
+    Experimenter,
     ExperimenterView,
     ParticipantView
 ) {
@@ -28,6 +30,17 @@ define([
      */
     initialize : function() {
       Utils.debug("EXPERIMENT VIEW READ init: " );
+      
+      var self = this;
+      this.model.get("participant").bind('change:experimenterCode', function(participant){
+        Utils.debug("Loading experimenter: "+participant.get("experimenterCode"));
+        console.log(self, participant);
+        var e = new Experimenter( {"experimenterCode" : participant.get("experimenterCode")} );
+        self.model.set("experimenter", e);
+        self.currentExperimenterView.model = e;
+//        self.currentExperimenterView.render(); //no need to render, at this point the view might not even have been created.
+      }, this);
+      
       this.changeViewsOfInternalModels();
     },
     events : {

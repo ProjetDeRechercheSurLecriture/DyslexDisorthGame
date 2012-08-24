@@ -28,7 +28,7 @@ define([
       this.changeViewsOfInternalModels();
     },
     events : {
-      
+      "click .create_new_participant_button" : "create_new_participant"
     },
     
     /**
@@ -80,6 +80,15 @@ define([
     },
     changeViewsOfInternalModels : function(){
       
+    },
+    create_new_participant : function(){
+      Utils.debug("Creating a new participant.");
+      this.model.set("participantCode", $(this.el).find(".participant_code").val() );
+      this.model.set("experimenterCode", $(this.el).find(".experimenter_code").val() );
+      this.model.set("startTime", Date.now() );
+
+      $('#new_participant').modal("hide");
+      window.experiment.router.showExperiment("0");
     }
   });
   return ParticipantView;
