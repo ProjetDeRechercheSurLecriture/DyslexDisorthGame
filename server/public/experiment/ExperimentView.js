@@ -1,18 +1,18 @@
 define([ 
-    "libs/backbone.destroyable.view",
+    "backbone",
     "handlebars", 
     "experiment/Experiment",
     "experimenter/ExperimenterView",
     "participant/ParticipantView",
     "libs/Utils"
 ], function(
-    DestroyableView,
+    Backbone,
     Handlebars, 
     Experiment,
     ExperimenterView,
     ParticipantView
 ) {
-  var ExperimentView = DestroyableView.extend(
+  var ExperimentView = Backbone.View.extend(
   /** @lends ExperimentView.prototype */
   {
     /**
@@ -23,12 +23,10 @@ define([
      * @property {String} format May be set when the ExperimentView is
      * initialized. Valid values are "10inch" or "4inch"
      * 
-     * @extends DestroyableView
+     * @extends Backbone.View
      * @constructs
      */
     initialize : function() {
-      DestroyableView.__super__.initialize.call(this);
-
       Utils.debug("EXPERIMENT VIEW READ init: " );
       this.changeViewsOfInternalModels();
     },

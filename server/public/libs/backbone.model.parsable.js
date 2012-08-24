@@ -3,11 +3,11 @@ define([
 ], function(
     Backbone
 ) {
-  var ParseableModel = Backbone.Model.extend(
-  /** @lends ParseableModel.prototype */
+  var Backbone.Model = Backbone.Model.extend(
+  /** @lends Backbone.Model.prototype */
   {
     /**
-     * @class ParseableModel makes it possible to parse json objects into internal models, if their type is declared in "internalModels"
+     * @class Backbone.Model makes it possible to parse json objects into internal models, if their type is declared in "internalModels"
      * 
      * @extends Backbone.Model
      * 
@@ -51,5 +51,5 @@ define([
     
   });
 
-  return ParseableModel;
+  return Backbone.Model;
 });

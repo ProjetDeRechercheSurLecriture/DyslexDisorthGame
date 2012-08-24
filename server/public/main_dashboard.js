@@ -5,6 +5,7 @@ require.config({
 		"jquery" : "libs/jquery",
 		"underscore" : "libs/underscore",
 		"backbone" : "libs/backbone",
+    "extended-backbone" : "libs/backbone_extended_functions",
 		"handlebars" : "libs/handlebars.runtime",
 		"compiledTemplates" : "libs/compiled_handlebars",
 		"bootstrap" : "libs/bootstrap/js/bootstrap",
@@ -55,6 +56,13 @@ require.config({
 			}
 		},
 
+		"extended-backbone" :{
+		  deps : [ "backbone" ],
+      exports : function(Backbone) {
+        return Backbone;
+      }
+		},
+		
 		"handlebars" : {
 			deps : [ "bootstrap", "jquery" ],
 			exports : "Handlebars"
@@ -71,8 +79,13 @@ require.config({
 });
 
 // Initialization
-require([ "backbone", "libs/Utils" ], function(
-		requiringbackboneearlytoensureallisloaded) {
+require([ "backbone", 
+          "extended-backbone",
+          "libs/Utils" 
+          ], function(
+		requiringbackboneearlytoensureallisloaded,
+		addinghelperfunctionsotbackbone
+) {
 
 	/*
 	 * Start the pub sub hub

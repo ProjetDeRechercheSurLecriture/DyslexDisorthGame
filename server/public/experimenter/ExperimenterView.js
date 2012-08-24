@@ -1,14 +1,14 @@
 define([ 
-    "libs/backbone.destroyable.view",
+    "backbone",
     "handlebars", 
     "experimenter/Experimenter",
     "libs/Utils"
 ], function(
-    DestroyableView,
+    Backbone,
     Handlebars, 
     Experimenter
 ) {
-  var ExperimenterView = DestroyableView.extend(
+  var ExperimenterView = Backbone.View.extend(
   /** @lends ExperimenterView.prototype */
   {
     /**
@@ -19,12 +19,10 @@ define([
      * @property {String} format May be set when the ExperimenterView is
      * initialized. Valid values are "new" "glimpse" "maskedDetails" confidentialDetails"
      * 
-     * @extends DestroyableView
+     * @extends Backbone.View
      * @constructs
      */
     initialize : function() {
-      DestroyableView.__super__.initialize.call(this);
-
       Utils.debug("EXPERIMENTER VIEW init: " );
       this.changeViewsOfInternalModels();
     },

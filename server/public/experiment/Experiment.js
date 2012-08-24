@@ -1,14 +1,14 @@
 define([ 
-    "libs/backbone.model.parsable",
+    "backbone",
     "experimenter/Experimenter",
     "participant/Participant",
     "libs/Utils"
 ], function(
-    ParseableModel,
+    Backbone,
     Experimenter,
     Participant
 ) {
-  var Experiment = ParseableModel(
+  var Experiment = Backbone.Model.extend(
   /** @lends Experiment.prototype */
   {
     /**
@@ -16,12 +16,11 @@ define([
      * 
      * @description Initialize function
      * 
-     * @extends ParseableModel
+     * @extends Backbone.Model
      * 
      * @constructs
      */
     initialize : function() {
-      ParseableModel.__super__.initialize.call(this, attributes);
 
       if(!this.get("experimenter")){
         this.set("experimenter", new Experimenter());

@@ -1,14 +1,14 @@
 define([ 
-    "libs/backbone.destroyable.view",
+    "backbone",
     "handlebars", 
     "participant/Participant",
     "libs/Utils"
 ], function(
-    DestroyableView,
+    Backbone,
     Handlebars, 
     Participant
 ) {
-  var ParticipantView = DestroyableView.extend(
+  var ParticipantView = Backbone.View.extend(
   /** @lends ParticipantView.prototype */
   {
     /**
@@ -19,11 +19,10 @@ define([
      * @property {String} format May be set when the ParticipantView is
      * initialized. Valid values are "new" "glimpse" "maskedDetails" confidentialDetails"
      * 
-     * @extends DestroyableView
+     * @extends Backbone.View
      * @constructs
      */
     initialize : function() {
-      DestroyableView.__super__.initialize.call(this);
 
       Utils.debug("PARTICIPANT VIEW init: " );
       this.changeViewsOfInternalModels();
