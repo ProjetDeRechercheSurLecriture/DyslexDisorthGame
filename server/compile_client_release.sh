@@ -13,6 +13,11 @@ mv output public/libs/Utils.js
 
 echo ""
 echo ""
+echo "Compile handlebar templates"
+bash compile_handlebars.sh
+
+echo ""
+echo ""
 echo "Minify the client code"
 node r.js -o client_release_config.js
 

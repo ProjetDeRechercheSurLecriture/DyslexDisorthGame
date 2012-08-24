@@ -1,7 +1,12 @@
 define([ 
-    "backbone" 
+    "backbone",
+    "experimenter/Experimenter",
+    "participant/Participant",
+    "libs/Utils"
 ], function(
-    Backbone
+    Backbone,
+    Experimenter,
+    Participant
 ) {
   var Experiment = Backbone.Model.extend(
   /** @lends Experiment.prototype */
@@ -16,6 +21,13 @@ define([
      * @constructs
      */
     initialize : function() {
+
+      if(!this.get("experimenter")){
+        this.set("experimenter", new Experimenter());
+      }
+      if(!this.get("participant")){
+        this.set("participant", new Participant());
+      }
     },
     
     defaults : {
@@ -24,7 +36,8 @@ define([
     
     // Internal models: used by the parse function
     internalModels : {
-      // There are no nested models
+      participant: Participant,
+      experimenter : Experimenter
     }
   });
 

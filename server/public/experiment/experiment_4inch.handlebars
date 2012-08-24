@@ -1,0 +1,54 @@
+<!-- Black Navigation Bar Across the Top (if any) -->
+
+<!-- The main area of the page -->
+<div class="container-fluid main">
+	<!-- Elements normally on Left Hand side -->
+	<div class="row-fluid">
+		<div class="span12">
+			<h3>{{title}}</h3>
+			<p>{{description}}</p>
+		</div>
+	</div>
+	<div id="experiment-dashboard" class="row-fluid">
+    <!--Elements in the middle -->
+    <div class="span9">
+      <div id="image-stimuli-presentation-area" class="well">
+        {{instructions}} 
+        <img src="{{imageFile}}" height="500" width="500" border=0 />
+      </div>
+      <div id="results-dashboard" class="well ">
+        <h3 class="locale_results_title">Results:</h3>
+        TODO
+      </div>
+      <div id="audio-stimuli-presentation-area" class="">
+        <audio id="audio-stimuli-player-source" src="{{audioFile}}">
+        </audio>
+      </div>
+    </div>
+    <!--/span-->
+    <!-- right hand side -->
+    <div class="span3">
+      <div id="reinforcement-area" class="well"></div>
+    </div>
+    <!--/span-->
+  </div>
+  <!--/row-->
+
+  <!-- FullScreen Views (if any)-->
+</div>
+
+<!-- Modals are windows which pop over the active app to take focus -->
+<div id="new-participant" data-backdrop="static" data-keyboard="static" class="modal hide">
+  <div class="modal-header">
+    <h4 class = "locale_new_participant"></h4>
+  </div>
+  <div class="modal-body">
+    <label class = "locale_experimenter_id">Experimenter ID:</label>
+    <input type="text" class="experimenter-id"/>
+    <label class = "locale_participant_id">Participant ID:</label>
+    <input type="text" class="participant_id"/>    
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success locale_create-new-participant">Create New Participant</button>
+  </div>
+</div>
