@@ -114,9 +114,10 @@ require([ "backbone",
 	/*
 	 * Build the experiment from JSON
 	 */
-	window.experiment = new Experiment(JSON.parse(sails_design), {
-    "parse" : true
-  });
+	window.experiment = new Experiment(
+	  JSON.parse(sails_design)
+	  , {"parse" : true }
+	);
 
 	window.experimentView = new ExperimentView({
 		"model" : window.experiment
