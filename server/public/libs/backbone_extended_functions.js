@@ -29,6 +29,12 @@ Backbone.Model.prototype.parse = function(response) {
   return response;
 };
 
+//parse collections
+Backbone.Collection.prototype.parse = function(response) {
+  return response.rows && _.map(response.rows, function(row) { 
+    return row.doc || row.value; 
+  });
+};
 /**
  * 
  * http://stackoverflow.com/questions/6569704/destroy-or-remove-a-view-in-backbone-js
