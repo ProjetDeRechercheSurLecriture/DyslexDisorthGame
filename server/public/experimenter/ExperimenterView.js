@@ -65,13 +65,13 @@ define([
       if (this.format == "new") {
         Utils.debug("EXPERIMENTER VIEW NEW render: ");
 
-        this.setElement($("#new_experimenter"));
-        $(this.el).html(this.templateNew(this.model.toJSON()));
+//        this.setElement($("#new_experimenter"));
+//        $(this.el).html(this.templateNew(this.model.toJSON()));
 
       } else if (this.format == "glimpse") {
         Utils.debug("EXPERIMENTER VIEW GLIMPSE render: ");
 
-        this.setElement($("#experimenter_glimpse"));
+        this.setElement($(".experimenter_glimpse"));
         $(this.el).html(this.templateGlimpse(this.model.toJSON()));
 
       }else {

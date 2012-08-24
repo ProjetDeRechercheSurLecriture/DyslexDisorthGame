@@ -62,7 +62,7 @@ define([
 
     	  this.setElement($("#experiment"));
     	  $(this.el).html(this.template10inch(this.model.toJSON()));
-
+    	  
       } else if (this.format == "10inch") {
     	  Utils.debug("EXPERIMENT VIEW READ 4INCH render: ");
 
@@ -75,6 +75,10 @@ define([
     	  this.setElement($("#experiment"));
     	  $(this.el).html(this.template10inch(this.model.toJSON()));
       }
+      
+      this.currentExperimenterView.render();
+      this.currentParticipantView.render();
+      
       return this;
     },
     changeViewsOfInternalModels : function(){

@@ -109,11 +109,12 @@ require([ "backbone",
 		// new user, let them register or login as themselves or sallytomato
 	}
 
-	window.experiment = new Experiment({
-		"title" : "SAILS",
-		"participant" : { "participantCode" : "UnknownParticipant" },
-	  "experimenter" : { "experimenterCode" : "UnknownExperimenter" }
-	});
+	window.experiment = new Experiment();
+	window.experiment.set(window.experiment.parse({
+    "title" : "SAILS",
+    "participant" : { "participantCode" : "UnknownParticipant" },
+    "experimenter" : { "experimenterCode" : "UnknownExperimenter" }
+  }));
 	window.experimentView = new ExperimentView({
 		"model" : window.experiment
 	});

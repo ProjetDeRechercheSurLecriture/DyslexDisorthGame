@@ -6,7 +6,7 @@ Backbone.Model.prototype.parse = function(response) {
       var embeddedClass = this.internalModels[key];
       var embeddedData = response[key];
       response[key] = new embeddedClass(embeddedData, {
-        parse : true
+        parse : false
       });
     }
   }

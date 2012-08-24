@@ -72,7 +72,7 @@ define([
       } else if (this.format == "glimpse") {
         Utils.debug("PARTICIPANT VIEW GLIMPSE render: ");
 
-        this.setElement($("#participant_glimpse"));
+        this.setElement($(".participant_glimpse"));
         $(this.el).html(this.templateGlimpse(this.model.toJSON()));
 
       }
