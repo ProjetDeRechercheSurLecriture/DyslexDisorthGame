@@ -69,28 +69,76 @@ define([
       Utils.debug("EXPERIMENT VIEW READ render: ");
       this.destroy_view();
       
-
+      var screen_width = $(document).width();
+      var screen_height = $(document).height();
+      var screen_ratio = screen_width/screen_height;
+      this.setElement($("#experiment"));
+      
       if (this.format == "10inch") {
     	  Utils.debug("EXPERIMENT READ 10INCH render: ");
-
-    	  this.setElement($("#experiment"));
     	  $(this.el).html(this.template10inch(this.model.toJSON()));
     	  
       } else if (this.format == "10inch") {
     	  Utils.debug("EXPERIMENT VIEW READ 4INCH render: ");
-
-    	  this.setElement($("#experiment"));
     	  $(this.el).html(this.template4inch(this.model.toJSON()));
 
       } else {
-
-    	  // TODO guess which template to use.
-    	  this.setElement($("#experiment"));
-    	  $(this.el).html(this.template10inch(this.model.toJSON()));
+        //Guess which layout to use
+        if (screen_height > 1000 || screen_width > 1000) {
+          Utils.debug("EXPERIMENT READ 10INCH render: ");
+          $(this.el).html(this.template10inch(this.model.toJSON()));
+        } else {
+          Utils.debug("EXPERIMENT READ 10INCH render: ");
+          $(this.el).html(this.template10inch(this.model.toJSON()));
+        }
       }
       
       this.currentExperimenterView.render();
       this.currentParticipantView.render();
+      
+      /*
+       * Size the dashboard to make sure it fits nicely
+       */
+      
+
+      var dashboard_ratio = $("#experiment").width()  / $("#experiment").height();
+      Utils.debug("Screen width: " + screen_width + "Screen height: "
+          + screen_height + "Pictures width: "
+          + $("#experiment").width() + "Pictures height: "
+          + $("#experiment").height());
+      Utils.debug("Screen ratio: " + screen_ratio + "Pictures ratio: "
+          + dashboard_ratio);
+      var landscape = screen_width > screen_height;
+      if (landscape == true) {
+        $(".experiment_sails").css({
+          'width' : screen_width*0.9,
+          'margin-left' : (screen_width*0.1) / 2
+        });
+        
+//        if(screen_ratio  > dashboard_ratio){
+//          var new_width = $("#experiment").width()/$("#experiment").height()*screen_height;
+//          Utils.debug("Resizing the width of the experiment dashboard: " + new_width);
+//          $("#experiment").css({
+//            'width' : new_width,
+//            'height' : screen_height,
+//            'margin-left' : (screen_width - new_width) / 2
+//          });
+//        }else{
+//          var new_height = $("#experiment").height()/$("#experiment").width()*screen_width;
+//          Utils.debug("Resizing the height of the experiment dashboard: " + new_height);
+//          $("#experiment").css({
+//            'width' : screen_width,
+//            'height' : new_height,
+//            'margin-top' : (screen_height - new_height) / 2
+//          });
+//        }
+//      } else {
+//        Utils.debug("Resizing the width of the experiment dashboard: "
+//            + screen_width);
+//        $("#experiment").css({
+//          'width' : screen_width - 200
+//        });
+      }
       
       return this;
     },

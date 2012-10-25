@@ -95,6 +95,7 @@ require([ "backbone",
 		sails_design
 ) {
 
+ 
 	/*
 	 * Start the pub sub hub
 	 */

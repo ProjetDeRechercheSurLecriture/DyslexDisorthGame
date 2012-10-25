@@ -1,3 +1,73 @@
 @import url("libs/bootstrap/css/bootstrap.css");
+
 @import url("libs/bootstrap/css/bootstrap-responsive.css");
+
 @import url("libs/font_awesome/css/font-awesome.css");
+
+.phophlobody {
+	background-color: #0176A0;
+	background-image: -moz-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
+	background-image: -webkit-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
+	background-image: -o-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
+	background-image: -ms-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
+	background-image: radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=       '#029CC9',
+		endColorstr=       '#005077', GradientType=       0 );
+}
+
+.sailsbody {
+	background-color: #fff;
+	background-image: -moz-radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
+	background-image: -webkit-radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
+	background-image: -o-radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
+	background-image: -ms-radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
+	background-image: radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=       '#ffffff',
+		endColorstr=       '#999999', GradientType=       0 );
+}
+
+html {
+	height: 100%
+}
+
+.phophlomenu {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -200px;
+	margin-left: -128px;
+}
+
+.participant_glimpse {
+	color: #ccc;
+	font-size: 0.7em;
+}
+
+.experimenter_glimpse {
+	color: #ccc;
+	font-size: 0.7em;
+}
+
+.box {
+	border: 1px solid #E5E5E5;
+}
+
+div {
+	text-align: center;
+}
+
+.border-left {
+	border-left: 1px solid #E5E5E5;
+}
+
+.bordered {
+	border: 1px solid #E5E5E5;
+}
+
+.reinforcement { /* background-color: #ddd; */
+	height: 100%;
+}
+
+img {
+	
+}
