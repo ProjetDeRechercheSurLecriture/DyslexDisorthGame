@@ -21,6 +21,13 @@ audio_stimuli
 image_stimuli
 *design.json
 
+# Branding image Files #
+########################
+*phophlo*
+*sails*
+*tcpp*
+*tdfp*
+*tdfm* 
 
 .idea
 .project
