@@ -17,7 +17,7 @@ public class DyslexDisorthGameActivity extends HTML5GameActivity {
     	this.TAG = DyslexDisorthGame.getTag();
     	this.D  = DyslexDisorthGame.isD();
     	this.mInitialAppServerUrl = 
-    			"file:///android_asset/release/dashboard.html";
+    			"file:///android_asset/release/index.html";
     	this.mOutputDir = ((DyslexDisorthGame) getApplication())
 				.getOutputDir();
     	this.mJavaScriptInterface = new DyslexDysorthJavaScriptInterface(D, TAG, mOutputDir, getApplicationContext(), this, "release/");
