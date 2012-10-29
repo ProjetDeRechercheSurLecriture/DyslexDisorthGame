@@ -4,6 +4,13 @@
 
 @import url("libs/font_awesome/css/font-awesome.css");
 
+@font-face {
+	font-family: 'Finger Paint';
+	font-style: normal;
+	font-weight: 400;
+	src: url('fonts/FingerPaint-Regular.ttf');
+}
+
 .phophlobody {
 	background-color: #0176A0;
 	background-image: -moz-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
@@ -11,8 +18,33 @@
 	background-image: -o-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
 	background-image: -ms-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
 	background-image: radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=       '#029CC9',
-		endColorstr=       '#005077', GradientType=       0 );
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=     
+		       
+		       '#029CC9', endColorstr=                     '#005077',
+		GradientType=    
+		
+		
+		 
+		   
+		        0 );
+}
+
+.resultsbody {
+	background-color: #f6e6b4;
+	background-image: -moz-radial-gradient(center, ellipse cover, #f6e6b4 0%, #ed9017 100%);
+	background-image: -webkit-radial-gradient(center, ellipse cover, #f6e6b4 0%, #ed9017 100%);
+	background-image: -o-radial-gradient(center, ellipse cover, #f6e6b4 0%, #ed9017 100%);
+	background-image: -ms-radial-gradient(center, ellipse cover, #f6e6b4 0%, #ed9017 100%);
+	background-image: radial-gradient(center, ellipse cover, #f6e6b4 0%, #ed9017 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=     
+		       
+		       '#f6e6b4', endColorstr=                     '#ed9017',
+		GradientType=    
+		
+		
+		 
+		   
+		        0 );
 }
 
 .sailsbody {
@@ -22,8 +54,24 @@
 	background-image: -o-radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
 	background-image: -ms-radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
 	background-image: radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=       '#ffffff',
-		endColorstr=       '#999999', GradientType=       0 );
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=     
+		       
+		       '#ffffff', endColorstr=                     '#999999',
+		GradientType=    
+		
+		
+		 
+		   
+		        0 );
+}
+
+h1,h2,h3,h4 {
+	font-family: 'Finger Paint', cursive;
+}
+
+.well {
+	color: #555;
+	background-color: rgba(255, 255, 255, 0.3);
 }
 
 html {
@@ -48,12 +96,41 @@ html {
 	font-size: 0.7em;
 }
 
+.child_specific_results {
+	font-family: 'Finger Paint', cursive;
+}
+
 .box {
 	border: 1px solid #E5E5E5;
 }
 
-div {
+div { /* text-align: center; */
+	
+}
+
+footer {
+	background-color: #333;
+	color: #999;
+	padding: 1em;
+}
+
+.credits p {
 	text-align: center;
+	width: 80%;
+	margin: auto;
+}
+
+footer a {
+	color: #c3b381;
+	font-weight: bold;
+}
+
+.gravatar {
+	height: 3em;
+}
+
+progress {
+	width: 100%;
 }
 
 .border-left {
@@ -68,6 +145,21 @@ div {
 	height: 100%;
 }
 
-img {
-	
+@media print {
+	.exec_summary {
+		display: none !important;
+	}
+	.navbar {
+		display: none !important;
+	}
+	.results_sidebar {
+		display: none !important;
+	}
+	.well {
+		border: 0px !important;
+		box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.05) !important;
+	}
+	.pdfSpacer {
+		padding: 11em;
+	}
 }

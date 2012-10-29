@@ -6,7 +6,7 @@
   
   "app": {
     "launch": {
-      "local_path": "dashboard.html"
+      "local_path": "index.html"
     }
   },
   "offline_enabled": true,
