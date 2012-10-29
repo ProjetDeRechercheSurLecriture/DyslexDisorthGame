@@ -24,11 +24,11 @@ experiment_designs
 
 # Branding image Files #
 ########################
-*phophlo*
-*sails*
-*tcpp*
-*tdfp*
-*tdfm* 
+*phophlo*.png
+*sails*.png
+*tcpp*.png
+*tdfp*.png
+*tdfm*.png
 
 .idea
 .project
