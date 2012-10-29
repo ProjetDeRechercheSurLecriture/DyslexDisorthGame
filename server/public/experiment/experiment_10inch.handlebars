@@ -1,39 +1,38 @@
-<!-- Black Navigation Bar Across the Top (if any) -->
-
 <!-- The main area of the page -->
-<div class="container_fluid main">
-	<div id="experiment_dashboard" class="row-fluid">
-		<!-- Elements on Left Hand side -->
-		<div class="span3">
-			<h3>{{title}}</h3>
-			<strong class="participant_glimpse"> </strong>
-			(<strong class="experimenter_glimpse"> </strong>)
-			{{description}}
-		</div>
-		<!--Elements in the middle -->
-		<div class="span6">
-			<div id="image_stimuli_presentation_area" class="well">
-				{{instructions}} 
-				<img src="{{imageFile}}" height="500" width="500" border=0 />
-			</div>
-			<div id="results_dashboard" class="well ">
-				<h3 class="locale_results_title">Results:</h3>
-				TODO
-			</div>
-			<div id="audio_stimuli_presentation_area" class="">
-				<audio id="audio_stimuli_player_source" src="{{audioFile}}">
-				</audio>
-			</div>
-		</div>
-		<!--/span-->
-		<!-- right hand side -->
-		<div class="span3">
-			<div id="reinforcement_area" class="well"></div>
-		</div>
-		<!--/span-->
-	</div>
-	<!--/row-->
+<div id="experiment_dashboard" class="experiment_sails">
+	<div class="row-fluid">
 
-	<!-- FullScreen Views (if any)-->
+		<div class="span1 buffer"></div>
+
+
+		<div id="image_stimuli_presentation_area" class="span4 stimuli">
+			<img class="box" src="image_stimuli/sails/gris.png" /> <br /> <img
+				class="box" src="image_stimuli/sails/pas_gris.png" />
+		</div>
+
+
+		<div id="reinforcement_area" class="span6  reinforcement">
+			<img class="" src="image_stimuli/sails/r03_mouse_cheese.png" />
+		</div>
+
+		<div class="span1 buffer">
+			<p class="">
+				<span class="participant_glimpse"> </span> <span
+					class="experimenter_glimpse"> </span> {{description}} <br />
+				{{instructions}} <i class="icon-question-sign"></i>
+			</p>
+		</div>
+
+
+	</div>
 </div>
 
+<div id="results_dashboard" class="hidden well">
+	<h3 class="locale_results_title">Results:</h3>
+	TODO
+</div>
+
+<div id="audio_stimuli_presentation_area" class="hidden">
+	<audio id="audio_stimuli_player_source" src="{{audioFile}}">
+	</audio>
+</div>

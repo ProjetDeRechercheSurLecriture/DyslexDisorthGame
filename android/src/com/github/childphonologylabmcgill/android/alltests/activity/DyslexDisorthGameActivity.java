@@ -16,11 +16,11 @@ public class DyslexDisorthGameActivity extends HTML5GameActivity {
     protected void setUpVariables(){
     	this.TAG = DyslexDisorthGame.getTag();
     	this.D  = DyslexDisorthGame.isD();
-    	this.mInitialGameServerUrl = 
-    			"file:///android_asset/release/dashboard.html";
+    	this.mInitialAppServerUrl = 
+    			"file:///android_asset/release/index.html";
     	this.mOutputDir = ((DyslexDisorthGame) getApplication())
 				.getOutputDir();
-    	this.mJavaScriptInterface = new DyslexDysorthJavaScriptInterface(D, TAG, mOutputDir);
+    	this.mJavaScriptInterface = new DyslexDysorthJavaScriptInterface(D, TAG, mOutputDir, getApplicationContext(), this, "release/");
     	this.mJavaScriptInterface.setContext(this);
     }
 }
