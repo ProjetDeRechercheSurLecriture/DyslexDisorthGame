@@ -2,11 +2,12 @@
 
 /* Controllers */
 
+function ParticipantListCtrl($scope, $http) {
+  $http.get('data/participant_data.json').success(function(data) {
+    $scope.participants = data;
+  });
 
-function MyCtrl1() {}
-MyCtrl1.$inject = [];
-
-
-function MyCtrl2() {
+  $scope.orderProp = 'id';
 }
-MyCtrl2.$inject = [];
+
+PartcipantListCtrl.$inject = ['$scope', '$http'];
