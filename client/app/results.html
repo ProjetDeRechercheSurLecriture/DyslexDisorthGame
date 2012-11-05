@@ -129,11 +129,12 @@
 					Total number of records: {{participants.length}}<br />
 					Total number of records found: {{(participants | filter: query).length}}
 					<p>
+					<div>
 					<div id="no_results" style="display: none"><span class="">No results.</span></div>
 					<div id="results" style="display: none">
 					Matching records: {{(participants | filter: query).length}}
-					<ul class='unstyled' ng-repeat="participant in participants | filter:query">
-						<li>ParticipantId: <span class="" contenteditable="true">{{participant.id}}</span></li>
+					<ul class='unstyled' ng-repeat="participant in participants | filter:query" ng-controller="ChildListCtrl">
+						<li ng-repeat="child in children">ParticipantId: <span class="" contenteditable="true">{{participant.participantID}} ({{child.sessionID}})</span></li>
 						<li>First Name: <span class="child_specific_results"
 							contenteditable="true">{{participant.firstName}}</span></li>
 						<li>Last Name: <span class="child_specific_results"
@@ -145,6 +146,7 @@
 							<li><span contenteditable="true">Notes:</span><span
 							class="child_specific_results" contenteditable="true">{{participant.notes}}</span></li>
 					</ul>
+					</div>
 					</div>
 				</div>
 				<div class="well span6">
