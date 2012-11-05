@@ -3,10 +3,11 @@
   "version": "1.1",
   "description": "__MSG_application_description__",
   "default_locale": "fr",
-  
+
   "app": {
-    "launch": {
-      "local_path": "index.html"
+	  "default_icon": "images/ic_phophlo16.png",
+	  "launch": {
+    	"local_path": "index.html"
     }
   },
   "offline_enabled": true,
