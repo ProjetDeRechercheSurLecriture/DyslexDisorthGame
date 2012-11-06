@@ -4,6 +4,6 @@
 
 angular.module('headphoneFilter', []).filter('checkmark', function() {
 	return function(input) {
-		return input===1 ? '\u2713' : '\u2718';
+		return input==1 ? '\u2713' : '\u2718';
 	};
 });
