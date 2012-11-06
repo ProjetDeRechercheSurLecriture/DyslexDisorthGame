@@ -11,8 +11,8 @@ function ParticipantListCtrl($scope, $http) {
 }
 
 function ChildListCtrl($scope, $http) {
-	$http.get('data/child_' + $scope.participant.participantID + '.json').success(function(data) {
-		$scope.children = data;
+	$http.get('data/child.json').success(function(data) {
+		$scope.childs = data;
 	});
 }	
 

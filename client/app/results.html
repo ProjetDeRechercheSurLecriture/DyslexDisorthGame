@@ -71,7 +71,37 @@
 	</div>
 
 	<div class="row">
-		<div class="span3 results_sidebar">
+	
+<!-- SEARCH BOX; Users AngularJS to filter children and fetch sessionID numbers based on child's participantID -->		
+		
+		<div class="span3 results_sidebar" ng-controller="ChildListCtrl">
+			Total number of records: {{participants.length}}<br />
+			Total number of participants: {{childs.length - 1}}<br />
+			
+			<form class="well form-search" onsubmit="displaySearchResults({{(childs | filter: query).length}})">
+				Enter child name or participant ID:
+				<input type="text" class="input-medium search-query" ng-model="query">
+				<button id="search_button" type="button" class="btn" onclick="displaySearchResults({{(childs | filter: query).length}})">Search</button>
+			</form>
+			Number of participants matching search: {{(childs | filter: query).length}}<br />
+			<p>
+				<div>
+					<div id="no_results" style="display: none"><span class="">No results.</span></div>
+					<div id="results" style="display: none">
+						<span class="">Displaying top results:</span>
+						<p />
+						<ul class='unstyled' ng-repeat="child in childs | filter: query | limitTo:3">
+							<li><span class="">Participant Id: {{child.participantID}}</span></li>
+							<li><span class="">First Name: {{child.firstName}}</span></li>
+							<li><span class="">Last Name: {{child.lastName}}</span></li>
+							<li><span class="">Date of Birth: {{child.DOB}}</span></li>
+							<li ng-repeat="participant in participants | filter: child.participantID"><span class="">Session ID: <a href="comingsoon.html">{{participant.sessionID}}</a> ( <img ng-src="images/headphones.png" height=10> : {{participant.usedHeadphones | checkmark}} )</li>
+							<li><span class="">Notes: {{child.notes}}</span></li>
+						</ul>
+					</div>
+				</div>
+		
+		
 			<ul class="nav nav-list bs-docs-sidenav affix">
 				<li><a href="#">Participant Reports</a></li>
 				<li class="active"><a href="#templateA"><i
@@ -119,34 +149,23 @@
 
 <!-- Fields to update with AngularJS -->
 
-			<div class="row-fluid">
+			<div class="row-fluid" ng-controller="ChildListCtrl">
 				<div class="well span6">
 					<h3>Child info</h3>
-					<form class="well form-search">
-						<input type="text" class="input-medium search-query" ng-model="query">
-						<button id="search_button" type="button" class="btn" onclick="displaySearchResults({{(participants | filter: query).length}})" >Search</button>
-					</form>
-					Total number of records: {{participants.length}}<br />
-					Total number of records found: {{(participants | filter: query).length}}
+					
 					<p>
 					<div>
-					<div id="no_results" style="display: none"><span class="">No results.</span></div>
-					<div id="results" style="display: none">
-					Matching records: {{(participants | filter: query).length}}
-					<ul class='unstyled' ng-repeat="participant in participants | filter:query" ng-controller="ChildListCtrl">
-						<li ng-repeat="child in children">ParticipantId: <span class="" contenteditable="true">{{participant.participantID}} ({{child.sessionID}})</span></li>
-						<li>First Name: <span class="child_specific_results"
-							contenteditable="true">{{participant.firstName}}</span></li>
-						<li>Last Name: <span class="child_specific_results"
-							contenteditable="true">{{participant.lastName}}</span></li>
-						<li>Date of Birth: <span class="child_specific_results"
-							contenteditable="true">{{participant.DOB}}</span></li>
-						<li>Headphones: <span class="child_specific_results"
-							contenteditable="true">{{participant.usedHeadphones | checkmark}}</span></li>
-							<li><span contenteditable="true">Notes:</span><span
-							class="child_specific_results" contenteditable="true">{{participant.notes}}</span></li>
-					</ul>
-					</div>
+						<div style="display: block">
+							<ul class='unstyled'>
+								<li>Participant Id: <span class="" contenteditable="true"></span></li>
+								<li>Session ID: <span class="" contenteditable="true"></span></li>
+								<li>First Name: <span class="child_specific_results" contenteditable="true"></span></li>
+								<li>Last Name: <span class="child_specific_results" contenteditable="true"></span></li>
+								<li>Date of Birth: <span class="child_specific_results" contenteditable="true"></span></li>
+								<li>Headphones: <span class="child_specific_results" contenteditable="true"></span></li>
+								<li><span contenteditable="true">Notes:</span><span class="child_specific_results" contenteditable="true"></span></li>
+							</ul>
+						</div>
 					</div>
 				</div>
 				<div class="well span6">
