@@ -30,6 +30,7 @@ experiment_designs
 *tdfp*.png
 *tdfm*.png
 *.png
+!headphones.png
 
 .idea
 .project
