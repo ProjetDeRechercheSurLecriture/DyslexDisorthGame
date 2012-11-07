@@ -4,8 +4,6 @@
 	"language" : "en",
 	"sessionID" : 89342789,
 	"participantID" : 1234,
-	"descriptionEdit" : "",
-	"discussionEdit" : "",
 	"usedHeadphones" : 1,
 	"stimuli" : [ {
 		"audioOffset" : 1352304505219,
@@ -64,8 +62,6 @@
 	"language" : "en",
 	"sessionID" : 74589098,
 	"participantID" : 1234,
-	"descriptionEdit" : "",
-	"discussionEdit" : "",
 	"usedHeadphones" : 0,
 	"stimuli" : [ {
 		"audioOffset" : 1352304505219,
@@ -124,8 +120,6 @@
 	"language" : "en",
 	"sessionID" : 234870987,
 	"participantID" : 6789,
-	"descriptionEdit" : "",
-	"discussionEdit" : "",
 	"usedHeadphones" : 1,
 	"stimuli" : [ {
 		"audioOffset" : 1352304505219,
@@ -184,8 +178,6 @@
 	"language" : "fr",
 	"sessionID" : 2394879,
 	"participantID" : 6789,
-	"descriptionEdit" : "",
-	"discussionEdit" : "",
 	"usedHeadphones" : 1,
 	"stimuli" : [ {
 		"audioOffset" : 1352304505219,
@@ -244,8 +236,6 @@
 	"language" : "en",
 	"sessionID" : 789934,
 	"participantID" : 8901,
-	"descriptionEdit" : "",
-	"discussionEdit" : "",
 	"usedHeadphones" : 0,
 	"stimuli" : [ {
 		"audioOffset" : 1352304505219,

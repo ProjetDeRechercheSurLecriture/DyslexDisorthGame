@@ -74,7 +74,7 @@
 	
 <!-- SEARCH BOX; Users AngularJS to filter children and fetch sessionID numbers based on child's participantID -->		
 		
-		<div class="span3 results_sidebar" ng-controller="ChildListCtrl">
+		<div class="span3 results_sidebar">
 			Total number of records: {{sessions.length}}<br />
 			Total number of participants: {{childs.length - 1}}<br />
 			
@@ -95,7 +95,7 @@
 							<li><span class="">First Name: {{child.firstName}}</span></li>
 							<li><span class="">Last Name: {{child.lastName}}</span></li>
 							<li><span class="">Date of Birth: {{child.DOB}}</span></li>
-							<li ng-repeat="session in sessions | filter: child.participantID"><span class="">Session ID: <a href="comingsoon.html">{{session.sessionID}}</a> ( <img ng-src="images/headphones.png" height=10> : {{session.usedHeadphones | checkmark}} )</li>
+							<li ng-repeat="session in sessions | filter: child.participantID"><span class="">Session ID: <a href="#" ng-click="displayReport(session.sessionID)">{{session.sessionID}}</a> ( {{session.description}}; <img ng-src="img/headphones.png" height=10> : {{session.usedHeadphones | checkmark}} )</li>
 							<li><span class="">Notes: {{child.notes}}</span></li>
 						</ul>
 					</div>
@@ -157,8 +157,9 @@
 					<div>
 						<div style="display: block">
 							<ul class='unstyled'>
+								<li>TEST: <span id="angularTest"></span></li>
 								<li>Participant Id: <span class="" contenteditable="true"></span></li>
-								<li>Session ID: <span class="" contenteditable="true"></span></li>
+								<li>Session ID: <span id="span-sessionID" class="" contenteditable="true"></span></li>
 								<li>First Name: <span class="child_specific_results" contenteditable="true"></span></li>
 								<li>Last Name: <span class="child_specific_results" contenteditable="true"></span></li>
 								<li>Date of Birth: <span class="child_specific_results" contenteditable="true"></span></li>
@@ -321,7 +322,7 @@
 	        resultsdiv.style.display = 'block';
 	        noresultsdiv.style.display = 'none';
 	    }
-	};
+	}
 	
 	</script>
 </body>
