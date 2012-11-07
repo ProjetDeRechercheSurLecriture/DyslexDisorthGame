@@ -12,18 +12,28 @@ function SessionListCtrl($scope, $http) {
   });
   
   $scope.orderProp = 'participantID';
-  
-  
-  //GET RID OF THIS AND REFACTOR USING ROUTES
-  $scope.displayReport = function(sessionID) {
-	  document.getElementById('span-sessionID').innerHTML=sessionID;
-	  document.getElementById('angularTest').innerHTML="TEST";
-	  var data = $http.get('data/session_data.json');
-	  data = JSON.parse(data);
-	  window.alert(data[0].participantID);
-	  
-	  
-  }
+
+  $scope.displaySearchResults = function(resultsCount) {
+		var resultsdiv = document.getElementById('results');
+		var noresultsdiv = document.getElementById('no_results');
+	    if (resultsCount == 0) {
+	        resultsdiv.style.display = 'none';
+	        noresultsdiv.style.display = 'block';
+	    }
+	    else {
+	        resultsdiv.style.display = 'block';
+	        noresultsdiv.style.display = 'none';
+	    }
+	};
+}
+
+function SessionReportCtrl($scope, $routeParams, $http) {
+	$http.get('data/session_data.json').success(function(data) {
+		angular.forEach(data, function(record) {
+			if (record.sessionID == $routeParams.sessionID)
+				$scope.sessionReport = record;
+		});
+	});
 }
 
 //PartcipantListCtrl.$inject = ['$scope', '$http'];
