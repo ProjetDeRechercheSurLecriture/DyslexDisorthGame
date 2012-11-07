@@ -13,7 +13,7 @@
  <script src="js/controllers.js"></script>
  <script src="js/filters.js"></script>
 </head>
-<body id="app" class="resultsbody" ng-controller="ParticipantListCtrl">
+<body id="app" class="resultsbody" ng-controller="SessionListCtrl">
 
 
 	<div id="navbar-example" class="navbar navbar-static">
@@ -75,7 +75,7 @@
 <!-- SEARCH BOX; Users AngularJS to filter children and fetch sessionID numbers based on child's participantID -->		
 		
 		<div class="span3 results_sidebar" ng-controller="ChildListCtrl">
-			Total number of records: {{participants.length}}<br />
+			Total number of records: {{sessions.length}}<br />
 			Total number of participants: {{childs.length - 1}}<br />
 			
 			<form class="well form-search" onsubmit="displaySearchResults({{(childs | filter: query).length}})">
@@ -95,7 +95,7 @@
 							<li><span class="">First Name: {{child.firstName}}</span></li>
 							<li><span class="">Last Name: {{child.lastName}}</span></li>
 							<li><span class="">Date of Birth: {{child.DOB}}</span></li>
-							<li ng-repeat="participant in participants | filter: child.participantID"><span class="">Session ID: <a href="comingsoon.html">{{participant.sessionID}}</a> ( <img ng-src="images/headphones.png" height=10> : {{participant.usedHeadphones | checkmark}} )</li>
+							<li ng-repeat="session in sessions | filter: child.participantID"><span class="">Session ID: <a href="comingsoon.html">{{session.sessionID}}</a> ( <img ng-src="images/headphones.png" height=10> : {{session.usedHeadphones | checkmark}} )</li>
 							<li><span class="">Notes: {{child.notes}}</span></li>
 						</ul>
 					</div>
