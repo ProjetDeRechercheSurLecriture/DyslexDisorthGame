@@ -60,7 +60,7 @@
 			Total number of records: {{sessions.length}}<br />
 			Total number of participants: {{childs.length - 1}}<br />
 			
-			<form class="well form-search">
+			<form ng-submit="displaySearchResults((childs | filter: query).length)" class="well form-search">
 				Enter child name or participant ID:
 				<input type="text" class="input-medium search-query" ng-model="query">
 				<button id="search_button" type="button" class="btn" ng-click="displaySearchResults((childs | filter: query).length)">Search</button>
