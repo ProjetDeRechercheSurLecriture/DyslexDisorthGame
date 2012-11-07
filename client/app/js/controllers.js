@@ -2,9 +2,9 @@
 
 /* Controllers */
 
-function ParticipantListCtrl($scope, $http) {
-  $http.get('data/participant_data.json').success(function(data) {
-    $scope.participants = data;
+function SessionListCtrl($scope, $http) {
+  $http.get('data/session_data.json').success(function(data) {
+    $scope.sessions = data;
   });
   
   $scope.orderProp = 'participantID';
