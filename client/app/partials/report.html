@@ -1,0 +1,5 @@
+<div ng-controller="SessionListCtrl">
+
+This is the {{sessionReport.title}} report page for Participant {{sessionReport.participantID}} (<span ng-repeat="child in childs | filter: sessionReport.participantID">{{child.firstName}} {{child.lastName}}</span>), session {{sessionReport.sessionID}}.
+
+</div>
