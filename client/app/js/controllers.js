@@ -33,7 +33,41 @@ function SessionReportCtrl($scope, $routeParams, $http) {
 			if (record.sessionID == $routeParams.sessionID)
 				$scope.sessionReport = record;
 		});
+		
+		var tempID = $routeParams.sessionID;
+		var storedID = JSON.parse(localStorage.getItem(tempID));
+		if (storedID != undefined) {
+			$scope.sessionReport.discussionEdit = storedID.discussionEditedText;
+		}
 	});
+	
+	$scope.saveChanges = function(session) {
+		var descriptionText = document.getElementById('description_text').innerHTML;
+		var discussionText = document.getElementById('discussion_text').innerHTML;
+		session = {"id": session, "discussionEditedText" : discussionText};
+		localStorage.setItem(session.id, JSON.stringify(session));
+	};
+	$scope.toggleEditButtons = function() {
+		var descriptionField = document.getElementById('description_text');
+		var discussionField = document.getElementById('discussion_text');
+		var editButton = document.getElementById('edit');
+		var cancelSaveButton = document.getElementById('cancel_save');
+
+		if (descriptionField.contentEditable == 'false') {
+			descriptionField.contentEditable = 'true';
+			discussionField.contentEditable = 'true';
+			editButton.style.display = 'none';
+			cancelSaveButton.style.display = 'block';
+		}
+		else {
+			descriptionField.contentEditable = 'false';
+			discussionField.contentEditable = 'false';
+			editButton.style.display = 'block';
+			cancelSaveButton.style.display = 'none';
+			document.location.reload(true);
+		};
+	};
+	
 }
 
 //PartcipantListCtrl.$inject = ['$scope', '$http'];
