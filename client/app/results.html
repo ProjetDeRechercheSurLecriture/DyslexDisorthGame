@@ -92,7 +92,7 @@
 						<span class="">Displaying top results:</span>
 						<p>
 						<ul class='unstyled' ng-repeat="child in childs | filter: query | limitTo:3">
-							<li><span class="">Participant Id: {{child.participantID}}</span></li>
+							<li><span class="">Participant Id: <a href="#/participants/{{child.participantID}}">{{child.participantID}}</a></span></li>
 							<li><span class="">First Name: {{child.firstName}}</span></li>
 							<li><span class="">Last Name: {{child.lastName}}</span></li>
 							<li><span class="">Date of Birth: {{child.DOB}}</span></li>

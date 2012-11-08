@@ -36,15 +36,18 @@ function SessionReportCtrl($scope, $routeParams, $http) {
 		
 		var tempID = $routeParams.sessionID;
 		var storedID = JSON.parse(localStorage.getItem(tempID));
-		if (storedID != undefined) {
+		if (storedID.discussionEditedText != undefined) {
 			$scope.sessionReport.discussionEdit = storedID.discussionEditedText;
+		}
+		if (storedID.descriptionEditedText != undefined) {
+			$scope.sessionReport.descriptionEdit = storedID.descriptionEditedText;
 		}
 	});
 	
 	$scope.saveChanges = function(session) {
 		var descriptionText = document.getElementById('description_text').innerHTML;
 		var discussionText = document.getElementById('discussion_text').innerHTML;
-		session = {"id": session, "discussionEditedText" : discussionText};
+		session = {"id": session, "discussionEditedText" : discussionText, "descriptionEditedText" : descriptionText};
 		localStorage.setItem(session.id, JSON.stringify(session));
 	};
 	$scope.toggleEditButtons = function() {
@@ -70,4 +73,15 @@ function SessionReportCtrl($scope, $routeParams, $http) {
 	
 }
 
+function ParticipantReportCtrl($scope, $routeParams, $http) {
+//	$http.get('data/session_data.json').success(function(data) {
+//		angular.forEach(data, function(record) {
+//			if (record.participantID == $routeParams.participantID)
+//				$scope.participantReport = record;
+//		});
+//	});
+
+	
+	$scope.sessions.participantID = $routeParams.participantID;
+}
 //PartcipantListCtrl.$inject = ['$scope', '$http'];
