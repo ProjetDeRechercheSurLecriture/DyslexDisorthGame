@@ -15,7 +15,162 @@
 </head>
 <body id="app" class="resultsbody">
 
-	<div ng-view></div>
+	
+	<div ng-controller="SessionListCtrl">
 
+	<div id="navbar-example" class="navbar navbar-static">
+		<div class="navbar-inner">
+			<div class="container" style="width: auto;">
+				<a class="brand" href="index.html">PhoPhlo</a>
+				<ul class="nav" role="navigation">
+					<li class="dropdown"><a id="drop4" href="#" role="button"
+						class="dropdown-toggle" data-toggle="dropdown">Run <b
+							class="caret"></b></a>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+							<li><a tabindex="-1" href="http://google.com">All</a></li>
+							<li><a tabindex="-1" href="http://google.com">SAILS</a></li>
+							<li><a tabindex="-1" href="#anotherAction">TCPP</a></li>
+							<li><a tabindex="-1" href="#">TDFP</a></li>
+							<li><a tabindex="-1" href="#">TDFM</a></li>
+						</ul></li>
+					<li class="dropdown"><a id="drop1" href="#" role="button"
+						class="dropdown-toggle" data-toggle="dropdown">Customize <b
+							class="caret"></b></a>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+							<li><a tabindex="-1" href="http://google.com">Organization</a></li>
+							<li><a tabindex="-1" href="#anotherAction">Testers</a></li>
+							<li><a tabindex="-1" href="#">Parents</a></li>
+							<li><a tabindex="-1" href="#">Children</a></li>
+							<li class="divider"></li>
+							<li><a tabindex="-1" href="#">Clear all customization</a></li>
+						</ul></li>
+					<li class="dropdown"><a href="#" id="drop2" role="button"
+						class="dropdown-toggle" data-toggle="dropdown">Reports<b
+							class="caret"></b></a>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+							<li><a tabindex="-1" href="results.html">Review previous</a></li>
+							<li><a tabindex="-1" href="result.html">View current</a></li>
+							<li><a tabindex="-1" href="#">Send report</a></li>
+							<li class="divider"></li>
+							<li><a tabindex="-1" href="#">Clear all reports</a></li>
+						</ul></li>
+
+				</ul>
+				<ul class="nav pull-right">
+					<li id="auth-menu" class="dropdown"><a href="#" id="drop3"
+						role="button" class="dropdown-toggle" data-toggle="dropdown"><i
+							class="icon-user"></i><b class="caret"></b> </a>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+							<li><a tabindex="-1" href="#">View as Organization</a></li>
+							<li><a tabindex="-1" href="#">View as Test Administrator</a></li>
+							<li><a tabindex="-1" href="#">View as Parent</a></li>
+							<li class="divider"></li>
+							<li><a tabindex="-1" href="#">View as Child</a></li>
+						</ul></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+	
+<!-- SEARCH BOX; Uses AngularJS to filter children and fetch sessionID numbers based on child's participantID -->		
+		
+		<div class="span3 results_sidebar">
+			Total number of records: {{sessions.length}}<br />
+			Total number of participants: {{childs.length - 1}}<br />
+			
+			<form ng-submit="displaySearchResults((childs | filter: query).length)" class="well form-search">
+				Enter child name or participant ID:
+				<input type="text" class="input-medium search-query" ng-model="query">
+				<button id="search_button" type="button" class="btn" ng-click="displaySearchResults((childs | filter: query).length)">Search</button>
+			</form>
+			<p>
+				<div>
+					<div id="no_results" style="display: none"><span class="">No results.</span></div>
+					<div id="results" style="display: none">
+						<span class="">Displaying top results:</span>
+						<p>
+						<ul class='unstyled' ng-repeat="child in childs | filter: query | limitTo:3">
+							<li><span class="">Participant Id: {{child.participantID}}</span></li>
+							<li><span class="">First Name: {{child.firstName}}</span></li>
+							<li><span class="">Last Name: {{child.lastName}}</span></li>
+							<li><span class="">Date of Birth: {{child.DOB}}</span></li>
+							<li ng-repeat="session in sessions | filter: child.participantID"><span class="">Session ID: <a href="#/sessions/{{session.sessionID}}">{{session.sessionID}}</a> ( {{session.testName}}; <img ng-src="img/headphones.png" height=10> : {{session.usedHeadphones | checkmark}} )</li>
+						</ul>
+					</div>
+				</div>
+	
+	
+		
+		
+			<ul class="nav nav-list bs-docs-sidenav affix">
+				<li><a href="#">Participant Reports</a></li>
+				<li class="active"><a href="#templateA"><i
+						class="icon-chevron-right"></i>Template A</a>
+
+
+					<ul class="nav nav-list bs-docs-sidenav affix">
+						<li><a href="#122"><i class="icon-chevron-right"></i>For
+								organization's file</a></li>
+						<li><a href="#123"><i class="icon-chevron-right"></i>For
+								the parents</a></li>
+						<li><a href="#124"><i class="icon-chevron-right"></i>For
+								the child</a></li>
+					</ul></li>
+				<li><a href="#121"><i class="icon-chevron-right"></i> 121</a></li>
+				<li><a href="#122"><i class="icon-chevron-right"></i> 122</a></li>
+				<li><a href="#123"><i class="icon-chevron-right"></i> 123</a></li>
+				<li><a href="#124"><i class="icon-chevron-right"></i> 124</a></li>
+				<li><a href="#125"><i class="icon-chevron-right"></i> 125</a></li>
+				<li><a href="#126"><i class="icon-chevron-right"></i> 126</a></li>
+				<li><a href="#127"><i class="icon-chevron-right"></i> 127</a></li>
+				<li><a href="#">Reports across participants</a></li>
+				<li><a href="#"><i class="icon-chevron-right"></i>PhoPhlo </a></li>
+				<li><a href="#"><i class="icon-chevron-right"></i>SAILS </a></li>
+				<li><a href="#"><i class="icon-chevron-right"></i>TCPP </a></li>
+				<li><a href="#"><i class="icon-chevron-right"></i>TDFP </a></li>
+				<li><a href="#"><i class="icon-chevron-right"></i>TDFM </a></li>
+			</ul>
+		</div>
+	
+	<ng-view>
+	</ng-view>
+	
+	</div>
+
+</div>
+
+	<footer class="footer">
+
+
+		<!-- Research and collaboration opportunties: <a
+			href="http://www.medicine.mcgill.ca/srvachew/">http://www.medicine.mcgill.ca/srvachew/</a>
+		&amp; User Support and Feedback: <a href="http://ilanguage.ca/phophlo">http://ilanguage.ca/phophlo</a>
+ -->
+
+		<p>&nbsp;</p>
+		<ul>
+			<li>Experimental Design � Rvachew, Royle et al. All rights
+				reserved.</li>
+			<li>Illustrations � Edith Lebel. All rights reserved.</li>
+			<li>The PhoPhlo Source Code is free and OpenSourced on GitHub,
+				licensed under the <a
+				href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache
+					License v2.0</a>. Documentation is also Open and licensed under the
+				Creative Commons public domain license <a
+				href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+			</li>
+		</ul>
+
+	</footer>
+
+
+	<!-- Le javascript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+
+	<script type="text/javascript" src="./require.js"></script>
+	<script type="text/javascript" src="./main_dashboard.js"></script>
 </body>
 </html>
