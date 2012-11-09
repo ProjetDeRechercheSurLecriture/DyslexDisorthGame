@@ -3,17 +3,22 @@
 /* Controllers */
 
 function SessionListCtrl($scope, $http) {
-  $http.get('data/session_data.json').success(function(data) {
-    $scope.sessions = data;
-  });
-  
-  $http.get('data/child.json').success(function(data) {
-	$scope.childs = data;
-  });
-  
-  $scope.orderProp = 'participantID';
 
-  $scope.displaySearchResults = function(resultsCount) {
+//Get data; assign to template scope
+	
+	$http.get('data/session_data.json').success(function(data) {
+		$scope.sessions = data;
+	});
+  
+	$http.get('data/child.json').success(function(data) {
+		$scope.childs = data;
+	});
+  
+	$scope.orderProp = 'participantID';
+
+//Test to see if text in search box returns any results and hide/display divs accordingly	
+	
+	$scope.displaySearchResults = function(resultsCount) {
 		var resultsdiv = document.getElementById('results');
 		var noresultsdiv = document.getElementById('no_results');
 	    if (resultsCount == 0) {
@@ -28,28 +33,13 @@ function SessionListCtrl($scope, $http) {
 }
 
 function SessionReportCtrl($scope, $routeParams, $http) {
-	$http.get('data/session_data.json').success(function(data) {
-		angular.forEach(data, function(record) {
-			if (record.sessionID == $routeParams.sessionID)
-				$scope.sessionReport = record;
-		});
-		
-		var tempID = $routeParams.sessionID;
-		var storedID = JSON.parse(localStorage.getItem(tempID));
-		if (storedID.discussionEditedText != undefined) {
-			$scope.sessionReport.discussionEdit = storedID.discussionEditedText;
-		}
-		if (storedID.descriptionEditedText != undefined) {
-			$scope.sessionReport.descriptionEdit = storedID.descriptionEditedText;
-		}
-	});
+
+//Limit value of sessionID in template to value of sessionID in routeParams
 	
-	$scope.saveChanges = function(session) {
-		var descriptionText = document.getElementById('description_text').innerHTML;
-		var discussionText = document.getElementById('discussion_text').innerHTML;
-		session = {"id": session, "discussionEditedText" : discussionText, "descriptionEditedText" : descriptionText};
-		localStorage.setItem(session.id, JSON.stringify(session));
-	};
+	$scope.sessions.sessionID = $routeParams.sessionID;
+
+//Show/hide Edit/Cancel buttons; make template content (non)editable	
+	
 	$scope.toggleEditButtons = function() {
 		var descriptionField = document.getElementById('description_text');
 		var discussionField = document.getElementById('discussion_text');
@@ -70,18 +60,49 @@ function SessionReportCtrl($scope, $routeParams, $http) {
 			document.location.reload(true);
 		};
 	};
+
+//Save (edited) template content to local storage; key = sessionID
+	
+	$scope.saveChanges = function(editedSession) {
+		var descriptionText = document.getElementById('description_text').innerHTML;
+		var discussionText = document.getElementById('discussion_text').innerHTML;
+		editedSession = {"id": editedSession, "discussionEditedText" : discussionText, "descriptionEditedText" : descriptionText};
+		localStorage.setItem(editedSession.id, JSON.stringify(editedSession));
+	};
 	
 }
 
 function ParticipantReportCtrl($scope, $routeParams, $http) {
-//	$http.get('data/session_data.json').success(function(data) {
-//		angular.forEach(data, function(record) {
-//			if (record.participantID == $routeParams.participantID)
-//				$scope.participantReport = record;
-//		});
-//	});
 
+//Limit value of participantID in template to value of participantID in routeParams	
 	
 	$scope.sessions.participantID = $routeParams.participantID;
+
+}
+
+//Check to see if the description and discussion fields in the session
+//have been updated (saved in localStorage); Call this controller inside
+//ng-repeat to assure a unique sessionID
+
+function CheckEditableFieldsCtrl($scope, $http) {
+	var currentSession = $scope.session.sessionID;
+	var storedID = JSON.parse(localStorage.getItem(currentSession));
+	try {
+		if (storedID.descriptionEditedText != undefined) {
+			$scope.session.descriptionEdit = storedID.descriptionEditedText;
+		}
+	}
+	catch(e) {
+		return
+	};
+	try {
+		if (storedID.discussionEditedText != undefined) {
+			$scope.session.discussionEdit = storedID.discussionEditedText;
+		}
+	}
+	catch(e) {
+		return
+	};
+
 }
 //PartcipantListCtrl.$inject = ['$scope', '$http'];

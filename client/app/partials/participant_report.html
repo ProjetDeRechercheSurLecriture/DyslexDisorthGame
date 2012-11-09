@@ -1,4 +1,4 @@
-
+<!-- NOTE: Route controller ParticipantReportCtrl limits value of sessions.participantID to unique participantID from $routeParams throughout-->
 
 		<div class="well span9">
 
@@ -13,9 +13,6 @@
 						to read.</p>
 				</div>
 			</div>
-
-
-<!-- Fields to update with AngularJS -->
 
 			<div class="row-fluid">
 				<div class="well span6">
@@ -62,14 +59,16 @@
 			<div class="row-fluid">
 
 				<div id="report_text" class="well span12">
-					
+
+<!-- Generate session reports -->					
+
 					<ul class=" unstyled experiment_description">
-						<li ng-repeat="session in sessions | filter: sessions.participantID"><h3>{{session.testType}}</h3><br /><img class="gravatar  pull-right"
-							ng-src="img/ic_{{session.testName}}128.png" />Session ID: <a href="#/sessions/{{session.sessionID}}">{{session.sessionID}}</a><br />Description: <span id="description_text"
-							class="experiment_description" contenteditable="false">{{session.descriptionEdit}}</span>
-							<br /> Discussion: <span id="discussion_text"
-							class=" child_specific_results experiment_results_discussion"
-							contenteditable="false")">{{session.discussionEdit}}</span> <progress max="100" value="70"></progress><br /><br /></li>
+						<li ng-repeat="session in sessions | filter: sessions.participantID" ng-controller="CheckEditableFieldsCtrl"><h3>{{session.testType}}</h3><br />
+							<img class="gravatar  pull-right"ng-src="img/ic_{{session.testName}}128.png" />
+							Session ID: <a href="#/sessions/{{session.sessionID}}">{{session.sessionID}}</a><br />
+							Description: <span id="description_text" class="experiment_description" contenteditable="false">{{session.descriptionEdit}}</span><br />
+							Discussion: <span id="discussion_text" class=" child_specific_results experiment_results_discussion" contenteditable="false")">{{session.discussionEdit}}</span>
+							<progress max="100" value="70"></progress><br /><br /></li>
 							
 					</ul>
 
