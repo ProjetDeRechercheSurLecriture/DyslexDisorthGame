@@ -1,4 +1,4 @@
-
+<!-- NOTE: Route controller SessionReportCtrol limits value of sessions.sessionID to unique sessionID from $routeParams throughout-->
 
 		<div class="well span9">
 
@@ -8,54 +8,47 @@
 						src="img/phophlo.png" height="128" /></a>
 				</div>
 				<div class=" span6">
-					<p class="lead" contenteditable="true">PhoPhlo is a screening
+					<p class="lead" contenteditable="false">PhoPhlo is a screening
 						test for early indications of reading troubles, before kids learn
 						to read.</p>
 				</div>
 			</div>
 
-
-<!-- Fields to update with AngularJS -->
-
 			<div class="row-fluid">
 				<div class="well span6">
 					<h3>Child info</h3>
-					
 					<p>
 					<div>
-						<div style="display: block">
-							<ul class='unstyled'>
-								<li>Participant Id: <span class="" contenteditable="true"><a href="#/participants/{{sessionReport.participantID}}">{{sessionReport.participantID}}</a></span></li>
-								<li>Session ID: <span id="span-sessionID" class="" contenteditable="true">{{sessionReport.sessionID}}</span></li>
-								<li>Test: <span class="">{{sessionReport.title}}</span></li>
-								<li>First Name: <span ng-repeat="child in childs | filter: sessionReport.participantID">{{child.firstName}}</span></li>
-								<li>Last Name: <span ng-repeat="child in childs | filter: sessionReport.participantID">{{child.lastName}}</span></li>
-								<li>Date of Birth: <span ng-repeat="child in childs | filter: sessionReport.participantID">{{child.DOB}}</span></li>
-								<li>Headphones: <span class="child_specific_results" contenteditable="true">{{sessionReport.usedHeadphones | checkmark}}</span></li>
-								<li><span contenteditable="true">Notes:</span><span ng-repeat="child in childs | filter: sessionReport.participantID">{{child.notes}}</span></li>
+						<div style="display: block" ng-repeat="session in sessions | filter: sessions.sessionID">
+							<ul class='unstyled' ng-repeat="child in childs | filter: session.participantID">
+								<li>Participant Id: <span class="" contenteditable="false"><a href="#/participants/{{session.participantID}}">{{session.participantID}}</a></span></li>
+								<li>First Name: <span class="">{{child.firstName}}</span></li>
+								<li>Last Name: <span class="">{{child.lastName}}</span></li>
+								<li>Date of Birth: <span class="">{{child.DOB}}</span></li>
+								<li>Notes:<span class="">{{child.notes}}</span></li>
 							</ul>
 						</div>
 					</div>
 				</div>
 				<div class="well span6">
-					<h3><span contenteditable="true">School/Clinic</span> info</h3>
+					<h3><span contenteditable="false">School/Clinic</span> info</h3>
 					<ul class='unstyled'>
 						<li><address>
-								<strong><span contenteditable="true">St. Marie's
-										Elementary School</span></strong><br> <span contenteditable="true">
-									1 Main St</span><br> <span contenteditable="true">
+								<strong><span contenteditable="false">St. Marie's
+										Elementary School</span></strong><br> <span contenteditable="false">
+									1 Main St</span><br> <span contenteditable="false">
 									Montreal QC H3G 1M8</span><br> <abbr title="Phone">P:</abbr><span
-									contenteditable="true"> (123) 456-7890</span>
+									contenteditable="false"> (123) 456-7890</span>
 							</address>
 						<li>Contact Person:<br />
 							<address>
-								<strong><span contenteditable="true">Julie Smith</span></strong><br>
-								<a href="mailto:#"><span contenteditable="true">j_smith@stmaries.ca</span></a>
+								<strong><span contenteditable="false">Julie Smith</span></strong><br>
+								<a href="mailto:#"><span contenteditable="false">j_smith@stmaries.ca</span></a>
 							</address>
 						</li>
-						<li>TesterId: <span contenteditable="true">122293780</span></li>
-						<li><span contenteditable="true">Add new:</span><span
-							contenteditable="true">another field here</span></li>
+						<li>TesterId: <span contenteditable="false">122293780</span></li>
+						<li><span contenteditable="false">Add new:</span><span
+							contenteditable="false">another field here</span></li>
 					</ul>
 				</div>
 			</div>
@@ -67,18 +60,19 @@
 				<div id="report_text" class="well span12">
 					<h3>Perception</h3>
 					<ul class=" unstyled experiment_description">
-						<li><img class="gravatar  pull-right"
-							ng-src="img/ic_{{sessionReport.testName}}128.png" />Description: <span id="description_text"
-							class="experiment_description" contenteditable="false">{{sessionReport.descriptionEdit}}</span>
-							<br /> Discussion: <span id="discussion_text"
-							class=" child_specific_results experiment_results_discussion"
-							contenteditable="false")">{{sessionReport.discussionEdit}}</span> <progress max="100" value="70"></progress></li>
+						<li ng-repeat="session in sessions | filter: sessions.sessionID"><img class="gravatar  pull-right" ng-src="img/ic_{{session.testName}}128.png" />
+							Session ID: <span class="" contenteditable="false">{{session.sessionID}}</span><br />
+							Test: <span class="" contenteditable="false">{{session.title}}</span><br />
+							Headphones: <span class="child_specific_results" contenteditable="false">{{session.usedHeadphones | checkmark}}</span><br />
+							Touches: <span ng-repeat="stimulus in session.stimuli"><span ng-repeat="touch in stimulus.touches">[x: {{touch.x}} y: {{touch.y}}] </span></span><br />
+							Description: <span id="description_text" class="experiment_description" contenteditable="false" ng-controller="CheckEditableFieldsCtrl">{{session.descriptionEdit}}</span><br />
+							Discussion: <span id="discussion_text" class=" child_specific_results experiment_results_discussion" contenteditable="false" ng-controller="CheckEditableFieldsCtrl">{{session.discussionEdit}}</span> <progress max="100" value="70"></progress></li>
 							
 							<div id="edit" style="display: block">
 								<button id="edit_button" type="button" class="btn" ng-click="toggleEditButtons()">Edit</button>
 							</div>
 							<div id="cancel_save" style="display: none">
-								<button id="cancel_changes_button" type="button" class="btn" ng-click="toggleEditButtons()">Cancel</button><button id="save_changes_button" type="button" class="btn" ng-click="saveChanges(sessionReport.sessionID);toggleEditButtons()">Save</button>
+								<button id="cancel_changes_button" type="button" class="btn" ng-click="toggleEditButtons()">Cancel</button><button id="save_changes_button" type="button" class="btn" ng-click="saveChanges(sessions.sessionID);toggleEditButtons()">Save</button>
 							</div>
 					</ul>
 
