@@ -2,17 +2,13 @@
 
 /* Controllers */
 
-function SessionListCtrl($scope, $http) {
+function SessionListCtrl($scope, Child, Session) {
 
-//Get data; assign to template scope
+//Query data; assign to template scope
 	
-	$http.get('data/session_data.json').success(function(data) {
-		$scope.sessions = data;
-	});
+	$scope.sessions = Session.query();
   
-	$http.get('data/child.json').success(function(data) {
-		$scope.childs = data;
-	});
+	$scope.childs = Child.query();
   
 	$scope.orderProp = 'participantID';
 
@@ -32,7 +28,7 @@ function SessionListCtrl($scope, $http) {
 	};
 }
 
-function SessionReportCtrl($scope, $routeParams, $http) {
+function SessionReportCtrl($scope, $routeParams) {
 
 //Limit value of sessionID in template to value of sessionID in routeParams
 	
@@ -72,7 +68,7 @@ function SessionReportCtrl($scope, $routeParams, $http) {
 	
 }
 
-function ParticipantReportCtrl($scope, $routeParams, $http) {
+function ParticipantReportCtrl($scope, $routeParams) {
 
 //Limit value of participantID in template to value of participantID in routeParams	
 	
@@ -84,7 +80,7 @@ function ParticipantReportCtrl($scope, $routeParams, $http) {
 //have been updated (saved in localStorage); Call this controller inside
 //ng-repeat to assure a unique sessionID
 
-function CheckEditableFieldsCtrl($scope, $http) {
+function CheckEditableFieldsCtrl($scope) {
 	var currentSession = $scope.session.sessionID;
 	var storedID = JSON.parse(localStorage.getItem(currentSession));
 	try {

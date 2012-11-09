@@ -3,7 +3,13 @@
 /* Services */
 
 
-// Demonstrate how to register services
-// In this case it is a simple value service.
-angular.module('myApp.services', []).
-  value('version', '0.1');
+angular.module('phophloServices', ['ngResource']).
+	factory('Child', function($resource){
+		return $resource('data/child.json', {}, {
+			query: {method:'GET', params:{participantID:'childs'}, isArray:true}
+		});
+	}).factory('Session', function($resource){
+		return $resource('data/session_data.json', {}, {
+			query: {method:'GET', params:{sessionID:'sessions'}, isArray:true}
+		});
+	});

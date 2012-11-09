@@ -2,7 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('participantData', ['headphoneFilter']).
+angular.module('participantData', ['headphoneFilter', 'phophloServices']).
 	config(['$routeProvider', function($routeProvider) {
 	$routeProvider.
 		when('/sessions', {templateUrl: 'partials/search_results.html',   controller: SessionListCtrl}).
