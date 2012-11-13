@@ -2,15 +2,16 @@
 
 /* Controllers */
 
-function SessionListCtrl($scope, Child, Session) {
+function SessionListCtrl($scope, $resource, Child, Session, CouchTest) {
 
 //Query data; assign to template scope
 	
 	$scope.sessions = Session.query();
   
 	$scope.childs = Child.query();
-  
+	
 	$scope.orderProp = 'participantID';
+	
 
 //Test to see if text in search box returns any results and hide/display divs accordingly	
 	
@@ -26,6 +27,38 @@ function SessionListCtrl($scope, Child, Session) {
 	        noresultsdiv.style.display = 'none';
 	    }
 	};
+//BEGIN TEST	
+//PROBLEM: for loop doesn't pay attention to callback function
+	
+	$scope.couchTest = CouchTest.query();
+		
+	$scope.pushToCouch = function (dataToPost)	{
+		var NewUUIDresource = $resource('https://senhorzinho.iriscouch.com/_uuids', {});
+		var NewUUID;
+		var pushToURL;
+		var recordToPush;
+		var i = 0;
+		var interval = setInterval(function(){
+			(function(i) {
+				NewUUID = NewUUIDresource.get(function() {
+				pushToURL = $resource('https://senhorzinho.iriscouch.com/phophlo/' + NewUUID.uuids, {});
+				recordToPush = JSON.stringify(dataToPost[i]);
+
+				
+//HOW TO PUT/POST THIS DATA?
+
+				
+				window.alert(recordToPush);
+				});
+			}(i));
+			i++;
+			if (i >= dataToPost.length) {
+				clearInterval(interval);
+			}
+		}, 2000);
+	}	
+
+//END TEST	
 }
 
 function SessionReportCtrl($scope, $routeParams) {
@@ -78,7 +111,7 @@ function ParticipantReportCtrl($scope, $routeParams) {
 
 //Check to see if the description and discussion fields in the session
 //have been updated (saved in localStorage); Call this controller inside
-//ng-repeat to assure a unique sessionID
+//ng-repeat to ensure a unique sessionID
 
 function CheckEditableFieldsCtrl($scope) {
 	var currentSession = $scope.session.sessionID;

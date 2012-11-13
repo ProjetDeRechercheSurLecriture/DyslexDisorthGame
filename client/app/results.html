@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html ng-app=participantData>
+<html ng-app=participantData ng-csp>
 <head>
 <title>PhoPhlo Welcome</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -14,12 +14,15 @@
  <script src="js/controllers.js"></script>
  <script src="js/filters.js"></script>
  <script src="js/services.js"></script>
+ 
 </head>
 <body id="app" class="resultsbody">
 
 	
 	<div ng-controller="SessionListCtrl">
-
+TEST: {{couchTest}}<br />
+UUID: {{newUUID}}<br />
+<button id="search_button" type="button" class="btn" ng-click="pushToCouch(childs)">Search</button>
 	<div id="navbar-example" class="navbar navbar-static">
 		<div class="navbar-inner">
 			<div class="container" style="width: auto;">

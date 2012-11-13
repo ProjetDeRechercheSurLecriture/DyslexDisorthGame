@@ -1,0 +1,18 @@
+{
+  "name": "PhoPhlo",
+  "description": "PhoPhlo is a screening test for early indications of reading troubles, before kids learn to read.",
+  "version": "1.0",
+  "manifest_version" : 2,
+ 
+  "app": {
+    "launch": {
+      "local_path" : "results.html"
+    }
+  },
+  "icons": {
+    "128": "img/ic_phophlo128.png"
+  },
+  "permissions": [
+    "https://senhorzinho.iriscouch.com/"
+  ]
+}
