@@ -1,4 +1,3 @@
-<!-- NOTE: Route controller ParticipantReportCtrl limits value of sessions.participantID to unique participantID from $routeParams throughout-->
 
 		<div class="well span9">
 
@@ -22,11 +21,11 @@
 					<div>
 						<div style="display: block">
 							<ul class='unstyled'>
-								<li>Participant Id: <span class="" contenteditable="true">{{sessions.participantID}}</span></li>
-								<li>First Name: <span ng-repeat="child in childs | filter: sessions.participantID">{{child.firstName}}</span></li>
-								<li>Last Name: <span ng-repeat="child in childs | filter: sessions.participantID">{{child.lastName}}</span></li>
-								<li>Date of Birth: <span ng-repeat="child in childs | filter: sessions.participantID">{{child.DOB}}</span></li>
-								<li><span contenteditable="true">Notes:</span> <span ng-repeat="child in childs | filter: sessions.participantID">{{child.notes}}</span></li>
+								<li>Participant Id: <span class="" contenteditable="true">{{filterProp}}</span></li>
+								<li>First Name: <span ng-repeat="child in childs.rows | filter: filterProp">{{child.value.firstName}}</span></li>
+								<li>Last Name: <span ng-repeat="child in childs.rows | filter: filterProp">{{child.value.lastName}}</span></li>
+								<li>Date of Birth: <span ng-repeat="child in childs.rows | filter: filterProp">{{child.value.DOB}}</span></li>
+								<li><span contenteditable="true">Notes:</span> <span ng-repeat="child in childs.rows | filter: filterProp">{{child.value.notes}}</span></li>
 							</ul>
 						</div>
 					</div>
@@ -63,11 +62,11 @@
 <!-- Generate session reports -->					
 
 					<ul class=" unstyled experiment_description">
-						<li ng-repeat="session in sessions | filter: sessions.participantID" ng-controller="CheckEditableFieldsCtrl"><h3>{{session.testType}}</h3><br />
-							<img class="gravatar  pull-right"ng-src="img/ic_{{session.testName}}128.png" />
-							Session ID: <a href="#/sessions/{{session.sessionID}}">{{session.sessionID}}</a><br />
-							Description: <span id="description_text" class="experiment_description" contenteditable="false">{{session.descriptionEdit}}</span><br />
-							Discussion: <span id="discussion_text" class=" child_specific_results experiment_results_discussion" contenteditable="false")">{{session.discussionEdit}}</span>
+						<li ng-repeat="session in sessions.rows | filter: filterProp" ng-controller="CheckEditableFieldsCtrl"><h3>{{session.value.testType}}</h3><br />
+							<img class="gravatar  pull-right"ng-src="img/ic_{{session.value.testName}}128.png" />
+							Session ID: <a href="#/sessions/{{session.value.sessionID}}">{{session.value.sessionID}}</a><br />
+							Description: <span id="description_text" class="experiment_description" contenteditable="false">{{session.value.descriptionEdit}}</span><br />
+							Discussion: <span id="discussion_text" class=" child_specific_results experiment_results_discussion" contenteditable="false")">{{session.value.discussionEdit}}</span>
 							<progress max="100" value="70"></progress><br /><br /></li>
 							
 					</ul>

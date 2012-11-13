@@ -1,4 +1,5 @@
 [ {
+	"JSONType" : "session",
 	"testName" : "SAILS",
 	"title" : "Speech Assessment and Interactive Learning System",
 	"testType" : "Perception",
@@ -60,6 +61,7 @@
 	"displayedStimuli" : 4,
 	"startTime" : 1352304491241
 }, {
+	"JSONType" : "session",
 	"testName" : "SAILS",
 	"title" : "Speech Assessment and Interactive Learning System",
 	"testType" : "Perception",
@@ -121,6 +123,7 @@
 	"displayedStimuli" : 4,
 	"startTime" : 1352304491241
 }, {
+	"JSONType" : "session",
 	"testName" : "SAILS",
 	"title" : "Speech Assessment and Interactive Learning System",
 	"testType" : "Perception",
@@ -182,6 +185,7 @@
 	"displayedStimuli" : 4,
 	"startTime" : 1352304491241
 }, {
+	"JSONType" : "session",
 	"testName" : "TCPP",
 	"title" : "Test de Conscience Phonologique",
 	"testType" : "Perception",
@@ -243,6 +247,7 @@
 	"displayedStimuli" : 4,
 	"startTime" : 1352304491241
 }, {
+	"JSONType" : "session",
 	"testName" : "SAILS",
 	"title" : "Speech Assessment and Interactive Learning System",
 	"testType" : "Perception",
@@ -304,6 +309,7 @@
 	"displayedStimuli" : 4,
 	"startTime" : 1352304491241
 }, {
+	"JSONType" : "session",
 	"testName" : "TCPP",
 	"title" : "Test de Conscience Phonologique",
 	"testType" : "Perception",
@@ -364,6 +370,7 @@
 	"displayedStimuli" : 4,
 	"startTime" : 1352304491241
 }, {
+	"JSONType" : "session",
 	"testName" : "TDFM",
 	"title" : "TDFM",
 	"testType" : "Production",

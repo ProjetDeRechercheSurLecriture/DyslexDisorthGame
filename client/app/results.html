@@ -20,9 +20,10 @@
 
 	
 	<div ng-controller="SessionListCtrl">
-TEST: {{couchTest}}<br />
-UUID: {{newUUID}}<br />
-<button id="search_button" type="button" class="btn" ng-click="pushToCouch(childs)">Search</button>
+<!-- 
+		<button id="search_button" type="button" class="btn" ng-click="pushToCouch()">Update</button>
+-->
+
 	<div id="navbar-example" class="navbar navbar-static">
 		<div class="navbar-inner">
 			<div class="container" style="width: auto;">
@@ -82,13 +83,13 @@ UUID: {{newUUID}}<br />
 <!-- SEARCH BOX; Uses AngularJS to filter children and fetch sessionID numbers based on child's participantID -->		
 		
 		<div class="span3 results_sidebar">
-			Total number of records: {{sessions.length}}<br />
-			Total number of participants: {{childs.length - 1}}<br />
+			Total number of records: {{sessions.rows.length}}<br />
+			Total number of participants: {{childs.rows.length - 1}}<br />
 			
-			<form ng-submit="displaySearchResults((childs | filter: query).length)" class="well form-search">
+			<form ng-submit="displaySearchResults((childs.rows | filter: query).length)" class="well form-search">
 				Enter child name or participant ID:
 				<input type="text" class="input-medium search-query" ng-model="query">
-				<button id="search_button" type="button" class="btn" ng-click="displaySearchResults((childs | filter: query).length)">Search</button>
+				<button id="search_button" type="button" class="btn" ng-click="displaySearchResults((childs.rows | filter: query).length)">Search</button>
 			</form>
 			<p>
 				<div>
@@ -96,12 +97,12 @@ UUID: {{newUUID}}<br />
 					<div id="results" style="display: none">
 						<span class="">Displaying top results:</span>
 						<p>
-						<ul class='unstyled' ng-repeat="child in childs | filter: query | limitTo:3">
-							<li><span class="">Participant Id: <a href="#/participants/{{child.participantID}}">{{child.participantID}}</a></span></li>
-							<li><span class="">First Name: {{child.firstName}}</span></li>
-							<li><span class="">Last Name: {{child.lastName}}</span></li>
-							<li><span class="">Date of Birth: {{child.DOB}}</span></li>
-							<li ng-repeat="session in sessions | filter: child.participantID"><span class="">Session ID: <a href="#/sessions/{{session.sessionID}}">{{session.sessionID}}</a> ( {{session.testName}}; <img ng-src="img/headphones.png" height=10> : {{session.usedHeadphones | checkmark}} )</li>
+						<ul class='unstyled' ng-repeat="child in childs.rows | filter: query | limitTo:3">
+							<li><span class="">Participant Id: <a href="#/participants/{{child.value.participantID}}">{{child.value.participantID}}</a></span></li>
+							<li><span class="">First Name: {{child.value.firstName}}</span></li>
+							<li><span class="">Last Name: {{child.value.lastName}}</span></li>
+							<li><span class="">Date of Birth: {{child.value.DOB}}</span></li>
+							<li ng-repeat="session in sessions.rows | filter: child.value.participantID"><span class="">Session ID: <a href="#/sessions/{{session.value.sessionID}}">{{session.value.sessionID}}</a> ( {{session.value.testName}}; <img ng-src="img/headphones.png" height=10> : {{session.value.usedHeadphones | checkmark}} )</li>
 						</ul>
 					</div>
 				</div>
