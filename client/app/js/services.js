@@ -5,16 +5,20 @@
 
 angular.module('phophloServices', ['ngResource']).
 	factory('Child', function($resource){
-		return $resource('data/child.json', {}, {
-			query: {method:'GET', isArray:true}
+		return $resource('https://senhorzinho.iriscouch.com/phophlo/_design/participants/_view/all', {}, {
+			query: {method:'GET', isArray:false}
 		});
 	}).factory('Session', function($resource){
-		return $resource('data/session_data.json', {}, {
-			query: {method:'GET', isArray:true}
-		});
-	}).factory('CouchTest', function($resource){
-		return $resource('https://senhorzinho.iriscouch.com/phophlo/b2b074467a290c22c8bcf451cf0008df', {}, {
+		return $resource('https://senhorzinho.iriscouch.com/phophlo/_design/sessions/_view/all', {}, {
 			query: {method:'GET', isArray:false}
+		});
+	}).factory('GetNewUUID', function($resource){
+		return $resource('https://senhorzinho.iriscouch.com/:UUID', {}, {
+			query: {method:'GET', params:{UUID: '_uuids'}, isArray:false}
+		});
+	}).factory('PostToCouch', function($resource){
+		return $resource('https://senhorzinho.iriscouch.com/phophlo/:UUID', {}, {
+			save: {method:'PUT'}
 		});
 	});
 

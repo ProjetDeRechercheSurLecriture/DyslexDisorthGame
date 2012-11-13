@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-function SessionListCtrl($scope, $resource, Child, Session, CouchTest) {
+function SessionListCtrl($scope, $resource, Child, Session, GetNewUUID, PostToCouch) {
 
 //Query data; assign to template scope
 	
@@ -27,45 +27,39 @@ function SessionListCtrl($scope, $resource, Child, Session, CouchTest) {
 	        noresultsdiv.style.display = 'none';
 	    }
 	};
-//BEGIN TEST	
-//PROBLEM: for loop doesn't pay attention to callback function
 	
-	$scope.couchTest = CouchTest.query();
+/* REWRITE this function to add/modify a single record */
 		
 	$scope.pushToCouch = function (dataToPost)	{
-		var NewUUIDresource = $resource('https://senhorzinho.iriscouch.com/_uuids', {});
 		var NewUUID;
 		var pushToURL;
 		var recordToPush;
+		var tempData
 		var i = 0;
 		var interval = setInterval(function(){
 			(function(i) {
-				NewUUID = NewUUIDresource.get(function() {
-				pushToURL = $resource('https://senhorzinho.iriscouch.com/phophlo/' + NewUUID.uuids, {});
-				recordToPush = JSON.stringify(dataToPost[i]);
-
-				
-//HOW TO PUT/POST THIS DATA?
-
-				
-				window.alert(recordToPush);
+				NewUUID = GetNewUUID.query(function() {
+					tempData = dataToPost[i];
+					delete tempData.$$hashKey;
+					recordToPush = JSON.stringify(tempData);
+					PostToCouch.save({UUID: NewUUID.uuids}, recordToPush);
 				});
 			}(i));
 			i++;
 			if (i >= dataToPost.length) {
-				clearInterval(interval);
+			clearInterval(interval);
 			}
-		}, 2000);
+		}, 1000);
 	}	
 
-//END TEST	
+/* END rewrite */	
 }
 
 function SessionReportCtrl($scope, $routeParams) {
 
 //Limit value of sessionID in template to value of sessionID in routeParams
 	
-	$scope.sessions.sessionID = $routeParams.sessionID;
+	$scope.filterProp = $routeParams.sessionID;
 
 //Show/hide Edit/Cancel buttons; make template content (non)editable	
 	
@@ -90,6 +84,8 @@ function SessionReportCtrl($scope, $routeParams) {
 		};
 	};
 
+/* REWRITE this function to use CouchDB */	
+	
 //Save (edited) template content to local storage; key = sessionID
 	
 	$scope.saveChanges = function(editedSession) {
@@ -105,9 +101,11 @@ function ParticipantReportCtrl($scope, $routeParams) {
 
 //Limit value of participantID in template to value of participantID in routeParams	
 	
-	$scope.sessions.participantID = $routeParams.participantID;
+	$scope.filterProp = $routeParams.participantID;
 
 }
+
+/* REWRITE this function to use CouchDB */
 
 //Check to see if the description and discussion fields in the session
 //have been updated (saved in localStorage); Call this controller inside
