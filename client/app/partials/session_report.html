@@ -71,10 +71,10 @@
 							
 							
 							<div id="edit" style="display: block">
-								<button id="edit_button" type="button" class="btn" ng-click="toggleEditButtons()">Edit</button>
+								<button id="edit_button" type="button" class="btn btn-info" ng-click="toggleEdit('descriptionEdit', 'discussionEdit')">Edit</button>
 							</div>
 							<div id="cancel_save" style="display: none">
-								<button id="cancel_changes_button" type="button" class="btn" ng-click="toggleEditButtons()">Cancel</button><button id="save_changes_button" type="button" class="btn" ng-click="saveChanges(session.id, 'descriptionEdit', 'discussionEdit');toggleEditButtons()">Save</button>
+								<button id="cancel_changes_button" type="button" class="btn btn-info" ng-click="toggleEdit('descriptionEdit', 'discussionEdit')">Cancel</button><button id="save_changes_button" type="button" class="btn btn-inverse" ng-click="saveChanges(session.id, 'descriptionEdit', 'discussionEdit');toggleEdit('descriptionEdit', 'discussionEdit')">Save</button>
 							</div>
 					</ul>
 

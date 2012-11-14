@@ -19,16 +19,22 @@
 					<h3>Child info</h3>
 					
 					<p>
-					<div>
+					<div ng-repeat="child in childs.rows | filter: filterProp">
 						<div style="display: block">
 							<ul class='unstyled'>
-								<li>Participant Id: <span class="" contenteditable="true">{{filterProp}}</span></li>
-								<li>First Name: <span ng-repeat="child in childs.rows | filter: filterProp">{{child.value.firstName}}</span></li>
-								<li>Last Name: <span ng-repeat="child in childs.rows | filter: filterProp">{{child.value.lastName}}</span></li>
-								<li>Date of Birth: <span ng-repeat="child in childs.rows | filter: filterProp">{{child.value.DOB}}</span></li>
-								<li><span contenteditable="true">Notes:</span> <span ng-repeat="child in childs.rows | filter: filterProp">{{child.value.notes}}</span></li>
+								<li>Participant Id: <span class="" contenteditable="false">{{filterProp}}</span></li>
+								<li>First Name: <span id="firstName" contenteditable="false">{{child.value.firstName}}</span></li>
+								<li>Last Name: <span id="lastName" contenteditable="false">{{child.value.lastName}}</span></li>
+								<li>Date of Birth: <span id="DOB" contenteditable="false">{{child.value.DOB}}</span></li>
+								<li>Notes:</span> <span id="notes" contenteditable="false">{{child.value.notes}}</span></li>
 							</ul>
 						</div>
+						<div id="edit" style="display: block">
+								<button id="edit_button" type="button" class="btn btn-info" ng-click="toggleEdit('firstName', 'lastName', 'DOB', 'notes')">Edit</button>
+							</div>
+							<div id="cancel_save" style="display: none">
+								<button id="cancel_changes_button" type="button" class="btn btn-info" ng-click="toggleEdit('firstName', 'lastName', 'DOB', 'notes')">Cancel</button><button id="save_changes_button" type="button" class="btn btn-inverse" ng-click="saveChanges(child.id, 'firstName', 'lastName', 'DOB', 'notes');toggleEdit()">Save</button>
+							</div>
 					</div>
 				</div>
 				<div class="well span6">

@@ -16,42 +16,62 @@ function MainCtrl($scope, $resource, Child, Session, GetNewUUID, AccessCouch) {
 //Test to see if text in search box returns any results and hide/display divs accordingly	
 	
 	$scope.displaySearchResults = function(resultsCount) {
-		var resultsdiv = document.getElementById('results');
-		var noresultsdiv = document.getElementById('no_results');
-	    if (resultsCount == 0) {
+		var resultsdiv = document.getElementById('search_results');
+		var noresultsdiv = document.getElementById('search_no_results');
+
+		document.getElementById('search_again').style.display = 'block';
+		document.getElementById('search_box').style.display = 'none';
+		
+		if (resultsCount == 0) {
 	        resultsdiv.style.display = 'none';
-	        noresultsdiv.style.display = 'block';
+	        noresultsdiv.style.display = 'block';	        
 	    }
 	    else {
 	        resultsdiv.style.display = 'block';
 	        noresultsdiv.style.display = 'none';
+	        $scope.currentResult = 0;
+	    	$scope.resultSize = 3;
+	    	$scope.numberOfResultPages = function(){
+	    		return Math.ceil(resultsCount/$scope.resultSize);
+	    	};
 	    }
 	};
 
-//Show/hide Edit/Cancel buttons; make template content (non)editable	
+	$scope.toggleSearchDivs = function(){
+		document.getElementById('search_results').style.display = 'none';
+		document.getElementById('search_no_results').style.display = 'none';
+		document.getElementById('search_again').style.display = 'none';
+		document.getElementById('search_box').style.display = 'block';
+	}
+
+//Show/hide Edit/Cancel buttons; make template content (non)editable
+//NOTE: all HTML ids must match db ids exactly; function('elementID', 'elementID', ...)
 	
-	$scope.toggleEditButtons = function() {
-		var descriptionField = document.getElementById('descriptionEdit');
-		var discussionField = document.getElementById('discussionEdit');
+	$scope.toggleEdit = function() {
 		var editButton = document.getElementById('edit');
 		var cancelSaveButton = document.getElementById('cancel_save');
-
-		if (descriptionField.contentEditable == 'false') {
-			descriptionField.contentEditable = 'true';
-			discussionField.contentEditable = 'true';
+		if (editButton.style.display == 'block') {
 			editButton.style.display = 'none';
 			cancelSaveButton.style.display = 'block';
 		}
 		else {
-			descriptionField.contentEditable = 'false';
-			discussionField.contentEditable = 'false';
 			editButton.style.display = 'block';
 			cancelSaveButton.style.display = 'none';
-		};
+		}
+		for (var i = 0; i < arguments.length; i++) {
+			var fieldToToggle = document.getElementById(arguments[i]);
+			if (fieldToToggle.contentEditable == 'true') {
+				fieldToToggle.contentEditable = 'false'
+			}
+			else {
+				fieldToToggle.contentEditable = 'true'
+			}
+		}
+
 	};
 	
 //Save changes made to edited fields; push changes to CouchDB
-//NOTE: all HTML ids must match db ids exactly; first argument must always be UUID of current db document	
+//NOTE: all HTML ids must match db ids exactly; function(UUID, 'elementID', 'elementID', ...)	
 
 /*Add some sort of spinner while saving*/
 	
