@@ -53,7 +53,7 @@
 				</div>
 			</div>
 			<h3>
-				Results <small>Oct 22, 2012</small>
+				Detailed report for session {{filterProp}}: <small>Oct 22, 2012</small>
 			</h3>
 			<div class="row-fluid">
 
@@ -64,7 +64,7 @@
 							Session ID: <span class="" contenteditable="false">{{session.value.sessionID}}</span><br />
 							Test: <span class="" contenteditable="false">{{session.value.title}}</span><br />
 							Headphones: <span class="child_specific_results" contenteditable="false">{{session.value.usedHeadphones | checkmark}}</span><br />
-							Touches: <span ng-repeat="stimulus in session.value.stimuli"><span ng-repeat="touch in stimulus.touches">[x: {{touch.x}} y: {{touch.y}}] </span></span><br />
+							Touches: <ul ng-repeat="stimulus in session.value.stimuli"><li ng-repeat="touch in stimulus.touches">[x: {{touch.x}} y: {{touch.y}}]<br />Total reaction time for this stimulus: {{stimulus.totalReactionTime}} </li></ul><br />
 							Description: <span id="descriptionEdit" class="experiment_description" contenteditable="false">{{session.value.descriptionEdit}}</span><br />
 							Discussion: <span id="discussionEdit" class=" child_specific_results experiment_results_discussion" contenteditable="false">{{session.value.discussionEdit}}</span> <progress max="100" value="70"></progress></li>
 							

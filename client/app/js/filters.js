@@ -16,7 +16,7 @@ filter('startFrom', function() {
 		else {
 			start = +start; //parse to int
 			return input.slice(start);
-		}
-	}
+		};
+	};
 });
 

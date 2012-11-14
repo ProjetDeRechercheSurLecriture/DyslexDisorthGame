@@ -57,6 +57,7 @@ function MainCtrl($scope, $resource, Child, Session, GetNewUUID, AccessCouch) {
 		else {
 			editButton.style.display = 'block';
 			cancelSaveButton.style.display = 'none';
+			window.location.reload();
 		}
 		for (var i = 0; i < arguments.length; i++) {
 			var fieldToToggle = document.getElementById(arguments[i]);
@@ -78,14 +79,14 @@ function MainCtrl($scope, $resource, Child, Session, GetNewUUID, AccessCouch) {
 	$scope.saveChanges = function() {
 		var itemsToEdit = arguments;
 		var currentUUID = itemsToEdit[0];
-		var updatedRecord = AccessCouch.query({UUID: currentUUID}, function(){
+		var updatedRecord = AccessCouch.query({UUID: currentUUID}, function() {
 			for (var i = 1; i < itemsToEdit.length; i++) {		
 				var dataToPost = document.getElementById(itemsToEdit[i]).innerHTML;
 				var itemID = itemsToEdit[i];
 				updatedRecord[itemID] = dataToPost;
 			}
 			updatedRecord.$save();
-			location.reload();
+			window.location.reload();
 		});			
 	}
 	
