@@ -1,4 +1,4 @@
-<!-- NOTE: Route controller SessionReportCtrol limits value of sessions.sessionID to unique sessionID from $routeParams throughout-->
+<!-- NOTE: Route controller SessionReportCtrol limits value of filterProp to unique sessionID from $routeParams throughout-->
 
 		<div class="well span9">
 
@@ -59,20 +59,22 @@
 
 				<div id="report_text" class="well span12">
 					<h3>Perception</h3>
-					<ul class=" unstyled experiment_description">
-						<li ng-repeat="session in sessions.rows | filter: filterProp"><img class="gravatar  pull-right" ng-src="img/ic_{{session.value.testName}}128.png" />
+					<ul class=" unstyled experiment_description" ng-repeat="session in sessions.rows | filter: filterProp">
+						<li><img class="gravatar  pull-right" ng-src="img/ic_{{session.value.testName}}128.png" />
 							Session ID: <span class="" contenteditable="false">{{session.value.sessionID}}</span><br />
 							Test: <span class="" contenteditable="false">{{session.value.title}}</span><br />
 							Headphones: <span class="child_specific_results" contenteditable="false">{{session.value.usedHeadphones | checkmark}}</span><br />
 							Touches: <span ng-repeat="stimulus in session.value.stimuli"><span ng-repeat="touch in stimulus.touches">[x: {{touch.x}} y: {{touch.y}}] </span></span><br />
-							Description: <span id="description_text" class="experiment_description" contenteditable="false" ng-controller="CheckEditableFieldsCtrl">{{session.value.descriptionEdit}}</span><br />
-							Discussion: <span id="discussion_text" class=" child_specific_results experiment_results_discussion" contenteditable="false" ng-controller="CheckEditableFieldsCtrl">{{session.value.discussionEdit}}</span> <progress max="100" value="70"></progress></li>
+							Description: <span id="descriptionEdit" class="experiment_description" contenteditable="false">{{session.value.descriptionEdit}}</span><br />
+							Discussion: <span id="discussionEdit" class=" child_specific_results experiment_results_discussion" contenteditable="false">{{session.value.discussionEdit}}</span> <progress max="100" value="70"></progress></li>
+							
+							
 							
 							<div id="edit" style="display: block">
 								<button id="edit_button" type="button" class="btn" ng-click="toggleEditButtons()">Edit</button>
 							</div>
 							<div id="cancel_save" style="display: none">
-								<button id="cancel_changes_button" type="button" class="btn" ng-click="toggleEditButtons()">Cancel</button><button id="save_changes_button" type="button" class="btn" ng-click="saveChanges(filterProp);toggleEditButtons()">Save</button>
+								<button id="cancel_changes_button" type="button" class="btn" ng-click="toggleEditButtons()">Cancel</button><button id="save_changes_button" type="button" class="btn" ng-click="saveChanges(session.id, 'descriptionEdit', 'discussionEdit');toggleEditButtons()">Save</button>
 							</div>
 					</ul>
 

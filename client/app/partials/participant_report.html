@@ -1,3 +1,4 @@
+<!-- NOTE: Route controller ParticipantReportCtrl limits value of filterProp to unique sessionID from $routeParams throughout-->
 
 		<div class="well span9">
 
@@ -62,7 +63,7 @@
 <!-- Generate session reports -->					
 
 					<ul class=" unstyled experiment_description">
-						<li ng-repeat="session in sessions.rows | filter: filterProp" ng-controller="CheckEditableFieldsCtrl"><h3>{{session.value.testType}}</h3><br />
+						<li ng-repeat="session in sessions.rows | filter: filterProp"><h3>{{session.value.testType}}</h3><br />
 							<img class="gravatar  pull-right"ng-src="img/ic_{{session.value.testName}}128.png" />
 							Session ID: <a href="#/sessions/{{session.value.sessionID}}">{{session.value.sessionID}}</a><br />
 							Description: <span id="description_text" class="experiment_description" contenteditable="false">{{session.value.descriptionEdit}}</span><br />
