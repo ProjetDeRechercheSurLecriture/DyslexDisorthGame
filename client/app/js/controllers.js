@@ -44,9 +44,30 @@ function MainCtrl($scope, $resource, Child, Session, GetNewUUID, AccessCouch) {
 		document.getElementById('search_box').style.display = 'block';
 	}
 
-//Show/hide Edit/Cancel buttons; make template content (non)editable
+//Hide Edit/Show cancel/save buttons; make template content editable
 //NOTE: all HTML ids must match db ids exactly; function('elementID', 'elementID', ...)
 	
+	$scope.editRecords = function() {
+		document.getElementById('edit').style.display = 'none';
+		document.getElementById('cancel_save').style.display = 'block';
+		for (var i = 0; i < arguments.length; i++) {
+			document.getElementById(arguments[i]).contentEditable = 'true';
+		}
+	}
+
+//Hide Edit/Show cancel/save buttons; make template content editable
+//NOTE: all HTML ids must match db ids exactly; function('elementID', 'elementID', ...)
+		
+	$scope.cancelRecords = function() {
+		document.getElementById('edit').style.display = 'block';
+		document.getElementById('cancel_save').style.display = 'none';
+		for (var i = 0; i < arguments.length; i++) {
+			document.getElementById(arguments[i]).contentEditable = 'false';
+		}
+		window.location.reload();
+	}
+
+/*	
 	$scope.toggleEdit = function() {
 		var editButton = document.getElementById('edit');
 		var cancelSaveButton = document.getElementById('cancel_save');
@@ -57,7 +78,7 @@ function MainCtrl($scope, $resource, Child, Session, GetNewUUID, AccessCouch) {
 		else {
 			editButton.style.display = 'block';
 			cancelSaveButton.style.display = 'none';
-			window.location.reload();
+//			window.location.reload();
 		}
 		for (var i = 0; i < arguments.length; i++) {
 			var fieldToToggle = document.getElementById(arguments[i]);
@@ -70,13 +91,16 @@ function MainCtrl($scope, $resource, Child, Session, GetNewUUID, AccessCouch) {
 		}
 
 	};
+*/
+	
+	
 	
 //Save changes made to edited fields; push changes to CouchDB
 //NOTE: all HTML ids must match db ids exactly; function(UUID, 'elementID', 'elementID', ...)	
 
 /*Add some sort of spinner while saving*/
 	
-	$scope.saveChanges = function() {
+	$scope.saveRecords = function() {
 		var itemsToEdit = arguments;
 		var currentUUID = itemsToEdit[0];
 		var updatedRecord = AccessCouch.query({UUID: currentUUID}, function() {

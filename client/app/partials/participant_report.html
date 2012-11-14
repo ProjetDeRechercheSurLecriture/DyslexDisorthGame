@@ -30,10 +30,10 @@
 							</ul>
 						</div>
 						<div id="edit" style="display: block">
-								<button id="edit_button" type="button" class="btn btn-info" ng-click="toggleEdit('firstName', 'lastName', 'DOB', 'notes')">Edit</button>
+								<button id="edit_button" type="button" class="btn btn-info" ng-click="editRecords('firstName', 'lastName', 'DOB', 'notes')">Edit</button>
 							</div>
 							<div id="cancel_save" style="display: none">
-								<button id="cancel_changes_button" type="button" class="btn btn-info" ng-click="toggleEdit('firstName', 'lastName', 'DOB', 'notes')">Cancel</button><button id="save_changes_button" type="button" class="btn btn-inverse" ng-click="saveChanges(child.id, 'firstName', 'lastName', 'DOB', 'notes');toggleEdit()">Save</button>
+								<button id="cancel_changes_button" type="button" class="btn btn-info" ng-click="cancelRecords('firstName', 'lastName', 'DOB', 'notes')">Cancel</button><button id="save_changes_button" type="button" class="btn btn-inverse" ng-click="saveRecords(child.id, 'firstName', 'lastName', 'DOB', 'notes');toggleEdit()">Save</button>
 							</div>
 					</div>
 				</div>
