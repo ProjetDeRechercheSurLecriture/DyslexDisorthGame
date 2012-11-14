@@ -16,9 +16,9 @@ angular.module('phophloServices', ['ngResource']).
 		return $resource('https://senhorzinho.iriscouch.com/:UUID', {}, {
 			query: {method:'GET', params:{UUID: '_uuids'}, isArray:false}
 		});
-	}).factory('PostToCouch', function($resource){
+	}).factory('AccessCouch', function($resource){
 		return $resource('https://senhorzinho.iriscouch.com/phophlo/:UUID', {}, {
-			save: {method:'PUT'}
+			query: {method: 'GET'}, save: {method:'POST'}
 		});
 	});
 
