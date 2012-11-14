@@ -86,18 +86,29 @@
 			Total number of records: {{sessions.rows.length}}<br />
 			Total number of participants: {{childs.rows.length - 1}}<br />
 			
+			<div id="search_box" style="display: block">
 			<form ng-submit="displaySearchResults((childs.rows | filter: query).length)" class="well form-search">
 				Enter child name or participant ID:
 				<input type="text" class="input-medium search-query" ng-model="query">
 				<button id="search_button" type="button" class="btn" ng-click="displaySearchResults((childs.rows | filter: query).length)">Search</button>
 			</form>
+			</div>
+			<div id="search_again" class="pagination-centered" style="display: none" ><br /><button class="btn btn-primary" ng-click="toggleSearchDivs()">Search again</button>
+			</div>
 			<p>
 				<div>
-					<div id="no_results" style="display: none"><span class="">No results.</span></div>
-					<div id="results" style="display: none">
-						<span class="">Displaying top results:</span>
+					<div id="search_no_results" class="pagination-centered" style="display: none"><span class="">No results.</span>
+					</div>
+					<div id="search_results" style="display: none">
+						<div class="pagination-centered">
+						<span class="">Search results:</span>
 						<p>
-						<ul class='unstyled' ng-repeat="child in childs.rows | filter: query | limitTo:3">
+						<button class="btn btn-primary btn-mini" ng-disabled="currentResult == 0" ng-click="currentResult=currentResult-1">Previous</button>
+						{{currentResult+1}}/{{numberOfResultPages()}}
+						<button class="btn btn-primary btn-mini" ng-disabled="currentResult >= (childs.rows | filter: query).length/resultSize - 1" ng-click="currentResult=currentResult+1">Next</button>
+						<br />
+						</div>
+						<ul class='unstyled' ng-repeat="child in childs.rows | filter: query | startFrom:currentResult*resultSize | limitTo:resultSize">
 							<li><span class="">Participant Id: <a href="#/participants/{{child.value.participantID}}">{{child.value.participantID}}</a></span></li>
 							<li><span class="">First Name: {{child.value.firstName}}</span></li>
 							<li><span class="">Last Name: {{child.value.lastName}}</span></li>
