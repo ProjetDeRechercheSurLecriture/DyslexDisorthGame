@@ -4,7 +4,7 @@
 
 
 angular.module('phophloServices', ['ngResource']).
-	factory('Child', function($resource){
+	factory('Participant', function($resource){
 		return $resource('https://senhorzinho.iriscouch.com/phophlo/_design/participants/_view/all', {}, {
 			query: {method:'GET', isArray:false}
 		});

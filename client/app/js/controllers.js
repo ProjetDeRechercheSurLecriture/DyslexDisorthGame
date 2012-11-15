@@ -2,21 +2,16 @@
 
 /* Controllers */
 
-function MainCtrl($scope, $resource, Child, Session, GetNewUUID, AccessCouch) {
+function MainCtrl($scope, $resource, Participant, Session, GetNewUUID, AccessCouch) {
 
 //Query data; assign to template scope; initialize default values
 	
 	$scope.sessions = Session.query();  
-	$scope.childs = Child.query();
+	$scope.childs = Participant.query();
 	$scope.orderProp = 'participantID';
 	$scope.searching = 'true';
 	$scope.editing = 'false';
 
-	
-	
-	$scope.load = function() {
-		window.alert("Done!");
-	}
 //Test to see if text in search box returns any results and hide/display divs accordingly	
 	
 	$scope.displaySearchResults = function(resultsCount) {	
@@ -74,9 +69,9 @@ function MainCtrl($scope, $resource, Child, Session, GetNewUUID, AccessCouch) {
 				window.location.reload();
 			});
 		});			
-	}
-	
-}
+	}	
+
+};
 
 function SessionReportCtrl($scope, $routeParams) {
 
@@ -84,7 +79,7 @@ function SessionReportCtrl($scope, $routeParams) {
 	
 	$scope.filterProp = $routeParams.sessionID;
 	
-}
+};
 
 function ParticipantReportCtrl($scope, $routeParams) {
 
@@ -92,6 +87,14 @@ function ParticipantReportCtrl($scope, $routeParams) {
 	
 	$scope.filterProp = $routeParams.participantID;
 
-}
+};
+
+function NewUserCtrl($scope, Participant) {
+	$scope.data = Participant.query();
+	
+	$scope.createNewUser = function() {
+		window.alert('Success!');
+	};
+};
 
 //PartcipantListCtrl.$inject = ['$scope', '$http'];

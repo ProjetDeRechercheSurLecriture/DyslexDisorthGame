@@ -2,7 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('participantData', ['searchFilters', 'phophloServices']).
+angular.module('PhoPhloApp', ['searchFilters', 'phophloServices']).
 	config(['$routeProvider', function($routeProvider) {
 	$routeProvider.
 		when('/sessions', {templateUrl: 'partials/results_main.html',   controller: MainCtrl}).
