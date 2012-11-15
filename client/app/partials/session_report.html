@@ -19,7 +19,7 @@
 					<h3>Child info</h3>
 					<p>
 					<div>
-						<div style="display: block" ng-repeat="session in sessions.rows | filter: filterProp">
+						<div ng-repeat="session in sessions.rows | filter: filterProp">
 							<ul class='unstyled' ng-repeat="child in childs.rows | filter: session.value.participantID">
 								<li>Participant Id: <span class="" contenteditable="false"><a href="#/participants/{{session.value.participantID}}">{{session.value.participantID}}</a></span></li>
 								<li>First Name: <span class="">{{child.value.firstName}}</span></li>
@@ -70,10 +70,10 @@
 							
 							
 							
-							<div id="edit" style="display: block">
+							<div id="edit" ng-show="editing == 'false'">
 								<button id="edit_button" type="button" class="btn btn-info" ng-click="editRecords('descriptionEdit', 'discussionEdit')">Edit</button>
 							</div>
-							<div id="cancel_save" style="display: none">
+							<div id="cancel_save" ng-show="editing == 'true'">
 								<button id="cancel_changes_button" type="button" class="btn btn-info" ng-click="cancelRecords('descriptionEdit', 'discussionEdit')">Cancel</button><button id="save_changes_button" type="button" class="btn btn-inverse" ng-click="saveRecords(session.id, 'descriptionEdit', 'discussionEdit')">Save</button>
 							</div>
 					</ul>
@@ -92,8 +92,8 @@
 						Lab Ltd.<sup>d</sup>
 					</span><br> (<sup>a</sup><a
 						href="http://www.medicine.mcgill.ca/srvachew/">McGill, Faculty
-						of Medicine</a>, <sup>b</sup>�cole d'orthophonie et d'audiologie
-					Universit� de Montr�al, <sup>c</sup><a
+						of Medicine</a>, <sup>b</sup>&Eacute;cole d'orthophonie et d'audiologie
+					Universit&eacute; de Montr&eacute;al, <sup>c</sup><a
 						href="http://edithlebel.blogspot.ca/">
 						http://edithlebel.blogspot.ca</a>, <sup>d</sup><a
 						href="http://ilanguage.ca">http://ilanguage.ca</a>)
