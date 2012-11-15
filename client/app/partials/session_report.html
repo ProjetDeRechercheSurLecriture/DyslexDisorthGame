@@ -25,7 +25,7 @@
 								<li>First Name: <span class="">{{child.value.firstName}}</span></li>
 								<li>Last Name: <span class="">{{child.value.lastName}}</span></li>
 								<li>Date of Birth: <span class="">{{child.value.DOB}}</span></li>
-								<li>Notes:<span class="">{{child.value.notes}}</span></li>
+								<li>Notes: <span class="">{{child.value.notes}}</span></li>
 							</ul>
 						</div>
 					</div>
@@ -74,7 +74,7 @@
 								<button id="edit_button" type="button" class="btn btn-info" ng-click="editRecords('descriptionEdit', 'discussionEdit')">Edit</button>
 							</div>
 							<div id="cancel_save" style="display: none">
-								<button id="cancel_changes_button" type="button" class="btn btn-info" ng-click="cancelRecords('descriptionEdit', 'discussionEdit')">Cancel</button><button id="save_changes_button" type="button" class="btn btn-inverse" ng-click="saveRecords(session.id, 'descriptionEdit', 'discussionEdit');toggleEdit('descriptionEdit', 'discussionEdit')">Save</button>
+								<button id="cancel_changes_button" type="button" class="btn btn-info" ng-click="cancelRecords('descriptionEdit', 'discussionEdit')">Cancel</button><button id="save_changes_button" type="button" class="btn btn-inverse" ng-click="saveRecords(session.id, 'descriptionEdit', 'discussionEdit')">Save</button>
 							</div>
 					</ul>
 
