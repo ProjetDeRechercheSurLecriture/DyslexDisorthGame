@@ -66,33 +66,6 @@ function MainCtrl($scope, $resource, Child, Session, GetNewUUID, AccessCouch) {
 		}
 		window.location.reload();
 	}
-
-/*	
-	$scope.toggleEdit = function() {
-		var editButton = document.getElementById('edit');
-		var cancelSaveButton = document.getElementById('cancel_save');
-		if (editButton.style.display == 'block') {
-			editButton.style.display = 'none';
-			cancelSaveButton.style.display = 'block';
-		}
-		else {
-			editButton.style.display = 'block';
-			cancelSaveButton.style.display = 'none';
-//			window.location.reload();
-		}
-		for (var i = 0; i < arguments.length; i++) {
-			var fieldToToggle = document.getElementById(arguments[i]);
-			if (fieldToToggle.contentEditable == 'true') {
-				fieldToToggle.contentEditable = 'false'
-			}
-			else {
-				fieldToToggle.contentEditable = 'true'
-			}
-		}
-
-	};
-*/
-	
 	
 	
 //Save changes made to edited fields; push changes to CouchDB
@@ -108,9 +81,11 @@ function MainCtrl($scope, $resource, Child, Session, GetNewUUID, AccessCouch) {
 				var dataToPost = document.getElementById(itemsToEdit[i]).innerHTML;
 				var itemID = itemsToEdit[i];
 				updatedRecord[itemID] = dataToPost;
+				document.getElementById(itemsToEdit[i]).contenteditable = 'false';
 			}
-			updatedRecord.$save();
-			window.location.reload();
+			updatedRecord.$save(function() {
+				window.location.reload();
+			});
 		});			
 	}
 	
