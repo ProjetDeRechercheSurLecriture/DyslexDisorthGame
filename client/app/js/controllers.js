@@ -4,32 +4,29 @@
 
 function MainCtrl($scope, $resource, Child, Session, GetNewUUID, AccessCouch) {
 
-//Query data; assign to template scope
+//Query data; assign to template scope; initialize default values
 	
-	$scope.sessions = Session.query();
-  
+	$scope.sessions = Session.query();  
 	$scope.childs = Child.query();
-	
 	$scope.orderProp = 'participantID';
-	
+	$scope.searching = 'true';
+	$scope.editing = 'false';
 
+	
+	
+	$scope.load = function() {
+		window.alert("Done!");
+	}
 //Test to see if text in search box returns any results and hide/display divs accordingly	
 	
-	$scope.displaySearchResults = function(resultsCount) {
-		var resultsdiv = document.getElementById('search_results');
-		var noresultsdiv = document.getElementById('search_no_results');
-
-		document.getElementById('search_again').style.display = 'block';
-		document.getElementById('search_box').style.display = 'none';
-		
+	$scope.displaySearchResults = function(resultsCount) {	
 		if (resultsCount == 0) {
-	        resultsdiv.style.display = 'none';
-	        noresultsdiv.style.display = 'block';	        
-	    }
-	    else {
-	        resultsdiv.style.display = 'block';
-	        noresultsdiv.style.display = 'none';
-	        $scope.currentResult = 0;
+			window.alert('No matching results.');
+			$scope.searching = 'true';
+		}
+		else {
+			$scope.searching = 'false';
+			$scope.currentResult = 0;
 	    	$scope.resultSize = 3;
 	    	$scope.numberOfResultPages = function(){
 	    		return Math.ceil(resultsCount/$scope.resultSize);
@@ -37,19 +34,11 @@ function MainCtrl($scope, $resource, Child, Session, GetNewUUID, AccessCouch) {
 	    }
 	};
 
-	$scope.toggleSearchDivs = function(){
-		document.getElementById('search_results').style.display = 'none';
-		document.getElementById('search_no_results').style.display = 'none';
-		document.getElementById('search_again').style.display = 'none';
-		document.getElementById('search_box').style.display = 'block';
-	}
-
 //Hide Edit/Show cancel/save buttons; make template content editable
 //NOTE: all HTML ids must match db ids exactly; function('elementID', 'elementID', ...)
 	
 	$scope.editRecords = function() {
-		document.getElementById('edit').style.display = 'none';
-		document.getElementById('cancel_save').style.display = 'block';
+		$scope.editing = 'true';
 		for (var i = 0; i < arguments.length; i++) {
 			document.getElementById(arguments[i]).contentEditable = 'true';
 		}
@@ -59,8 +48,6 @@ function MainCtrl($scope, $resource, Child, Session, GetNewUUID, AccessCouch) {
 //NOTE: all HTML ids must match db ids exactly; function('elementID', 'elementID', ...)
 		
 	$scope.cancelRecords = function() {
-		document.getElementById('edit').style.display = 'block';
-		document.getElementById('cancel_save').style.display = 'none';
 		for (var i = 0; i < arguments.length; i++) {
 			document.getElementById(arguments[i]).contentEditable = 'false';
 		}
