@@ -101,7 +101,7 @@
 					<li><span class="">Participant Id: <a href="#/participants/{{child.value.participantID}}">{{child.value.participantID}}</a></span></li>
 					<li><span class="">First Name: {{child.value.firstName}}</span></li>
 					<li><span class="">Last Name: {{child.value.lastName}}</span></li>
-					<li><span class="">Date of Birth: {{child.value.DOB}}</span></li>
+					<li><span class="">Date of Birth (<i>dd/mm/yy</i>): {{child.value.DOB.day}}-{{child.value.DOB.month}}-{{child.value.DOB.year}}</span></li>
 					<li ng-repeat="session in sessions.rows | filter: child.value.participantID"><span class="">Session ID: <a href="#/sessions/{{session.value.sessionID}}">{{session.value.sessionID}}</a> ( {{session.value.testName}}; <img ng-src="img/headphones.png" height=10> : {{session.value.usedHeadphones | checkmark}} )</li>
 				</ul>
 			</div>
