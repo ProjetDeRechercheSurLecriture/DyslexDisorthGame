@@ -8,7 +8,7 @@
 						src="img/phophlo.png" height="128" /></a>
 				</div>
 				<div class=" span6">
-					<p class="lead" contenteditable="true">PhoPhlo is a screening
+					<p class="lead">PhoPhlo is a screening
 						test for early indications of reading troubles, before kids learn
 						to read.</p>
 				</div>
@@ -22,40 +22,46 @@
 					<div ng-repeat="child in childs.rows | filter: filterProp">
 						<div>
 							<ul class='unstyled'>
-								<li>Participant Id: <span class="" contenteditable="false">{{filterProp}}</span></li>
-								<li>First Name: <span id="firstName" contenteditable="false">{{child.value.firstName}}</span></li>
-								<li>Last Name: <span id="lastName" contenteditable="false">{{child.value.lastName}}</span></li>
-								<li>Date of Birth: <span id="DOB" contenteditable="false">{{child.value.DOB}}</span></li>
-								<li>Notes:</span> <span id="notes" contenteditable="false">{{child.value.notes}}</span></li>
+								<li>Participant Id: <span class="" contenteditable="false" ng-model="data.participantID" force-model-update>{{filterProp}}</span></li>
+								<li>First Name: <span id="firstName" contenteditable="false" ng-model="data.firstName" force-model-update>{{child.value.firstName}}</span></li>
+								<li>Last Name: <span id="lastName" contenteditable="false" ng-model="data.lastName" force-model-update>{{child.value.lastName}}</span></li>
+								<li>Date of Birth (<i>dd/mm/yy</i>): <span id="DOB" contenteditable="false">{{child.value.DOB.day}}-{{child.value.DOB.month}}-{{child.value.DOB.year}}</span></li>
+								<li>Notes:</span> <span id="notes" contenteditable="false" ng-model="data.notes" force-model-update>{{child.value.notes}}</span></li>
 							</ul>
 						</div>
+					
 						<div id="edit" ng-show="editing == 'false'">
 								<button id="edit_button" type="button" class="btn btn-info" ng-click="editRecords('firstName', 'lastName', 'DOB', 'notes')">Edit</button>
 							</div>
-							<div id="cancel_save" ng-show="editing == 'true'">
+  							<div id="cancel_save" ng-show="editing == 'true'">
+								<button id="cancel_changes_button" type="button" class="btn btn-info" ng-click="cancelRecords('firstName', 'lastName', 'DOB', 'notes')">Cancel</button><button id="save_changes_button" type="button" class="btn btn-inverse" ng-click="testSave(child.id, data)">Save</button>
+							</div>
+
+
+
+<!--  							<div id="cancel_save" ng-show="editing == 'true'">
 								<button id="cancel_changes_button" type="button" class="btn btn-info" ng-click="cancelRecords('firstName', 'lastName', 'DOB', 'notes')">Cancel</button><button id="save_changes_button" type="button" class="btn btn-inverse" ng-click="saveRecords(child.id, 'firstName', 'lastName', 'DOB', 'notes')">Save</button>
 							</div>
+-->
 					</div>
 				</div>
 				<div class="well span6">
-					<h3><span contenteditable="true">School/Clinic</span> info</h3>
+					<h3><span>School/Clinic</span> info</h3>
 					<ul class='unstyled'>
 						<li><address>
-								<strong><span contenteditable="true">St. Marie's
-										Elementary School</span></strong><br> <span contenteditable="true">
-									1 Main St</span><br> <span contenteditable="true">
-									Montreal QC H3G 1M8</span><br> <abbr title="Phone">P:</abbr><span
-									contenteditable="true"> (123) 456-7890</span>
+								<strong><span>St. Marie's
+										Elementary School</span></strong><br> <span>
+									1 Main St</span><br> <span>
+									Montreal QC H3G 1M8</span><br> <abbr title="Phone">P:</abbr><span> (123) 456-7890</span>
 							</address>
 						<li>Contact Person:<br />
 							<address>
-								<strong><span contenteditable="true">Julie Smith</span></strong><br>
-								<a href="mailto:#"><span contenteditable="true">j_smith@stmaries.ca</span></a>
+								<strong><span>Julie Smith</span></strong><br>
+								<a href="mailto:#"><span>j_smith@stmaries.ca</span></a>
 							</address>
 						</li>
-						<li>TesterId: <span contenteditable="true">122293780</span></li>
-						<li><span contenteditable="true">Add new:</span><span
-							contenteditable="true">another field here</span></li>
+						<li>TesterId: <span>122293780</span></li>
+						<li><span>Add new:</span> <span>another field here</span></li>
 					</ul>
 				</div>
 			</div>
@@ -72,8 +78,8 @@
 						<li ng-repeat="session in sessions.rows | filter: filterProp"><h3>{{session.value.testType}}</h3><br />
 							<img class="gravatar  pull-right"ng-src="img/ic_{{session.value.testName}}128.png" />
 							Session ID: <a href="#/sessions/{{session.value.sessionID}}">{{session.value.sessionID}}</a><br />
-							Description: <span id="description_text" class="experiment_description" contenteditable="false">{{session.value.descriptionEdit}}</span><br />
-							Discussion: <span id="discussion_text" class=" child_specific_results experiment_results_discussion" contenteditable="false")">{{session.value.discussionEdit}}</span>
+							Description: <span id="description_text" class="experiment_description">{{session.value.descriptionEdit}}</span><br />
+							Discussion: <span id="discussion_text" class="child_specific_results experiment_results_discussion">{{session.value.discussionEdit}}</span>
 							<progress max="100" value="70"></progress><br /><br /></li>
 							
 					</ul>
