@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-function MainCtrl($scope, $resource, Participant, Session, GetNewUUID, AccessCouch) {
+function MainCtrl($scope, $resource, Participant, Session, AccessCouch) {
 
 //Query data; assign to template scope; initialize default values
 	
@@ -29,80 +29,29 @@ function MainCtrl($scope, $resource, Participant, Session, GetNewUUID, AccessCou
 	    }
 	};
 
-//Hide Edit/Show cancel/save buttons; make template content editable
-//NOTE: all HTML ids must match db ids exactly; function('elementID', 'elementID', ...)
+//Hide Edit/Show cancel/save buttons; make template content editable via ng-show
 	
-	$scope.editRecords = function() {
-		$scope.$broadcast('event:force-model-update');
-		$scope.$broadcast
+	$scope.edit = function() {
 		$scope.editing = 'true';
-		for (var i = 0; i < arguments.length; i++) {
-			document.getElementById(arguments[i]).contentEditable = 'true';
-		}
 	}
 
-//Hide Edit/Show cancel/save buttons; make template content editable
-//NOTE: all HTML ids must match db ids exactly; function('elementID', 'elementID', ...)
-		
-	$scope.cancelRecords = function() {
-		for (var i = 0; i < arguments.length; i++) {
-			document.getElementById(arguments[i]).contentEditable = 'false';
-		}
+/*TRY TO FIND ANOTHER WAY TO REFRESH THE VIEW*/	
+	$scope.cancel = function() {
 		window.location.reload();
-	}
-	
-	
-//Save changes made to edited fields; push changes to CouchDB
-//NOTE: all HTML ids must match db ids exactly; function(UUID, 'elementID', 'elementID', ...)	
-
-/*Add some sort of spinner while saving*/
-
-/*Investigate a cleaner method to do this with ng-models*/	
-	
-	$scope.saveRecords = function() {
-		var itemsToEdit = arguments;
-		var currentUUID = itemsToEdit[0];
-		var updatedRecord = AccessCouch.query({UUID: currentUUID}, function() {
-			for (var i = 1; i < itemsToEdit.length; i++) {		
-				var dataToPost = document.getElementById(itemsToEdit[i]).innerHTML;
-				var itemID = itemsToEdit[i];
-				updatedRecord[itemID] = dataToPost;
-				document.getElementById(itemsToEdit[i]).contenteditable = 'false';
-			}
-			updatedRecord.$save(function() {
-				window.location.reload();
-			});
-		});			
 	}	
-
-//Start test
-	$scope.testSave = function(currentUUID, data) {
-		var updatedRecord = AccessCouch.query({UUID: currentUUID}, function() {
-			
-//			for (var i = 1; i < itemsToEdit.length; i++) {		
-//				document.getElementById(itemsToEdit[i]).contenteditable = 'false';
-//			}
-			window.alert(JSON.stringify(data));
-//				window.location.reload();
-		});
-//		window.alert(JSON.stringify(data));
-			
-		
-		
-		
-//		AccessCouch.save(edits, function() {	
-//				window.alert($scope.data.firstName);
-//				window.alert(JSON.stringify(edits));
-//			});
-			
-	}
 	
-//End test
-
-
-
-
-
+//Save changes made to edited fields; push changes to CouchDB	
+	
+	$scope.saveRecord = function(currentUUID, records) {
+		var newRecord = records;
+		var updatedRecord = AccessCouch.query({UUID: currentUUID}, function() {
+			for (key in newRecord) {
+				updatedRecord[key] = newRecord[key];
+			}
+			updatedRecord.$update({UUID: currentUUID});
+		});
+		$scope.editing = 'false';
+	};
 };
 
 function SessionReportCtrl($scope, $routeParams) {
@@ -125,13 +74,13 @@ function NewUserCtrl($scope, Participant, AccessCouch) {
 	
 	$scope.cancel = function() {
 		location.reload();
-	}
+	};
 	
 	$scope.createNewUser = function(data) {
 			var currentParticipantIDs = Participant.query(function() {
 				var newParticipantID = generateNewParticipantID(currentParticipantIDs);
 				if (newParticipantID == undefined) {
-					window.alert("Please try again.") //should this just call generateNewParticipantID() again? 
+					window.alert("Please try again."); //should this just call generateNewParticipantID() again? 
 				}
 				else {
 					data.JSONType = "participant";
@@ -165,6 +114,7 @@ function generateNewParticipantID(data) {
 		return;	
 	}
 }
+
 
 
 //PartcipantListCtrl.$inject = ['$scope', '$http'];
