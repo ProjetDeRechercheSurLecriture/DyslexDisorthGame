@@ -97,7 +97,7 @@
 					<button class="btn btn-primary btn-mini" ng-disabled="currentResult >= (childs.rows | filter: query).length/resultSize - 1" ng-click="currentResult=currentResult+1"><i class="icon-white icon-arrow-right"></i></button>
 					<br /><br />
 				</div>
-				<ul class='unstyled' ng-repeat="child in childs.rows | filter: query | startFrom:currentResult*resultSize | limitTo:resultSize">
+				<ul class="" ng-repeat="child in childs.rows | filter: query | startFrom:currentResult*resultSize | limitTo:resultSize">
 					<li><span class="">Participant Id: <a href="#/participants/{{child.value.participantID}}">{{child.value.participantID}}</a></span></li>
 					<li><span class="">First Name: {{child.value.firstName}}</span></li>
 					<li><span class="">Last Name: {{child.value.lastName}}</span></li>

@@ -42,8 +42,9 @@ function MainCtrl($scope, $resource, Participant, Session, AccessCouch) {
 	
 //Save changes made to edited fields; push changes to CouchDB	
 	
-	$scope.saveRecord = function(currentUUID, records) {
+	$scope.saveRecord = function(records) {
 		var newRecord = records;
+		var currentUUID = records._id;
 		var updatedRecord = AccessCouch.query({UUID: currentUUID}, function() {
 			for (key in newRecord) {
 				updatedRecord[key] = newRecord[key];
