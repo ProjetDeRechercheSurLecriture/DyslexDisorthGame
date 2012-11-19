@@ -15,37 +15,126 @@
 			</div>
 
 			<div class="row-fluid">
-				<div class="well span6">
-					<h3>Child info</h3>
-					
-					<p>
-					<div ng-repeat="child in childs.rows | filter: filterProp">
-						<div>
-							<ul class='unstyled'>
-								<li>Participant Id: <span class="" contenteditable="false" ng-model="data.participantID" force-model-update>{{filterProp}}</span></li>
-								<li>First Name: <span id="firstName" contenteditable="false" ng-model="data.firstName" force-model-update>{{child.value.firstName}}</span></li>
-								<li>Last Name: <span id="lastName" contenteditable="false" ng-model="data.lastName" force-model-update>{{child.value.lastName}}</span></li>
-								<li>Date of Birth (<i>dd/mm/yy</i>): <span id="DOB" contenteditable="false">{{child.value.DOB.day}}-{{child.value.DOB.month}}-{{child.value.DOB.year}}</span></li>
-								<li>Notes:</span> <span id="notes" contenteditable="false" ng-model="data.notes" force-model-update>{{child.value.notes}}</span></li>
-							</ul>
-						</div>
-					
-						<div id="edit" ng-show="editing == 'false'">
-								<button id="edit_button" type="button" class="btn btn-info" ng-click="editRecords('firstName', 'lastName', 'DOB', 'notes')">Edit</button>
-							</div>
-  							<div id="cancel_save" ng-show="editing == 'true'">
-								<button id="cancel_changes_button" type="button" class="btn btn-info" ng-click="cancelRecords('firstName', 'lastName', 'DOB', 'notes')">Cancel</button><button id="save_changes_button" type="button" class="btn btn-inverse" ng-click="testSave(child.id, data)">Save</button>
-							</div>
+			<div class="well span7" ng-repeat="child in childs.rows | filter: filterProp" ng-show="editing == 'true'">
+  
+				<form class="form-horizontal">  
+				        <fieldset>
+        				<legend><h3>Child info</h3></legend>    
+          				<div class="control-group">  
+            				<label class="control-label" for="firstName">First Name:</label>  
+            				<div class="controls">  
+              				<input type="text" class="input-large" ng-model="child.value.firstName" required><i class="icon-white icon-star">Required</i>  
+            				</div>  
+          				</div>    
+          				<div class="control-group">  
+            				<label class="control-label" for="child.value.lastName">Last Name:</label>  
+            				<div class="controls">  
+              				<input type="text" class="input-large" ng-model="child.value.lastName" required><i class="icon-white icon-star">Required</i>  
+            				</div>  
+          				</div>
+          				<div class="control-group">  
+            				<label class="control-label" for="select01">Date of Birth</label>  
+            				<div class="controls"">  
 
+<!-- Change these to functions -->
 
-
-<!--  							<div id="cancel_save" ng-show="editing == 'true'">
-								<button id="cancel_changes_button" type="button" class="btn btn-info" ng-click="cancelRecords('firstName', 'lastName', 'DOB', 'notes')">Cancel</button><button id="save_changes_button" type="button" class="btn btn-inverse" ng-click="saveRecords(child.id, 'firstName', 'lastName', 'DOB', 'notes')">Save</button>
-							</div>
--->
-					</div>
-				</div>
-				<div class="well span6">
+				          	<select id="select01" ng-model="child.value.DOB.day">    
+               					<option value="" disabled="disabled" selected="selected">Day</option>
+ 								<option ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]">{{i}}</option>
+			               	</select>    
+              				<select id="select02" ng-model="child.value.DOB.month">    
+                				<option value="" disabled="disabled" selected="selected">Month</option>
+                				<option value="1">January
+								<option value="2">February
+								<option value="3">March
+								<option value="4">April
+								<option value="5">May
+								<option value="6">June
+								<option value="7">July
+								<option value="8">August
+								<option value="9">September
+								<option value="10">October
+								<option value="11">November
+								<option value="12">December 
+              				</select>
+              				<select id="select03" ng-model="child.value.DOB.year">    
+                				<option value="" disabled="disabled" selected="selected">Year</option>
+                				<option value="2018">2018
+								<option value="2017">2017
+								<option value="2016">2016
+								<option value="2015">2015  
+                				<option value="2018">2014
+								<option value="2017">2013
+								<option value="2016">2012
+								<option value="2015">2011  
+                				<option value="2018">2010
+								<option value="2017">2009
+								<option value="2016">2008
+								<option value="2015">2007  
+                				<option value="2018">2006
+								<option value="2017">2005
+								<option value="2016">2004
+								<option value="2015">2003  
+                				<option value="2018">2002
+								<option value="2017">2001
+								<option value="2016">2000
+								<option value="2015">1999  
+                				<option value="2018">1998
+								<option value="2017">1997
+								<option value="2016">1996
+								<option value="2015">1995  
+                				<option value="2018">1994
+								<option value="2017">1993
+								<option value="2016">1992
+								<option value="2015">1991  
+                				<option value="2018">1990
+								<option value="2017">1989
+								<option value="2016">1988
+								<option value="2015">1987  
+                				<option value="2018">1986
+								<option value="2017">1985
+								<option value="2016">1984
+								<option value="2015">1983  
+                				<option value="2018">1982
+								<option value="2017">1981
+								<option value="2016">1980
+								<option value="2015">1979  
+                				<option value="2018">1978
+								<option value="2017">1977
+								<option value="2016">1976
+								<option value="2015">1975  
+                				<option value="2018">1974
+								<option value="2017">1973
+								<option value="2016">1972
+								<option value="2015">1971
+								<option value="2015">1970  
+              				</select>  
+            				</div>  
+          				</div>  
+          				<div class="control-group">  
+            				<label class="control-label" for="notes">Notes:</label>  
+            				<div class="controls">  
+              				<textarea class="input-xlarge" ng-model="child.value.notes" rows="3"></textarea>  
+            				</div>  
+          				</div>  
+          				<div class="well form-actions">   
+            				<button class="btn" ng-click="cancel()"">Cancel</button>
+            				<button class="btn btn-primary" ng-click="saveRecord(child.id, child.value)">Save</button>   
+          				</div>  
+        				</fieldset>  
+				</form>  
+		</div>			
+		<div class="well span6" ng-repeat="child in childs.rows | filter: filterProp" ng-show="editing == 'false'">
+		Participant ID: {{child.value.participantID}}<br>
+		Name: {{child.value.firstName}} {{child.value.lastName}}<br>
+		Date of birth (<i>dd/mm/yy</i>): {{child.value.DOB.day}}-{{child.value.DOB.month}}-{{child.value.DOB.year}}<br>
+		Notes: {{child.value.notes}}<p>
+			<div class="well form-actions">   
+            	<button id="edit_button" type="button" class="btn btn-info" ng-click="edit()">Edit</button>   
+          	</div>
+		</div>			
+				
+				<div class="well span5">
 					<h3><span>School/Clinic</span> info</h3>
 					<ul class='unstyled'>
 						<li><address>
