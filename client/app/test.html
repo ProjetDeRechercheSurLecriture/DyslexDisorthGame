@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html ng-app=participantData>
+<head>
+<title>PhoPhlo Welcome</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- Stylesheets -->
+<link rel="stylesheet" type="text/css" href="dashboard.css">
+
+
+<!-- END Stylesheets -->
+ <script src="lib/angular/angular.js"></script>
+ <script src="js/app.js"></script>
+ <script src="js/controllers.js"></script>
+ <script src="js/filters.js"></script>
+</head>
+<body id="app" class="resultsbody">
+
+	
+	<div ng-controller="CouchDBTestCtrl">
+		<ul>
+			{{couchData}}
+			<li>ID: {{couchData.participantID}}</li>
+			<li>NAME: {{member.firstName}} {{member.lastName}}</li>
+			<li>DOB: {{member.DOB}}</li>
+		</ul>
+	</div>
+
+
+	<!-- Le javascript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+
+	<script type="text/javascript" src="./require.js"></script>
+	<script type="text/javascript" src="./main_dashboard.js"></script>
+</body>
+</html>
