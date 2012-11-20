@@ -8,9 +8,37 @@ $(".demo_confirm_box").each(function() {
     }
   };
 });
-
+window.experimentType = "sails";
 demo_show_next = function() {
-  alert("going to next stimuli");
+  var currentReinforcementImageFolder = document.getElementById("reinforcement_image").src.replace("image_stimuli/","");
+  if(currentReinforcementImageFolder.indexOf("sails")== 0){
+    window.experimentType = "sails";
+  }else if(currentReinforcementImageFolder.indexOf("tcpp")== 0){
+    window.experimentType = "tcpp";
+  }else if(currentReinforcementImageFolder.indexOf("tdfp")== 0){
+    window.experimentType = "tdfp";
+  }else if(currentReinforcementImageFolder.indexOf("tdfm")== 0){
+    window.experimentType = "tdfm";
+  }
+//  alert("going to next stimuli");
+  document.getElementById("audio_instructions_player_source").pause();
+
+  document.getElementById("audio_stimuli_player_source").src = "audio_stimuli/"+window.experimentType+"/"+sailsAudio[sailsStimuliIndex];
+  document.getElementById("audio_stimuli_player_source").play();
+  window.sailsStimuliIndex++;
+  var imagenumber= sailsStimuliIndex;
+  if(window.experimentType == "sails"){
+    if(imagenumber < 10 ){
+      imagenumber = "0"+imagenumber;
+    }
+    imagenumber = "/r"+imagenumber+"_mouse_cheese.png";
+    document.getElementById("reinforcement_image").src = "image_stimuli/"+window.experimentType+imagenumber;
+  }
+  
+  if(window.sailsStimuliIndex >= window.sailsAudio.length){
+    alert("Good Job!");
+    window.location.replace("index.html");
+  }
 };
 demo_show_previous = function() {
   alert("going to previous stimuli");
@@ -27,11 +55,12 @@ $(".icon-question-sign")
     .each(
         function() {
           this.onclick = function() {
-            alert("This will play some audio instructions, or show text instructions depending on a user setting");
+//            alert("This will play some audio instructions, or show text instructions depending on a user setting");
+            document.getElementById("audio_instructions_player_source").play();
           };
         });
-
-var sailsAudio = [ "sails_instructions.mp3", "GR02A_Gris_MOD.mp3",
+var sailsStimuliIndex = 0;
+var sailsAudio = [ "GR02A_Gris_MOD.mp3",
     "GR19A_Gris_MOD.mp3", "GR27D_Gris_MOD.mp3", "GR04A_Gris_MOD.mp3",
     "GR20A_Gris_MOD.mp3", "GR28A_Gris_MOD.mp3", "GR05A_Gris_MOD.mp3",
     "GR20B_Gris_MOD.mp3", "NI29A_Gris_MOD.mp3", "GR06A_Gris_MOD.mp3",
