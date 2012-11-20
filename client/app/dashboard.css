@@ -189,6 +189,20 @@ progress {
 	height: 100%;
 }
 
+.txtUpsideDown 
+{
+  filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=2);  /* IE6,IE7 */
+  ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)"; /* IE8 */
+  -moz-transform: rotate(-180deg);  /* FF3.5+ */
+  -o-transform: rotate(-180deg);  /* Opera 10.5 */
+  -webkit-transform: rotate(-180deg);  /* Safari 3.1+, Chrome */
+  position: absolute; 
+  
+  width:100%;
+}
+.touch_scoreboard{
+	text-align: center;
+}
 @media print {
 	.exec_summary {
 		display: none !important;
