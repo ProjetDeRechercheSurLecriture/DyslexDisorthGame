@@ -31,7 +31,7 @@
 			<div id="search_box">
 				<form ng-submit="displaySearchResults((childs.rows | filter: query).length)" class="well form-search">
 					<legend>Enter child name, date of birth, or participant ID:</legend>
-					<input type="text" class="input-large search-query" ng-model="query">
+					<input id="search_field" type="text" class="input-large search-query" ng-model="query" on-focus="searching = 'true'; query = ''" on-blur="searching = 'false'" ng-enter="searching = 'false'">
 					<button id="search_button" type="button" class="btn btn-primary btn-large" ng-click="displaySearchResults((childs.rows | filter: query).length)"><i class="icon-white icon-search"></i>Search</button>
 				</form>
 			</div>	

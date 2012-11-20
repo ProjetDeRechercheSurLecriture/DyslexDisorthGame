@@ -16,8 +16,8 @@ function MainCtrl($scope, $resource, Participant, Session, AccessCouch) {
 	
 	$scope.displaySearchResults = function(resultsCount) {	
 		if (resultsCount == 0) {
-			window.alert('No matching results.');
 			$scope.searching = 'true';
+			window.alert('No matching results.');
 		}
 		else {
 			$scope.searching = 'false';
@@ -28,7 +28,7 @@ function MainCtrl($scope, $resource, Participant, Session, AccessCouch) {
 	    	};
 	    }
 	};
-
+	
 //Hide Edit/Show cancel/save buttons; make template content editable via ng-show
 	
 	$scope.edit = function() {
