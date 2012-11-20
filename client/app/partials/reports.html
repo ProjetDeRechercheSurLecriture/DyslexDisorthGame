@@ -30,7 +30,7 @@
 		<div class="span7">
 			<div id="search_box">
 				<form ng-submit="displaySearchResults((childs.rows | filter: query).length)" class="well form-search">
-					<legend>Enter child name or participant ID:</legend>
+					<legend>Enter child name, date of birth, or participant ID:</legend>
 					<input type="text" class="input-large search-query" ng-model="query">
 					<button id="search_button" type="button" class="btn btn-primary btn-large" ng-click="displaySearchResults((childs.rows | filter: query).length)"><i class="icon-white icon-search"></i>Search</button>
 				</form>
