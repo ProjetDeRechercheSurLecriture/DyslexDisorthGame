@@ -1,6 +1,6 @@
 <!-- NOTE: Route controller ParticipantReportCtrl limits value of filterProp to unique sessionID from $routeParams throughout-->
 
-		<div class="well span9">
+		<div class="well span12">
 
 			<div class="row-fluid">
 				<div class=" span6">
@@ -8,14 +8,19 @@
 						src="img/phophlo.png" height="128" /></a>
 				</div>
 				<div class=" span6">
-					<p class="lead">PhoPhlo is a screening
+					<p class="lead tempwhite">PhoPhlo is a screening
 						test for early indications of reading troubles, before kids learn
 						to read.</p>
 				</div>
 			</div>
 
 			<div class="row-fluid">
-			<div class="well span7" ng-repeat="child in childs.rows | filter: filterProp" ng-show="editing == 'true'">
+			
+			
+			
+<!-- Start edit form div -->
+
+				<div class="well span12" ng-repeat="child in childs.rows | filter: filterProp" ng-show="editing == 'true'">
   
 				<form class="form-horizontal">  
 				        <fieldset>
@@ -34,15 +39,14 @@
           				</div>
           				<div class="control-group">  
             				<label class="control-label" for="select01">Date of Birth</label>  
-            				<div class="controls"">  
+            				<div class="controls">  
 
 <!-- Change these to functions -->
-
-				          	<select id="select01" ng-model="child.value.DOB.day">    
+				          	<select id="select01" class="span3" ng-model="child.value.DOB.day">    
                					<option value="" disabled="disabled" selected="selected">Day</option>
  								<option ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]">{{i}}</option>
 			               	</select>    
-              				<select id="select02" ng-model="child.value.DOB.month">    
+              				<select id="select02" class="span3" ng-model="child.value.DOB.month">    
                 				<option value="" disabled="disabled" selected="selected">Month</option>
                 				<option value="1">January
 								<option value="2">February
@@ -57,7 +61,7 @@
 								<option value="11">November
 								<option value="12">December 
               				</select>
-              				<select id="select03" ng-model="child.value.DOB.year">    
+              				<select id="select03" class="span3" ng-model="child.value.DOB.year">    
                 				<option value="" disabled="disabled" selected="selected">Year</option>
                 				<option value="2018">2018
 								<option value="2017">2017
@@ -123,37 +127,42 @@
           				</div>  
         				</fieldset>  
 				</form>  
-		</div>			
+		</div>
+		
+<!-- End edit form div -->		
+					
+		
 		<div class="well span6" ng-repeat="child in childs.rows | filter: filterProp" ng-show="editing == 'false'">
-		Participant ID: {{child.value.participantID}}<br>
-		Name: {{child.value.firstName}} {{child.value.lastName}}<br>
-		Date of birth (<i>dd/mm/yy</i>): {{child.value.DOB.day}}-{{child.value.DOB.month}}-{{child.value.DOB.year}}<br>
-		Notes: {{child.value.notes}}<p>
+			<h3>Child info</h3>
+			<span class="tempwhite">Participant ID: {{child.value.participantID}}</span><br>
+			<span class="tempwhite">Name: {{child.value.firstName}} {{child.value.lastName}}</span><br>
+			<span class="tempwhite">Date of birth (<i>dd/mm/yy</i>): {{child.value.DOB.day}}-{{child.value.DOB.month}}-{{child.value.DOB.year}}</span><br>
+			<span class="tempwhite">Notes: {{child.value.notes}}</span><p>
 			<div class="well form-actions">   
             	<button id="edit_button" type="button" class="btn btn-info" ng-click="edit()">Edit</button>   
           	</div>
 		</div>			
 				
-				<div class="well span5">
-					<h3><span>School/Clinic</span> info</h3>
-					<ul class='unstyled'>
-						<li><address>
-								<strong><span>St. Marie's
-										Elementary School</span></strong><br> <span>
-									1 Main St</span><br> <span>
-									Montreal QC H3G 1M8</span><br> <abbr title="Phone">P:</abbr><span> (123) 456-7890</span>
-							</address>
-						<li>Contact Person:<br />
-							<address>
-								<strong><span>Julie Smith</span></strong><br>
-								<a href="mailto:#"><span>j_smith@stmaries.ca</span></a>
-							</address>
-						</li>
-						<li>TesterId: <span>122293780</span></li>
-						<li><span>Add new:</span> <span>another field here</span></li>
-					</ul>
-				</div>
-			</div>
+		<div class="well span5" ng-show="editing=='false'">
+			<h3><span class="tempwhite">School/Clinic</span> info</h3>
+			<ul>
+				<li><address>
+						<strong><span class="tempwhite">St. Marie's Elementary School</span></strong><br>
+						<span class="tempwhite">1 Main St</span><br>
+						<span class="tempwhite">Montreal QC H3G 1M8</span><br> <abbr title="Phone">P:</abbr>
+						<span class="tempwhite"> (123) 456-7890</span>
+					</address>
+				<li><span class="tempwhite">Contact Person:</span><br />
+				<address>
+					<strong><span class="tempwhite">Julie Smith</span></strong><br>
+					<a href="mailto:#"><span>j_smith@stmaries.ca</span></a>
+				</address>
+				</li>
+				<li><span class="tempwhite">TesterId: 122293780</span></li>
+				<li><span class="tempwhite">Add new: another field here</span></li>
+			</ul>
+		</div>
+	</div>
 			<h3>
 				Results <small>Oct 22, 2012</small>
 			</h3>
@@ -166,10 +175,10 @@
 					<ul class=" unstyled experiment_description">
 						<li ng-repeat="session in sessions.rows | filter: filterProp"><h3>{{session.value.testType}}</h3><br />
 							<img class="gravatar  pull-right"ng-src="img/ic_{{session.value.testName}}128.png" />
-							Session ID: <a href="#/sessions/{{session.value.sessionID}}">{{session.value.sessionID}}</a><br />
-							Description: <span id="description_text" class="experiment_description">{{session.value.descriptionEdit}}</span><br />
-							Discussion: <span id="discussion_text" class="child_specific_results experiment_results_discussion">{{session.value.discussionEdit}}</span>
-							<progress max="100" value="70"></progress><br /><br /></li>
+							<span class="tempwhite">Session ID: <a href="#/sessions/{{session.value.sessionID}}">{{session.value.sessionID}}</span></a><br />
+							<span class="tempwhite">Description: {{session.value.descriptionEdit}}</span><br />
+							<span class="tempwhite">Discussion: {{session.value.discussionEdit}}</span>
+							<progress max="100" value="20"></progress><br /><br /></li>
 							
 					</ul>
 
@@ -180,18 +189,18 @@
 			<div class="credits">
 
 				<p>
-					<span class="">PhoPhlo was designed by Dr. Rvachew<sup>a</sup>
+					<span class="tempwhite">PhoPhlo was designed by Dr. Rvachew<sup>a</sup>
 						and Dr. Royle<sup>b</sup> and their research assistants. It was
 						validated in collaboration with Laval elementary schools,
 						illustrated by Edith Lebel<sup>c</sup> and gamified by iLanguage
 						Lab Ltd.<sup>d</sup>
-					</span><br> (<sup>a</sup><a
+					<br> (<sup>a</sup><a
 						href="http://www.medicine.mcgill.ca/srvachew/">McGill, Faculty
 						of Medicine</a>, <sup>b</sup>&Eacute;cole d'orthophonie et d'audiologie
 					Universit&eacute; de Montr&eacute;al, <sup>c</sup><a
 						href="http://edithlebel.blogspot.ca/">
 						http://edithlebel.blogspot.ca</a>, <sup>d</sup><a
-						href="http://ilanguage.ca">http://ilanguage.ca</a>)
+						href="http://ilanguage.ca">http://ilanguage.ca</a>)</span>
 				</p>
 			</div>
 		</div>

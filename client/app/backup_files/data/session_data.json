@@ -1,0 +1,434 @@
+[ {
+	"JSONType" : "session",
+	"testName" : "SAILS",
+	"title" : "Speech Assessment and Interactive Learning System",
+	"testType" : "Perception",
+	"language" : "en",
+	"sessionID" : 89342789,
+	"participantID" : 1234,
+	"descriptionEdit" : "SAILS is designed to measure perception of speech errors produced by other children. Performance on the SAILs has been shown to be an indicator of potential reading problems.",
+	"discussionEdit" : "Add notes here.",
+	"usedHeadphones" : 1,
+	"stimuli" : [ {
+		"audioOffset" : 1352304505219,
+		"audioFileId" : 2131099651,
+		"imageFilePath" : "",
+		"imageFileId" : 2130837592,
+		"label" : "Begin",
+		"touches" : [ {
+			"time" : 1352304511480,
+			"height" : 480,
+			"width" : 800,
+			"x" : 679.9218,
+			"y" : 226.5928
+		} ],
+		"reactionTimePostOffset" : 6261,
+		"startTime" : 1352304504120,
+		"totalReactionTime" : 7360
+	}, {
+		"audioOffset" : 1352304505219,
+		"audioFileId" : 2131099651,
+		"imageFilePath" : "",
+		"imageFileId" : 2130837592,
+		"label" : "Begin",
+		"touches" : [ {
+			"time" : 1352304511480,
+			"height" : 480,
+			"width" : 800,
+			"x" : 679.9218,
+			"y" : 226.5928
+		} ],
+		"reactionTimePostOffset" : 6261,
+		"startTime" : 1352304504120,
+		"totalReactionTime" : 7360
+	}, {
+		"audioOffset" : 1352304505219,
+		"audioFileId" : 2131099651,
+		"imageFilePath" : "",
+		"imageFileId" : 2130837592,
+		"label" : "Begin",
+		"touches" : [ {
+			"time" : 1352304511480,
+			"height" : 480,
+			"width" : 800,
+			"x" : 679.9218,
+			"y" : 226.5928
+		} ],
+		"reactionTimePostOffset" : 6261,
+		"startTime" : 1352304504120,
+		"totalReactionTime" : 7360
+	} ],
+	"displayedStimuli" : 4,
+	"startTime" : 1352304491241
+}, {
+	"JSONType" : "session",
+	"testName" : "SAILS",
+	"title" : "Speech Assessment and Interactive Learning System",
+	"testType" : "Perception",
+	"language" : "en",
+	"sessionID" : 74589098,
+	"participantID" : 1234,
+	"descriptionEdit" : "SAILS is designed to measure perception of speech errors produced by other children. Performance on the SAILs has been shown to be an indicator of potential reading problems.",
+	"discussionEdit" : "Add notes here.",
+	"usedHeadphones" : 0,
+	"stimuli" : [ {
+		"audioOffset" : 1352304505219,
+		"audioFileId" : 2131099651,
+		"imageFilePath" : "",
+		"imageFileId" : 2130837592,
+		"label" : "Begin",
+		"touches" : [ {
+			"time" : 1352304511480,
+			"height" : 480,
+			"width" : 800,
+			"x" : 679.9218,
+			"y" : 226.5928
+		} ],
+		"reactionTimePostOffset" : 6261,
+		"startTime" : 1352304504120,
+		"totalReactionTime" : 7360
+	}, {
+		"audioOffset" : 1352304505219,
+		"audioFileId" : 2131099651,
+		"imageFilePath" : "",
+		"imageFileId" : 2130837592,
+		"label" : "Begin",
+		"touches" : [ {
+			"time" : 1352304511480,
+			"height" : 480,
+			"width" : 800,
+			"x" : 679.9218,
+			"y" : 226.5928
+		} ],
+		"reactionTimePostOffset" : 6261,
+		"startTime" : 1352304504120,
+		"totalReactionTime" : 7360
+	}, {
+		"audioOffset" : 1352304505219,
+		"audioFileId" : 2131099651,
+		"imageFilePath" : "",
+		"imageFileId" : 2130837592,
+		"label" : "Begin",
+		"touches" : [ {
+			"time" : 1352304511480,
+			"height" : 480,
+			"width" : 800,
+			"x" : 679.9218,
+			"y" : 226.5928
+		} ],
+		"reactionTimePostOffset" : 6261,
+		"startTime" : 1352304504120,
+		"totalReactionTime" : 7360
+	} ],
+	"displayedStimuli" : 4,
+	"startTime" : 1352304491241
+}, {
+	"JSONType" : "session",
+	"testName" : "SAILS",
+	"title" : "Speech Assessment and Interactive Learning System",
+	"testType" : "Perception",
+	"language" : "en",
+	"sessionID" : 234870987,
+	"participantID" : 6789,
+	"descriptionEdit" : "SAILS is designed to measure perception of speech errors produced by other children. Performance on the SAILs has been shown to be an indicator of potential reading problems.",
+	"discussionEdit" : "Add notes here.",
+	"usedHeadphones" : 1,
+	"stimuli" : [ {
+		"audioOffset" : 1352304505219,
+		"audioFileId" : 2131099651,
+		"imageFilePath" : "",
+		"imageFileId" : 2130837592,
+		"label" : "Begin",
+		"touches" : [ {
+			"time" : 1352304511480,
+			"height" : 480,
+			"width" : 800,
+			"x" : 679.9218,
+			"y" : 226.5928
+		} ],
+		"reactionTimePostOffset" : 6261,
+		"startTime" : 1352304504120,
+		"totalReactionTime" : 7360
+	}, {
+		"audioOffset" : 1352304505219,
+		"audioFileId" : 2131099651,
+		"imageFilePath" : "",
+		"imageFileId" : 2130837592,
+		"label" : "Begin",
+		"touches" : [ {
+			"time" : 1352304511480,
+			"height" : 480,
+			"width" : 800,
+			"x" : 679.9218,
+			"y" : 226.5928
+		} ],
+		"reactionTimePostOffset" : 6261,
+		"startTime" : 1352304504120,
+		"totalReactionTime" : 7360
+	}, {
+		"audioOffset" : 1352304505219,
+		"audioFileId" : 2131099651,
+		"imageFilePath" : "",
+		"imageFileId" : 2130837592,
+		"label" : "Begin",
+		"touches" : [ {
+			"time" : 1352304511480,
+			"height" : 480,
+			"width" : 800,
+			"x" : 679.9218,
+			"y" : 226.5928
+		} ],
+		"reactionTimePostOffset" : 6261,
+		"startTime" : 1352304504120,
+		"totalReactionTime" : 7360
+	} ],
+	"displayedStimuli" : 4,
+	"startTime" : 1352304491241
+}, {
+	"JSONType" : "session",
+	"testName" : "TCPP",
+	"title" : "Test de Conscience Phonologique",
+	"testType" : "Perception",
+	"language" : "fr",
+	"sessionID" : 2394879,
+	"participantID" : 6789,
+	"descriptionEdit" : "TCPP is designed to measure perception of phonemes, phonemes are mental representations of speech sounds. The TCPP was designed to identify some of the phonemic symptoms of dyslexia.",
+	"discussionEdit" : "Add notes here.",
+	"usedHeadphones" : 1,
+	"stimuli" : [ {
+		"audioOffset" : 1352304505219,
+		"audioFileId" : 2131099651,
+		"imageFilePath" : "",
+		"imageFileId" : 2130837592,
+		"label" : "Begin",
+		"touches" : [ {
+			"time" : 1352304511480,
+			"height" : 480,
+			"width" : 800,
+			"x" : 679.9218,
+			"y" : 226.5928
+		} ],
+		"reactionTimePostOffset" : 6261,
+		"startTime" : 1352304504120,
+		"totalReactionTime" : 7360
+	}, {
+		"audioOffset" : 1352304505219,
+		"audioFileId" : 2131099651,
+		"imageFilePath" : "",
+		"imageFileId" : 2130837592,
+		"label" : "Begin",
+		"touches" : [ {
+			"time" : 1352304511480,
+			"height" : 480,
+			"width" : 800,
+			"x" : 679.9218,
+			"y" : 226.5928
+		} ],
+		"reactionTimePostOffset" : 6261,
+		"startTime" : 1352304504120,
+		"totalReactionTime" : 7360
+	}, {
+		"audioOffset" : 1352304505219,
+		"audioFileId" : 2131099651,
+		"imageFilePath" : "",
+		"imageFileId" : 2130837592,
+		"label" : "Begin",
+		"touches" : [ {
+			"time" : 1352304511480,
+			"height" : 480,
+			"width" : 800,
+			"x" : 679.9218,
+			"y" : 226.5928
+		} ],
+		"reactionTimePostOffset" : 6261,
+		"startTime" : 1352304504120,
+		"totalReactionTime" : 7360
+	} ],
+	"displayedStimuli" : 4,
+	"startTime" : 1352304491241
+}, {
+	"JSONType" : "session",
+	"testName" : "SAILS",
+	"title" : "Speech Assessment and Interactive Learning System",
+	"testType" : "Perception",
+	"language" : "en",
+	"sessionID" : 789934,
+	"participantID" : 8901,
+	"descriptionEdit" : "SAILS is designed to measure perception of speech errors produced by other children. Performance on the SAILs has been shown to be an indicator of potential reading problems.",
+	"discussionEdit" : "Add notes here.",
+	"usedHeadphones" : 0,
+	"stimuli" : [ {
+		"audioOffset" : 1352304505219,
+		"audioFileId" : 2131099651,
+		"imageFilePath" : "",
+		"imageFileId" : 2130837592,
+		"label" : "Begin",
+		"touches" : [ {
+			"time" : 1352304511480,
+			"height" : 480,
+			"width" : 800,
+			"x" : 679.9218,
+			"y" : 226.5928
+		} ],
+		"reactionTimePostOffset" : 6261,
+		"startTime" : 1352304504120,
+		"totalReactionTime" : 7360
+	}, {
+		"audioOffset" : 1352304505219,
+		"audioFileId" : 2131099651,
+		"imageFilePath" : "",
+		"imageFileId" : 2130837592,
+		"label" : "Begin",
+		"touches" : [ {
+			"time" : 1352304511480,
+			"height" : 480,
+			"width" : 800,
+			"x" : 679.9218,
+			"y" : 226.5928
+		} ],
+		"reactionTimePostOffset" : 6261,
+		"startTime" : 1352304504120,
+		"totalReactionTime" : 7360
+	}, {
+		"audioOffset" : 1352304505219,
+		"audioFileId" : 2131099651,
+		"imageFilePath" : "",
+		"imageFileId" : 2130837592,
+		"label" : "Begin",
+		"touches" : [ {
+			"time" : 1352304511480,
+			"height" : 480,
+			"width" : 800,
+			"x" : 679.9218,
+			"y" : 226.5928
+		} ],
+		"reactionTimePostOffset" : 6261,
+		"startTime" : 1352304504120,
+		"totalReactionTime" : 7360
+	} ],
+	"displayedStimuli" : 4,
+	"startTime" : 1352304491241
+}, {
+	"JSONType" : "session",
+	"testName" : "TCPP",
+	"title" : "Test de Conscience Phonologique",
+	"testType" : "Perception",
+	"language" : "en",
+	"sessionID" : 23434545,
+	"participantID" : 8901,
+	"descriptionEdit" : "TCPP is designed to measure perception of phonemes, phonemes are mental representations of speech sounds. The TCPP was designed to identify some of the phonemic symptoms of dyslexia.",	"discussionEdit" : "Add notes here.",
+	"usedHeadphones" : 0,
+	"stimuli" : [ {
+		"audioOffset" : 1352304505219,
+		"audioFileId" : 2131099651,
+		"imageFilePath" : "",
+		"imageFileId" : 2130837592,
+		"label" : "Begin",
+		"touches" : [ {
+			"time" : 1352304511480,
+			"height" : 480,
+			"width" : 800,
+			"x" : 679.9218,
+			"y" : 226.5928
+		} ],
+		"reactionTimePostOffset" : 6261,
+		"startTime" : 1352304504120,
+		"totalReactionTime" : 7360
+	}, {
+		"audioOffset" : 1352304505219,
+		"audioFileId" : 2131099651,
+		"imageFilePath" : "",
+		"imageFileId" : 2130837592,
+		"label" : "Begin",
+		"touches" : [ {
+			"time" : 1352304511480,
+			"height" : 480,
+			"width" : 800,
+			"x" : 679.9218,
+			"y" : 226.5928
+		} ],
+		"reactionTimePostOffset" : 6261,
+		"startTime" : 1352304504120,
+		"totalReactionTime" : 7360
+	}, {
+		"audioOffset" : 1352304505219,
+		"audioFileId" : 2131099651,
+		"imageFilePath" : "",
+		"imageFileId" : 2130837592,
+		"label" : "Begin",
+		"touches" : [ {
+			"time" : 1352304511480,
+			"height" : 480,
+			"width" : 800,
+			"x" : 679.9218,
+			"y" : 226.5928
+		} ],
+		"reactionTimePostOffset" : 6261,
+		"startTime" : 1352304504120,
+		"totalReactionTime" : 7360
+	} ],
+	"displayedStimuli" : 4,
+	"startTime" : 1352304491241
+}, {
+	"JSONType" : "session",
+	"testName" : "TDFM",
+	"title" : "TDFM",
+	"testType" : "Production",
+	"language" : "en",
+	"sessionID" : 57675467465,
+	"participantID" : 8901,
+	"descriptionEdit" : "TDFM is a test for production of morphemes, morphemes are the smallest meaningful component of words. Late acquision of morphology can indicate the child maybe be at risk for reading problems or Specific Languge Impairment (SLI).",
+	"discussionEdit" : "Add notes here.",
+	"usedHeadphones" : 0,
+	"stimuli" : [ {
+		"audioOffset" : 1352304505219,
+		"audioFileId" : 2131099651,
+		"imageFilePath" : "",
+		"imageFileId" : 2130837592,
+		"label" : "Begin",
+		"touches" : [ {
+			"time" : 1352304511480,
+			"height" : 480,
+			"width" : 800,
+			"x" : 679.9218,
+			"y" : 226.5928
+		} ],
+		"reactionTimePostOffset" : 6261,
+		"startTime" : 1352304504120,
+		"totalReactionTime" : 7360
+	}, {
+		"audioOffset" : 1352304505219,
+		"audioFileId" : 2131099651,
+		"imageFilePath" : "",
+		"imageFileId" : 2130837592,
+		"label" : "Begin",
+		"touches" : [ {
+			"time" : 1352304511480,
+			"height" : 480,
+			"width" : 800,
+			"x" : 679.9218,
+			"y" : 226.5928
+		} ],
+		"reactionTimePostOffset" : 6261,
+		"startTime" : 1352304504120,
+		"totalReactionTime" : 7360
+	}, {
+		"audioOffset" : 1352304505219,
+		"audioFileId" : 2131099651,
+		"imageFilePath" : "",
+		"imageFileId" : 2130837592,
+		"label" : "Begin",
+		"touches" : [ {
+			"time" : 1352304511480,
+			"height" : 480,
+			"width" : 800,
+			"x" : 679.9218,
+			"y" : 226.5928
+		} ],
+		"reactionTimePostOffset" : 6261,
+		"startTime" : 1352304504120,
+		"totalReactionTime" : 7360
+	} ],
+	"displayedStimuli" : 4,
+	"startTime" : 1352304491241
+} ]
