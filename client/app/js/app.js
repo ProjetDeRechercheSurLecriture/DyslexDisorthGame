@@ -5,8 +5,11 @@
 angular.module('PhoPhloApp', ['searchFilters', 'phophloServices']).
 	config(['$routeProvider', function($routeProvider) {
 	$routeProvider.
-		when('/sessions', {templateUrl: 'partials/results_main.html',   controller: MainCtrl}).
+		when('/test', {templateUrl: 'partials/main_menu.html'}).
+		when('/register', {templateUrl: 'partials/register.html', controller: NewUserCtrl}).
+		when('/reports', {templateUrl: 'partials/reports.html'}).
+		when('/sessions', {templateUrl: 'partials/results_main.html'}).
 		when('/sessions/:sessionID', {templateUrl: 'partials/session_report.html', controller: SessionReportCtrl}).
 		when('/participants/:participantID', {templateUrl: 'partials/participant_report.html', controller: ParticipantReportCtrl}).
-		otherwise({redirectTo: '/sessions'});
+		otherwise({redirectTo: '/test'});
 }]);

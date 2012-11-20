@@ -22,7 +22,7 @@ function MainCtrl($scope, $resource, Participant, Session, AccessCouch) {
 		else {
 			$scope.searching = 'false';
 			$scope.currentResult = 0;
-	    	$scope.resultSize = 3;
+	    	$scope.resultSize = 2;
 	    	$scope.numberOfResultPages = function(){
 	    		return Math.ceil(resultsCount/$scope.resultSize);
 	    	};
