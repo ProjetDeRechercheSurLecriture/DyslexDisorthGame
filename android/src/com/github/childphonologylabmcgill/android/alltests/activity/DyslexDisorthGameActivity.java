@@ -1,13 +1,13 @@
 package com.github.childphonologylabmcgill.android.alltests.activity;
 
-import ca.ilanguage.oprime.activity.HTML5GameActivity;
+import ca.ilanguage.oprime.activity.HTML5ReplicatingActivity;
 
 import com.github.childphonologylabmcgill.android.alltests.content.DyslexDisorthGame;
 import com.github.childphonologylabmcgill.android.alltests.content.DyslexDysorthJavaScriptInterface;
 
 import android.os.Bundle;
 
-public class DyslexDisorthGameActivity extends HTML5GameActivity {
+public class DyslexDisorthGameActivity extends HTML5ReplicatingActivity {
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
