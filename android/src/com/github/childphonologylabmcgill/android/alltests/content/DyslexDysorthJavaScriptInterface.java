@@ -1,10 +1,8 @@
 package com.github.childphonologylabmcgill.android.alltests.content;
 
-import com.github.childphonologylabmcgill.android.sails.SAILSActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.sax.StartElementListener;
 import android.util.Log;
 import android.widget.Toast;
 import ca.ilanguage.oprime.activity.HTML5Activity;
