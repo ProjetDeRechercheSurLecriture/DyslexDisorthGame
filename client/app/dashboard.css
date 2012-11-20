@@ -46,12 +46,20 @@
 
 .forcewhite {
 	color: white;
-	a:link {color:#000000;}      /* unvisited link */
-	a:visited {color:#00FF00;}  /* visited link */
-	a:hover {color:#FF00FF;}  /* mouse over link */
-	a:active {color:#0000FF;}  /* selected link */
-
 }
+
+.control-label {
+	font-size: 1.08em;
+}
+
+.search_results {
+	color: white;
+}
+
+a:link {color:#CCFFFF;}      /* unvisited link */
+a:visited {color:#CCFFFF;}  /* visited link */
+a:hover {color:#CCFFFF;}  /* mouse over link */
+a:active {color:#CCFFFF;}  /* selected link */
 
 .newuser {
 	background-color: #0176A0;
@@ -114,8 +122,9 @@ h1,h2,h3,h4 {
 }
 
 .well {
-	color: #555;
+	color: #000000;
 	background-color: rgba(255, 255, 255, 0.3);
+	font-size: 1.08em;
 }
 
 html {

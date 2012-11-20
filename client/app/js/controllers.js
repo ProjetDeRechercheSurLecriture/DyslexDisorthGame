@@ -8,7 +8,6 @@ function MainCtrl($scope, $resource, Participant, Session, AccessCouch) {
 	
 	$scope.sessions = Session.query();  
 	$scope.childs = Participant.query();
-	$scope.orderProp = 'participantID';
 	$scope.searching = 'true';
 	$scope.editing = 'false';
 	
@@ -21,8 +20,9 @@ function MainCtrl($scope, $resource, Participant, Session, AccessCouch) {
 		}
 		else {
 			$scope.searching = 'false';
+			$scope.orderProp = 'lastName';
 			$scope.currentResult = 0;
-	    	$scope.resultSize = 2;
+	    	$scope.resultSize = 1;
 	    	$scope.numberOfResultPages = function(){
 	    		return Math.ceil(resultsCount/$scope.resultSize);
 	    	};

@@ -35,19 +35,21 @@
 					<button id="search_button" type="button" class="btn btn-primary btn-large" ng-click="displaySearchResults((childs.rows | filter: query).length)"><i class="icon-white icon-search"></i>Search</button>
 				</form>
 			</div>	
-			<div id="search_results" ng-show="searching == 'false'">
+			<div ng-show="searching == 'false'">
 				<div class="pagination-centered">
 					<button class="btn btn-primary btn-mini" ng-disabled="currentResult == 0" ng-click="currentResult=currentResult-1"><i class="icon-white icon-arrow-left"></i></button>
 					{{currentResult+1}}/{{numberOfResultPages()}}
 					<button class="btn btn-primary btn-mini" ng-disabled="currentResult >= (childs.rows | filter: query).length/resultSize - 1" ng-click="currentResult=currentResult+1"><i class="icon-white icon-arrow-right"></i></button>
 					<br /><br />
 				</div>
-				<ul class="" ng-repeat="child in childs.rows | filter: query | startFrom:currentResult*resultSize | limitTo:resultSize">
-					<li><span class="">Participant ID: <a href="#/participants/{{child.value.participantID}}">{{child.value.participantID}}</a></span></li>
-					<li><span class="">First Name: {{child.value.firstName}}</span></li>
-					<li><span class="">Last Name: {{child.value.lastName}}</span></li>
-					<li><span class="">Date of Birth (<i>dd/mm/yy</i>): {{child.value.DOB.day}}-{{child.value.DOB.month}}-{{child.value.DOB.year}}</span></li>
-					<li ng-repeat="session in sessions.rows | filter: child.value.participantID"><span class="">Session ID: <a href="#/sessions/{{session.value.sessionID}}">{{session.value.sessionID}}</a> ( {{session.value.testName}}; <img ng-src="img/headphones.png" height=10> : {{session.value.usedHeadphones | checkmark}} )</li>
+				<ul class="" ng-repeat="child in childs.rows | filter: query | orderBy: 'value.lastName' | startFrom:currentResult*resultSize | limitTo:resultSize">
+					<div class ="well">
+					<li><span>Participant ID: <a href="#/participants/{{child.value.participantID}}">{{child.value.participantID}}</a></span></li>
+					<li><span>First Name: {{child.value.firstName}}</span></li>
+					<li><span>Last Name: {{child.value.lastName}}</span></li>
+					<li><span>Date of Birth (<i>dd/mm/yy</i>): {{child.value.DOB.day}}-{{child.value.DOB.month}}-{{child.value.DOB.year}}</span></li>
+					<li ng-repeat="session in sessions.rows | filter: child.value.participantID"><span>Session ID: <a href="#/sessions/{{session.value.sessionID}}">{{session.value.sessionID}}</a> ( {{session.value.testName}}; <img ng-src="img/headphones.png" height=10> : {{session.value.usedHeadphones | checkmark}} )</li>
+					</div>
 				</ul>
 			</div>
 		</div>
