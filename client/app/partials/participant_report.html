@@ -13,7 +13,7 @@
 						to read.</p>
 				</div>
 			</div>
-
+			<div class="row-fluid">&nbsp;</div>
 			<div class="row-fluid">
 			
 			
@@ -137,10 +137,8 @@
 			<span class="tempwhite">Participant ID: {{child.value.participantID}}</span><br>
 			<span class="tempwhite">Name: {{child.value.firstName}} {{child.value.lastName}}</span><br>
 			<span class="tempwhite">Date of birth (<i>dd/mm/yy</i>): {{child.value.DOB.day}}-{{child.value.DOB.month}}-{{child.value.DOB.year}}</span><br>
-			<span class="tempwhite">Notes: {{child.value.notes}}</span><p>
-			<div class="well form-actions">   
+			<span class="tempwhite">Notes: {{child.value.notes}}</span><br /><br />   
             	<button id="edit_button" type="button" class="btn btn-info" ng-click="edit()">Edit</button>   
-          	</div>
 		</div>			
 				
 		<div class="well span5" ng-show="editing=='false'">
