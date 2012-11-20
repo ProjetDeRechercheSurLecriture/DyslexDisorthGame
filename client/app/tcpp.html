@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>TCPP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- Stylesheets -->
+<link rel="stylesheet" type="text/css" href="libs/dashboard.css">
+
+<!-- END Stylesheets -->
+</head>
+<body id="app" class="sailsbody">
+
+
+<!-- Start BootStrap test -->
+
+<!-- Use offset1 in each span to create left border -->
+<div class="row">
+        <div id="header_image" class="span9 offset1 pagination-centered">
+                Image cible<img src="image_stimuli/tcpp/guy.png" height=200>Skip>>
+        </div>
+</div>
+
+<div class="row">
+	<div class="span6 offset1">
+		<div id="image_stimuli_presentation_area" class="row">
+			<div id="image_stimuli_1" class="span3">
+				<img src="image_stimuli/tcpp/01_feu.png">
+			</div>
+			<div id="image_stimuli_2" class="span3">
+				<img src="image_stimuli/tcpp/03_but.png">
+			</div>
+		</div>
+		<div class="row">
+			<div id="image_stimuli_3" class="span3">
+				<img src="image_stimuli/tcpp/02_chat.png">
+			</div>
+			<div id="image_stimuli_4" class="span3">
+				<img src="image_stimuli/tcpp/04_scie.png">
+			</div>	
+		</div>
+	</div>
+	<div id="reinforcement_area" class="span3">
+		<img src="image_stimuli/tcpp/r05_catterpillers.png">
+	</div>
+</div>
+<div class="span1 buffer">
+	<p class="">
+		<span class="participant_glimpse"> </span> <span
+			class="experimenter_glimpse"> </span> {{description}} <br />
+			{{instructions}} <i class="icon-question-sign"></i><br />
+			<a href="index.html">Home</a>
+	</p>
+</div>
+				
+
+		<div id="results_dashboard" class="hidden well">
+			<h3 class="locale_results_title">Results:</h3>
+			TODO
+		</div>
+
+		<div id="audio_stimuli_presentation_area" class="hidden">
+			<audio id="audio_stimuli_player_source" src="{{audioFile}}">
+			</audio>
+		</div>
+  
+<!-- Modals are windows which pop over the active app to take focus -->
+<div id="new_participant" data-backdrop="static" class="hidden modal "></div>
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+</body>
+</html>

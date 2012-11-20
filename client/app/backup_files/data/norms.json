@@ -1,0 +1,31 @@
+var norms = {
+	"image" : "image1.png",
+	"audio" : "audio42.mp3",
+	"touches" : [ {
+		"x" : "300",
+		"y" : "400"
+	}, {
+		"x" : "440",
+		"y" : "330"
+	} ],
+	"normalTouches" : [ {
+		"x" : "680",
+		"y" : "576",
+		"r" : "78",
+		"meanReactionTime" : "3200",
+		"stdDevReactionTime" : "1000"
+	} ]
+}
+
+var item = {
+	"image" : "image1.png",
+	"audio" : "audio42.mp3",
+	"touches" : [ {
+		"x" : "300",
+		"y" : "400",
+		"reactionTimeStamp" : 12349857987
+	}, {
+		"x" : "440",
+		"y" : "330"
+	} ]
+}
