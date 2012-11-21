@@ -8,7 +8,7 @@
 						src="img/phophlo.png" height="128" /></a>
 				</div>
 				<div class=" span6">
-					<p class="lead tempwhite">PhoPhlo is a screening
+					<p class="lead">PhoPhlo is a screening
 						test for early indications of reading troubles, before kids learn
 						to read.</p>
 				</div>
@@ -24,7 +24,7 @@
   
 				<form class="form-horizontal">  
 				        <fieldset>
-        				<legend><h3>Child info</h3></legend>    
+        				<h3>Child info</h3>    
           				<div class="control-group">  
             				<label class="control-label" for="firstName">First Name:</label>  
             				<div class="controls">  
@@ -131,51 +131,50 @@
 		
 <!-- End edit form div -->		
 					
-		
-		<div class="well span6" ng-repeat="child in childs.rows | filter: filterProp" ng-show="editing == 'false'">
+		<div class="well span6 report" ng-repeat="child in childs.rows | filter: filterProp" ng-show="editing == 'false'">
 			<h3>Child info</h3>
-			<span class="tempwhite">Participant ID: {{child.value.participantID}}</span><br>
-			<span class="tempwhite">Name: {{child.value.firstName}} {{child.value.lastName}}</span><br>
-			<span class="tempwhite">Date of birth (<i>dd/mm/yy</i>): {{child.value.DOB.day}}-{{child.value.DOB.month}}-{{child.value.DOB.year}}</span><br>
-			<span class="tempwhite">Notes: {{child.value.notes}}</span><br /><br />   
+			<span>Participant ID: {{child.value.participantID}}</span><br>
+			<span>Name: {{child.value.firstName}} {{child.value.lastName}}</span><br>
+			<span>Date of birth (<i>dd/mm/yy</i>): {{child.value.DOB.day}}-{{child.value.DOB.month}}-{{child.value.DOB.year}}</span><br>
+			<span>Notes: {{child.value.notes}}</span><br /><br />   
             	<button id="edit_button" type="button" class="btn btn-info" ng-click="edit()">Edit</button>   
 		</div>			
 				
-		<div class="well span5" ng-show="editing=='false'">
-			<h3><span class="tempwhite">School/Clinic</span> info</h3>
+		<div class="well span5 report" ng-show="editing=='false'">
+			<h3><span>School/Clinic</span> info</h3>
 			<ul>
 				<li><address>
-						<strong><span class="tempwhite">St. Marie's Elementary School</span></strong><br>
-						<span class="tempwhite">1 Main St</span><br>
-						<span class="tempwhite">Montreal QC H3G 1M8</span><br> <abbr title="Phone">P:</abbr>
-						<span class="tempwhite"> (123) 456-7890</span>
+						<strong><span>St. Marie's Elementary School</span></strong><br>
+						<span>1 Main St</span><br>
+						<span>Montreal QC H3G 1M8</span><br> <abbr title="Phone">P:</abbr>
+						<span> (123) 456-7890</span>
 					</address>
-				<li><span class="tempwhite">Contact Person:</span><br />
+				<li><span>Contact Person:</span><br />
 				<address>
-					<strong><span class="tempwhite">Julie Smith</span></strong><br>
+					<strong><span>Julie Smith</span></strong><br>
 					<a href="mailto:#"><span>j_smith@stmaries.ca</span></a>
 				</address>
 				</li>
-				<li><span class="tempwhite">TesterId: 122293780</span></li>
-				<li><span class="tempwhite">Add new: another field here</span></li>
+				<li><span>TesterId: 122293780</span></li>
+				<li><span>Add new: another field here</span></li>
 			</ul>
 		</div>
-	</div>
+	</div>	
 			<h3>
 				Results <small>Oct 22, 2012</small>
 			</h3>
 			<div class="row-fluid">
 
-				<div id="report_text" class="well span12">
+				<div id="report_text" class="well span12 report">
 
 <!-- Generate session reports -->					
 
 					<ul class=" unstyled experiment_description">
 						<li ng-repeat="session in sessions.rows | filter: filterProp"><h3>{{session.value.testType}}</h3><br />
 							<img class="gravatar  pull-right"ng-src="img/ic_{{session.value.testName}}128.png" />
-							<span class="tempwhite">Session ID: <a href="#/sessions/{{session.value.sessionID}}">{{session.value.sessionID}}</span></a><br />
-							<span class="tempwhite">Description: {{session.value.descriptionEdit}}</span><br />
-							<span class="tempwhite">Discussion: {{session.value.discussionEdit}}</span>
+							<span>Session ID: <a href="#/sessions/{{session.value.sessionID}}">{{session.value.sessionID}}</span></a><br />
+							<span>Description: {{session.value.descriptionEdit}}</span><br />
+							<span>Discussion: {{session.value.discussionEdit}}</span>
 							<progress max="100" value="20"></progress><br /><br /></li>
 							
 					</ul>
@@ -187,7 +186,7 @@
 			<div class="credits">
 
 				<p>
-					<span class="tempwhite">PhoPhlo was designed by Dr. Rvachew<sup>a</sup>
+					<span>PhoPhlo was designed by Dr. Rvachew<sup>a</sup>
 						and Dr. Royle<sup>b</sup> and their research assistants. It was
 						validated in collaboration with Laval elementary schools,
 						illustrated by Edith Lebel<sup>c</sup> and gamified by iLanguage
