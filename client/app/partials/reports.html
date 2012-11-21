@@ -1,54 +1,56 @@
 <div class="row-fluid">
-	<div class="span4 offset1">	
-			<ul class="nav nav-list bs-docs-sidenav affix">
-				<li><a href="#">Participant Reports</a></li>
+	<div class="span3 offset1 report">
+		<button type="button" class="btn btn-primary btn-large" ng-click="showAddlReports = 'true'"><i class="icon-white icon-question-sign"></i> Additional reports</button><br />
+			<ul class="nav nav-list bs-docs-sidenav affix" ng-show="showAddlReports == 'true'">
+				<li><a class="backgroundlink" href="#">Participant Reports</a></li>
 				<li class="active"><a href="#templateA"><i class="icon-chevron-right"></i>Template A</a>
 					<ul class="nav nav-list bs-docs-sidenav affix">
-						<li><a href="#122"><i class="icon-chevron-right"></i>For organization's file</a></li>
-						<li><a href="#123"><i class="icon-chevron-right"></i>For the parents</a></li>
-						<li><a href="#124"><i class="icon-chevron-right"></i>For the child</a></li>
+						<li><a class="backgroundlink" href="#122"><i class="icon-chevron-right"></i>For organization's file</a></li>
+						<li><a class="backgroundlink" href="#123"><i class="icon-chevron-right"></i>For the parents</a></li>
+						<li><a class="backgroundlink" href="#124"><i class="icon-chevron-right"></i>For the child</a></li>
 					</ul>
 				</li>
-				<li><a href="#121"><i class="icon-chevron-right"></i> 121</a></li>
-				<li><a href="#122"><i class="icon-chevron-right"></i> 122</a></li>
-				<li><a href="#123"><i class="icon-chevron-right"></i> 123</a></li>
-				<li><a href="#124"><i class="icon-chevron-right"></i> 124</a></li>
-				<li><a href="#125"><i class="icon-chevron-right"></i> 125</a></li>
-				<li><a href="#126"><i class="icon-chevron-right"></i> 126</a></li>
-				<li><a href="#127"><i class="icon-chevron-right"></i> 127</a></li>
-				<li><a href="#">Reports across participants</a></li>
-				<li><a href="#"><i class="icon-chevron-right"></i>PhoPhlo </a></li>
-				<li><a href="#"><i class="icon-chevron-right"></i>SAILS </a></li>
-				<li><a href="#"><i class="icon-chevron-right"></i>TCPP </a></li>
-				<li><a href="#"><i class="icon-chevron-right"></i>TDFP </a></li>
-				<li><a href="#"><i class="icon-chevron-right"></i>TDFM </a></li>
+				<li><a class="backgroundlink" href="#121"><i class="icon-chevron-right"></i> 121</a></li>
+				<li><a class="backgroundlink" href="#122"><i class="icon-chevron-right"></i> 122</a></li>
+				<li><a class="backgroundlink" href="#123"><i class="icon-chevron-right"></i> 123</a></li>
+				<li><a class="backgroundlink" href="#124"><i class="icon-chevron-right"></i> 124</a></li>
+				<li><a class="backgroundlink" href="#125"><i class="icon-chevron-right"></i> 125</a></li>
+				<li><a class="backgroundlink" href="#126"><i class="icon-chevron-right"></i> 126</a></li>
+				<li><a class="backgroundlink" href="#127"><i class="icon-chevron-right"></i> 127</a></li>
+				<li><a class="backgroundlink" href="#">Reports across participants</a></li>
+				<li><a class="backgroundlink" href="#"><i class="icon-chevron-right"></i>PhoPhlo </a></li>
+				<li><a class="backgroundlink" href="#"><i class="icon-chevron-right"></i>SAILS </a></li>
+				<li><a class="backgroundlink" href="#"><i class="icon-chevron-right"></i>TCPP </a></li>
+				<li><a class="backgroundlink" href="#"><i class="icon-chevron-right"></i>TDFP </a></li>
+				<li><a class="backgroundlink" href="#"><i class="icon-chevron-right"></i>TDFM </a></li>
 		</ul>
 	</div>	
 
 <!-- SEARCH BOX; Uses AngularJS to filter children and fetch sessionID numbers based on child's participantID -->		
 		
-		<div class="span7">
+		<div class="span7 well">
 			<div id="search_box">
-				<form ng-submit="displaySearchResults((childs.rows | filter: query).length)" class="well form-search">
-					<legend>Enter child name, date of birth, or participant ID:</legend>
-					<input type="text" class="input-large search-query" ng-model="query">
+				<form ng-submit="displaySearchResults((childs.rows | filter: query).length)" class="form-search">
+					<legend>Enter child first name, last name, or participant ID:</legend>
+					<input id="search_field" type="text" class="input-large search-query" ng-model="query" on-focus="searching = 'true'; query = ''" on-blur="searching = 'false'" ng-enter="searching = 'false'">
 					<button id="search_button" type="button" class="btn btn-primary btn-large" ng-click="displaySearchResults((childs.rows | filter: query).length)"><i class="icon-white icon-search"></i>Search</button>
 				</form>
 			</div>	
-			<div id="search_results" ng-show="searching == 'false'">
+			<div class="report" ng-show="searching == 'false'">
 				<div class="pagination-centered">
 					<button class="btn btn-primary btn-mini" ng-disabled="currentResult == 0" ng-click="currentResult=currentResult-1"><i class="icon-white icon-arrow-left"></i></button>
 					{{currentResult+1}}/{{numberOfResultPages()}}
 					<button class="btn btn-primary btn-mini" ng-disabled="currentResult >= (childs.rows | filter: query).length/resultSize - 1" ng-click="currentResult=currentResult+1"><i class="icon-white icon-arrow-right"></i></button>
 					<br /><br />
 				</div>
-				<ul class="" ng-repeat="child in childs.rows | filter: query | startFrom:currentResult*resultSize | limitTo:resultSize">
-					<li><span class="">Participant ID: <a href="#/participants/{{child.value.participantID}}">{{child.value.participantID}}</a></span></li>
-					<li><span class="">First Name: {{child.value.firstName}}</span></li>
-					<li><span class="">Last Name: {{child.value.lastName}}</span></li>
-					<li><span class="">Date of Birth (<i>dd/mm/yy</i>): {{child.value.DOB.day}}-{{child.value.DOB.month}}-{{child.value.DOB.year}}</span></li>
-					<li ng-repeat="session in sessions.rows | filter: child.value.participantID"><span class="">Session ID: <a href="#/sessions/{{session.value.sessionID}}">{{session.value.sessionID}}</a> ( {{session.value.testName}}; <img ng-src="img/headphones.png" height=10> : {{session.value.usedHeadphones | checkmark}} )</li>
+				<div class="well">
+				<ul class="" ng-repeat="child in childs.rows | filter: query | orderBy: 'value.lastName' | startFrom:currentResult*resultSize | limitTo:resultSize">
+					
+					<span>Name: <a href="#/participants/{{child.value.participantID}}">{{child.value.firstName}} {{child.value.lastName}}</a></span><br />
+					<span>Date of Birth (<i>dd/mm/yy</i>): {{child.value.DOB.day}}-{{child.value.DOB.month}}-{{child.value.DOB.year}}</span></br />
+					<span ng-repeat="session in sessions.rows | filter: child.value.participantID">Test: <a href="#/sessions/{{session.value.sessionID}}">{{session.value.testName}}</a><br /></span>
 				</ul>
+				</div>
 			</div>
 		</div>
 </div>
@@ -84,4 +86,3 @@
 
 	<script type="text/javascript" src="./require.js"></script>
 	<script type="text/javascript" src="./main_dashboard.js"></script>
-

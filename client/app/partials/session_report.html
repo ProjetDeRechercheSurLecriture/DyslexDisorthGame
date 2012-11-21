@@ -1,6 +1,5 @@
 <!-- NOTE: Route controller SessionReportCtrol limits value of filterProp to unique sessionID from $routeParams throughout-->
-
-		<div class="well span9">
+		<div class="well span12">
 
 			<div class="row-fluid">
 				<div class=" span6">
@@ -14,7 +13,7 @@
 				</div>
 			</div>
 
-			<div class="row-fluid">
+			<div class="row-fluid report">
 				<div class="well span6">
 					<h3>Child info</h3>
 					<p>
@@ -53,27 +52,17 @@
 			<h3>
 				Detailed report for session {{filterProp}}: <small>Oct 22, 2012</small>
 			</h3>
-			<div class ="row-fluid" ng-repeat="session in sessions.rows | filter: filterProp" ng-show="editing == 'true'">
+			<div class ="well row-fluid report" ng-repeat="session in sessions.rows | filter: filterProp" ng-show="editing == 'true'">
 				<form class="form-horizontal">  
 				        <fieldset>
 				        <legend><h3>Perception</h3></legend>   
           				<div class="control-group">  
             				<label class="control-label">Test:</label>  
             				<div class="controls">  
-              				<textarea class="input-xlarge" ng-model="session.value.title" rows="2"></textarea> 
+              				{{session.value.title}} 
             				</div>  
           				</div>
-          				
-          				<div class="control-group">
-          					<label class="control-label">Heaphones:</label>
-          					<div class="controls">
-          					<input type = "radio" value = '1' ng-model = "session.value.usedHeadphones">Yes
-          					<input type = "radio" value = '0' ng-model = "session.value.usedHeadphones">No
-          					</div>
-          				</div>
-
-
- <!--  MAKE TOUCHES EDITABLE? -->         				           				
+     				           				
 						<div class="control-group">  
             				<label class="control-label">Touches:</label>
 							<div class="controls">
@@ -95,6 +84,13 @@
             				</div>  
           				</div>
           				
+          				<div class="control-group">
+          					<label class="control-label" for="new_field"></label>  
+            				<div class="controls">    
+            				<button class="btn btn-inverse" ng-click="">Add new field</button>
+            				</div>
+          				</div>  
+          				
            				<div class="well form-actions">   
             				<button class="btn" ng-click="cancel()"">Cancel</button>
             				<button class="btn btn-primary" ng-click="saveRecord(session.value)">Save</button>   
@@ -105,7 +101,7 @@
 			</div>
 			
 			
-			<div class="row-fluid">
+			<div class="row-fluid report">
 
 
 				<div id="report_text" class="well span12" ng-show="editing == 'false'">
@@ -114,15 +110,11 @@
 						<li><img class="gravatar  pull-right" ng-src="img/ic_{{session.value.testName}}128.png" />
 							Session ID: <span class="">{{session.value.sessionID}}</span><br />
 							Test: <span class="">{{session.value.title}}</span><br />
-							Headphones: <span class="">{{session.value.usedHeadphones | checkmark}}</span><br />
 							Touches: <ul ng-repeat="stimulus in session.value.stimuli"><li ng-repeat="touch in stimulus.touches">[x: {{touch.x}} y: {{touch.y}}]<br />Total reaction time for this stimulus: {{stimulus.totalReactionTime}} </li></ul><br />
 							Description: <span class="">{{session.value.descriptionEdit}}</span><br />
-							Discussion: <span class="">{{session.value.discussionEdit}}</span> <progress max="100" value="70"></progress></li>
-							
-				</div>			
-				<div>			
+							Discussion: <span class="">{{session.value.discussionEdit}}</span> <progress max="100" value="70"></progress></li><br />			
 							<div id="edit" ng-show="editing == 'false'">
-								<button id="edit_button" type="button" class="btn btn-info" ng-click="edit()">Edit</button>
+								<button id="edit_button" type="button" class="btn btn-primary" ng-click="edit()">Edit</button>
 							</div>
 					</ul>
 
@@ -148,4 +140,3 @@
 				</p>
 			</div>
 		</div>
-
