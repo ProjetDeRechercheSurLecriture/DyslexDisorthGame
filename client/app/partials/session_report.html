@@ -1,5 +1,4 @@
 <!-- NOTE: Route controller SessionReportCtrol limits value of filterProp to unique sessionID from $routeParams throughout-->
-
 		<div class="well span12">
 
 			<div class="row-fluid">
@@ -60,16 +59,8 @@
           				<div class="control-group">  
             				<label class="control-label">Test:</label>  
             				<div class="controls">  
-              				<textarea class="input-xlarge" ng-model="session.value.title" rows="2"></textarea> 
+              				{{session.value.title}} 
             				</div>  
-          				</div>
-          				
-          				<div class="control-group">
-          					<label class="control-label">Heaphones:</label>
-          					<div class="controls">
-          					<input type = "radio" value = '1' ng-model = "session.value.usedHeadphones">Yes
-          					<input type = "radio" value = '0' ng-model = "session.value.usedHeadphones">No
-          					</div>
           				</div>
      				           				
 						<div class="control-group">  
@@ -93,6 +84,13 @@
             				</div>  
           				</div>
           				
+          				<div class="control-group">
+          					<label class="control-label" for="new_field"></label>  
+            				<div class="controls">    
+            				<button class="btn btn-inverse" ng-click="">Add new field</button>
+            				</div>
+          				</div>  
+          				
            				<div class="well form-actions">   
             				<button class="btn" ng-click="cancel()"">Cancel</button>
             				<button class="btn btn-primary" ng-click="saveRecord(session.value)">Save</button>   
@@ -112,7 +110,6 @@
 						<li><img class="gravatar  pull-right" ng-src="img/ic_{{session.value.testName}}128.png" />
 							Session ID: <span class="">{{session.value.sessionID}}</span><br />
 							Test: <span class="">{{session.value.title}}</span><br />
-							Headphones: <span class="">{{session.value.usedHeadphones | checkmark}}</span><br />
 							Touches: <ul ng-repeat="stimulus in session.value.stimuli"><li ng-repeat="touch in stimulus.touches">[x: {{touch.x}} y: {{touch.y}}]<br />Total reaction time for this stimulus: {{stimulus.totalReactionTime}} </li></ul><br />
 							Description: <span class="">{{session.value.descriptionEdit}}</span><br />
 							Discussion: <span class="">{{session.value.discussionEdit}}</span> <progress max="100" value="70"></progress></li><br />			
@@ -143,4 +140,3 @@
 				</p>
 			</div>
 		</div>
-
