@@ -25,28 +25,18 @@
         android:label="@string/app_name" >
         <activity
             android:name=".activity.DyslexDisorthGameActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+       
         <activity
-            android:name="ca.ilanguage.oprime.activity.HTML5GameActivity"
-            android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="ca.ilanguage.oprime.intent.action.START_HTML5_SUB_EXPERIMENT" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-         </activity>
-         <activity
             android:name="com.github.childphonologylabmcgill.android.sails.SAILSActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="com.github.childphonologylabmcgill.android.START_SAILS_SUB_EXPERIMENT" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
         </activity>
     </application>
 
