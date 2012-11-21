@@ -7,6 +7,8 @@ angular.module('PhoPhloApp', ['searchFilters', 'phophloServices']).
 	$routeProvider.
 		when('/test', {templateUrl: 'partials/main_menu.html'}).
 		when('/register', {templateUrl: 'partials/register.html', controller: NewUserCtrl}).
+		when('/test/sails', {templateUrl: 'partials/sails.html', controller: SAILSCtrl}).
+		when('/test/sails/:participantID/:sessionID', {templateUrl: 'partials/sails.html', controller: SAILSCtrl}).
 		when('/reports', {templateUrl: 'partials/reports.html'}).
 		when('/sessions', {templateUrl: 'partials/results_main.html'}).
 		when('/sessions/:sessionID', {templateUrl: 'partials/session_report.html', controller: SessionReportCtrl}).
@@ -44,4 +46,4 @@ directive('ngEnter', function() {
             
         });
     };
-});;
+});

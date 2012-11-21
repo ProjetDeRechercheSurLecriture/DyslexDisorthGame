@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="PhoPhloApp" ng-csp ng-controller="MainCtrl">
+<html lang="en" ng-app="PhoPhloApp" ng-csp>
 <head>
   <meta charset="utf-8">
   <title>PhoPhlo</title>
@@ -13,10 +13,10 @@
  <script src="js/services.js"></script>
  
 </head>
-<body id="app" class="phophlobody">
-	<div id="navbar-example" class="navbar navbar-static">
+<body id="app" class="phophlobody" ng-controller="MainCtrl">
+	<div id="navbar-example" class="navbar navbar-static" ng-show="testing == 'false'">
 		<div class="navbar-inner">
-			<div class="container" style="width: auto;">
+			<div class="container">
 				<a class="brand" href="#">PhoPhlo</a>
 				<ul class="nav" role="navigation">
 					<li class="dropdown"><a id="drop1" href="#" role="button"
@@ -38,14 +38,10 @@
 
 <ng-view></ng-view>
 
-
-	<audio id="test-audio-player-source" src="audio_stimuli/gammatone.wav">
-	</audio>
-
-
 	<!-- Le javascript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
+
 
 </body>
 </html>
