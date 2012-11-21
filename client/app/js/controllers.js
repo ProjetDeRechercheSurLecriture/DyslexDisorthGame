@@ -10,6 +10,7 @@ function MainCtrl($scope, $resource, Participant, Session, AccessCouch) {
 	$scope.childs = Participant.query();
 	$scope.searching = 'true';
 	$scope.editing = 'false';
+	$scope.showAddlReports = 'false';
 	
 //Test to see if text in search box returns any results and hide/display divs accordingly	
 	

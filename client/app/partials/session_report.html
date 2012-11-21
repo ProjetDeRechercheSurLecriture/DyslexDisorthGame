@@ -14,7 +14,7 @@
 				</div>
 			</div>
 
-			<div class="row-fluid">
+			<div class="row-fluid report">
 				<div class="well span6">
 					<h3>Child info</h3>
 					<p>
@@ -53,7 +53,7 @@
 			<h3>
 				Detailed report for session {{filterProp}}: <small>Oct 22, 2012</small>
 			</h3>
-			<div class ="well row-fluid" ng-repeat="session in sessions.rows | filter: filterProp" ng-show="editing == 'true'">
+			<div class ="well row-fluid report" ng-repeat="session in sessions.rows | filter: filterProp" ng-show="editing == 'true'">
 				<form class="form-horizontal">  
 				        <fieldset>
 				        <legend><h3>Perception</h3></legend>   
@@ -103,7 +103,7 @@
 			</div>
 			
 			
-			<div class="row-fluid">
+			<div class="row-fluid report">
 
 
 				<div id="report_text" class="well span12" ng-show="editing == 'false'">
@@ -115,12 +115,9 @@
 							Headphones: <span class="">{{session.value.usedHeadphones | checkmark}}</span><br />
 							Touches: <ul ng-repeat="stimulus in session.value.stimuli"><li ng-repeat="touch in stimulus.touches">[x: {{touch.x}} y: {{touch.y}}]<br />Total reaction time for this stimulus: {{stimulus.totalReactionTime}} </li></ul><br />
 							Description: <span class="">{{session.value.descriptionEdit}}</span><br />
-							Discussion: <span class="">{{session.value.discussionEdit}}</span> <progress max="100" value="70"></progress></li>
-							
-				</div>			
-				<div>			
+							Discussion: <span class="">{{session.value.discussionEdit}}</span> <progress max="100" value="70"></progress></li><br />			
 							<div id="edit" ng-show="editing == 'false'">
-								<button id="edit_button" type="button" class="btn btn-info" ng-click="edit()">Edit</button>
+								<button id="edit_button" type="button" class="btn btn-primary" ng-click="edit()">Edit</button>
 							</div>
 					</ul>
 
