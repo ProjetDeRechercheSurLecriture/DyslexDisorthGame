@@ -24,7 +24,7 @@ function MainCtrl($rootScope, $scope, $resource, Participants, Sessions,
 
   // Test to see if text in search box returns any results and hide/display divs
   // accordingly
-
+  
   $scope.displaySearchResults = function(resultsCount) {
     if (resultsCount == 0) {
       $scope.searching = 'true';
@@ -40,6 +40,15 @@ function MainCtrl($rootScope, $scope, $resource, Participants, Sessions,
     }
   };
 
+  $scope.toggleShowReportValue = function() {
+	if ($scope.showAddlReports == 'true') {
+		$scope.showAddlReports = 'false';
+	}
+	else {
+		$scope.showAddlReports = 'true';
+	}
+  };
+  
   // Hide Edit/Show cancel/save buttons; make template content editable via
   // ng-show
 
