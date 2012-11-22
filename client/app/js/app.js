@@ -9,6 +9,12 @@ angular.module('PhoPhloApp', ['searchFilters', 'phophloServices']).
 		when('/register', {templateUrl: 'partials/register.html', controller: NewUserCtrl}).
 		when('/test/sails', {templateUrl: 'partials/sails.html', controller: SAILSCtrl}).
 		when('/test/sails/congratulations', {templateUrl: 'partials/sails_select_user.html', controller: SAILSCtrl}).
+		when('/test/tcpp', {templateUrl: 'partials/tcpp.html', controller: TCPPCtrl}).
+		when('/test/tcpp/congratulations', {templateUrl: 'partials/tcpp_select_user.html', controller: TCPPCtrl}).
+		when('/test/tdfm', {templateUrl: 'partials/tdfm.html', controller: TDFMCtrl}).
+		when('/test/tdfm/congratulations', {templateUrl: 'partials/tdfm_select_user.html', controller: TDFMCtrl}).
+		when('/test/tdfp', {templateUrl: 'partials/tdfp.html', controller: TDFPCtrl}).
+		when('/test/tdfp/congratulations', {templateUrl: 'partials/tdfp_select_user.html', controller: TDFPCtrl}).
 		when('/reports/organization/:participantID', {templateUrl: 'partials/organization_report.html', controller: ReportsCtrl}).
 		when('/reports/parents/:participantID', {templateUrl: 'partials/parents_report.html', controller: ReportsCtrl}).
 		when('/reports/child/:participantID', {templateUrl: 'partials/child_report.html', controller: ReportsCtrl}).
