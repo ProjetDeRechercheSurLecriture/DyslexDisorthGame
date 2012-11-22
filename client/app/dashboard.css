@@ -37,21 +37,28 @@
 	background-image: -ms-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
 	background-image: radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#029CC9', endColorstr='#005077', GradientType=0 );
-	a:link {color:#000000;}      /* unvisited link */
-	a:visited {color:#00FF00;}  /* visited link */
-	a:hover {color:#FF00FF;}  /* mouse over link */
-	a:active {color:#0000FF;}  /* selected link */
-	color: white;
 }
 
-.forcewhite {
-	color: white;
-	a:link {color:#000000;}      /* unvisited link */
-	a:visited {color:#00FF00;}  /* visited link */
-	a:hover {color:#FF00FF;}  /* mouse over link */
-	a:active {color:#0000FF;}  /* selected link */
-
+.control-label {
+	font-family: 'Chalkboard';
+	font-size: 1.08em;
 }
+
+legend {
+	font-family: 'Chalkboard';
+	font-size: 1.4em;
+}
+
+a:link {color:#000099;}      /* unvisited link */
+a:visited {color:#000099;}  /* visited link */
+a:hover {color:#000099;}  /* mouse over link */
+a:active {color:#000099;}  /* selected link */
+
+a:link.backgroundlink { color: #ffffff; text-decoration: none; }
+a:visited.backgroundlink { color: #ffffff; text-decoration: none; }
+a:hover.backgroundlink { color: #ffffff; text-decoration: none; }
+a:active.backgroundlink { color: #ffffff; text-decoration: none; }
+
 
 .newuser {
 	background-color: #0176A0;
@@ -70,6 +77,16 @@
 		 
 		   
 		        0 );
+}
+
+.test {
+	position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
 }
 
 .testbody {
@@ -113,9 +130,19 @@ h1,h2,h3,h4 {
 	font-family: 'Finger Paint', cursive;
 }
 
+.lead {
+	font-family: 'Finger Paint', cursive;
+}
+
+.report {
+	font-family: 'Verdana';
+	font-size: 1.08em;
+}
+
 .well {
-	color: #555;
+	color: #000000;
 	background-color: rgba(255, 255, 255, 0.3);
+	font-size: 1.08em;
 }
 
 html {
