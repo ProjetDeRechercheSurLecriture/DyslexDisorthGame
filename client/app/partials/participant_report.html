@@ -28,13 +28,13 @@
           				<div class="control-group">  
             				<label class="control-label" for="firstName">First Name:</label>  
             				<div class="controls">  
-              				<input type="text" class="input-large" ng-model="child.value.firstName" required><i class="icon-white icon-star">Required</i>  
+              				<input type="text" class="input-large" ng-model="child.value.firstName" required><i class="icon-white icon-star"></i>  
             				</div>  
           				</div>    
           				<div class="control-group">  
             				<label class="control-label" for="child.value.lastName">Last Name:</label>  
             				<div class="controls">  
-              				<input type="text" class="input-large" ng-model="child.value.lastName" required><i class="icon-white icon-star">Required</i>  
+              				<input type="text" class="input-large" ng-model="child.value.lastName" required><i class="icon-white icon-star"></i>  
             				</div>  
           				</div>
           				<div class="control-group">  
@@ -120,9 +120,15 @@
             				<div class="controls">  
               				<textarea class="input-xlarge" ng-model="child.value.notes" rows="3"></textarea>  
             				</div>  
+          				</div>
+          				<div class="control-group">
+          					<label class="control-label" for="new_field"></label>  
+            				<div class="controls">    
+            				<button class="btn btn-inverse" ng-click="">Add new field</button>
+            				</div>
           				</div>  
           				<div class="well form-actions">   
-            				<button class="btn" ng-click="cancel()"">Cancel</button>
+            				<button class="btn" ng-click="cancel()">Cancel</button>
             				<button class="btn btn-primary" ng-click="saveRecord(child.value)">Save</button>   
           				</div>  
         				</fieldset>  
@@ -179,6 +185,10 @@
 							
 					</ul>
 
+				<hr>
+					<div class="pagination-centered">
+						<button type="button" class="btn btn-inverse" ng-click="loadReport('organization', filterProp)">Organization Report</button> <button type="button" class="btn btn-inverse" ng-click="loadReport('parents', filterProp)">Parents Report</button> <button type="button" class="btn btn-inverse" ng-click="loadReport('child', filterProp)">Child Report</button> 
+					</div>
 				</div>
 
 			</div>

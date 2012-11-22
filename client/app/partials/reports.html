@@ -28,7 +28,7 @@
 
 <!-- SEARCH BOX; Uses AngularJS to filter children and fetch sessionID numbers based on child's participantID -->		
 		
-		<div class="span8 well">
+		<div class="span7 well">
 			<div id="search_box">
 				<form ng-submit="displaySearchResults((childs.rows | filter: query).length)" class="form-search">
 					<legend>Enter child first name, last name, or participant ID:</legend>
@@ -46,11 +46,9 @@
 				<div class="well">
 				<ul class="" ng-repeat="child in childs.rows | filter: query | orderBy: 'value.lastName' | startFrom:currentResult*resultSize | limitTo:resultSize">
 					
-					<span>Participant ID: <a href="#/participants/{{child.value.participantID}}">{{child.value.participantID}}</a></span><br />
-					<span>First Name: {{child.value.firstName}}</span><br />
-					<span>Last Name: {{child.value.lastName}}</span><br />
+					<span>Name: <a href="#/participants/{{child.value.participantID}}">{{child.value.firstName}} {{child.value.lastName}}</a></span><br />
 					<span>Date of Birth (<i>dd/mm/yy</i>): {{child.value.DOB.day}}-{{child.value.DOB.month}}-{{child.value.DOB.year}}</span></br />
-					<span ng-repeat="session in sessions.rows | filter: child.value.participantID">Session ID: <a href="#/sessions/{{session.value.sessionID}}">{{session.value.sessionID}}</a> ( {{session.value.testName}}; <img ng-src="img/headphones.png" height=10> : {{session.value.usedHeadphones | checkmark}} )<br /></span>
+					<span ng-repeat="session in sessions.rows | filter: child.value.participantID">Test: <a href="#/sessions/{{session.value.sessionID}}">{{session.value.testName}}</a><br /></span>
 				</ul>
 				</div>
 			</div>
@@ -88,4 +86,3 @@
 
 	<script type="text/javascript" src="./require.js"></script>
 	<script type="text/javascript" src="./main_dashboard.js"></script>
-

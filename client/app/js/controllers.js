@@ -34,7 +34,7 @@ function MainCtrl($rootScope, $scope, $resource, Participants, Sessions, AccessC
 			$scope.searching = 'false';
 			$scope.orderProp = 'lastName';
 			$scope.currentResult = 0;
-	    	$scope.resultSize = 1;
+	    	$scope.resultSize = 5;
 	    	$scope.numberOfResultPages = function(){
 	    		return Math.ceil(resultsCount/$scope.resultSize);
 	    	};
@@ -65,6 +65,7 @@ function MainCtrl($rootScope, $scope, $resource, Participants, Sessions, AccessC
 		});
 		$scope.editing = 'false';
 	};
+	
 };
 
 function SessionReportCtrl($scope, $routeParams) {
@@ -80,7 +81,11 @@ function ParticipantReportCtrl($scope, $routeParams) {
 //Set template filter value to value of participantID in routeParams	
 	
 	$scope.filterProp = $routeParams.participantID;
-
+	
+	$scope.loadReport = function (pathParams, participantID) {
+		window.location='#/reports/' + pathParams + '/' + participantID;
+	}
+	
 };
 
 function SAILSCtrl($rootScope, $scope, $routeParams) {
@@ -123,9 +128,13 @@ function SAILSCtrl($rootScope, $scope, $routeParams) {
 		  
 		  if($scope.currentStimulus >= sailsAudio.length){
 		    window.alert("Good Job!");
-		    window.location.replace("index.html");
+		    window.location.replace("#/test/sails/congratulations");
 		  }
 
+	};
+	
+	$scope.noSave = function () {
+		window.location.replace('#/test');
 	};
 	
 };
@@ -158,6 +167,10 @@ function NewUserCtrl($scope, Participants, AccessCouch) {
 
 function SaveYourScoreCtrl($scope, ParticipantsAutocomplete) {
 	
+};
+
+function ReportsCtrl($scope, $routeParams) {
+	$scope.filterProp = $routeParams.participantID;
 };
 
 //End controllers
