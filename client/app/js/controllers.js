@@ -139,6 +139,139 @@ function SAILSCtrl($rootScope, $scope, $routeParams) {
 	
 };
 
+function TCPPCtrl($rootScope, $scope, $routeParams) {
+	var tcppAudio = [ "1.mp3", "3.mp3", "8.mp3", "10.mp3", "4.mp3", "9.mp3",
+	                  "11.mp3", "5.mp3", "12.mp3", "6.mp3",
+	                  "2.mp3", "7.mp3" ];
+	
+	$rootScope.testing = 'true';
+	$scope.experimentType = "tcpp";
+	$scope.currentStimulus = 0;
+	
+	$scope.confirmChoice = function() {
+		var r = confirm("Are you sure?");
+	    if (r == true) {
+	      $scope.nextStimulus();
+	    } else {
+	      // do nothing
+	    }
+	};
+	$scope.nextStimulus = function() {
+		document.getElementById("audio_instructions_player_source").pause();
+		  $scope.audioStimulus = "audio_stimuli/"+ $scope.experimentType+"/"+tcppAudio[$scope.currentStimulus];
+		  document.getElementById("audio_stimuli_player_source").addEventListener('canplaythrough', function () {
+				  document.getElementById("audio_stimuli_player_source").play()
+		  });
+
+		  $scope.currentStimulus++;
+		  var imagenumber= $scope.currentStimulus;
+		    if(imagenumber < 10 ){
+		      imagenumber = "0"+imagenumber;
+		    }
+		    imagenumber = "/r"+imagenumber+"_caterpillars.png";
+		    document.getElementById("reinforcement_image").src = "image_stimuli/"+$scope.experimentType+imagenumber;
+		  
+		  if($scope.currentStimulus >= tcppAudio.length){
+		    window.alert("Good Job!");
+		    window.location.replace("#/test/tcpp/congratulations");
+		  }
+
+	};
+	
+	$scope.noSave = function () {
+		window.location.replace('#/test');
+	};
+	
+};
+
+function TDFMCtrl($rootScope, $scope, $routeParams) {
+//	var tdfmAudio = [  ];
+	
+	$rootScope.testing = 'true';
+	$scope.experimentType = "tdfm";
+	$scope.currentStimulus = 0;
+	
+	$scope.confirmChoice = function() {
+		var r = confirm("Are you sure?");
+	    if (r == true) {
+	      $scope.nextStimulus();
+	    } else {
+	      // do nothing
+	    }
+	};
+	$scope.nextStimulus = function() {
+		document.getElementById("audio_instructions_player_source").pause();
+//		  $scope.audioStimulus = "audio_stimuli/"+ $scope.experimentType+"/"+tcppAudio[$scope.currentStimulus];
+//		  document.getElementById("audio_stimuli_player_source").addEventListener('canplaythrough', function () {
+//				  document.getElementById("audio_stimuli_player_source").play()
+//		  });
+//
+//		  $scope.currentStimulus++;
+////		  var imagenumber= $scope.currentStimulus;
+////		    if(imagenumber < 10 ){
+////		      imagenumber = "0"+imagenumber;
+////		    }
+//		    imagenumber = "/r"+imagenumber+"_caterpillars.png";
+//		    document.getElementById("reinforcement_image").src = "image_stimuli/"+$scope.experimentType+imagenumber;
+//		  
+//		  if($scope.currentStimulus >= tdfmAudio.length){
+//		    window.alert("Good Job!");
+//		    window.location.replace("#/test/tdfm/congratulations");
+//		  }
+
+	};
+	
+	$scope.noSave = function () {
+		window.location.replace('#/test');
+	};
+	
+};
+
+function TDFPCtrl($rootScope, $scope, $routeParams) {
+//	var tdfpAudio = [  ];
+	
+	$rootScope.testing = 'true';
+	$scope.experimentType = "tdfp";
+	$scope.currentStimulus = 0;
+	
+	$scope.confirmChoice = function() {
+		var r = confirm("Are you sure?");
+	    if (r == true) {
+	      $scope.nextStimulus();
+	    } else {
+	      // do nothing
+	    }
+	};
+	$scope.nextStimulus = function() {
+		document.getElementById("audio_instructions_player_source").pause();
+//		  $scope.audioStimulus = "audio_stimuli/"+ $scope.experimentType+"/"+tdfpAudio[$scope.currentStimulus];
+//		  document.getElementById("audio_stimuli_player_source").addEventListener('canplaythrough', function () {
+//				  document.getElementById("audio_stimuli_player_source").play()
+//		  });
+
+		  $scope.currentStimulus++;
+		  var imagenumber= $scope.currentStimulus;
+		    if(imagenumber < 10 ){
+		      imagenumber = "0"+imagenumber;
+		    }
+		    imagenumber = "/r"+imagenumber+"_daisy.png";
+		    document.getElementById("reinforcement_image").src = "image_stimuli/"+$scope.experimentType+imagenumber;
+		  
+//		if($scope.currentStimulus >= tcppAudio.length){
+		if($scope.currentStimulus >= 12){
+		    window.alert("Good Job!");
+		    window.location.replace("#/test/tdfp/congratulations");
+		  }
+
+	};
+	
+	$scope.noSave = function () {
+		window.location.replace('#/test');
+	};
+	
+};
+
+
 function NewUserCtrl($scope, Participants, AccessCouch) {
 	
 	$scope.cancel = function() {
