@@ -93,16 +93,25 @@ function ParticipantReportCtrl($scope, $routeParams) {
 };
 
 function SAILSCtrl($rootScope, $scope, $routeParams) {
-  var sailsAudio = [ "GR02A_Gris_MOD.mp3", "GR19A_Gris_MOD.mp3",
-      "GR27D_Gris_MOD.mp3", "GR04A_Gris_MOD.mp3", "GR20A_Gris_MOD.mp3",
-      "GR28A_Gris_MOD.mp3", "GR05A_Gris_MOD.mp3", "GR20B_Gris_MOD.mp3",
-      "NI29A_Gris_MOD.mp3", "GR06A_Gris_MOD.mp3", "GR20C_Gris_MOD.mp3",
-      "NI29B_Gris_MOD.mp3", "GR10B_Gris_MOD.mp3", "GR21A_Gris_MOD.mp3",
-      "NI30A_Gris_MOD.mp3", "GR12A_Gris_MOD.mp3", "GR21B_Gris_MOD.mp3",
-      "NI32A_Gris_MOD.mp3", "GR16B_Gris_MOD.mp3", "GR21C_Gris_MOD.mp3",
-      "NI33A_Gris_MOD.mp3", "GR17A_Gris_MOD.mp3", "GR27A_Gris_MOD.mp3",
-      "GR18A_Gris_MOD.mp3", "GR27C_Gris_MOD.mp3" ];
+  var mode = "practice";
+  var sailsPractice = [ "GR02A_Gris_MOD.mp3", "GR02A_Gris_MOD.mp3",
+      "GR02A_Gris_MOD.mp3", "GR02A_Gris_MOD.mp3", "GR02A_Gris_MOD.mp3",
+      "NI29A_Gris_MOD.mp3", "NI29A_Gris_MOD.mp3", "NI29A_Gris_MOD.mp3",
+      "NI29A_Gris_MOD.mp3", "NI29A_Gris_MOD.mp3" ];
+  //TODO shuffle the sailsPractice
 
+  var sailsAudio = [ "GR16B_Gris_MOD.mp3", "GR20B_Gris_MOD.mp3",
+      "GR21A_Gris_MOD.mp3", "GR04A_Gris_MOD.mp3", "GR28A_Gris_MOD.mp3",
+      "GR18A_Gris_MOD.mp3", "GR20C_Gris_MOD.mp3", "GR21C_Gris_MOD.mp3",
+      "GR27A_Gris_MOD.mp3", "GR27C_Gris_MOD.mp3" ];
+
+  var sailsExtraAudio = [ "GR05A_Gris_MOD.mp3", "GR06A_Gris_MOD.mp3",
+      "GR10B_Gris_MOD.mp3", "GR12A_Gris_MOD.mp3", "GR17A_Gris_MOD.mp3",
+      "GR19A_Gris_MOD.mp3", "GR20A_Gris_MOD.mp3", "GR21B_Gris_MOD.mp3",
+      "GR27D_Gris_MOD.mp3", "NI29A_Gris_MOD.mp3", "NI29B_Gris_MOD.mp3",
+      "NI30A_Gris_MOD.mp3", "NI32A_Gris_MOD.mp3", "NI33A_Gris_MOD.mp3" ];
+  
+  //TODO add stimuli images because they need to switch orders randomly
   $rootScope.testing = 'true';
   $scope.experimentType = "sails";
   $scope.currentStimulus = 0;
@@ -116,15 +125,41 @@ function SAILSCtrl($rootScope, $scope, $routeParams) {
     }
   };
   $scope.nextStimulus = function() {
-    document.getElementById("audio_instructions_player_source").pause();
-    $scope.audioStimulus = "audio_stimuli/" + $scope.experimentType + "/"
-        + sailsAudio[$scope.currentStimulus];
-    document.getElementById("audio_stimuli_player_source").addEventListener(
-        'canplaythrough', function() {
-          document.getElementById("audio_stimuli_player_source").play()
-        });
+    var audio = sailsPractice;
+    if (mode == 'test') {
+      audio = sailsAudio;
+    }
+    try {
+      document.getElementById("audio_instructions_player_source").pause();
+      document.getElementById("audio_stimuli_player_source").pause();
+      document.getElementById("audio_stimuli_player_source").currentTime = 0;
+    } catch (e) {
+      console.log("there was probably no audio yet");
+    }
+
+    // only add a listener if its not the same audio, otherwise just play it
+    if (!$scope.audioStimulus || $scope.audioStimulus.indexOf("audio_stimuli/" + $scope.experimentType
+        + "/" + audio[$scope.currentStimulus]) == -1) {
+      document.getElementById("audio_stimuli_player_source").addEventListener(
+          'canplaythrough', function() {
+            document.getElementById("audio_stimuli_player_source").play();
+          });
+      $scope.audioStimulus = "audio_stimuli/" + $scope.experimentType + "/"
+          + audio[$scope.currentStimulus];
+    } else {
+      document.getElementById("audio_stimuli_player_source").play();
+    }
 
     $scope.currentStimulus++;
+    if ($scope.currentStimulus == 9 && mode == "practice") {
+      mode = "test";
+      $scope.currentStimulus = 0;
+      alert("Ready for the real thing?");
+      return;
+    }
+    if (mode == "practice") {
+      return;
+    }
     var imagenumber = $scope.currentStimulus;
     if (imagenumber < 10) {
       imagenumber = "0" + imagenumber;
@@ -342,8 +377,9 @@ function TDFPCtrl($rootScope, $scope, $routeParams) {
     } catch (e) {
       console.log("there was probably no audio set");
     }
-    if (!$scope.audioStimulus || $scope.audioStimulus.indexOf("audio_stimuli/tdfp/"
-        + tdfpAudio[promptNumber]) == -1) {
+    if (!$scope.audioStimulus
+        || $scope.audioStimulus.indexOf("audio_stimuli/tdfp/"
+            + tdfpAudio[promptNumber]) == -1) {
       document.getElementById("audio_stimuli_player_source").addEventListener(
           'canplaythrough', function() {
             document.getElementById("audio_stimuli_player_source").play();
