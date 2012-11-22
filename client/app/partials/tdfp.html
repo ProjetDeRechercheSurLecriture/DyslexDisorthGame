@@ -1,0 +1,50 @@
+
+<div id="experiment_dashboard" class="sailsbody fill"></div>
+<div class="row-fluid bordered touch_scoreboard">
+<p>&nbsp;</p>
+<h1><i class="icon-forward pull-right"></i> <i
+	class="icon-backward pull-left"></i></h1>
+<table class="txtUpsideDown">
+	<tr>
+		<td>✔</td>
+		<td>n</td>
+		<td>i</td>
+		<td>ch</td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+<div class="row-fluid ">
+<div class="span6 stimuli"><img
+	src="image_stimuli/tdfp/09_niche.png" ng-click="confirmChoice()" /></div>
+<div class="span6 border-left reinforcement">
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="reinforcement_area" class="span6 reinforcement">
+	<img id="reinforcement_image" src="image_stimuli/tdfp/r00_daisy.png" />
+</div>
+
+</div>
+</div>
+
+</div>
+
+</div>
+
+		<div id="audio_stimuli_presentation_area" class="hidden">
+			<audio id="audio_stimuli_player_source" src={{audioStimulus}} ng-model="audio_stimulus"></audio>			
+			<audio id="audio_instructions_player_source" src="audio_stimuli/tdfp/tdfp_instructions.mp3" ng-model="audio_instructions_player_source" autoplay></audio>
+		</div>
+
+<!-- Modals are windows which pop over the active app to take focus -->
+<div id="new_participant" data-backdrop="static" class="hidden modal "></div>
+
+<!-- Le javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<script src="libs/jquery.js"></script>
+<script src="prototype.js"></script>
