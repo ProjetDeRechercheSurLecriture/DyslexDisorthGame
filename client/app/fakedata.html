@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" ng-app="PushFakeDataApp" ng-csp>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PhoPhlo</title>
+<link rel="stylesheet" type="text/css" href="dashboard.css">
+
+<script src="libs/angular/angular.js"></script>
+<script src="libs/angular/angular-resource.js"></script>
+<script src="js/PushFakeDataApp.js"></script>
+<script src="js/PushFakeDataController.js"></script>
+<script src="js/PushFakeDataServices.js"></script>
+
+</head>
+<body id="app"
+	ng-controller="PushFakeDataController">
+	<form class="form-horizontal" ng-submit="saveFakeData(fake)"">
+		<fieldset>
+			<legend class="forcewhite">
+				<span><img ng-src="img/phophlo.png" height="128" /></span><br />Create fake data
+			</legend>
+			<div class="control-group">  
+            <label class="control-label" for="select01">Inspection Stage</label>  
+            <div class="controls">  
+
+<!-- Change these to functions -->
+
+              <select id="select01" class="span3" ng-model="fake.inspection_stage" required>    
+               <option value="" disabled="disabled" selected="selected">Inspection Stage</option>
+                <option value="PreProduction">Pre-production
+				<option value="DuringProduction">During Production
+				<option value="PreShipment">Pre-shipment
+				<option value="Audit">Audit
+				<option value="Container">Shipped
+				</select>
+            </div>  
+          </div>  
+			
+			<div class="control-group">
+				<label class="control-label" for="firstName">Purchase Order:</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" ng-model="fake.po"
+						required><i class="icon-white icon-star">Required</i>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="lastName">SKU</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" ng-model="fake.sku.number"
+						required><i class="icon-white icon-star">Required</i>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="lastName">Product Name</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" ng-model="fake.sku.name"
+						required><i class="icon-white icon-star">Required</i>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="lastName">Number of fake records to create</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" ng-model="fake.number"
+						required><i class="icon-white icon-star">Required (max. 25)</i>
+				</div>
+			</div>
+			<div class="well form-actions">  
+		<button type="submit" class="btn btn-success btn-large">Create Fake New
+		Records</button>
+		</div>
+		</fieldset>
+		
+	</form>
+	
+</body>
+</html>
