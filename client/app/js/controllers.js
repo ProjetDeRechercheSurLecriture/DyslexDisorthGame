@@ -24,7 +24,7 @@ function MainCtrl($rootScope, $scope, $resource, Participants, Sessions,
 
   // Test to see if text in search box returns any results and hide/display divs
   // accordingly
-  
+
   $scope.displaySearchResults = function(resultsCount) {
     if (resultsCount == 0) {
       $scope.searching = 'true';
@@ -41,14 +41,13 @@ function MainCtrl($rootScope, $scope, $resource, Participants, Sessions,
   };
 
   $scope.toggleShowReportValue = function() {
-	if ($scope.showAddlReports == 'true') {
-		$scope.showAddlReports = 'false';
-	}
-	else {
-		$scope.showAddlReports = 'true';
-	}
+    if ($scope.showAddlReports == 'true') {
+      $scope.showAddlReports = 'false';
+    } else {
+      $scope.showAddlReports = 'true';
+    }
   };
-  
+
   // Hide Edit/Show cancel/save buttons; make template content editable via
   // ng-show
 
@@ -107,7 +106,7 @@ function SAILSCtrl($rootScope, $scope, $routeParams) {
       "GR02A_Gris_MOD.mp3", "GR02A_Gris_MOD.mp3", "GR02A_Gris_MOD.mp3",
       "NI29A_Gris_MOD.mp3", "NI29A_Gris_MOD.mp3", "NI29A_Gris_MOD.mp3",
       "NI29A_Gris_MOD.mp3", "NI29A_Gris_MOD.mp3" ];
-  //TODO shuffle the sailsPractice
+  // TODO shuffle the sailsPractice
 
   var sailsAudio = [ "GR16B_Gris_MOD.mp3", "GR20B_Gris_MOD.mp3",
       "GR21A_Gris_MOD.mp3", "GR04A_Gris_MOD.mp3", "GR28A_Gris_MOD.mp3",
@@ -119,8 +118,8 @@ function SAILSCtrl($rootScope, $scope, $routeParams) {
       "GR19A_Gris_MOD.mp3", "GR20A_Gris_MOD.mp3", "GR21B_Gris_MOD.mp3",
       "GR27D_Gris_MOD.mp3", "NI29A_Gris_MOD.mp3", "NI29B_Gris_MOD.mp3",
       "NI30A_Gris_MOD.mp3", "NI32A_Gris_MOD.mp3", "NI33A_Gris_MOD.mp3" ];
-  
-  //TODO add stimuli images because they need to switch orders randomly
+
+  // TODO add stimuli images because they need to switch orders randomly
   $rootScope.testing = 'true';
   $scope.experimentType = "sails";
   $scope.currentStimulus = 0;
@@ -147,14 +146,15 @@ function SAILSCtrl($rootScope, $scope, $routeParams) {
     }
 
     // only add a listener if its not the same audio, otherwise just play it
-    if (!$scope.audioStimulus || $scope.audioStimulus.indexOf("audio_stimuli/" + $scope.experimentType
-        + "/" + audio[$scope.currentStimulus]) == -1) {
+    if (!$scope.audioStimulus
+        || $scope.audioStimulus.indexOf("modules/" + $scope.experimentType
+            + "/audio_stimuli/" + audio[$scope.currentStimulus]) == -1) {
       document.getElementById("audio_stimuli_player_source").addEventListener(
           'canplaythrough', function() {
             document.getElementById("audio_stimuli_player_source").play();
           });
-      $scope.audioStimulus = "audio_stimuli/" + $scope.experimentType + "/"
-          + audio[$scope.currentStimulus];
+      $scope.audioStimulus = "modules/" + $scope.experimentType
+          + "/audio_stimuli/" + audio[$scope.currentStimulus];
     } else {
       document.getElementById("audio_stimuli_player_source").play();
     }
@@ -174,8 +174,9 @@ function SAILSCtrl($rootScope, $scope, $routeParams) {
       imagenumber = "0" + imagenumber;
     }
     imagenumber = "/r" + imagenumber + "_mouse_cheese.png";
-    document.getElementById("reinforcement_image").src = "image_stimuli/"
-        + $scope.experimentType + imagenumber;
+    document.getElementById("reinforcement_image").src = "modules/"
+        + $scope.experimentType + "/image_stimuli" 
+        + imagenumber;
 
     if ($scope.currentStimulus >= sailsAudio.length) {
       window.alert("Good Job!");
@@ -195,7 +196,7 @@ function TCPPCtrl($rootScope, $scope, $routeParams) {
       "3.mp3", "3.mp3", "4.mp3", "4.mp3", "4.mp3", "4.mp3", "5.mp3", "5.mp3",
       "5.mp3", "5.mp3" ];
 
-  $scope.audioStimulus = "audio_stimuli/tcpp/" + tcppAudio[0];
+  $scope.audioStimulus = "modules/tcpp/audio_stimuli/" + tcppAudio[0];
 
   var tcppStimuli = [ "01_feu.png", "02_chat.png", "03_but.png", "04_scie.png",
       "05_jus.png", "06_lit.png", "07_dent.png", "08_pain.png", "09_bas.png",
@@ -232,13 +233,14 @@ function TCPPCtrl($rootScope, $scope, $routeParams) {
     document.getElementById("audio_stimuli_player_source").currentTime = 0;
 
     // only add a listener if its not the same audio, otherwise just play it
-    if ($scope.audioStimulus.indexOf("audio_stimuli/" + $scope.experimentType
-        + "/" + tcppAudio[$scope.currentStimulus]) == -1) {
+    if ($scope.audioStimulus.indexOf("modules/" + $scope.experimentType
+        + "/audio_stimuli/" +  tcppAudio[$scope.currentStimulus]) == -1) {
       document.getElementById("audio_stimuli_player_source").addEventListener(
           'canplaythrough', function() {
             document.getElementById("audio_stimuli_player_source").play();
           });
-      $scope.audioStimulus = "audio_stimuli/" + $scope.experimentType + "/"
+      $scope.audioStimulus = "modules/" + $scope.experimentType
+      + "/audio_stimuli/"  
           + tcppAudio[$scope.currentStimulus];
     } else {
       document.getElementById("audio_stimuli_player_source").play();
@@ -246,25 +248,25 @@ function TCPPCtrl($rootScope, $scope, $routeParams) {
 
     var imagenumber = $scope.currentStimulus;
     if (imagenumber == 3) {
-      document.getElementById("image_prime").src = "image_stimuli/tcpp/animal2.png";
+      document.getElementById("image_prime").src = "modules/tcpp/image_stimuli/animal2.png";
     }
     if (imagenumber == 5) {
-      document.getElementById("image_prime").src = "image_stimuli/tcpp/animal3.png";
+      document.getElementById("image_prime").src = "modules/tcpp/image_stimuli/animal3.png";
     }
     if (imagenumber == 8) {
-      document.getElementById("image_prime").src = "image_stimuli/tcpp/animal4.png";
+      document.getElementById("image_prime").src = "modules/tcpp/image_stimuli/animal4.png";
     }
     if (imagenumber == 12) {
-      document.getElementById("image_prime").src = "image_stimuli/tcpp/animal5.png";
+      document.getElementById("image_prime").src = "modules/tcpp/image_stimuli/animal5.png";
     }
     var stimuliImageStartPosition = imagenumber * 4;
-    document.getElementById("stimuli1").src = "image_stimuli/tcpp/"
+    document.getElementById("stimuli1").src = "modules/tcpp/image_stimuli/"
         + tcppStimuli[stimuliImageStartPosition];
-    document.getElementById("stimuli2").src = "image_stimuli/tcpp/"
+    document.getElementById("stimuli2").src = "modules/tcpp/image_stimuli/"
         + tcppStimuli[stimuliImageStartPosition + 1];
-    document.getElementById("stimuli3").src = "image_stimuli/tcpp/"
+    document.getElementById("stimuli3").src = "modules/tcpp/image_stimuli/"
         + tcppStimuli[stimuliImageStartPosition + 2];
-    document.getElementById("stimuli4").src = "image_stimuli/tcpp/"
+    document.getElementById("stimuli4").src = "modules/tcpp/image_stimuli/"
         + tcppStimuli[stimuliImageStartPosition + 3];
 
     // practice don't animate the reinforcement
@@ -280,8 +282,8 @@ function TCPPCtrl($rootScope, $scope, $routeParams) {
       imagenumber = "0" + imagenumber;
     }
     imagenumber = "/r" + imagenumber + "_caterpillars.png";
-    document.getElementById("reinforcement_image").src = "image_stimuli/"
-        + $scope.experimentType + imagenumber;
+    document.getElementById("reinforcement_image").src = "modules/"
+      + $scope.experimentType + "/image_stimuli" + imagenumber;
 
     if ($scope.currentStimulus >= tcppAudio.length) {
       window.alert("Good Job!\n\n@Susan: Why are there 14 caterpillars?");
@@ -360,12 +362,12 @@ function TDFPCtrl($rootScope, $scope, $routeParams) {
       imagenumber = "0" + imagenumber;
     }
     imagenumber = "/r" + imagenumber + "_daisy.png";
-    document.getElementById("reinforcement_image").src = "image_stimuli/"
-        + $scope.experimentType + imagenumber;
+    document.getElementById("reinforcement_image").src = "modules/"
+      + $scope.experimentType + "/image_stimuli" + imagenumber;
 
     if ($scope.currentStimulus < tdfpImages.length) {
-      document.getElementById("stimuli_image").src = "image_stimuli/"
-          + $scope.experimentType + "/" + tdfpImages[$scope.currentStimulus];
+      document.getElementById("stimuli_image").src = "modules/"
+        + $scope.experimentType + "/image_stimuli/"  + tdfpImages[$scope.currentStimulus];
     } else {
       document.getElementById("stimuli_image").setAttribute("hidden", "hidden");
     }
@@ -387,13 +389,14 @@ function TDFPCtrl($rootScope, $scope, $routeParams) {
       console.log("there was probably no audio set");
     }
     if (!$scope.audioStimulus
-        || $scope.audioStimulus.indexOf("audio_stimuli/tdfp/"
-            + tdfpAudio[promptNumber]) == -1) {
+        || $scope.audioStimulus.indexOf("modules/" + $scope.experimentType
+            + "/audio_stimuli/" + tdfpAudio[promptNumber]) == -1) {
       document.getElementById("audio_stimuli_player_source").addEventListener(
           'canplaythrough', function() {
             document.getElementById("audio_stimuli_player_source").play();
           });
-      $scope.audioStimulus = "audio_stimuli/tdfp/" + tdfpAudio[promptNumber];
+      $scope.audioStimulus = "modules/" + $scope.experimentType
+      + "/audio_stimuli/"  + tdfpAudio[promptNumber];
     } else {
       document.getElementById("audio_stimuli_player_source").play();
     }

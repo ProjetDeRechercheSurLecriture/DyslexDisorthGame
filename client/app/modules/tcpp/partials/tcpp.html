@@ -6,7 +6,7 @@
 				<i class="icon-forward pull-right"></i> <i
 					class="icon-backward pull-left"></i>
 			</h1>
-			<img id="image_prime" src="image_stimuli/tcpp/animal1.png"
+			<img id="image_prime" src="modules/tcpp/image_stimuli/animal1.png"
 				width="100" />
 
 		</div>
@@ -16,17 +16,17 @@
 				<div class="row-fluid">
 					<div class="span6 ">
 						<img class="demo_confirm_box" id="stimuli1"
-							src="image_stimuli/tcpp/01_feu.png" ng-click="confirmChoice()" />
+							src="modules/tcpp/image_stimuli/01_feu.png" ng-click="confirmChoice()" />
 						<br /> <img class="
 							demo_confirm_box" id="stimuli3"
-							src="image_stimuli/tcpp/03_but.png" ng-click="confirmChoice()" />
+							src="modules/tcpp/image_stimuli/03_but.png" ng-click="confirmChoice()" />
 					</div>
 					<div class="span6 ">
 						<img class="demo_confirm_box" id="stimuli2"
-							src="image_stimuli/tcpp/02_chat.png" ng-click="confirmChoice()" />
+							src="modules/tcpp/image_stimuli/02_chat.png" ng-click="confirmChoice()" />
 						<br /> <img class="
 							demo_confirm_box" id="stimuli4"
-							src="image_stimuli/tcpp/04_scie.png" ng-click="confirmChoice()" />
+							src="modules/tcpp/image_stimuli/04_scie.png" ng-click="confirmChoice()" />
 					</div>
 				</div>
 			</div>
@@ -34,16 +34,16 @@
 
 			<div class="span5 border-left ">
 				<img id="reinforcement_image"
-					src="image_stimuli/tcpp/r00_caterpillars.png" />
+					src="modules/tcpp/image_stimuli/r00_caterpillars.png" />
 			</div>
 		</div>
 	</div>
 
 	<div id="audio_stimuli_presentation_area" class="hidden">
-		<audio id="audio_stimuli_player_source" autoplay src={{audioStimulus}}
+		<audio id="audio_stimuli_player_source"  src={{audioStimulus}}
 			ng-model="audio_stimulus"></audio>
 		<audio id="audio_instructions_player_source"
-			src="audio_stimuli/tcpp/tcpp_instructions.mp3"
+			src="modules/tcpp/audio_stimuli/tcpp_instructions.mp3" autoplay
 			ng-model="audio_instructions_player_source"></audio>
 	</div>
 </div>
