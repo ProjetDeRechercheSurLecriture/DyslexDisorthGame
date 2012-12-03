@@ -5,23 +5,23 @@
 angular.module('PhoPhloApp', ['searchFilters', 'phophloServices']).
 	config(['$routeProvider', function($routeProvider) {
 	$routeProvider.
-		when('/test', {templateUrl: 'partials/main_menu.html'}).
-		when('/register', {templateUrl: 'partials/register.html', controller: NewUserCtrl}).
-		when('/test/sails', {templateUrl: 'partials/sails.html', controller: SAILSCtrl}).
-		when('/test/sails/congratulations', {templateUrl: 'partials/sails_select_user.html', controller: SAILSCtrl}).
-		when('/test/tcpp', {templateUrl: 'partials/tcpp.html', controller: TCPPCtrl}).
-		when('/test/tcpp/congratulations', {templateUrl: 'partials/tcpp_select_user.html', controller: TCPPCtrl}).
-		when('/test/tdfm', {templateUrl: 'partials/tdfm.html', controller: TDFMCtrl}).
-		when('/test/tdfm/congratulations', {templateUrl: 'partials/tdfm_select_user.html', controller: TDFMCtrl}).
-		when('/test/tdfp', {templateUrl: 'partials/tdfp.html', controller: TDFPCtrl}).
-		when('/test/tdfp/congratulations', {templateUrl: 'partials/tdfp_select_user.html', controller: TDFPCtrl}).
-		when('/reports/organization/:participantID', {templateUrl: 'partials/organization_report.html', controller: ReportsCtrl}).
-		when('/reports/parents/:participantID', {templateUrl: 'partials/parents_report.html', controller: ReportsCtrl}).
-		when('/reports/child/:participantID', {templateUrl: 'partials/child_report.html', controller: ReportsCtrl}).
-		when('/reports', {templateUrl: 'partials/reports.html'}).
-		when('/sessions', {templateUrl: 'partials/results_main.html'}).
-		when('/sessions/:sessionID', {templateUrl: 'partials/session_report.html', controller: SessionReportCtrl}).
-		when('/participants/:participantID', {templateUrl: 'partials/participant_report.html', controller: ParticipantReportCtrl}).
+		when('/test', {templateUrl: 'modules/experiment/partials/main_menu.html'}).
+		when('/register', {templateUrl: 'modules/participant/partials/register.html', controller: NewUserCtrl}).
+		when('/test/sails', {templateUrl: 'modules/sails/partials/sails.html', controller: SAILSCtrl}).
+		when('/test/sails/congratulations', {templateUrl: 'modules/sails/partials/sails_select_user.html', controller: SAILSCtrl}).
+		when('/test/tcpp', {templateUrl: 'modules/tcpp/partials/tcpp.html', controller: TCPPCtrl}).
+		when('/test/tcpp/congratulations', {templateUrl: 'modules/tcpp/partials/tcpp_select_user.html', controller: TCPPCtrl}).
+		when('/test/tdfm', {templateUrl: 'modules/tdfm/partials/tdfm.html', controller: TDFMCtrl}).
+		when('/test/tdfm/congratulations', {templateUrl: 'modules/tdfm/partials/tdfm_select_user.html', controller: TDFMCtrl}).
+		when('/test/tdfp', {templateUrl: 'modules/tdfp/partials/tdfp.html', controller: TDFPCtrl}).
+		when('/test/tdfp/congratulations', {templateUrl: 'modules/tdfp/partials/tdfp_select_user.html', controller: TDFPCtrl}).
+		when('/reports/organization/:participantID', {templateUrl: 'modules/report/partials/organization_report.html', controller: ReportsCtrl}).
+		when('/reports/parents/:participantID', {templateUrl: 'modules/report/partials/parents_report.html', controller: ReportsCtrl}).
+		when('/reports/child/:participantID', {templateUrl: 'modules/report/partials/child_report.html', controller: ReportsCtrl}).
+		when('/reports', {templateUrl: 'modules/report/partials/reports.html'}).
+		when('/sessions', {templateUrl: 'modules/report/partials/results_main.html'}).
+		when('/sessions/:sessionID', {templateUrl: 'modules/report/partials/session_report.html', controller: SessionReportCtrl}).
+		when('/participants/:participantID', {templateUrl: 'modules/report/partials/participant_report.html', controller: ParticipantReportCtrl}).
 		otherwise({redirectTo: '/test'});
 }]).
 directive('onFocus', function() {

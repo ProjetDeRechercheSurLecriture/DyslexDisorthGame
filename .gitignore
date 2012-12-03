@@ -37,6 +37,7 @@ experiment_designs
 .settings
 .classpath
 proguard.cfg
+.externalToolBuilders
 
 node_modules
 

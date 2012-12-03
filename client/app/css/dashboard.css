@@ -1,21 +1,21 @@
-@import url("libs/bootstrap/css/bootstrap.css");
+@import url("../libs/bootstrap/css/bootstrap.css");
 
-@import url("libs/bootstrap/css/bootstrap-responsive.css");
+@import url("../libs/bootstrap/css/bootstrap-responsive.css");
 
-@import url("libs/font_awesome/css/font-awesome.css");
+@import url("../libs/font_awesome/css/font-awesome.css");
 
 @font-face {
 	font-family: 'Finger Paint';
 	font-style: normal;
 	font-weight: 400;
-	src: url('fonts/FingerPaint-Regular.ttf');
+	src: url('../fonts/FingerPaint-Regular.ttf');
 }
 
 @font-face {
 	font-family: 'Chalkboard';
 	font-style: normal;
 	font-weight: 400;
-	src: url('fonts/chalkboard.ttf');
+	src: url('../fonts/chalkboard.ttf');
 }
 
 .resultsbody {
@@ -204,9 +204,16 @@ footer {
 	margin: auto;
 }
 
-footer a {
+footer a a:visited a:link {
 	color: #c3b381;
 	font-weight: bold;
+}
+footer a:visited {
+  color: #c3b381;
+  font-weight: bold;
+}footer a:link {
+  color: #c3b381;
+  font-weight: bold;
 }
 
 .gravatar {
