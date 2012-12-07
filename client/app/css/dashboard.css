@@ -25,10 +25,10 @@
 	background-image: -o-radial-gradient(center, ellipse cover, #f6e6b4 0%, #ed9017 100%);
 	background-image: -ms-radial-gradient(center, ellipse cover, #f6e6b4 0%, #ed9017 100%);
 	background-image: radial-gradient(center, ellipse cover, #f6e6b4 0%, #ed9017 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=     
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=       
 		       
-		       '#f6e6b4', endColorstr=                     '#ed9017',
-		GradientType=    
+		       '#f6e6b4', endColorstr=                       '#ed9017',
+		GradientType=      
 		
 		
 		 
@@ -43,7 +43,8 @@
 	background-image: -o-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
 	background-image: -ms-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
 	background-image: radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#029CC9', endColorstr='#005077', GradientType=0 );
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#029CC9',
+		endColorstr='#005077', GradientType=0 );
 }
 
 .control-label {
@@ -56,16 +57,37 @@ legend {
 	font-size: 2em;
 }
 
-a:link {color:#000099;}      /* unvisited link */
-a:visited {color:#000099;}  /* visited link */
-a:hover {color:#000099;}  /* mouse over link */
-a:active {color:#000099;}  /* selected link */
+a:link {
+	color: #000099;
+} /* unvisited link */
+a:visited {
+	color: #000099;
+} /* visited link */
+a:hover {
+	color: #000099;
+} /* mouse over link */
+a:active {
+	color: #000099;
+} /* selected link */
+a:link.backgroundlink {
+	color: #ffffff;
+	text-decoration: none;
+}
 
-a:link.backgroundlink { color: #ffffff; text-decoration: none; }
-a:visited.backgroundlink { color: #ffffff; text-decoration: none; }
-a:hover.backgroundlink { color: #ffffff; text-decoration: none; }
-a:active.backgroundlink { color: #ffffff; text-decoration: none; }
+a:visited.backgroundlink {
+	color: #ffffff;
+	text-decoration: none;
+}
 
+a:hover.backgroundlink {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+a:active.backgroundlink {
+	color: #ffffff;
+	text-decoration: none;
+}
 
 .newuser {
 	background-color: #0176A0;
@@ -74,11 +96,11 @@ a:active.backgroundlink { color: #ffffff; text-decoration: none; }
 	background-image: -o-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
 	background-image: -ms-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
 	background-image: radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
-	color:white;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=     
+	color: white;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=       
 		       
-		       '#029CC9', endColorstr=                     '#005077',
-		GradientType=    
+		       '#029CC9', endColorstr=                       '#005077',
+		GradientType=      
 		
 		
 		 
@@ -86,16 +108,15 @@ a:active.backgroundlink { color: #ffffff; text-decoration: none; }
 		        0 );
 }
 
-
 .fill {
 	position: absolute;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	z-index: -1;
 }
 
 .testbody {
@@ -105,11 +126,11 @@ a:active.backgroundlink { color: #ffffff; text-decoration: none; }
 	background-image: -o-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
 	background-image: -ms-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
 	background-image: radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
-	color:white;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=     
+	color: white;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=       
 		       
-		       '#029CC9', endColorstr=                     '#005077',
-		GradientType=    
+		       '#029CC9', endColorstr=                       '#005077',
+		GradientType=      
 		
 		
 		 
@@ -124,10 +145,10 @@ a:active.backgroundlink { color: #ffffff; text-decoration: none; }
 	background-image: -o-radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
 	background-image: -ms-radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
 	background-image: radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=     
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=       
 		       
-		       '#ffffff', endColorstr=                     '#999999',
-		GradientType=    
+		       '#ffffff', endColorstr=                       '#999999',
+		GradientType=      
 		
 		
 		 
@@ -208,16 +229,26 @@ footer a a:visited a:link {
 	color: #c3b381;
 	font-weight: bold;
 }
+
 footer a:visited {
-  color: #c3b381;
-  font-weight: bold;
-}footer a:link {
-  color: #c3b381;
-  font-weight: bold;
+	color: #c3b381;
+	font-weight: bold;
+}
+
+footer a:link {
+	color: #c3b381;
+	font-weight: bold;
 }
 
 .gravatar {
 	height: 3em;
+}
+
+.start-button {
+	position: absolute;
+	margin-left: 50%;
+	z-index: 10;
+	margin-top: 12em;
 }
 
 progress {
@@ -236,23 +267,25 @@ progress {
 	height: 100%;
 }
 
-.txtUpsideDown 
-{
-  filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=2);  /* IE6,IE7 */
-  ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)"; /* IE8 */
-  -moz-transform: rotate(-180deg);  /* FF3.5+ */
-  -o-transform: rotate(-180deg);  /* Opera 10.5 */
-  -webkit-transform: rotate(-180deg);  /* Safari 3.1+, Chrome */
-  position: absolute; 
-  
-  width:100%;
-  margin:1em;
+.txtUpsideDown {
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2 );
+	/* IE6,IE7 */
+	ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
+	/* IE8 */
+	-moz-transform: rotate(-180deg); /* FF3.5+ */
+	-o-transform: rotate(-180deg); /* Opera 10.5 */
+	-webkit-transform: rotate(-180deg); /* Safari 3.1+, Chrome */
+	position: absolute;
+	width: 100%;
+	margin: 1em;
 }
-.touch_scoreboard{
+
+.touch_scoreboard {
 	text-align: center;
-	 font-family: 'Finger Paint', cursive;
-	font-size:3em;
+	font-family: 'Finger Paint', cursive;
+	font-size: 3em;
 }
+
 @media print {
 	.exec_summary {
 		display: none !important;
