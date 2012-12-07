@@ -159,10 +159,10 @@ function SAILSCtrl($rootScope, $scope, $routeParams) {
     }
   };
   $scope.nextStimulus = function() {
-    if ($scope.nextClickisRealThing){
+    if ($scope.nextClickisRealThing) {
       alert("Ready for the real thing?");
       document.getElementById("reinforcement_image").src = "modules/"
-        + $scope.experimentType + "/image_stimuli/r01_mouse_cheese.png";
+          + $scope.experimentType + "/image_stimuli/r01_mouse_cheese.png";
       $scope.nextClickisRealThing = false;
       $scope.nextStimulus();
       return;
@@ -221,19 +221,20 @@ function SAILSCtrl($rootScope, $scope, $routeParams) {
     document.getElementById("reinforcement_image").src = "modules/"
         + $scope.experimentType + "/image_stimuli" + imagenumber;
 
-    console.log("reinforcement: " +imagenumber);
+    console.log("reinforcement: " + imagenumber);
     if ($scope.currentStimulus >= sailsAudio.length) {
       document.getElementById("reinforcement_image").src = "modules/"
-        + $scope.experimentType + "/image_stimuli/r11_mouse_cheese.png";
-      window.setTimeout(function(){
-        window.alert("Good Job!");
-        window
-        .alert("@Susan, we have 14 extra audio... we put the stimuli in a semi random order but they are not 'randomized' each time. Is this okay? \n Do you want borders on the images? ");
-        window.location.replace("#/test/sails/congratulations");
-      },500);
+          + $scope.experimentType + "/image_stimuli/r11_mouse_cheese.png";
+      window
+          .setTimeout(
+              function() {
+                window.alert("Good Job!");
+                window
+                    .alert("@Susan, we have 14 extra audio... we put the stimuli in a semi random order but they are not 'randomized' each time. Is this okay? \n Do you want borders on the images? ");
+                window.location.replace("#/test/sails/congratulations");
+              }, 500);
     }
     $scope.currentStimulus++;
-
 
   };
 
@@ -246,7 +247,7 @@ function SAILSCtrl($rootScope, $scope, $routeParams) {
 function TCPPCtrl($rootScope, $scope, $routeParams) {
   var tcppAudio = [ "1.mp3", "1.mp3", "1.mp3", "2.mp3", "2.mp3", "3.mp3",
       "3.mp3", "3.mp3", "4.mp3", "4.mp3", "4.mp3", "4.mp3", "5.mp3", "5.mp3",
-      "5.mp3", "5.mp3" ];
+      "5.mp3", "5.mp3" , "6.mp3", "6.mp3", "6.mp3"];
 
   $scope.audioStimulus = "modules/tcpp/audio_stimuli/" + tcppAudio[0];
 
@@ -265,7 +266,9 @@ function TCPPCtrl($rootScope, $scope, $routeParams) {
       "51_panda.png", "52_sofa.png", "53_chapeau.png", "54_ballon.png",
       "55_lapin.png", "56_tapis.png", "57_fusee.png", "58_lama.png",
       "59_patin.png", "60_maison.png", "61_soulier.png", "62_pizza.png",
-      "63_bateau.png" ];
+      "63_bateau.png", "missing.png", "missing.png", "missing.png",
+      "missing.png", "missing.png", "missing.png", "missing.png",
+      "missing.png", "missing.png", "missing.png", "missing.png", "missing.png" ];
 
   $rootScope.testing = 'true';
   $scope.experimentType = "tcpp";
@@ -279,11 +282,35 @@ function TCPPCtrl($rootScope, $scope, $routeParams) {
       // do nothing
     }
   };
+
+  $scope.startExperiment = function() {
+    document.getElementById("start-button").setAttribute("hidden", "hidden");
+    // document.getElementById("experiment_dashboard").removeAttribute("hidden");
+    $scope.nextStimulus();
+  };
   $scope.nextStimulus = function() {
+    if ($scope.nextClickisRealThing) {
+      alert("Ready for the real thing?");
+      document.getElementById("reinforcement_image").src = "modules/"
+          + $scope.experimentType + "/image_stimuli/r00_caterpillars.png";
+      $scope.nextClickisRealThing = false;
+      $scope.currentStimulus++; //TODO why stuck at 5
+      $scope.nextStimulus();
+      return;
+    }
     document.getElementById("audio_instructions_player_source").pause();
     document.getElementById("audio_stimuli_player_source").pause();
     document.getElementById("audio_stimuli_player_source").currentTime = 0;
 
+    var imagenumber = $scope.currentStimulus;
+    console.log("playing " + imagenumber + " audio: "
+        + tcppAudio[$scope.currentStimulus]);
+
+    // practice don't animate the reinforcement
+    if (imagenumber == 5) {
+      $scope.nextClickisRealThing = true;
+      return;
+    }
     // only add a listener if its not the same audio, otherwise just play it
     if ($scope.audioStimulus.indexOf("modules/" + $scope.experimentType
         + "/audio_stimuli/" + tcppAudio[$scope.currentStimulus]) == -1) {
@@ -297,37 +324,68 @@ function TCPPCtrl($rootScope, $scope, $routeParams) {
       document.getElementById("audio_stimuli_player_source").play();
     }
 
-    var imagenumber = $scope.currentStimulus;
+    var delayImages = false;
+    if (imagenumber == 0) {
+      document.getElementById("image_prime").src = "modules/tcpp/image_stimuli/animal1.png";
+      delayImages = true;
+    }
     if (imagenumber == 3) {
       document.getElementById("image_prime").src = "modules/tcpp/image_stimuli/animal2.png";
+      delayImages = true;
+
     }
     if (imagenumber == 5) {
       document.getElementById("image_prime").src = "modules/tcpp/image_stimuli/animal3.png";
+      delayImages = true;
+
     }
     if (imagenumber == 8) {
       document.getElementById("image_prime").src = "modules/tcpp/image_stimuli/animal4.png";
+      delayImages = true;
+
     }
     if (imagenumber == 12) {
       document.getElementById("image_prime").src = "modules/tcpp/image_stimuli/animal5.png";
-    }
-    var stimuliImageStartPosition = imagenumber * 4;
-    document.getElementById("stimuli1").src = "modules/tcpp/image_stimuli/"
-        + tcppStimuli[stimuliImageStartPosition];
-    document.getElementById("stimuli2").src = "modules/tcpp/image_stimuli/"
-        + tcppStimuli[stimuliImageStartPosition + 1];
-    document.getElementById("stimuli3").src = "modules/tcpp/image_stimuli/"
-        + tcppStimuli[stimuliImageStartPosition + 2];
-    document.getElementById("stimuli4").src = "modules/tcpp/image_stimuli/"
-        + tcppStimuli[stimuliImageStartPosition + 3];
+      delayImages = true;
 
-    // practice don't animate the reinforcement
+    }
+    if (imagenumber == 16) {
+      document.getElementById("image_prime").src = "modules/tcpp/image_stimuli/target3.gif";
+      delayImages = true;
+
+    }
+    if (delayImages) {
+      window.setTimeout(function() {
+
+        var stimuliImageStartPosition = window.imagenumber * 4;
+        document.getElementById("stimuli1").src = "modules/tcpp/image_stimuli/"
+            + tcppStimuli[stimuliImageStartPosition];
+        document.getElementById("stimuli2").src = "modules/tcpp/image_stimuli/"
+            + tcppStimuli[stimuliImageStartPosition + 1];
+        document.getElementById("stimuli3").src = "modules/tcpp/image_stimuli/"
+            + tcppStimuli[stimuliImageStartPosition + 2];
+        document.getElementById("stimuli4").src = "modules/tcpp/image_stimuli/"
+            + tcppStimuli[stimuliImageStartPosition + 3];
+
+      }, 1500);
+      window.imagenumber = imagenumber;
+    } else {
+
+      var stimuliImageStartPosition = imagenumber * 4;
+      document.getElementById("stimuli1").src = "modules/tcpp/image_stimuli/"
+          + tcppStimuli[stimuliImageStartPosition];
+      document.getElementById("stimuli2").src = "modules/tcpp/image_stimuli/"
+          + tcppStimuli[stimuliImageStartPosition + 1];
+      document.getElementById("stimuli3").src = "modules/tcpp/image_stimuli/"
+          + tcppStimuli[stimuliImageStartPosition + 2];
+      document.getElementById("stimuli4").src = "modules/tcpp/image_stimuli/"
+          + tcppStimuli[stimuliImageStartPosition + 3];
+    }
     if (imagenumber <= 5) {
-      if (imagenumber == 5) {
-        alert("Ready for the real game?");
-      }
       $scope.currentStimulus++;
       return;
     }
+
     imagenumber = imagenumber - 5;
     if (imagenumber < 10) {
       imagenumber = "0" + imagenumber;
@@ -337,8 +395,13 @@ function TCPPCtrl($rootScope, $scope, $routeParams) {
         + $scope.experimentType + "/image_stimuli" + imagenumber;
 
     if ($scope.currentStimulus >= tcppAudio.length) {
-      window.alert("Good Job!\n\n@Susan: Why are there 14 caterpillars?");
-      window.location.replace("#/test/tcpp/congratulations");
+      document.getElementById("reinforcement_image").src = "modules/"
+        + $scope.experimentType + "/image_stimuli/r14_caterpillars.png";
+      window.setTimeout(function(){
+        
+        window.alert("Good Job!\n\n@Susan: we need 3X4 more images?");
+        window.location.replace("#/test/tcpp/congratulations");
+      },500);
     }
     $scope.currentStimulus++;
 
