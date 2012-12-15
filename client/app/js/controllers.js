@@ -4,7 +4,7 @@
 
 function MainCtrl($rootScope, $scope, $resource, Participants, Sessions,
     AccessCouch) {
-
+	
   // Add authentication here
 
   // Query data; assign to template scope; initialize default values
