@@ -1,0 +1,48 @@
+
+
+<div id="experiment" class="sailsbody fill">
+	<div class="start-button" id="start-button">
+		<button class="btn btn-success " ng-click="startExperiment()">Start!</button>
+	</div>
+	<!-- The main area of the page -->
+	<div id="experiment_dashboard" class="experiment_sails " >
+		<div class="row-fluid">
+			<div class="span1 buffer">
+				<h1>
+					<i class="icon-backward"></i>
+				</h1>
+			</div>
+
+			<div id="image_stimuli_presentation_area" class="span4 stimuli">
+				<img id="stimuli1" src="modules/sails/image_stimuli/gris.png"
+					class="demo_confirm_box" ng-click="confirmChoice()" /> <br /> <img
+					id="stimuli2" src="modules/sails/image_stimuli/pas_gris.png"
+					class="demo_confirm_box" ng-click="confirmChoice()" />
+			</div>
+
+
+			<div id="reinforcement_area" class="span6 reinforcement">
+				<img id="reinforcement_image" />
+			</div>
+
+			<div class="span1 buffer">
+				<h1>
+					<i class="icon-forward"></i>
+				</h1>
+				<p class="">
+					<i class="icon-question-sign"></i>
+				</p>
+			</div>
+
+		</div>
+	</div>
+
+
+	<div id="audio_stimuli_presentation_area" class="hidden">
+		<audio id="audio_stimuli_player_source" src={{audioStimulus}}
+			ng-model="audio_stimulus"></audio>
+		<audio id="audio_instructions_player_source"
+			src="modules/sails/audio_stimuli/sails_instructions.mp3"
+			ng-model="audio_instructions_player_source" autoplay></audio>
+	</div>
+</div>

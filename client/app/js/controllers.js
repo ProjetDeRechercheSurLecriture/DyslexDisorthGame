@@ -24,7 +24,7 @@ function MainCtrl($rootScope, $scope, $resource, Participants, Sessions,
 
   // Test to see if text in search box returns any results and hide/display divs
   // accordingly
-  
+
   $scope.displaySearchResults = function(resultsCount) {
     if (resultsCount == 0) {
       $scope.searching = 'true';
@@ -41,14 +41,13 @@ function MainCtrl($rootScope, $scope, $resource, Participants, Sessions,
   };
 
   $scope.toggleShowReportValue = function() {
-	if ($scope.showAddlReports == 'true') {
-		$scope.showAddlReports = 'false';
-	}
-	else {
-		$scope.showAddlReports = 'true';
-	}
+    if ($scope.showAddlReports == 'true') {
+      $scope.showAddlReports = 'false';
+    } else {
+      $scope.showAddlReports = 'true';
+    }
   };
-  
+
   // Hide Edit/Show cancel/save buttons; make template content editable via
   // ng-show
 
@@ -102,19 +101,54 @@ function ParticipantReportCtrl($scope, $routeParams) {
 };
 
 function SAILSCtrl($rootScope, $scope, $routeParams) {
-  var sailsAudio = [ "GR02A_Gris_MOD.mp3", "GR19A_Gris_MOD.mp3",
-      "GR27D_Gris_MOD.mp3", "GR04A_Gris_MOD.mp3", "GR20A_Gris_MOD.mp3",
-      "GR28A_Gris_MOD.mp3", "GR05A_Gris_MOD.mp3", "GR20B_Gris_MOD.mp3",
-      "NI29A_Gris_MOD.mp3", "GR06A_Gris_MOD.mp3", "GR20C_Gris_MOD.mp3",
-      "NI29B_Gris_MOD.mp3", "GR10B_Gris_MOD.mp3", "GR21A_Gris_MOD.mp3",
-      "NI30A_Gris_MOD.mp3", "GR12A_Gris_MOD.mp3", "GR21B_Gris_MOD.mp3",
-      "NI32A_Gris_MOD.mp3", "GR16B_Gris_MOD.mp3", "GR21C_Gris_MOD.mp3",
-      "NI33A_Gris_MOD.mp3", "GR17A_Gris_MOD.mp3", "GR27A_Gris_MOD.mp3",
-      "GR18A_Gris_MOD.mp3", "GR27C_Gris_MOD.mp3" ];
+  var mode = "practice";
+  var sailsPractice = [ "NI29A_Gris_MOD.mp3", "GR02A_Gris_MOD.mp3",
+      "GR02A_Gris_MOD.mp3", "NI29A_Gris_MOD.mp3", "GR02A_Gris_MOD.mp3",
+      "NI29A_Gris_MOD.mp3", "GR02A_Gris_MOD.mp3", "GR02A_Gris_MOD.mp3",
+      "NI29A_Gris_MOD.mp3", "NI29A_Gris_MOD.mp3", ];
 
+  var sailsAudio = [ "GR16B_Gris_MOD.mp3", "GR27C_Gris_MOD.mp3",
+      "GR20B_Gris_MOD.mp3", "GR21A_Gris_MOD.mp3", "GR18A_Gris_MOD.mp3",
+      "GR20C_Gris_MOD.mp3", "GR21C_Gris_MOD.mp3", "GR27A_Gris_MOD.mp3",
+      "GR04A_Gris_MOD.mp3", "GR28A_Gris_MOD.mp3" ];
+
+  var sailsImages = [ "gris.png", "pas_gris.png", "gris.png", "pas_gris.png",
+      "gris.png", "pas_gris.png", "pas_gris.png", "gris.png", "pas_gris.png",
+      "gris.png", "pas_gris.png", "gris.png", "gris.png", "pas_gris.png",
+      "pas_gris.png", "gris.png", "gris.png", "pas_gris.png", "gris.png",
+      "pas_gris.png", "gris.png", "pas_gris.png", "pas_gris.png", "gris.png",
+      "pas_gris.png", "gris.png", "gris.png", "pas_gris.png", "gris.png",
+      "pas_gris.png", "gris.png", "pas_gris.png", "gris.png", "pas_gris.png",
+      "pas_gris.png", "gris.png", "gris.png", "pas_gris.png", "pas_gris.png",
+      "gris.png", "gris.png", "pas_gris.png", "gris.png", "pas_gris.png",
+      "gris.png", "pas_gris.png", "pas_gris.png", "gris.png", "pas_gris.png",
+      "gris.png", "gris.png", "pas_gris.png", "gris.png", "pas_gris.png",
+      "gris.png", "pas_gris.png", "gris.png", "pas_gris.png", "gris.png",
+      "pas_gris.png", "gris.png", "pas_gris.png", "gris.png", "pas_gris.png",
+      "gris.png", "pas_gris.png", "gris.png", "pas_gris.png", "gris.png",
+      "pas_gris.png", "gris.png", "pas_gris.png", "gris.png", "pas_gris.png",
+      "gris.png", "pas_gris.png", "gris.png", "pas_gris.png", "gris.png",
+      "pas_gris.png", "gris.png", "pas_gris.png", "gris.png", "pas_gris.png",
+      "gris.png", "pas_gris.png", "gris.png", "pas_gris.png", "gris.png",
+      "pas_gris.png", "gris.png", "pas_gris.png", "gris.png", "pas_gris.png",
+      "gris.png", "pas_gris.png", "gris.png", "pas_gris.png", "gris.png",
+      "pas_gris.png" ];
+
+  var sailsExtraAudio = [ "GR05A_Gris_MOD.mp3", "GR06A_Gris_MOD.mp3",
+      "GR10B_Gris_MOD.mp3", "GR12A_Gris_MOD.mp3", "GR17A_Gris_MOD.mp3",
+      "GR19A_Gris_MOD.mp3", "GR20A_Gris_MOD.mp3", "GR21B_Gris_MOD.mp3",
+      "GR27D_Gris_MOD.mp3", "NI29A_Gris_MOD.mp3", "NI29B_Gris_MOD.mp3",
+      "NI30A_Gris_MOD.mp3", "NI32A_Gris_MOD.mp3", "NI33A_Gris_MOD.mp3" ];
+
+  // TODO add stimuli images because they need to switch orders randomly
   $rootScope.testing = 'true';
   $scope.experimentType = "sails";
   $scope.currentStimulus = 0;
+  $scope.startExperiment = function() {
+    document.getElementById("start-button").setAttribute("hidden", "hidden");
+    // document.getElementById("experiment_dashboard").removeAttribute("hidden");
+    $scope.nextStimulus();
+  };
 
   $scope.confirmChoice = function() {
     var r = confirm("Are you sure?");
@@ -125,27 +159,82 @@ function SAILSCtrl($rootScope, $scope, $routeParams) {
     }
   };
   $scope.nextStimulus = function() {
-    document.getElementById("audio_instructions_player_source").pause();
-    $scope.audioStimulus = "audio_stimuli/" + $scope.experimentType + "/"
-        + sailsAudio[$scope.currentStimulus];
-    document.getElementById("audio_stimuli_player_source").addEventListener(
-        'canplaythrough', function() {
-          document.getElementById("audio_stimuli_player_source").play()
-        });
+    if ($scope.nextClickisRealThing) {
+      alert("Ready for the real thing?");
+      document.getElementById("reinforcement_image").src = "modules/"
+          + $scope.experimentType + "/image_stimuli/r01_mouse_cheese.png";
+      $scope.nextClickisRealThing = false;
+      $scope.nextStimulus();
+      return;
+    }
+    var audio = sailsPractice;
+    if (mode == 'test') {
+      audio = sailsAudio;
+    }
+    try {
+      document.getElementById("audio_instructions_player_source").pause();
+      document.getElementById("audio_stimuli_player_source").pause();
+      document.getElementById("audio_stimuli_player_source").currentTime = 0;
+    } catch (e) {
+      console.log("there was probably no audio yet");
+    }
 
-    $scope.currentStimulus++;
-    var imagenumber = $scope.currentStimulus;
+    // only add a listener if its not the same audio, otherwise just play it
+    if (!$scope.audioStimulus
+        || $scope.audioStimulus.indexOf("modules/" + $scope.experimentType
+            + "/audio_stimuli/" + audio[$scope.currentStimulus]) == -1) {
+      document.getElementById("audio_stimuli_player_source").addEventListener(
+          'canplaythrough', function() {
+            document.getElementById("audio_stimuli_player_source").play();
+          });
+      $scope.audioStimulus = "modules/" + $scope.experimentType
+          + "/audio_stimuli/" + audio[$scope.currentStimulus];
+    } else {
+      document.getElementById("audio_stimuli_player_source").play();
+    }
+    console.log("playing " + $scope.currentStimulus + " audio: "
+        + audio[$scope.currentStimulus]);
+
+    var imagestimuliposition = $scope.currentStimulus * 2;
+    document.getElementById("stimuli1").src = "modules/"
+        + $scope.experimentType + "/image_stimuli/"
+        + sailsImages[imagestimuliposition];
+    document.getElementById("stimuli2").src = "modules/"
+        + $scope.experimentType + "/image_stimuli/"
+        + sailsImages[imagestimuliposition + 1];
+
+    if ($scope.currentStimulus == 9 && mode == "practice") {
+      mode = "test";
+      $scope.currentStimulus = 0;
+      $scope.nextClickisRealThing = true;
+      return;
+    }
+    if (mode == "practice") {
+      $scope.currentStimulus++;
+      return;
+    }
+    var imagenumber = $scope.currentStimulus + 1;
     if (imagenumber < 10) {
       imagenumber = "0" + imagenumber;
     }
     imagenumber = "/r" + imagenumber + "_mouse_cheese.png";
-    document.getElementById("reinforcement_image").src = "image_stimuli/"
-        + $scope.experimentType + imagenumber;
+    document.getElementById("reinforcement_image").src = "modules/"
+        + $scope.experimentType + "/image_stimuli" + imagenumber;
 
+    console.log("reinforcement: " + imagenumber);
     if ($scope.currentStimulus >= sailsAudio.length) {
-      window.alert("Good Job!");
-      window.location.replace("#/test/sails/congratulations");
+      document.getElementById("reinforcement_image").src = "modules/"
+          + $scope.experimentType + "/image_stimuli/r11_mouse_cheese.png";
+      window
+          .setTimeout(
+              function() {
+                window.alert("Good Job!");
+                window
+                    .alert("@Susan, we have 14 extra audio... we put the stimuli in a semi random order but they are not 'randomized' each time. Is this okay? \n Do you want borders on the images? ");
+                window.location.replace("#/test/sails/congratulations");
+              }, 500);
     }
+    $scope.currentStimulus++;
 
   };
 
@@ -158,9 +247,9 @@ function SAILSCtrl($rootScope, $scope, $routeParams) {
 function TCPPCtrl($rootScope, $scope, $routeParams) {
   var tcppAudio = [ "1.mp3", "1.mp3", "1.mp3", "2.mp3", "2.mp3", "3.mp3",
       "3.mp3", "3.mp3", "4.mp3", "4.mp3", "4.mp3", "4.mp3", "5.mp3", "5.mp3",
-      "5.mp3", "5.mp3" ];
+      "5.mp3", "5.mp3" , "6.mp3", "6.mp3", "6.mp3"];
 
-  $scope.audioStimulus = "audio_stimuli/tcpp/" + tcppAudio[0];
+  $scope.audioStimulus = "modules/tcpp/audio_stimuli/" + tcppAudio[0];
 
   var tcppStimuli = [ "01_feu.png", "02_chat.png", "03_but.png", "04_scie.png",
       "05_jus.png", "06_lit.png", "07_dent.png", "08_pain.png", "09_bas.png",
@@ -177,7 +266,9 @@ function TCPPCtrl($rootScope, $scope, $routeParams) {
       "51_panda.png", "52_sofa.png", "53_chapeau.png", "54_ballon.png",
       "55_lapin.png", "56_tapis.png", "57_fusee.png", "58_lama.png",
       "59_patin.png", "60_maison.png", "61_soulier.png", "62_pizza.png",
-      "63_bateau.png" ];
+      "63_bateau.png", "missing.png", "missing.png", "missing.png",
+      "missing.png", "missing.png", "missing.png", "missing.png",
+      "missing.png", "missing.png", "missing.png", "missing.png", "missing.png" ];
 
   $rootScope.testing = 'true';
   $scope.experimentType = "tcpp";
@@ -191,66 +282,126 @@ function TCPPCtrl($rootScope, $scope, $routeParams) {
       // do nothing
     }
   };
+
+  $scope.startExperiment = function() {
+    document.getElementById("start-button").setAttribute("hidden", "hidden");
+    // document.getElementById("experiment_dashboard").removeAttribute("hidden");
+    $scope.nextStimulus();
+  };
   $scope.nextStimulus = function() {
+    if ($scope.nextClickisRealThing) {
+      alert("Ready for the real thing?");
+      document.getElementById("reinforcement_image").src = "modules/"
+          + $scope.experimentType + "/image_stimuli/r00_caterpillars.png";
+      $scope.nextClickisRealThing = false;
+      $scope.currentStimulus++; //TODO why stuck at 5
+      $scope.nextStimulus();
+      return;
+    }
     document.getElementById("audio_instructions_player_source").pause();
     document.getElementById("audio_stimuli_player_source").pause();
     document.getElementById("audio_stimuli_player_source").currentTime = 0;
 
+    var imagenumber = $scope.currentStimulus;
+    console.log("playing " + imagenumber + " audio: "
+        + tcppAudio[$scope.currentStimulus]);
+
+    // practice don't animate the reinforcement
+    if (imagenumber == 5) {
+      $scope.nextClickisRealThing = true;
+      return;
+    }
     // only add a listener if its not the same audio, otherwise just play it
-    if ($scope.audioStimulus.indexOf("audio_stimuli/" + $scope.experimentType
-        + "/" + tcppAudio[$scope.currentStimulus]) == -1) {
+    if ($scope.audioStimulus.indexOf("modules/" + $scope.experimentType
+        + "/audio_stimuli/" + tcppAudio[$scope.currentStimulus]) == -1) {
       document.getElementById("audio_stimuli_player_source").addEventListener(
           'canplaythrough', function() {
             document.getElementById("audio_stimuli_player_source").play();
           });
-      $scope.audioStimulus = "audio_stimuli/" + $scope.experimentType + "/"
-          + tcppAudio[$scope.currentStimulus];
+      $scope.audioStimulus = "modules/" + $scope.experimentType
+          + "/audio_stimuli/" + tcppAudio[$scope.currentStimulus];
     } else {
       document.getElementById("audio_stimuli_player_source").play();
     }
 
-    var imagenumber = $scope.currentStimulus;
+    var delayImages = false;
+    if (imagenumber == 0) {
+      document.getElementById("image_prime").src = "modules/tcpp/image_stimuli/animal1.png";
+      delayImages = true;
+    }
     if (imagenumber == 3) {
-      document.getElementById("image_prime").src = "image_stimuli/tcpp/animal2.png";
+      document.getElementById("image_prime").src = "modules/tcpp/image_stimuli/animal2.png";
+      delayImages = true;
+
     }
     if (imagenumber == 5) {
-      document.getElementById("image_prime").src = "image_stimuli/tcpp/animal3.png";
+      document.getElementById("image_prime").src = "modules/tcpp/image_stimuli/animal3.png";
+      delayImages = true;
+
     }
     if (imagenumber == 8) {
-      document.getElementById("image_prime").src = "image_stimuli/tcpp/animal4.png";
+      document.getElementById("image_prime").src = "modules/tcpp/image_stimuli/animal4.png";
+      delayImages = true;
+
     }
     if (imagenumber == 12) {
-      document.getElementById("image_prime").src = "image_stimuli/tcpp/animal5.png";
-    }
-    var stimuliImageStartPosition = imagenumber * 4;
-    document.getElementById("stimuli1").src = "image_stimuli/tcpp/"
-        + tcppStimuli[stimuliImageStartPosition];
-    document.getElementById("stimuli2").src = "image_stimuli/tcpp/"
-        + tcppStimuli[stimuliImageStartPosition + 1];
-    document.getElementById("stimuli3").src = "image_stimuli/tcpp/"
-        + tcppStimuli[stimuliImageStartPosition + 2];
-    document.getElementById("stimuli4").src = "image_stimuli/tcpp/"
-        + tcppStimuli[stimuliImageStartPosition + 3];
+      document.getElementById("image_prime").src = "modules/tcpp/image_stimuli/animal5.png";
+      delayImages = true;
 
-    // practice don't animate the reinforcement
+    }
+    if (imagenumber == 16) {
+      document.getElementById("image_prime").src = "modules/tcpp/image_stimuli/target3.gif";
+      delayImages = true;
+
+    }
+    if (delayImages) {
+      window.setTimeout(function() {
+
+        var stimuliImageStartPosition = window.imagenumber * 4;
+        document.getElementById("stimuli1").src = "modules/tcpp/image_stimuli/"
+            + tcppStimuli[stimuliImageStartPosition];
+        document.getElementById("stimuli2").src = "modules/tcpp/image_stimuli/"
+            + tcppStimuli[stimuliImageStartPosition + 1];
+        document.getElementById("stimuli3").src = "modules/tcpp/image_stimuli/"
+            + tcppStimuli[stimuliImageStartPosition + 2];
+        document.getElementById("stimuli4").src = "modules/tcpp/image_stimuli/"
+            + tcppStimuli[stimuliImageStartPosition + 3];
+
+      }, 1500);
+      window.imagenumber = imagenumber;
+    } else {
+
+      var stimuliImageStartPosition = imagenumber * 4;
+      document.getElementById("stimuli1").src = "modules/tcpp/image_stimuli/"
+          + tcppStimuli[stimuliImageStartPosition];
+      document.getElementById("stimuli2").src = "modules/tcpp/image_stimuli/"
+          + tcppStimuli[stimuliImageStartPosition + 1];
+      document.getElementById("stimuli3").src = "modules/tcpp/image_stimuli/"
+          + tcppStimuli[stimuliImageStartPosition + 2];
+      document.getElementById("stimuli4").src = "modules/tcpp/image_stimuli/"
+          + tcppStimuli[stimuliImageStartPosition + 3];
+    }
     if (imagenumber <= 5) {
-      if (imagenumber == 5) {
-        alert("Ready for the real game?");
-      }
       $scope.currentStimulus++;
       return;
     }
+
     imagenumber = imagenumber - 5;
     if (imagenumber < 10) {
       imagenumber = "0" + imagenumber;
     }
     imagenumber = "/r" + imagenumber + "_caterpillars.png";
-    document.getElementById("reinforcement_image").src = "image_stimuli/"
-        + $scope.experimentType + imagenumber;
+    document.getElementById("reinforcement_image").src = "modules/"
+        + $scope.experimentType + "/image_stimuli" + imagenumber;
 
     if ($scope.currentStimulus >= tcppAudio.length) {
-      window.alert("Good Job!\n\n@Susan: Why are there 14 caterpillars?");
-      window.location.replace("#/test/tcpp/congratulations");
+      document.getElementById("reinforcement_image").src = "modules/"
+        + $scope.experimentType + "/image_stimuli/r14_caterpillars.png";
+      window.setTimeout(function(){
+        
+        window.alert("Good Job!\n\n@Susan: we need 3X4 more images?");
+        window.location.replace("#/test/tcpp/congratulations");
+      },500);
     }
     $scope.currentStimulus++;
 
@@ -309,44 +460,61 @@ function TDFMCtrl($rootScope, $scope, $routeParams) {
 };
 
 function TDFPCtrl($rootScope, $scope, $routeParams) {
-  // var tdfpAudio = [ ];
+  var tdfpImages = [ "01.png", "02.png", "03.png", "04.png", "05.png",
+      "06.png", "07.png", "08.png", "09.png", "10.png" ];
+  var tdfpAudio = [ "1.mp3", "2.mp3", "3.mp3", "4.mp3" ];
 
   $rootScope.testing = 'true';
   $scope.experimentType = "tdfp";
   $scope.currentStimulus = 0;
 
-  $scope.confirmChoice = function() {
-    var r = confirm("Are you sure?");
-    if (r == true) {
-      $scope.nextStimulus();
-    } else {
-      // do nothing
-    }
-  };
   $scope.nextStimulus = function() {
     document.getElementById("audio_instructions_player_source").pause();
-    // $scope.audioStimulus = "audio_stimuli/"+
-    // $scope.experimentType+"/"+tdfpAudio[$scope.currentStimulus];
-    // document.getElementById("audio_stimuli_player_source").addEventListener('canplaythrough',
-    // function () {
-    // document.getElementById("audio_stimuli_player_source").play()
-    // });
 
-    $scope.currentStimulus++;
-    var imagenumber = $scope.currentStimulus;
+    var imagenumber = $scope.currentStimulus + 1;
     if (imagenumber < 10) {
       imagenumber = "0" + imagenumber;
     }
     imagenumber = "/r" + imagenumber + "_daisy.png";
-    document.getElementById("reinforcement_image").src = "image_stimuli/"
-        + $scope.experimentType + imagenumber;
+    document.getElementById("reinforcement_image").src = "modules/"
+        + $scope.experimentType + "/image_stimuli" + imagenumber;
 
-    // if($scope.currentStimulus >= tcppAudio.length){
-    if ($scope.currentStimulus >= 12) {
+    if ($scope.currentStimulus < tdfpImages.length) {
+      document.getElementById("stimuli_image").src = "modules/"
+          + $scope.experimentType + "/image_stimuli/"
+          + tdfpImages[$scope.currentStimulus];
+    } else {
+      document.getElementById("stimuli_image").setAttribute("hidden", "hidden");
+    }
+
+    if ($scope.currentStimulus > tdfpImages.length) {
       window.alert("Good Job!");
       window.location.replace("#/test/tdfp/congratulations");
     }
+    $scope.currentStimulus++;
 
+  };
+
+  $scope.playPrompt = function(promptNumber) {
+    try {
+      document.getElementById("audio_instructions_player_source").pause();
+      document.getElementById("audio_stimuli_player_source").pause();
+      document.getElementById("audio_stimuli_player_source").currentTime = 0;
+    } catch (e) {
+      console.log("there was probably no audio set");
+    }
+    if (!$scope.audioStimulus
+        || $scope.audioStimulus.indexOf("modules/" + $scope.experimentType
+            + "/audio_stimuli/" + tdfpAudio[promptNumber]) == -1) {
+      document.getElementById("audio_stimuli_player_source").addEventListener(
+          'canplaythrough', function() {
+            document.getElementById("audio_stimuli_player_source").play();
+          });
+      $scope.audioStimulus = "modules/" + $scope.experimentType
+          + "/audio_stimuli/" + tdfpAudio[promptNumber];
+    } else {
+      document.getElementById("audio_stimuli_player_source").play();
+    }
   };
 
   $scope.noSave = function() {
