@@ -16751,7 +16751,7 @@ define('../sails/module',[ "angular", "controllers/SAILSController",
 			} ]);
 	return SAILS;
 });
-console.log("Loading the PhoPhlo SAILS Main");
+console.log("Loading the SAILS main");
 
 // Set the RequireJS configuration
 require.config({
