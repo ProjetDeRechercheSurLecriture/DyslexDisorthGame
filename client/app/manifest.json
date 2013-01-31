@@ -6,7 +6,7 @@
   "content_security_policy" : "img-src 'self' https://senhorzinho.iriscouch.com; default-src 'self' https://wentworthinspections.iriscouch.com/ https://senhorzinho.iriscouch.com; script-src 'self' https://senhorzinho.iriscouch.com; connect-src 'self' https://wentworthinspections.iriscouch.com/ https://senhorzinho.iriscouch.com ; object-src 'self' https://senhorzinho.iriscouch.com ; style-src 'self' https://senhorzinho.iriscouch.com;",
   "app": {
     "launch": {
-      "local_path" : "modules/sails/index.html"
+      "local_path" : "modules/phophlo/index.html"
     }
   },
   "icons": {
