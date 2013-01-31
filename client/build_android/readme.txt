@@ -1,1 +1,0 @@
-Scripts to build the Android app go here.

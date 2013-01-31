@@ -1,8 +1,8 @@
-@import url("../libs/bootstrap/css/bootstrap.css");
+@import url("bootstrap.css");
 
-@import url("../libs/bootstrap/css/bootstrap-responsive.css");
+@import url("bootstrap-responsive.css");
 
-@import url("../libs/font_awesome/css/font-awesome.css");
+@import url("font_awesome/css/font-awesome.css");
 
 @font-face {
 	font-family: 'Finger Paint';
