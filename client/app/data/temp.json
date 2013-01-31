@@ -1,0 +1,582 @@
+{   "previous_inspection": "",
+   "skuInspectionId": "1491_34327_54881",
+   "inspection_date": "2012-11-23",
+   "container_number": "",
+   "reference_sample_provided": "Y",
+   "inspection_version": "PreShipment-20121123-2",
+   "inspection_stage": "PreShipment",
+   "inspection_datecode": "20121123",
+   "inspection_shift_number": "2",
+   "container_seal_number": "",
+   "client_approved_reference_sample": "Y",
+   "sampling_size_inspection": "1",
+   "total_lot_size_pieces": "26",
+   "effective_lot_size_pieces": "NUMERIC",
+   "total_lot_size_containers": "26",
+   "effective_lot_size_containers": "",
+   "sampling_by_attribute_plan": "MILITARY STANDARD 105E (ANSI/ASQC Z1.4 ISO 2859)",
+   "inspection_level": "Level 2",
+   "inspection_aql": "1.500",
+   "inspection_type": "Normal",
+   "inspection_other_instruction": "",
+   "buyer": {
+       "name": "Foobars"
+   },
+   "supplier": {
+       "name": "Allied Biscuit"
+   },
+   "inspectors": [
+       {
+           "username": "daniel"
+       }
+   ],
+   "assignment": {
+       "id": "1491",
+       "date_created": "1353694986711"
+   },
+   "purchaseOrder": {
+       "id": "48765"
+   },
+   "workOrder": {
+       "id": "7899"
+   },
+   "sku": {
+       "name": "Almond cookies",
+       "number": "193712"
+   },
+   "metadata": {
+       "_version": "0.3",
+       "_generated_on": "2012-10-14T02:28:25.394Z",
+       "_modified_by_a_human_on": ""
+   },
+   "inspectionSubSections": {
+       "master_carton": {
+           "procedure": "<div>some stuff</div>",
+           "check_points": {
+               "overall_carton_appearance": {
+                   "description": "Carton should not be crushed, damaged, show holes, bumps or other major defects",
+                   "label": "Overall Carton Appearance",
+                   "defectLevels": [
+                       {
+                           "type": "NA",
+                           "label": "Critical",
+                           "value": ""
+                       },
+                       {
+                           "type": "major",
+                           "label": "Major",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Minor",
+                           "value": ""
+                       }
+                   ],
+                   "comments": ""
+               },
+               "carton_moisture": {
+                   "description": "Rejected if there is moisture on the carton",
+                   "label": "Carton Moisture",
+                   "defectLevels": [
+                       {
+                           "type": "critical",
+                           "label": "Critical",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Major",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Minor",
+                           "value": ""
+                       }
+                   ],
+                   "comments": ""
+               },
+               "carton_strength": {
+                   "description": "Rejected if cardboard strength does not reach company requirement",
+                   "label": "Carton Strength",
+                   "defectLevels": [
+                       {
+                           "type": "critical",
+                           "label": "Critical",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Major",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Minor",
+                           "value": ""
+                       }
+                   ],
+                   "comments": ""
+               },
+               "foobars_identification": {
+                   "description": "On external master cartons and foldings, Foobars must be identified with the Foobars logo or the brand logo.",
+                   "label": "Foobars Identification",
+                   "defectLevels": [
+                       {
+                           "type": "NA",
+                           "label": "Critical",
+                           "value": ""
+                       },
+                       {
+                           "type": "major",
+                           "label": "Major",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Minor",
+                           "value": ""
+                       }
+                   ],
+                   "comments": ""
+               },
+               "logo_readability": {
+                   "description": "Rejected if logo is deformed or incomplete.",
+                   "label": "Logo readability",
+                   "defectLevels": [
+                       {
+                           "type": "NA",
+                           "label": "Critical",
+                           "value": ""
+                       },
+                       {
+                           "type": "major",
+                           "label": "Major",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Minor",
+                           "value": ""
+                       }
+                   ],
+                   "comments": ""
+               },
+               "label": {
+                   "description": "1- Rejected if label is peeling is more than 1/8 in (3.2 mm).                                                                   2- Rejected if there is air bubble under the label",
+                   "label": "Label",
+                   "defectLevels": [
+                       {
+                           "type": "NA",
+                           "label": "Critical",
+                           "value": ""
+                       },
+                       {
+                           "type": "major",
+                           "label": "Major",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Minor",
+                           "value": ""
+                       }
+                   ],
+                   "comments": ""
+               },
+               "shipping_mark": {
+                   "description": "Rejected if wrong or illegible shipping mark",
+                   "label": "Shipping Mark",
+                   "defectLevels": [
+                       {
+                           "type": "critical",
+                           "label": "Critical",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Major",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Minor",
+                           "value": ""
+                       }
+                   ],
+                   "comments": ""
+               },
+               "warning_label": {
+                   "description": "Rejected if warning label is missing (if warning label is requested).",
+                   "label": "Warning Label",
+                   "defectLevels": [
+                       {
+                           "type": "critical",
+                           "label": "Critical",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Major",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Minor",
+                           "value": ""
+                       }
+                   ],
+                   "comments": ""
+               },
+               "languages": {
+                   "description": "Label must be provided in both language and wording should be as template provided.",
+                   "label": "Languages",
+                   "defectLevels": [
+                       {
+                           "type": "NA",
+                           "label": "Critical",
+                           "value": ""
+                       },
+                       {
+                           "type": "major",
+                           "label": "Major",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Minor",
+                           "value": ""
+                       }
+                   ],
+                   "comments": ""
+               },
+               "carton_drop": {
+                   "description": "Carton drop test with 2 master carton. If drop test fails, open the box and check the content.",
+                   "label": "Carton Drop",
+                   "defectLevels": [
+                       {
+                           "type": "critical",
+                           "label": "Critical",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Major",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Minor",
+                           "value": ""
+                       }
+                   ],
+                   "comments": ""
+               },
+               "tape": {
+                   "description": "Rejected if tape adhesion is not strong",
+                   "label": "Tape",
+                   "defectLevels": [
+                       {
+                           "type": "NA",
+                           "label": "Critical",
+                           "value": ""
+                       },
+                       {
+                           "type": "major",
+                           "label": "Major",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Minor",
+                           "value": ""
+                       }
+                   ],
+                   "comments": ""
+               },
+               "sticker": {
+                   "description": "Rejected if a sticker is missing on components or packaging part as per requirement.",
+                   "label": "Sticker",
+                   "defectLevels": [
+                       {
+                           "type": "NA",
+                           "label": "Critical",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Major",
+                           "value": ""
+                       },
+                       {
+                           "type": "minor",
+                           "label": "Minor",
+                           "value": ""
+                       }
+                   ],
+                   "comments": ""
+               },
+               "container_loading": {
+                   "description": "Rejected if container is not full or badly loaded",
+                   "label": "Container Loading",
+                   "defectLevels": [
+                       {
+                           "type": "critical",
+                           "label": "Critical",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Major",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Minor",
+                           "value": ""
+                       }
+                   ],
+                   "comments": ""
+               },
+               "others": {
+                   "description": "Other problem not listed",
+                   "label": "Others",
+                   "defectLevels": [
+                       {
+                           "type": "NA",
+                           "label": "Critical",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Major",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Minor",
+                           "value": ""
+                       }
+                   ],
+                   "comments": ""
+               }
+           }
+       },
+       "assembly": {
+           "check_points": {
+               "appearance_safety": {
+                   "description": "Rejected if any burrs/sharped points/ sharped edges are found (any potential danger to consumers)",
+                   "label": "Appearance/Safety",
+                   "defectLevels": [
+                       {
+                           "type": "critical",
+                           "label": "Critical",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Major",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Minor",
+                           "value": ""
+                       }
+                   ],
+                   "comments": ""
+               },
+               "specifications": {
+                   "description": "Rejected if construction or material are different from the requirements",
+                   "label": "Specifications",
+                   "defectLevels": [
+                       {
+                           "type": "NA",
+                           "label": "Critical",
+                           "value": ""
+                       },
+                       {
+                           "type": "major",
+                           "label": "Major",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Minor",
+                           "value": ""
+                       }
+                   ],
+                   "comments": ""
+               },
+               "dimensions": {
+                   "description": "Rejected if dimensions are different from the requirements",
+                   "label": "Dimensions",
+                   "defectLevels": [
+                       {
+                           "type": "NA",
+                           "label": "Critical",
+                           "value": ""
+                       },
+                       {
+                           "type": "major",
+                           "label": "Major",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Minor",
+                           "value": ""
+                       }
+                   ],
+                   "comments": ""
+               },
+               "appearances": {
+                   "description": "Rejected if indentation marks / fragments  or cracks are found",
+                   "label": "Appearances",
+                   "defectLevels": [
+                       {
+                           "type": "NA",
+                           "label": "Critical",
+                           "value": ""
+                       },
+                       {
+                           "type": "major",
+                           "label": "Major",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Minor",
+                           "value": ""
+                       }
+                   ],
+                   "comments": ""
+               },
+               "appearance_scratches": {
+                   "description": "Rejected if more than 1 scratch of 3 cm or more OR more than 3 scratches of 1 cm is (are) found",
+                   "label": "Appearance Scratches",
+                   "defectLevels": [
+                       {
+                           "type": "NA",
+                           "label": "Critical",
+                           "value": ""
+                       },
+                       {
+                           "type": "major",
+                           "label": "Major",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Minor",
+                           "value": ""
+                       }
+                   ],
+                   "comments": ""
+               }
+           }
+       },
+       "functions": {
+           "check_points": {
+               "structure_and_function": {
+                   "description": "Rejected if there is any other structure and functionality problems detected. Structure and functions must be tested in all positions.",
+                   "label": "Structure and Function",
+                   "defectLevels": [
+                       {
+                           "type": "critical",
+                           "label": "Critical",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Major",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Minor",
+                           "value": ""
+                       }
+                   ],
+                   "comments": ""
+               }
+           }
+       },
+       "finishing": {
+           "check_points": {
+               "color": {
+                   "description": "Rejected if colors do not match the approved golden samples or swatch. Rejected color if the color is uneven between base and arms, rejected if the color is different between the seat and back or if there is any color variation or discrepancy among the same collection",
+                   "label": "Color",
+                   "defectLevels": [
+                       {
+                           "type": "NA",
+                           "label": "Critical",
+                           "value": ""
+                       },
+                       {
+                           "type": "major",
+                           "label": "Major",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Minor",
+                           "value": ""
+                       }
+                   ],
+                   "comments": ""
+               },
+               "dirty_marks": {
+                   "description": "Rejected if stains, spots or dirty marks are found on units",
+                   "label": "Dirty Marks",
+                   "defectLevels": [
+                       {
+                           "type": "NA",
+                           "label": "Critical",
+                           "value": ""
+                       },
+                       {
+                           "type": "major",
+                           "label": "Major",
+                           "value": ""
+                       },
+                       {
+                           "type": "NA",
+                           "label": "Minor",
+                           "value": ""
+                       }
+                   ],
+                   "comments": ""
+               }
+           }
+       }
+   },
+   "conclusionAttributes": {
+       "footer_inspection_remarks": "ALPHANUMERIC",
+       "footer_critical_aql": "0.000",
+       "footer_major_aql": "1.500",
+       "footer_minor_aql": "4.000",
+       "packaging_total_defects_comments": "",
+       "assembly_total_defects_comments": "",
+       "function_total_defects_comments": "",
+       "finishing_total_defects_comments": "",
+       "inspection_total_defects_comments": "",
+       "packaging_total_critical_defect_count": 0,
+       "assembly_total_critical_defect_count": 0,
+       "function_total_critical_defect_count": 0,
+       "finishing_total_critical_defect_count": 0,
+       "inspection_total_critical_defect_count": 0,
+       "packaging_total_major_defect_count": 0,
+       "assembly_total_major_defect_count": 0,
+       "function_total_major_defect_count": 0,
+       "finishing_total_major_defect_count": 0,
+       "inspection_total_major_defect_count": 0,
+       "packaging_total_minor_defect_count": 0,
+       "assembly_total_minor_defect_count": 0,
+       "function_total_minor_defect_count": 0,
+       "finishing_total_minor_defect_count": 0,
+       "inspection_total_minor_defect_count": 0
+   },
+   "conclusion": "Accepted"
+}

@@ -1,0 +1,1 @@
+Scripts to build the couchapp go here.
