@@ -24,7 +24,7 @@ define([ "angular" ], function(angular) {
                   + scope.instructions + "' autoplay></audio>");
               $compile(element.contents())(scope);
               element.click(function() {
-                console.log("audio: " + scope.audio[i]);
+                console.log("audio: " + scope.audio[i-1]);
                 if (i < scope.practiceNumber) {
                   element.html("<div class='span4'><img id='"+ scope.topImage + "' src='image_stimuli/"
                       + scope.topImage + "' coordinates-click><br /><img id='"+ scope.bottomImage + "' src='image_stimuli/"
