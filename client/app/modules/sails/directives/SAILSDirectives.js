@@ -24,6 +24,7 @@ define([ "angular" ], function(angular) {
                   + scope.instructions + "' autoplay></audio>");
               $compile(element.contents())(scope);
               element.click(function() {
+                console.log("audio: " + scope.audio[i]);
                 if (i < scope.practiceNumber) {
                   element.html("<div class='span4'><img id='"+ scope.topImage + "' src='image_stimuli/"
                       + scope.topImage + "' coordinates-click><br /><img id='"+ scope.bottomImage + "' src='image_stimuli/"
@@ -82,7 +83,7 @@ define([ "angular" ], function(angular) {
         mouse.setLocation(event.pageX, event.pageY);
         var imageX = event.pageX - $element[0].offsetLeft;
         var imageY = event.pageY - $element[0].offsetTop;
-        console.log("id: " + $element[0].id + "\npageX: " + event.pageX + "\npageY: " + event.pageY + "\nimageX: " + imageX + "\nimageY: " + imageY);
+        console.log("Results: " + "\npageX: " + event.pageX + "\npageY: " + event.pageY + "\nimageX: " + imageX + "\nimageY: " + imageY + "\nimage clicked: " + $element[0].id);
         
         // Apply the scope expression so the
         // handler is invoked and the digest()
