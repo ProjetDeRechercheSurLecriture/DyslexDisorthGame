@@ -16692,74 +16692,126 @@ console.log("Loading the SAILSController.")
 
 
 define('controllers/SAILSController',[ "angular" ], function(angular) {
-	var SAILSController = function($scope, $resource) {
-		$scope.stimuli = ["Loading"];
-		$scope.topImage = "gris.png";
-		$scope.bottomImage = "pas_gris.png";
-		$scope.practiceImage = "practice.png";
-		$scope.reinforcement = "mouse_cheese.png";
-		$scope.congratulations = "sails_congratulations.png";
-		$scope.practiceNumber = 10;
-		$scope.instructions = "sails_instructions.mp3";
-		$scope.audio = [ "NI29A_Gris_MOD.mp3", "GR02A_Gris_MOD.mp3",
-		                 "GR02A_Gris_MOD.mp3", "NI29A_Gris_MOD.mp3", "GR02A_Gris_MOD.mp3",
-		                 "NI29A_Gris_MOD.mp3", "GR02A_Gris_MOD.mp3", "GR02A_Gris_MOD.mp3",
-		                 "NI29A_Gris_MOD.mp3", "NI29A_Gris_MOD.mp3", "GR16B_Gris_MOD.mp3", "GR27C_Gris_MOD.mp3",
-		                 "GR20B_Gris_MOD.mp3", "GR21A_Gris_MOD.mp3", "GR18A_Gris_MOD.mp3",
-		                 "GR20C_Gris_MOD.mp3", "GR21C_Gris_MOD.mp3", "GR27A_Gris_MOD.mp3",
-		                 "GR04A_Gris_MOD.mp3", "GR28A_Gris_MOD.mp3" ];
-	};
-	SAILSController.$inject = [ '$scope', '$resource' ];
-	return SAILSController;
+  var SAILSController = function($scope, $resource, mouse) {
+    $scope.stimuli = [ "Loading" ];
+    $scope.topImage = "gris.png";
+    $scope.bottomImage = "pas_gris.png";
+    $scope.practiceImage = "practice.png";
+    $scope.reinforcement = "mouse_cheese.png";
+    $scope.congratulations = "sails_congratulations.png";
+    $scope.practiceNumber = 10;
+    $scope.instructions = "sails_instructions.mp3";
+    $scope.audio = [ "NI29A_Gris_MOD.mp3", "GR02A_Gris_MOD.mp3",
+        "GR02A_Gris_MOD.mp3", "NI29A_Gris_MOD.mp3", "GR02A_Gris_MOD.mp3",
+        "NI29A_Gris_MOD.mp3", "GR02A_Gris_MOD.mp3", "GR02A_Gris_MOD.mp3",
+        "NI29A_Gris_MOD.mp3", "NI29A_Gris_MOD.mp3", "GR16B_Gris_MOD.mp3",
+        "GR27C_Gris_MOD.mp3", "GR20B_Gris_MOD.mp3", "GR21A_Gris_MOD.mp3",
+        "GR18A_Gris_MOD.mp3", "GR20C_Gris_MOD.mp3", "GR21C_Gris_MOD.mp3",
+        "GR27A_Gris_MOD.mp3", "GR04A_Gris_MOD.mp3", "GR28A_Gris_MOD.mp3" ];
+
+  };
+  SAILSController.$inject = [ '$scope', '$resource', 'mouse' ];
+  return SAILSController;
 });
 console.log("Loading the SAILSDirectives.");
 
 
 define('directives/SAILSDirectives',[ "angular" ], function(angular) {
-	var SAILSDirectives = angular.module('SAILS.directives', []).directive(
-			'moduleVersion', [ 'version', function(version) {
-				return function(scope, elm, attrs) {
-					elm.text(version);
-				};
-			} ]).directive(
-			'stimuli2',
-			function($compile) {
-				return function(scope, element, attrs) {
-					var i = 0;
-					var j = 1;
-					scope.$watch('stimuli', function() {
-						if (scope.stimuli != undefined) {
-							element.html("<div class='span4'><img src='image_stimuli/" + scope.topImage + "'><br /><img src='image_stimuli/pas_" + scope.topImage + "'></div><div class='span6'><img src='image_stimuli/"
-									+ scope.practiceImage + "'></img></div><audio src='audio_stimuli/" + scope.instructions + "' autoplay></audio>");
-							$compile(element.contents())(scope);
-							element.click(function() {
-								if (i < scope.practiceNumber) {
-									element.html("<div class='span4'><img src='image_stimuli/" + scope.topImage + "'><br /><img src='image_stimuli/" + scope.bottomImage + "'></div><div class='span6'><img src='image_stimuli/"
-											+ scope.practiceImage + "'></img></div><audio src='audio_stimuli/" + scope.audio[i] + "' autoplay></audio>");
-									$compile(element.contents())(scope);
-									i++;
-								} else if (i < scope.audio.length) {
-									if (i == scope.practiceNumber) {
-										window.alert("Ready to start?");
-									}
-									if (j < 10) {
-										j = "0" + j;
-									};
-									element.html("<div class='span4'><img src='image_stimuli/" + scope.topImage + "'><br /><img src='image_stimuli/" + scope.bottomImage + "'></div><div class='span6'><img src='image_stimuli/r" + j + "_" + scope.reinforcement + "'></img></div><audio src='audio_stimuli/" + scope.audio[i] + "' autoplay></audio>");
-									$compile(element.contents())(scope);
-									i++;
-									j++;
-								} else if (i == scope.audio.length) {
-									element.html("<div class='span4'><img src='image_stimuli/" + scope.topImage + "'><br /><img src='image_stimuli/" + scope.bottomImage + "'></div><div class='span6'><img src='image_stimuli/" + scope.congratulations + "'></img></div>");
-									$compile(element.contents())(scope);
-								}
-							});
+  var SAILSDirectives = angular.module('SAILS.directives', []).directive(
+      'moduleVersion', [ 'version', function(version) {
+        return function(scope, elm, attrs) {
+          elm.text(version);
+        };
+      } ]).directive(
+      'stimuli2',
+      function($compile) {
+        return function(scope, element, attrs) {
+          var i = 0;
+          var j = 1;
+          scope.$watch('stimuli', function() {
+            if (scope.stimuli != undefined) {
+              element.html("<div class='span4'><img src='image_stimuli/"
+                  + scope.topImage + "' coordinates-click><br /><img src='image_stimuli/"
+                  + scope.bottomImage
+                  + "' coordinates-click></div><div class='span6'><img src='image_stimuli/"
+                  + scope.practiceImage
+                  + "' coordinates-click></img></div><audio src='audio_stimuli/"
+                  + scope.instructions + "' autoplay></audio>");
+              $compile(element.contents())(scope);
+              element.click(function() {
+                if (i < scope.practiceNumber) {
+                  element.html("<div class='span4'><img src='image_stimuli/"
+                      + scope.topImage + "' coordinates-click><br /><img src='image_stimuli/"
+                      + scope.bottomImage
+                      + "' coordinates-click></div><div class='span6'><img src='image_stimuli/"
+                      + scope.practiceImage
+                      + "' coordinates-click></img></div><audio src='audio_stimuli/"
+                      + scope.audio[i] + "' autoplay></audio>");
+                  $compile(element.contents())(scope);
+                  i++;
+                } else if (i < scope.audio.length) {
+                  if (i == scope.practiceNumber) {
+                    window.alert("Ready to start?");
+                  }
+                  if (j < 10) {
+                    j = "0" + j;
+                  }
+                  ;
+                  element.html("<div class='span4'><img src='image_stimuli/"
+                      + scope.topImage + "' coordinates-click><br /><img src='image_stimuli/"
+                      + scope.bottomImage
+                      + "' coordinates-click></div><div class='span6'><img src='image_stimuli/r"
+                      + j + "_" + scope.reinforcement
+                      + "' coordinates-click></img></div><audio src='audio_stimuli/"
+                      + scope.audio[i] + "' autoplay></audio>");
+                  $compile(element.contents())(scope);
+                  i++;
+                  j++;
+                } else if (i == scope.audio.length) {
+                  element.html("<div class='span4'><img src='image_stimuli/"
+                      + scope.topImage + "'><br /><img src='image_stimuli/"
+                      + scope.bottomImage
+                      + "'></div><div class='span6'><img src='image_stimuli/"
+                      + scope.congratulations + "'></img></div>");
+                  $compile(element.contents())(scope);
+                }
+              });
 
-						}
-					});
-				};
-			});
-	return SAILSDirectives;
+            }
+          });
+        };
+      }).directive("coordinatesClick", function(mouse) {
+
+    // I connect the Angular context to the DOM events.
+    var linkFunction = function($scope, $element, $attributes) {
+
+      // Get the expression we want to evaluate on the
+      // scope when the document is clicked.
+      var scopeExpression = $attributes.coordinatesClick;
+
+      // Bind to the element click event.
+      $element.on("click", function(event) {
+
+        // Set the click coordinates in the mouse
+        // service.
+        mouse.setLocation(event.pageX, event.pageY);
+        var imageX = event.pageX - $element[0].offsetLeft;
+        var imageY = event.pageY - $element[0].offsetTop;
+        console.log("src: " + $element[0].src + "\npageX: " + event.pageX + "\npageY: " + event.pageY + "\nimageX: " + imageX + "\nimageY: " + imageY);
+        
+        // Apply the scope expression so the
+        // handler is invoked and the digest()
+        // method is invoked implicitly.
+        $scope.$apply(scopeExpression);
+      });
+
+    };
+
+    // Return the linking function.
+    return (linkFunction);
+  });
+
+  return SAILSDirectives;
 });
 console.log("Loading the SAILSFilters.");
 
@@ -16772,8 +16824,51 @@ console.log("Loading the SAILSServices.");
 
 
 define('services/SAILSServices',[ "angular" ], function(angular) {
-	var SAILSServices = angular.module('SAILS.services', [ 'ngResource' ]);
-	return SAILSServices;
+  var SAILSServices = angular.module('SAILS.services', [ 'ngResource' ])
+  // mouse factory adapted from
+  // http://http://www.bennadel.com/blog/2423-Exposing-A-Mouse-Service-For-Click-Events-In-AngularJS.htm
+  .factory("mouse", function() {
+
+    // Define the initial position. This will be a hash
+    // with X / Y properties.
+    var location = null;
+
+    // Let's keep track of the previous location, if it
+    // is going to be intertesting at all.
+    var previousLocation = null;
+
+    // Define the public API for this service.
+    var api = {
+
+      // Get the current location, if there is one.
+      getLocation : function() {
+
+        // Return a copy of the location so that we
+        // don't accidentally break encapsulation.
+        return (angular.copy(location));
+      },
+
+      // Set the new location.
+      setLocation : function(x, y) {
+
+        // If we have a current location, let's copy
+        // it into the previous location.
+        if (location) {
+          previousLocation = location;
+        }
+
+        // Overwrite with the new location.
+        location = {
+          x : x,
+          y : y
+        };
+      }
+    };
+
+    // Return the API as our factory definition.
+    return (api);
+  });
+  return SAILSServices;
 });
 console.log("Loading the SAILS module.");
 
