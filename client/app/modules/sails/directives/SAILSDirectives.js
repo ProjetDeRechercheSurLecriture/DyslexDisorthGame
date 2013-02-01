@@ -13,18 +13,32 @@ define([ "angular" ], function(angular) {
         return function(scope, element, attrs) {
           var i = 0;
           var j = 1;
+          var startTime;
+          var finishTime;
+          var responseTime;
           scope.$watch('stimuli', function() {
             if (scope.stimuli != undefined) {
               element.html("<div class='span4'><img id='"+ scope.topImage + "' src='image_stimuli/"
                   + scope.topImage + "' coordinates-click><br /><img id='"+ scope.bottomImage + "' src='image_stimuli/"
                   + scope.bottomImage
-                  + "' coordinates-click></div><div class='span6'><img id='"+ scope.practiceImage + "' src='image_stimuli/"
+                  + "' coordinates-click></div><div class='span6 pagination-centered'><img id='"+ scope.practiceImage + "' src='image_stimuli/"
                   + scope.practiceImage
-                  + "' coordinates-click></img></div><audio src='audio_stimuli/"
+                  + "' coordinates-click></img><br><h1>START</h2></div><audio src='audio_stimuli/"
                   + scope.instructions + "' autoplay></audio>");
               $compile(element.contents())(scope);
               element.click(function() {
-                console.log("audio: " + scope.audio[i-1]);
+                if (i > 0) {
+                  console.log("audio: " + scope.audio[i-1]);
+                }
+                
+                //Get response time
+                if (i == 0) {
+                  startTime = new Date().getTime();
+                }
+                finishTime = new Date().getTime();
+                responseTime = finishTime - startTime;
+                startTime = finishTime;
+                console.log("Response time: " + responseTime + " milliseconds");
                 if (i < scope.practiceNumber) {
                   element.html("<div class='span4'><img id='"+ scope.topImage + "' src='image_stimuli/"
                       + scope.topImage + "' coordinates-click><br /><img id='"+ scope.bottomImage + "' src='image_stimuli/"
