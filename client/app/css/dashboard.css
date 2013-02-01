@@ -25,10 +25,11 @@
 	background-image: -o-radial-gradient(center, ellipse cover, #f6e6b4 0%, #ed9017 100%);
 	background-image: -ms-radial-gradient(center, ellipse cover, #f6e6b4 0%, #ed9017 100%);
 	background-image: radial-gradient(center, ellipse cover, #f6e6b4 0%, #ed9017 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=       
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=
 		       
-		       '#f6e6b4', endColorstr=                       '#ed9017',
-		GradientType=      
+		       
+		       '#f6e6b4', endColorstr=                        '#ed9017',
+		GradientType=       
 		
 		
 		 
@@ -97,10 +98,11 @@ a:active.backgroundlink {
 	background-image: -ms-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
 	background-image: radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
 	color: white;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=       
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=
 		       
-		       '#029CC9', endColorstr=                       '#005077',
-		GradientType=      
+		       
+		       '#029CC9', endColorstr=                        '#005077',
+		GradientType=       
 		
 		
 		 
@@ -127,10 +129,11 @@ a:active.backgroundlink {
 	background-image: -ms-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
 	background-image: radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
 	color: white;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=       
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=
 		       
-		       '#029CC9', endColorstr=                       '#005077',
-		GradientType=      
+		       
+		       '#029CC9', endColorstr=                        '#005077',
+		GradientType=       
 		
 		
 		 
@@ -145,10 +148,11 @@ a:active.backgroundlink {
 	background-image: -o-radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
 	background-image: -ms-radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
 	background-image: radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=       
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=
 		       
-		       '#ffffff', endColorstr=                       '#999999',
-		GradientType=      
+		       
+		       '#ffffff', endColorstr=                        '#999999',
+		GradientType=       
 		
 		
 		 
@@ -158,6 +162,10 @@ a:active.backgroundlink {
 
 h1,h2,h3,h4 {
 	font-family: 'Finger Paint', cursive;
+}
+
+h2 {
+	color: #99ffff;
 }
 
 h4 {

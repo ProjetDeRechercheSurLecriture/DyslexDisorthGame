@@ -16693,7 +16693,21 @@ console.log("Loading the SAILSController.")
 
 define('controllers/SAILSController',[ "angular" ], function(angular) {
 	var SAILSController = function($scope, $resource) {
-		// CONTROLLER CODE
+		$scope.stimuli = ["Loading"];
+		$scope.topImage = "gris.png";
+		$scope.bottomImage = "pas_gris.png";
+		$scope.practiceImage = "practice.png";
+		$scope.reinforcement = "mouse_cheese.png";
+		$scope.congratulations = "sails_congratulations.png";
+		$scope.practiceNumber = 10;
+		$scope.instructions = "sails_instructions.mp3";
+		$scope.audio = [ "NI29A_Gris_MOD.mp3", "GR02A_Gris_MOD.mp3",
+		                 "GR02A_Gris_MOD.mp3", "NI29A_Gris_MOD.mp3", "GR02A_Gris_MOD.mp3",
+		                 "NI29A_Gris_MOD.mp3", "GR02A_Gris_MOD.mp3", "GR02A_Gris_MOD.mp3",
+		                 "NI29A_Gris_MOD.mp3", "NI29A_Gris_MOD.mp3", "GR16B_Gris_MOD.mp3", "GR27C_Gris_MOD.mp3",
+		                 "GR20B_Gris_MOD.mp3", "GR21A_Gris_MOD.mp3", "GR18A_Gris_MOD.mp3",
+		                 "GR20C_Gris_MOD.mp3", "GR21C_Gris_MOD.mp3", "GR27A_Gris_MOD.mp3",
+		                 "GR04A_Gris_MOD.mp3", "GR28A_Gris_MOD.mp3" ];
 	};
 	SAILSController.$inject = [ '$scope', '$resource' ];
 	return SAILSController;
@@ -16707,7 +16721,44 @@ define('directives/SAILSDirectives',[ "angular" ], function(angular) {
 				return function(scope, elm, attrs) {
 					elm.text(version);
 				};
-			} ]);
+			} ]).directive(
+			'stimuli2',
+			function($compile) {
+				return function(scope, element, attrs) {
+					var i = 0;
+					var j = 1;
+					scope.$watch('stimuli', function() {
+						if (scope.stimuli != undefined) {
+							element.html("<div class='span4'><img src='image_stimuli/" + scope.topImage + "'><br /><img src='image_stimuli/pas_" + scope.topImage + "'></div><div class='span6'><img src='image_stimuli/"
+									+ scope.practiceImage + "'></img></div><audio src='audio_stimuli/" + scope.instructions + "' autoplay></audio>");
+							$compile(element.contents())(scope);
+							element.click(function() {
+								if (i < scope.practiceNumber) {
+									element.html("<div class='span4'><img src='image_stimuli/" + scope.topImage + "'><br /><img src='image_stimuli/" + scope.bottomImage + "'></div><div class='span6'><img src='image_stimuli/"
+											+ scope.practiceImage + "'></img></div><audio src='audio_stimuli/" + scope.audio[i] + "' autoplay></audio>");
+									$compile(element.contents())(scope);
+									i++;
+								} else if (i < scope.audio.length) {
+									if (i == scope.practiceNumber) {
+										window.alert("Ready to start?");
+									}
+									if (j < 10) {
+										j = "0" + j;
+									};
+									element.html("<div class='span4'><img src='image_stimuli/" + scope.topImage + "'><br /><img src='image_stimuli/" + scope.bottomImage + "'></div><div class='span6'><img src='image_stimuli/r" + j + "_" + scope.reinforcement + "'></img></div><audio src='audio_stimuli/" + scope.audio[i] + "' autoplay></audio>");
+									$compile(element.contents())(scope);
+									i++;
+									j++;
+								} else if (i == scope.audio.length) {
+									element.html("<div class='span4'><img src='image_stimuli/" + scope.topImage + "'><br /><img src='image_stimuli/" + scope.bottomImage + "'></div><div class='span6'><img src='image_stimuli/" + scope.congratulations + "'></img></div>");
+									$compile(element.contents())(scope);
+								}
+							});
+
+						}
+					});
+				};
+			});
 	return SAILSDirectives;
 });
 console.log("Loading the SAILSFilters.");
@@ -16743,6 +16794,9 @@ define('../sails/module',[ "angular", "controllers/SAILSController",
 				window.SAILSController = SAILSController;
 				console.log("Initializing the SAILS module.");
 				$routeProvider.when('/sails', {
+					templateUrl : 'partials/main.html',
+					controller : SAILSController
+				}).when('/sails/experiment', {
 					templateUrl : 'partials/sails.html',
 					controller : SAILSController
 				}).otherwise({

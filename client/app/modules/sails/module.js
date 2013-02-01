@@ -17,6 +17,9 @@ define([ "angular", "controllers/SAILSController",
 				window.SAILSController = SAILSController;
 				console.log("Initializing the SAILS module.");
 				$routeProvider.when('/sails', {
+					templateUrl : 'partials/main.html',
+					controller : SAILSController
+				}).when('/sails/experiment', {
 					templateUrl : 'partials/sails.html',
 					controller : SAILSController
 				}).otherwise({
