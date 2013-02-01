@@ -16758,7 +16758,7 @@ define('directives/SAILSDirectives',[ "angular" ], function(angular) {
                   element.html("<div class='span4'><img id='"+ scope.topImage + "' src='image_stimuli/"
                       + scope.topImage + "' coordinates-click><br /><img id='"+ scope.bottomImage + "' src='image_stimuli/"
                       + scope.bottomImage
-                      + "' coordinates-click></div><div class='span6'><img id='"+ scope.practiceImage + "' src='image_stimuli/"
+                      + "' coordinates-click></div><div class='span6 pagination-centered'><img id='"+ scope.practiceImage + "' src='image_stimuli/"
                       + scope.practiceImage
                       + "' coordinates-click></img></div><audio src='audio_stimuli/"
                       + scope.audio[i] + "' autoplay></audio>");
