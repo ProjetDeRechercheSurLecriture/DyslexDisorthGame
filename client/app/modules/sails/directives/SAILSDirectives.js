@@ -15,20 +15,20 @@ define([ "angular" ], function(angular) {
           var j = 1;
           scope.$watch('stimuli', function() {
             if (scope.stimuli != undefined) {
-              element.html("<div class='span4'><img src='image_stimuli/"
-                  + scope.topImage + "' coordinates-click><br /><img src='image_stimuli/"
+              element.html("<div class='span4'><img id='"+ scope.topImage + "' src='image_stimuli/"
+                  + scope.topImage + "' coordinates-click><br /><img id='"+ scope.bottomImage + "' src='image_stimuli/"
                   + scope.bottomImage
-                  + "' coordinates-click></div><div class='span6'><img src='image_stimuli/"
+                  + "' coordinates-click></div><div class='span6'><img id='"+ scope.practiceImage + "' src='image_stimuli/"
                   + scope.practiceImage
                   + "' coordinates-click></img></div><audio src='audio_stimuli/"
                   + scope.instructions + "' autoplay></audio>");
               $compile(element.contents())(scope);
               element.click(function() {
                 if (i < scope.practiceNumber) {
-                  element.html("<div class='span4'><img src='image_stimuli/"
-                      + scope.topImage + "' coordinates-click><br /><img src='image_stimuli/"
+                  element.html("<div class='span4'><img id='"+ scope.topImage + "' src='image_stimuli/"
+                      + scope.topImage + "' coordinates-click><br /><img id='"+ scope.bottomImage + "' src='image_stimuli/"
                       + scope.bottomImage
-                      + "' coordinates-click></div><div class='span6'><img src='image_stimuli/"
+                      + "' coordinates-click></div><div class='span6'><img id='"+ scope.practiceImage + "' src='image_stimuli/"
                       + scope.practiceImage
                       + "' coordinates-click></img></div><audio src='audio_stimuli/"
                       + scope.audio[i] + "' autoplay></audio>");
@@ -42,10 +42,10 @@ define([ "angular" ], function(angular) {
                     j = "0" + j;
                   }
                   ;
-                  element.html("<div class='span4'><img src='image_stimuli/"
-                      + scope.topImage + "' coordinates-click><br /><img src='image_stimuli/"
+                  element.html("<div class='span4'><img id='"+ scope.topImage + "' src='image_stimuli/"
+                      + scope.topImage + "' coordinates-click><br /><img id='"+ scope.bottomImage + "' src='image_stimuli/"
                       + scope.bottomImage
-                      + "' coordinates-click></div><div class='span6'><img src='image_stimuli/r"
+                      + "' coordinates-click></div><div class='span6'><img id='"+ scope.reinforcement + "' src='image_stimuli/r"
                       + j + "_" + scope.reinforcement
                       + "' coordinates-click></img></div><audio src='audio_stimuli/"
                       + scope.audio[i] + "' autoplay></audio>");
@@ -53,10 +53,10 @@ define([ "angular" ], function(angular) {
                   i++;
                   j++;
                 } else if (i == scope.audio.length) {
-                  element.html("<div class='span4'><img src='image_stimuli/"
-                      + scope.topImage + "'><br /><img src='image_stimuli/"
+                  element.html("<div class='span4'><img id='"+ scope.topImage + "' src='image_stimuli/"
+                      + scope.topImage + "'><br /><img id='"+ scope.bottomImage + "' src='image_stimuli/"
                       + scope.bottomImage
-                      + "'></div><div class='span6'><img src='image_stimuli/"
+                      + "'></div><div class='span6'><img id='"+ scope.congratulations + "' src='image_stimuli/"
                       + scope.congratulations + "'></img></div>");
                   $compile(element.contents())(scope);
                 }
@@ -67,7 +67,7 @@ define([ "angular" ], function(angular) {
         };
       }).directive("coordinatesClick", function(mouse) {
 
-    // I connect the Angular context to the DOM events.
+    // Connect the Angular context to the DOM events.
     var linkFunction = function($scope, $element, $attributes) {
 
       // Get the expression we want to evaluate on the
@@ -82,7 +82,7 @@ define([ "angular" ], function(angular) {
         mouse.setLocation(event.pageX, event.pageY);
         var imageX = event.pageX - $element[0].offsetLeft;
         var imageY = event.pageY - $element[0].offsetTop;
-        console.log("src: " + $element[0].src + "\npageX: " + event.pageX + "\npageY: " + event.pageY + "\nimageX: " + imageX + "\nimageY: " + imageY);
+        console.log("id: " + $element[0].id + "\npageX: " + event.pageX + "\npageY: " + event.pageY + "\nimageX: " + imageX + "\nimageY: " + imageY);
         
         // Apply the scope expression so the
         // handler is invoked and the digest()
