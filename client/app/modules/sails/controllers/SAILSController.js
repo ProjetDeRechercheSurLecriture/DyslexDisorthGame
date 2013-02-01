@@ -3,6 +3,7 @@ console.log("Loading the SAILSController.")
 'use strict';
 define([ "angular" ], function(angular) {
   var SAILSController = function($scope, $resource, mouse) {
+    $scope.results = [];
     $scope.stimuli = [ "Loading" ];
     $scope.topImage = "gris.png";
     $scope.bottomImage = "pas_gris.png";
