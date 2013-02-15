@@ -1,0 +1,1 @@
+SAILS-specific participant module
