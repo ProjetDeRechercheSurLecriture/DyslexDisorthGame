@@ -16688,13 +16688,16 @@ define("angular-resource", ["angular"], (function (global) {
     };
 }(this)));
 
-console.log("Loading the SAILSController.")
+console.log("Loading the SAILSController.");
 
 
 define('controllers/SAILSController',[ "angular" ], function(angular) {
   var SAILSController = function($scope, $resource, mouse) {
-    $scope.results = [];
+    if (!$scope.results) {
+      $scope.results = [];
+    }
     $scope.stimuli = [ "Loading" ];
+    $scope.experiment = "sails";
     $scope.topImage = "gris.png";
     $scope.bottomImage = "pas_gris.png";
     $scope.practiceImage = "practice.png";
@@ -16709,6 +16712,28 @@ define('controllers/SAILSController',[ "angular" ], function(angular) {
         "GR27C_Gris_MOD.mp3", "GR20B_Gris_MOD.mp3", "GR21A_Gris_MOD.mp3",
         "GR18A_Gris_MOD.mp3", "GR20C_Gris_MOD.mp3", "GR21C_Gris_MOD.mp3",
         "GR27A_Gris_MOD.mp3", "GR04A_Gris_MOD.mp3", "GR28A_Gris_MOD.mp3" ];
+
+    $scope.congratulationsScreen = function() {
+      window.location.assign("#/sails/congratulations");
+    };
+    
+    $scope.saveScore = function(childInfo) {
+      var experimentData = {};
+      experimentData.experiment = $scope.experiment;
+      experimentData.date = new Date();
+      experimentData.child = childInfo;
+      experimentData.results = $scope.results;
+      console.log("Experiment Data: " + JSON.stringify(experimentData));
+      window.alert("Score saved!");
+      $scope.results = [];
+      window.location.assign("#/sails");
+    };
+
+    $scope.noSave = function() {
+      $scope.results = [];
+      window.alert("Thanks for playing!");
+      window.location.assign("#/sails");
+    };
 
   };
   SAILSController.$inject = [ '$scope', '$resource', 'mouse' ];
@@ -16726,7 +16751,32 @@ define('directives/SAILSDirectives',
             return function(scope, element, attrs) {
               element.text(version);
             };
-          } ])
+          } ]);
+
+      return SAILSDirectives;
+    });
+console.log("Loading the SAILSFilters.");
+
+
+define('filters/SAILSFilters',[ "angular" ], function(angular) {
+	var SAILSFilters = angular.module('SAILS.filters', []);
+	return SAILSFilters;
+});
+console.log("Loading the SAILSServices.");
+
+
+define('services/SAILSServices',[ "angular" ], function(angular) {
+  var SAILSServices = angular.module('SAILS.services', [ 'ngResource' ]);
+  return SAILSServices;
+});
+console.log("Loading the PhoPhloDirectives.");
+
+
+define('../phophlo/experiment/PhoPhloDirectives',
+    [ "angular" ],
+    function(angular) {
+      var PhoPhloDirectives = angular
+          .module('PhoPhlo.directives', [])
           .directive(
               'stimuli2',
               function($compile) {
@@ -16754,7 +16804,7 @@ define('directives/SAILSDirectives',
                                       + scope.practiceImage
                                       + "' src='image_stimuli/"
                                       + scope.practiceImage
-                                      + "' coordinates-click></img><br><h1>START</h2></div><audio src='audio_stimuli/"
+                                      + "' coordinates-click></img><br><button class='btn btn-success'><h1>START</h2></button></div><audio src='audio_stimuli/"
                                       + scope.instructions
                                       + "' autoplay></audio>");
                               $compile(element.contents())(scope);
@@ -16838,13 +16888,13 @@ define('directives/SAILSDirectives',
                                               + scope.bottomImage
                                               + "' src='image_stimuli/"
                                               + scope.bottomImage
-                                              + "'></div><div class='span6'><img id='"
+                                              + "'></div><div class='span6 pagination-centered'><img id='"
                                               + scope.congratulations
                                               + "' src='image_stimuli/"
                                               + scope.congratulations
-                                              + "'></img></div>");
+                                              + "'></img><br /><button type='button' class='btn-large btn-success' ng-click='congratulationsScreen()'>Continue</button></div>");
                                       $compile(element.contents())(scope);
-                                      i++
+                                      i++;
                                     }
                                   });
 
@@ -16897,20 +16947,13 @@ define('directives/SAILSDirectives',
             return (linkFunction);
           });
 
-      return SAILSDirectives;
+      return PhoPhloDirectives;
     });
-console.log("Loading the SAILSFilters.");
+console.log("Loading the PhoPhloServices.");
 
 
-define('filters/SAILSFilters',[ "angular" ], function(angular) {
-	var SAILSFilters = angular.module('SAILS.filters', []);
-	return SAILSFilters;
-});
-console.log("Loading the SAILSServices.");
-
-
-define('services/SAILSServices',[ "angular" ], function(angular) {
-  var SAILSServices = angular.module('SAILS.services', [ 'ngResource' ])
+define('../phophlo/experiment/PhoPhloServices',[ "angular" ], function(angular) {
+  var PhoPhloServices = angular.module('PhoPhlo.services', [ 'ngResource' ])
   // mouse factory adapted from
   // http://http://www.bennadel.com/blog/2423-Exposing-A-Mouse-Service-For-Click-Events-In-AngularJS.htm
   .factory("mouse", function() {
@@ -16954,15 +16997,15 @@ define('services/SAILSServices',[ "angular" ], function(angular) {
     // Return the API as our factory definition.
     return (api);
   });
-  return SAILSServices;
+  return PhoPhloServices;
 });
 console.log("Loading the SAILS module.");
 
 
 define('../sails/module',[ "angular", "controllers/SAILSController",
 		"directives/SAILSDirectives", "filters/SAILSFilters",
-		"services/SAILSServices" ], function(angular, SAILSController,
-		SAILSDirectives, SAILSFilters, SAILSServices) {
+		"services/SAILSServices", "../phophlo/experiment/PhoPhloDirectives", "../phophlo/experiment/PhoPhloServices" ], function(angular, SAILSController,
+		SAILSDirectives, SAILSFilters, SAILSServices, PhoPhloDirectives, PhoPhloServices) {
 	/**
 	 * The main SAILS module.
 	 * 
@@ -16970,7 +17013,7 @@ define('../sails/module',[ "angular", "controllers/SAILSController",
 	 */
 
 	var SAILS = angular.module('SAILS',
-			[ 'SAILS.services', 'SAILS.directives', 'SAILS.filters' ]).config(
+			[ 'SAILS.services', 'SAILS.directives', 'SAILS.filters', 'PhoPhlo.directives', 'PhoPhlo.services' ]).config(
 			[ '$routeProvider', function($routeProvider) {
 				window.SAILSController = SAILSController;
 				console.log("Initializing the SAILS module.");
@@ -16980,7 +17023,10 @@ define('../sails/module',[ "angular", "controllers/SAILSController",
 				}).when('/sails/experiment', {
 					templateUrl : 'partials/sails.html',
 					controller : SAILSController
-				}).otherwise({
+				}).when('/sails/congratulations', {
+          templateUrl : 'partials/sails_select_user.html',
+          controller : SAILSController
+        }).otherwise({
 					redirectTo : '/sails'
 				});
 			} ]);

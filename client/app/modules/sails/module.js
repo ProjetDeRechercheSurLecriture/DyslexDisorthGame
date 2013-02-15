@@ -3,8 +3,8 @@ console.log("Loading the SAILS module.");
 'use strict';
 define([ "angular", "controllers/SAILSController",
 		"directives/SAILSDirectives", "filters/SAILSFilters",
-		"services/SAILSServices" ], function(angular, SAILSController,
-		SAILSDirectives, SAILSFilters, SAILSServices) {
+		"services/SAILSServices", "../phophlo/experiment/PhoPhloDirectives", "../phophlo/experiment/PhoPhloServices" ], function(angular, SAILSController,
+		SAILSDirectives, SAILSFilters, SAILSServices, PhoPhloDirectives, PhoPhloServices) {
 	/**
 	 * The main SAILS module.
 	 * 
@@ -12,7 +12,7 @@ define([ "angular", "controllers/SAILSController",
 	 */
 
 	var SAILS = angular.module('SAILS',
-			[ 'SAILS.services', 'SAILS.directives', 'SAILS.filters' ]).config(
+			[ 'SAILS.services', 'SAILS.directives', 'SAILS.filters', 'PhoPhlo.directives', 'PhoPhlo.services' ]).config(
 			[ '$routeProvider', function($routeProvider) {
 				window.SAILSController = SAILSController;
 				console.log("Initializing the SAILS module.");
@@ -22,7 +22,10 @@ define([ "angular", "controllers/SAILSController",
 				}).when('/sails/experiment', {
 					templateUrl : 'partials/sails.html',
 					controller : SAILSController
-				}).otherwise({
+				}).when('/sails/congratulations', {
+          templateUrl : 'partials/sails_select_user.html',
+          controller : SAILSController
+        }).otherwise({
 					redirectTo : '/sails'
 				});
 			} ]);
