@@ -1,0 +1,17 @@
+{
+  "name": "TCPP",
+  "description": "TCPP is a screening test for early indications of reading troubles, before kids learn to read.",
+  "version": "1.0",
+  "manifest_version" : 2,
+  "content_security_policy" : "img-src 'self' ; default-src 'self' ; script-src 'self' ; connect-src 'self'  ; object-src 'self'  ; style-src 'self' ;",
+  "app": {
+    "launch": {
+      "local_path" : "index.html"
+    }
+  },
+  "icons": {
+    "128": "imgages/ic_tcpp128.png"
+  },
+  "permissions": [
+  ]
+}
