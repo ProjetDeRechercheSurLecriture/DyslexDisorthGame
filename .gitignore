@@ -5,6 +5,7 @@ compiled_handlebars.js
 
 #ignore copied js files
 android/assets/release
+debug_sails_chromeapp/
 
 #ignore security certificates
 dyslexdisorthgame_debug.key
