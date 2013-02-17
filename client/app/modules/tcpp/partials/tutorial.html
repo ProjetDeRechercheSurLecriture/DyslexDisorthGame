@@ -1,0 +1,14 @@
+<div ng-controller="OPrimeTutorialController">
+	<i class="icon-question-sign pull-right " ng-click="openTutorial()"></i>
+	<div class="bluebody" modal="shouldBeOpen" close="closeTutorial()">
+		<div class="modal-header">
+			<button class="btn cancel pull-right" ng-click="closeTutorial()">Close</button>
+			<h4>{{title}} Tutorial</h4>
+		</div>
+		<div class="modal-body pagination-centered">
+			<img ng-src="{{logo}}" />
+			<audio ng-src="{{instructionsAudio}}" controls>
+			</audio>
+		</div>
+	</div>
+</div>

@@ -1,15 +1,12 @@
 <div id="experiment" class="sailsbody fill">
-	<div class="start-button" id="start-button">
-		<button class="btn btn-success " ng-click="startExperiment()">Start!</button>
-	</div>
+	<div class="start-button" id="start-button"></div>
 	<div class="row span12">
 		<div class="row-fluid  pagination-centered">
 			<h1>
 				<i class="icon-forward pull-right"></i> <i
 					class="icon-backward pull-left"></i>
 			</h1>
-			<img id="image_prime" 
-				width="100" />
+			<img id="image_prime" width="100" />
 
 		</div>
 
@@ -35,8 +32,7 @@
 
 
 			<div class="span5  ">
-				<img id="reinforcement_image"
-					/>
+				<img id="reinforcement_image" />
 			</div>
 		</div>
 	</div>
@@ -44,9 +40,6 @@
 	<div id="audio_stimuli_presentation_area" class="hidden">
 		<audio id="audio_stimuli_player_source" src={{audioStimulus}}
 			ng-model="audio_stimulus"></audio>
-		<audio id="audio_instructions_player_source"
-			src="modules/tcpp/audio_stimuli/tcpp_instructions.mp3" autoplay
-			ng-model="audio_instructions_player_source"></audio>
 	</div>
 </div>
 

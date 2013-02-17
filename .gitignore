@@ -4,7 +4,9 @@ compiled_handlebars.js
 *.handlebars.js
 
 #ignore copied js files
+client/app/libs/oprime/
 android/assets/release
+debug_chromeapp/
 debug_sails_chromeapp/
 
 #ignore security certificates
