@@ -11,6 +11,9 @@ require.config({
 
     /* HTML5 libraries to interact with Android Tablet */
     "OPrime" : "../libs/oprime/js/oprime",
+    
+    /* Experimental design */
+//    "experimentalDesign" : "../data/tcpp_design"
   },
   shim : {
     "angular" : {
