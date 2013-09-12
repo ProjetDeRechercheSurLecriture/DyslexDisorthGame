@@ -48,6 +48,6 @@ before_script:
   # - npm install 
   - ./wait_for_emulator.sh
 
-script: cordova run android
+script: cordova emulate android
 
 # was pretty good https://travis-ci.org/cesine/montage-mobile-webviews/jobs/11300572
