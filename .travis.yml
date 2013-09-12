@@ -45,8 +45,9 @@ before_install:
 before_script:
   # Make sure the emulator has started before running tests
   - npm install -g grunt-cli
-  - npm install 
-  - grunt ci-test
+  - npm install -g cordova
+  # - npm install 
+  - grunt android
   # ./wait_for_emulator
   # - android update project -p./platforms/android
   # - android update test-project --path ./platforms/android-test --main ../android
