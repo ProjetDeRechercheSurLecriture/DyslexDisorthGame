@@ -1,5 +1,8 @@
 language: java
 
+node_js:
+  - 0.10
+
 jdk: oraclejdk7
 
 # whitelist
@@ -33,7 +36,7 @@ before_install:
   # API 16 stuff which needs to be provided
   # SDK=$(android list sdk --no-ui | grep ", API 17," | cut -d"-" -f1)
   # android update sdk --filter "$SDK" --no-ui --force
-  - android update sdk --filter platform-tools,$ANDROID_SDKS --no-ui --force 
+  - echo y | android update sdk --filter platform-tools,$ANDROID_SDKS --no-ui --force  > /dev/null
 
   # Create and start emulator
   - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
@@ -41,7 +44,9 @@ before_install:
 
 before_script:
   # Make sure the emulator has started before running tests
-   - grunt test
+  - npm install -g grunt-cli
+  - npm install 
+  - grunt ci-test
   # ./wait_for_emulator
   # - android update project -p./platforms/android
   # - android update test-project --path ./platforms/android-test --main ../android
