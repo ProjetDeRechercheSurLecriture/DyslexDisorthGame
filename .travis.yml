@@ -19,7 +19,7 @@ env:
     - ANDROID_SDKS=android-17,sysimg-17 ANDROID_TARGET=android-17  ANDROID_ABI=armeabi-v7a
 
 before_install:
-  - npm install -g grunt
+  - npm install grunt
   - npm install -g grunt-cli
   - npm install -g cordova
 
