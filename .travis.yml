@@ -49,5 +49,3 @@ before_script:
   - ./scripts/copy_assets_from_www_to_platforms.sh
 
 script: grunt ci-test
-
-# was pretty good https://travis-ci.org/cesine/montage-mobile-webviews/jobs/11300572
