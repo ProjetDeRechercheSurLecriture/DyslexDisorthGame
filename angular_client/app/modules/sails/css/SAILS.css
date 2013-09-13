@@ -1,0 +1,53 @@
+.sails_experiment_toolbar {
+  /*background-color: #DEDEDE;*/
+  font-size: 2em;
+  margin: 20px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 30px;
+  display: inline-block;
+  z-index: 100;
+}
+
+.left_align {
+  float: left;
+}
+
+.right_align {
+  float: right;
+}
+
+.sails_left_block {
+  position: absolute;
+  top: 40px;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  text-align: center;
+}
+
+.sails_right_block {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  bottom: 0;
+  width: 50%;
+}
+
+.half_vertical {
+  height: 45%;
+}
+
+.half_vertical img {
+  height: 100%;
+}
+
+.all_vertical {
+  height: 90%;
+}
+
+.all_vertical img {
+  height: 100%;
+}
