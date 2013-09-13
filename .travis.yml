@@ -45,12 +45,10 @@ before_install:
 
 before_script:
   # Make sure the emulator has started before running tests
-  - ./wait_for_emulator.sh
+  - ./scripts/wait_for_emulator.sh
   # - npm install 
-  - cordova prepare android
-  - ls android-sdk-linux/system-images
+  - ./scripts/copy_assets_from_www_to_platforms.sh
   - cd platforms/android
-  - ls -al 
 
 script: ant clean debug install
 
