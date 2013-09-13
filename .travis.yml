@@ -21,7 +21,7 @@ env:
 before_install:
   - npm install grunt
   - npm install -g grunt-cli
-  - npm install -g cordova
+  # - npm install -g cordova
 
   - sudo apt-get update -qq
   - if [ `uname -m` = x86_64 ]; then sudo apt-get install -qq libstdc++6:i386 lib32z1; fi
