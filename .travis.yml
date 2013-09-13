@@ -25,7 +25,7 @@ before_install:
 
   - sudo apt-get update -qq
   - if [ `uname -m` = x86_64 ]; then sudo apt-get install -qq libstdc++6:i386 lib32z1; fi
-  - wget -O android-sdk.tgz http://dl.google.com/android/android-sdk_r22.0.4-linux.tgz
+  - wget -O android-sdk.tgz http://dl.google.com/android/android-sdk_r22.0.5-linux.tgz
   - tar xzf android-sdk.tgz
   - export ANDROID_HOME=$PWD/android-sdk-linux
   - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
@@ -45,10 +45,12 @@ before_install:
 
 before_script:
   # Make sure the emulator has started before running tests
-  # - npm install 
   - ./wait_for_emulator.sh
+  # - npm install 
   - cordova prepare android
+  - ls android-sdk-linux/system-images
   - cd platforms/android
+  - ls -al 
 
 script: ant clean debug install
 
