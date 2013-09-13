@@ -48,7 +48,15 @@ node_modules
 bin/
 gen/
 
+# Grunt-built files #
+angular_client/build/
+angular_client/build-min/
 
+# Font-Awesome #
+angular_client/app/libs/font_awesome/
+
+# Temp Files #
+*.*~
 
 # LaTeX output #
 ################
