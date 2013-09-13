@@ -49,7 +49,5 @@ before_install:
 before_script:
   # Make sure the emulator has started before running tests
   - ./scripts/wait_for_emulator.sh
-  # - npm install 
-  - ./scripts/copy_assets_from_www_to_platforms.sh
 
-script: grunt ci-test
+script: grunt everything
