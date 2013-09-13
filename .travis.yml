@@ -42,15 +42,12 @@ before_install:
   - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
   - emulator -avd test -no-skin -no-audio -no-window &
 
-
 before_script:
   # Make sure the emulator has started before running tests
   - ./scripts/wait_for_emulator.sh
   # - npm install 
   - ./scripts/copy_assets_from_www_to_platforms.sh
-  - cordova prepare
-  - cd platforms/android
 
-script: ant clean debug install
+script: grunt ci-test
 
 # was pretty good https://travis-ci.org/cesine/montage-mobile-webviews/jobs/11300572
