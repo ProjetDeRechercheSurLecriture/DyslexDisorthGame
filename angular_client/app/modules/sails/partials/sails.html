@@ -1,12 +1,18 @@
-<div class="sails_experiment_toolbar">
-	<div class="left_align"><i class="icon-backward"></i></div>
-	<div class="right_align"><i class="icon-forward"></i></div>
+<div class="pagination-centered span4 offset4" ng-show="experimentInProgress!=true">
+  <img src="image_reinforcement/sails_reinforcement01.png"><br /><br />
+  <span class="navigate_text" ng-click="experimentInProgress=true;playNextAudio()">Commence!</span>
 </div>
+<div ng-show="experimentInProgress==true">
+  <div class="sails_experiment_toolbar">
+	 <div class="left_align"><i class="icon-backward"></i></div>
+	 <div class="right_align"><i class="icon-forward"></i></div>
+  </div>
 
-<div class="sails_left_block">
-		<div class="half_vertical"><img src="img/gris.png"></div>
-		<div class="half_vertical"><img src="img/pas_gris.png"></div>
-</div>
-<div class="sails_right_block">
-	<div class="all_vertical"><img src="image_reinforcement/sails_reinforcement01.png"></div>
+  <div class="sails_left_block">
+		<div class="half_vertical"><img src="img/gris.png" ng-click="registerResponse($event, 'gris')"></div>
+		<div class="half_vertical"><img src="img/pas_gris.png" ng-click="registerResponse($event, 'X')"></div>
+  </div>
+  <div class="sails_right_block">
+	 <div class="all_vertical"><img src="image_reinforcement/sails_reinforcement01.png"></div>
+  </div>
 </div>

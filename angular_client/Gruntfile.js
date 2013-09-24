@@ -59,13 +59,16 @@ module.exports = function(grunt) {
           src: ['app/libs/require.js'],
           dest: 'release/sails_release/require.js'
         }, {
+          src: ['app/modules/sails/sails_design.json'],
+          dest: 'release/sails_release/sails_design.json'
+        }, {
           src: ['app/modules/sails/manifest-build.json'],
           dest: 'release/sails_release/manifest.json'
         }]
       },
       sails_build_only: {
         files: [{
-          src: ['sails_build_dev/sails.js'],
+          src: ['build/sails_build_dev/sails.js'],
           dest: 'release/sails_release/sails.js'
         }]
       }

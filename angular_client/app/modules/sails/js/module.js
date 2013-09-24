@@ -18,14 +18,11 @@ define(["angular", "app/modules/sails/js/controllers/SAILSController",
 				window.SAILSController = SAILSController;
 				console.log("Initializing the SAILS module.");
 				$routeProvider.when('/sails', {
-					templateUrl: 'partials/main.html',
-					controller: SAILSController
+					templateUrl: 'partials/main.html'
 				}).when('/sails/experiment', {
-					templateUrl: 'partials/sails.html',
-					controller: SAILSController
+					templateUrl: 'partials/sails.html'
 				}).when('/sails/congratulations', {
-					templateUrl: 'partials/sails_select_user.html',
-					controller: SAILSController
+					templateUrl: 'partials/sails_select_user.html'
 				}).otherwise({
 					redirectTo: '/sails'
 				});

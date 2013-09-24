@@ -1,3 +1,8 @@
+.navigate_text {
+  font-family: 'Chalkboard';
+  font-size: 2em;
+}
+
 .sails_experiment_toolbar {
   /*background-color: #DEDEDE;*/
   font-size: 2em;
