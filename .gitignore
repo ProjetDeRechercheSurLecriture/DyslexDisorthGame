@@ -22,6 +22,7 @@ everyauthconfig.js
 #############################
 audio_stimuli
 image_stimuli
+image_reinforcement
 *design.json
 experiment_designs
 
@@ -50,10 +51,11 @@ gen/
 
 # Grunt-built files #
 angular_client/build/
-angular_client/build-min/
+angular_client/release/
+angular_client/test/
 
 # Font-Awesome #
-angular_client/app/libs/font_awesome/
+angular_client/app/libs/font-awesome/
 
 # Temp Files #
 *.*~

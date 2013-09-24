@@ -4,9 +4,9 @@ console.log("Loading the SAILS main");
 require.config({
 	paths : {
 		/* AngularJS */
-		"angular" : "libs/angular/angular",
-		"angular-resource" : "libs/angular/angular-resource",
-		"bootstrap": "libs/angular-ui/ui-bootstrap.min"
+		"angular" : "app/libs/angular/angular",
+		"angular-resource" : "app/libs/angular/angular-resource",
+		"bootstrap": "app/libs/angular-ui/ui-bootstrap.min"
 	},
 	shim : {
 		"angular" : {
@@ -27,7 +27,7 @@ require.config({
  * Declare only the variables that are needed here, the dependencies of the rest
  * will be discovered and loaded as needed by require.js
  */
-require([ "bootstrap", "angular-resource", "js/module" ],
+require([ "bootstrap", "angular-resource", "app/modules/sails/js/module" ],
 		function(angular, SAILS) {
 	console.log("Initializing the SAILS page.");
 

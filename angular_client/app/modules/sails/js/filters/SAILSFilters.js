@@ -1,7 +1,9 @@
 console.log("Loading the SAILSFilters.");
 
-'use strict';
-define([ "angular" ], function(angular) {
-	var SAILSFilters = angular.module('SAILS.filters', []);
-	return SAILSFilters;
+define(["angular"], function(angular) {
+
+  'use strict';
+
+  var SAILSFilters = angular.module('SAILS.filters', []);
+  return SAILSFilters;
 });

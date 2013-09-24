@@ -1,8 +1,7 @@
 console.log("Loading the SAILS module.");
 
-'use strict';
-define(["angular", "js/controllers/SAILSController",
-	"js/directives/SAILSDirectives", "js/filters/SAILSFilters", "js/services/SAILSServices", "js/phophlo/directives/PhoPhloDirectives", "js/phophlo/services/PhoPhloServices"
+define(["angular", "app/modules/sails/js/controllers/SAILSController",
+	"app/modules/sails/js/directives/SAILSDirectives", "app/modules/sails/js/filters/SAILSFilters", "app/modules/sails/js/services/SAILSServices", "app/modules/phophlo/js/directives/PhoPhloDirectives", "app/modules/phophlo/js/services/PhoPhloServices"
 ], function(angular, SAILSController,
 	SAILSDirectives, SAILSFilters, SAILSServices, PhoPhloDirectives, PhoPhloServices) {
 	/**
@@ -10,6 +9,8 @@ define(["angular", "js/controllers/SAILSController",
 	 *
 	 * @type {angular.Module}
 	 */
+
+	'use strict';
 
 	var SAILS = angular.module('SAILS', ['SAILS.services', 'SAILS.directives', 'SAILS.filters', 'PhoPhlo.directives', 'PhoPhlo.services']).config(
 		['$routeProvider',
