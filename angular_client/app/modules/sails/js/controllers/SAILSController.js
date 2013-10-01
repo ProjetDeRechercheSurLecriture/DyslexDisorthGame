@@ -16,20 +16,15 @@ define(["angular"], function(angular) {
     $scope.startSAILS = function() {
       // Test to see if participant info has been selected by experimenter;
       // if not, start new experiment; if so, append new instance to participant record
-      if ($scope.participantID === null) {
-        $scope.trialIndex = 0;
-        SAILS_data.blankSAILSTemplate().then(function(SAILStemplate) {
-          $scope.test = SAILStemplate;
-          $scope.sailsAudio = "audio_stimuli/sails_instructions.mp3";
-          audio.play($scope.sailsAudio);
-          $scope.practiceAudioFiles = SAILStemplate.subexperiments[$scope.trialIndex].practice.trials;
-          $scope.experimentAudioFiles = SAILStemplate.subexperiments[$scope.trialIndex].test.trials;
-          window.location.assign('#/sails/experiment');
-        });
-      } else {
-        // TODO Append to existing participant record
-        console.log("Participant already has a SAILS record.");
-      }
+      $scope.trialIndex = 0;
+      SAILS_data.blankSAILSTemplate().then(function(SAILStemplate) {
+        $scope.test = SAILStemplate;
+        $scope.sailsAudio = "audio_stimuli/sails_instructions.mp3";
+        audio.play($scope.sailsAudio);
+        $scope.practiceAudioFiles = SAILStemplate.subexperiments[$scope.trialIndex].practice.trials;
+        $scope.experimentAudioFiles = SAILStemplate.subexperiments[$scope.trialIndex].test.trials;
+        window.location.assign('#/sails/experiment');
+      });
     };
 
     $scope.updateReinforcementImage = function(imageIndex) {
@@ -127,6 +122,9 @@ define(["angular"], function(angular) {
         $scope.experimentAudioIndex = 0;
         $scope.clickDisabled = false;
         window.location.assign('#/sails/congratulations');
+
+        // TODO Test for participant ID; if none, create new record; if participant ID exists,
+        // append results from $scope.test to existing record
       }
     };
 
