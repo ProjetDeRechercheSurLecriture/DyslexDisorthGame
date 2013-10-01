@@ -1,6 +1,25 @@
+.sails_welcome {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  border: 1px solid green;
+}
+
+.sails_welcome img {
+  height: 80%;
+}
+
+.sails_welcome span {
+  height: 20%;
+}
+
 .navigate_text {
   font-family: 'Chalkboard';
-  font-size: 2em;
+  font-size: 3em;
+  font-weight: 700;
 }
 
 .sails_experiment_toolbar {
