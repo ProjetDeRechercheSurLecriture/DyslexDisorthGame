@@ -149,7 +149,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jasmine');
 
   grunt.registerTask('default', 'Log some stuff.', function() {
-    grunt.log.write('You must specify a module: phophlo, sails, tcpp, tdfm, tdfp; for a quick build with no minification or testing, prefix the module name with build-').ok();
+    grunt.log.write('You must specify a module: main, sails, tcpp, tdfm, tdfp; for a quick build with no minification or testing, prefix the module name with build-').ok();
   });
 
 
@@ -158,12 +158,12 @@ module.exports = function(grunt) {
 
   // Replace the following tasks when modules are ready
 
-  grunt.registerTask('phophlo', 'Log some stuff.', function() {
-    grunt.log.write('phophlo module not yet ready.').ok();
+  grunt.registerTask('main', 'Log some stuff.', function() {
+    grunt.log.write('main module not yet ready.').ok();
   });
 
-  grunt.registerTask('build-phophlo', 'Log some stuff.', function() {
-    grunt.log.write('phophlo module not yet ready.').ok();
+  grunt.registerTask('build-main', 'Log some stuff.', function() {
+    grunt.log.write('main module not yet ready.').ok();
   });
 
   grunt.registerTask('tcpp', 'Log some stuff.', function() {

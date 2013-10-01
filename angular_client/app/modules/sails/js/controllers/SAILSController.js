@@ -68,9 +68,8 @@ define(["angular"], function(angular) {
     };
 
     window.onbeforeunload = function(event) {
-      console.log(window.location.href);
       if (window.location.href.indexOf('sails/experiment') > -1) {
-        return "Reloading will stop this instance. You will have to reload and start over."
+        return "Reloading will stop this instance. You will have to reload and start over.";
       } else {
         return;
       }

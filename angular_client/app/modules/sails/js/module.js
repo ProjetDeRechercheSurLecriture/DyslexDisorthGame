@@ -1,9 +1,9 @@
 console.log("Loading the SAILS module.");
 
 define(["angular", "app/modules/sails/js/controllers/SAILSController",
-	"app/modules/sails/js/directives/SAILSDirectives", "app/modules/sails/js/filters/SAILSFilters", "app/modules/sails/js/services/SAILSServices", "app/modules/phophlo/js/directives/PhoPhloDirectives", "app/modules/phophlo/js/services/PhoPhloServices"
+	"app/modules/sails/js/directives/SAILSDirectives", "app/modules/sails/js/filters/SAILSFilters", "app/modules/sails/js/services/SAILSServices", "app/modules/main/js/directives/DyslexDisorthGameDirectives", "app/modules/main/js/services/DyslexDisorthGameServices"
 ], function(angular, SAILSController,
-	SAILSDirectives, SAILSFilters, SAILSServices, PhoPhloDirectives, PhoPhloServices) {
+	SAILSDirectives, SAILSFilters, SAILSServices, DyslexDisorthGameDirectives, DyslexDisorthGameServices) {
 	/**
 	 * The main SAILS module.
 	 *
@@ -12,7 +12,7 @@ define(["angular", "app/modules/sails/js/controllers/SAILSController",
 
 	'use strict';
 
-	var SAILS = angular.module('SAILS', ['SAILS.services', 'SAILS.directives', 'SAILS.filters', 'PhoPhlo.directives', 'PhoPhlo.services']).config(
+	var SAILS = angular.module('SAILS', ['SAILS.services', 'SAILS.directives', 'SAILS.filters', 'DyslexDisorthGame.directives', 'DyslexDisorthGame.services']).config(
 		['$routeProvider',
 			function($routeProvider) {
 				window.SAILSController = SAILSController;

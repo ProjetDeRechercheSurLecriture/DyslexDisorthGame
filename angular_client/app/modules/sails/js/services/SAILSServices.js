@@ -4,7 +4,8 @@ define(["angular"], function(angular) {
 
   'use strict';
 
-  var SAILSServices = angular.module('SAILS.services', ['ngResource']).factory(
+    // var SAILSServices = angular.module('SAILS.services', ['ngResource']).factory(
+var SAILSServices = angular.module('SAILS.services', ['ngResource']).factory(
     'SAILS_data',
     function($http) {
       return {
@@ -25,7 +26,7 @@ define(["angular"], function(angular) {
         audioElement.src = filename;
         audioElement.play();
       }
-    }
+    };
   });
 
   return SAILSServices;
