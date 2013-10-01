@@ -27,7 +27,7 @@ define(["angular"], function(angular) {
           window.location.assign('#/sails/experiment');
         });
       } else {
-        // Append to existing participant record
+        // TODO Append to existing participant record
         console.log("Participant already has a SAILS record.");
       }
     };
@@ -43,7 +43,6 @@ define(["angular"], function(angular) {
     // Set up first reinforcement image
     $scope.updateReinforcementImage($scope.imageIndex);
 
-
     $scope.registerResponseAndGoToNext = function(event, response) {
       // Stop playing instructions and start experiment if clicking from instructions
       if (!response) {
@@ -57,7 +56,7 @@ define(["angular"], function(angular) {
         return;
       }
 
-      // Record responses to previously played audio
+      // Register responses to previously played audio
       if (response) {
         // Calculate touch response percentage from center of clickable image
         var centerX = event.srcElement.width / 2;
@@ -70,13 +69,13 @@ define(["angular"], function(angular) {
         var clickPercentFromCenterY = Math.round(((clickOffsetFromCenterY / centerY) * 100));
 
         if ($scope.practiceInProgress === true) {
-          // Practice responses
+          // Register practice responses
           $scope.test.subexperiments[0].practice.trials[$scope.practiceAudioIndex - 1].participantResponse = {};
           $scope.test.subexperiments[0].practice.trials[$scope.practiceAudioIndex - 1].participantResponse.response = response;
           $scope.test.subexperiments[0].practice.trials[$scope.practiceAudioIndex - 1].participantResponse.clickPercentFromCenterX = clickPercentFromCenterX;
           $scope.test.subexperiments[0].practice.trials[$scope.practiceAudioIndex - 1].participantResponse.clickPercentFromCenterY = clickPercentFromCenterY;
         } else {
-          // Experiment responses
+          // Register experiment responses
           $scope.test.subexperiments[0].test.trials[$scope.experimentAudioIndex - 1].participantResponse = {};
           $scope.test.subexperiments[0].test.trials[$scope.experimentAudioIndex - 1].participantResponse.response = response;
           $scope.test.subexperiments[0].test.trials[$scope.experimentAudioIndex - 1].participantResponse.clickPercentFromCenterX = clickPercentFromCenterX;
@@ -86,16 +85,9 @@ define(["angular"], function(angular) {
       $scope.goToNext();
     };
 
-    // $scope.registerResponse = function(event, response) {
-
-
-    //   console.log("coords inside of image: " + event.offsetX + ", " + event.offsetY);
-    // };
-
     $scope.goToNext = function(event, response) {
 
-
-      //Disable clicking until after audio begins playing
+      //Disable clicking during audio play timeout
       $scope.clickDisabled = true;
 
       // Update image index
@@ -107,6 +99,7 @@ define(["angular"], function(angular) {
       }
 
       if ($scope.practiceAudioIndex < $scope.practiceAudioFiles.length) {
+        // Play practice audio
         $scope.sailsAudio = "audio_stimuli/" + $scope.practiceAudioFiles[$scope.practiceAudioIndex].audioFile + ".mp3";
 
         // Wait a bit until next audio is played
@@ -116,6 +109,7 @@ define(["angular"], function(angular) {
           $scope.practiceAudioIndex++;
         }, 500);
       } else if ($scope.experimentAudioIndex < $scope.experimentAudioFiles.length) {
+        // Play experiment audio
         $scope.practiceInProgress = false;
         $scope.sailsAudio = "audio_stimuli/" + $scope.experimentAudioFiles[$scope.experimentAudioIndex].audioFile + ".mp3";
 
@@ -127,7 +121,7 @@ define(["angular"], function(angular) {
         }, 500);
 
       } else {
-        // Take participant to results screen (current code is for dev)
+        // Take participant to results screen
         console.log(JSON.stringify($scope.test));
         $scope.practiceAudioIndex = 0;
         $scope.experimentAudioIndex = 0;
