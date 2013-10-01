@@ -1,6 +1,6 @@
 <div class="pagination-centered span4 offset4" ng-show="experimentInProgress!=true">
-  <img src="image_reinforcement/sails_reinforcement01.png"><br /><br />
-  <span class="navigate_text" ng-click="experimentInProgress=true;playNextAudio()">Commence!</span>
+  <img src="image_reinforcement/r01_mouse_cheese.png"><br /><br />
+  <span class="navigate_text" ng-click="registerResponseAndGoToNext()">Commence!</span>
 </div>
 <div ng-show="experimentInProgress==true">
   <div class="sails_experiment_toolbar">
@@ -9,10 +9,10 @@
   </div>
 
   <div class="sails_left_block">
-		<div class="half_vertical"><img src="img/gris.png" ng-click="registerResponse($event, 'gris')"></div>
-		<div class="half_vertical"><img src="img/pas_gris.png" ng-click="registerResponse($event, 'X')"></div>
+		<div class="half_vertical"><img src="img/gris.png" ng-click="registerResponseAndGoToNext($event, 'gris')"></div>
+		<div class="half_vertical"><img src="img/pas_gris.png" ng-click="registerResponseAndGoToNext($event, 'X')"></div>
   </div>
   <div class="sails_right_block">
-	 <div class="all_vertical"><img src="image_reinforcement/sails_reinforcement01.png"></div>
+	 <div class="all_vertical"><img ng-src="image_reinforcement/r{{reinforcementImageIndex}}_mouse_cheese.png"></div>
   </div>
 </div>

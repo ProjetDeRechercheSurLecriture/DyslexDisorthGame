@@ -25,6 +25,12 @@ var SAILSServices = angular.module('SAILS.services', ['ngResource']).factory(
       play: function(filename) {
         audioElement.src = filename;
         audioElement.play();
+      },
+      stopPlaying: function() {
+        audioElement.pause();
+      },
+      isPlaying: function() {
+        return !audioElement.paused;
       }
     };
   });
