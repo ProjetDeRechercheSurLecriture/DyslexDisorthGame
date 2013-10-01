@@ -41,18 +41,28 @@
   width: 50%;
 }
 
-.half_vertical {
-  height: 45%;
+.top_vertical {
+  height: 65%;
 }
 
-.half_vertical img {
+.top_vertical img {
   height: 100%;
 }
 
+.bottom_vertical {
+  height: 35%;
+}
+
+.bottom_vertical img {
+  height: 100%;
+}
 .all_vertical {
   height: 90%;
 }
 
 .all_vertical img {
-  height: 100%;
+  position: relative;
+  top: 20%;
+  left: 20%;
+  height: 60%;
 }
