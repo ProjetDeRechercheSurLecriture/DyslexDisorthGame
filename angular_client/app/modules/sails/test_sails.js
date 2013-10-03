@@ -6,6 +6,7 @@ require.config({
 		/* AngularJS */
 		"angular": "app/libs/angular/angular",
 		"angular-resource": "app/libs/angular/angular-resource",
+		"angular-mocks": "test/libs/angular-mocks",
 		"bootstrap": "app/libs/angular-ui/ui-bootstrap.min"
 	},
 	shim: {
@@ -13,6 +14,10 @@ require.config({
 			exports: "angular"
 		},
 		"angular-resource": {
+			deps: ["angular"],
+			exports: "angular"
+		},
+		"angular-mocks": {
 			deps: ["angular"],
 			exports: "angular"
 		},
@@ -27,7 +32,7 @@ require.config({
  * Declare only the variables that are needed here, the dependencies of the rest
  * will be discovered and loaded as needed by require.js
  */
-require(["bootstrap", "angular-resource", "app/modules/sails/js/module"],
+require(["bootstrap", "angular-resource", "angular-mocks", "app/modules/sails/js/module"],
 	function(angular, SAILS) {
 		console.log("Initializing the SAILS page.");
 

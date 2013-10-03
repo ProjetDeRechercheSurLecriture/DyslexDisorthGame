@@ -15,6 +15,16 @@ module.exports = function(grunt) {
           out: 'build/sails_build_dev/sails.js',
           optimize: 'none'
         }
+      },
+      test_sails: {
+        options: {
+          findNestedDependencies: true,
+          mainConfigFile: 'app/modules/sails/test_sails.js',
+          baseUrl: './',
+          name: 'app/modules/sails/test_sails',
+          out: 'build/sails_build_dev/sails.js',
+          optimize: 'none'
+        }
       }
     },
     uglify: {
@@ -116,21 +126,29 @@ module.exports = function(grunt) {
         }
       }
     },
+    connect: {
+      test: {
+        port: 8000
+      }
+    },
     jasmine: {
       sails: {
         src: [
-          'app/modules/sails/js/**/*.js'
+          './release/sails_release/*.js'
         ],
         options: {
-          specs: 'app/modules/sails/sails_test/*.test.js',
+          specs: 'test/sails_test/*.unit.test.js',
+          host: 'http://127.0.0.1:8000/',
           template: require('grunt-template-jasmine-requirejs'),
-          templateOptions: {
-            requireConfigFile: 'app/modules/sails/sails.js'
-          },
           junit: {
             path: 'test/sails_test/output/testresults'
           }
         }
+      }
+    },
+    karma: {
+      sails: {
+        configFile: 'test/sails_test/karma.conf.sails.js'
       }
     },
     watch: {
@@ -139,6 +157,7 @@ module.exports = function(grunt) {
     }
   });
 
+
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-copy');
@@ -146,15 +165,22 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-template-jasmine-requirejs');
+  grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('karma-ng-scenario');
+
 
   grunt.registerTask('default', 'Log some stuff.', function() {
     grunt.log.write('You must specify a module: main, sails, tcpp, tdfm, tdfp; for a quick build with no minification or testing, prefix the module name with build-').ok();
   });
 
 
-  grunt.registerTask('sails', ['jshint:sails', 'jasmine:sails', 'requirejs:sails', 'uglify:sails', 'copy:sails', 'htmlmin:sails', 'cssmin:sails']);
+  grunt.registerTask('sails', ['jshint:sails', 'requirejs:sails', 'uglify:sails', 'copy:sails', 'htmlmin:sails', 'cssmin:sails']);
   grunt.registerTask('build-sails', ['requirejs:sails', 'copy:sails', 'copy:sails_build_only', 'htmlmin:sails', 'cssmin:sails']);
+  grunt.registerTask('test-sails', ['requirejs:test_sails', 'copy:sails', 'copy:sails_build_only', 'htmlmin:sails', 'cssmin:sails', 'connect', 'jasmine:sails', 'karma:sails']);
+
 
   // Replace the following tasks when modules are ready
 
