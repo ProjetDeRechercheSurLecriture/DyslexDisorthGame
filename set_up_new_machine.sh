@@ -33,3 +33,6 @@ if [ "$(uname)" == "Darwin" ]; then {
     echo "You can fill in the Windows instructions to get android."
 }
 fi
+
+# Download all the code and updates for the first time
+grunt update;
