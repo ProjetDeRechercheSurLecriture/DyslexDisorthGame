@@ -115,7 +115,9 @@ Icon?
 Thumbs.db
 *.swp
 
-
+# Montage builds 
+builds
+www
 
 # copied assets (originals are in www)
 platforms/android/res/drawable*
