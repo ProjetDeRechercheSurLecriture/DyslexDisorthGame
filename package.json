@@ -1,15 +1,36 @@
 {
-    "name": "PhoPhlo",
-    "version": "0.1.0",
-    "dependencies": {
-        "montage": "~0.13.1",
-        "digit": "~0.2.0"
-    },
-    "devDependencies": {
-        "montage-testing": "0.2.0"
-    },
-    "exclude": [
-        "run-tests.html",
-        "test"
-    ]
+  "name": "dyslex-disorth-game",
+  "description": "",
+  "version": "0.0.1",
+  "author": "Pre Project ",
+  "homepage": "http://phophlo.ca",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ProjetDeRechercheSurLecriture/DyslexDisorthGame/OPrime.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ProjetDeRechercheSurLecriture/DyslexDisorthGame/issues?state=open"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "montage-testing": "~0.2.0",
+    "grunt-exec": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-nodeunit": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-watch": "*"
+  },
+  "exclude": [
+    "run-tests.html",
+    "test"
+  ],
+  "license": "Apache 2.0",
+  "licenses": [
+    {
+      "type": "Apache 2.0"
+    }
+  ],
+  "manifest": true
 }
