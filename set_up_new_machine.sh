@@ -12,9 +12,11 @@ npm install grunt-contrib-copy
 
 
 if [ "$(uname)" == "Darwin" ]; then {
-    # Do something under Mac OS X platform        
-    git config --global user.email "jenkins@host"
-    git config --global user.name "Builder Bot"
+    # If the git user name isnt set, use jenkins      
+    git config --get user.name ||{
+        git config user.email "jenkins@host"
+        git config user.name "Builder Bot"
+    }
     export ANDROID_HOME=$HOME/android-adt-bundle/sdk
     PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 } elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then {
