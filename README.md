@@ -9,4 +9,4 @@ Ce projet a amené à la création de l'outil de dépistage «Phophlo». Cet out
 
 L'outil de dépistage Phophlo est conçu pour les écoles primaires, notamment pour les enseignants qui souhaitent valider leurs doutes sur quelques difficultés au niveau langagier chez certains enfants, ainsi que pour les orthophonistes qui souhaitent obtenir un peu plus d'informations sur les difficultés langagières de enfants qu'ils rencontrent. L'outil est disponible au grand public sur Apple Store, Android Store et Chrome Store.
 
-@dominique please add description of the project.
+
