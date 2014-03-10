@@ -1,48 +1,25 @@
 <!doctype html>
 <html lang="en" ng-app="PhoPhloApp" ng-csp>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.5">
-  <title>PhoPhlo</title>
-  <link rel="stylesheet" type="text/css" href="css/dashboard.css">
-  
- <script src="libs/angular/angular.js"></script>
- <script src="libs/angular/angular-resource.js"></script>
- <script src="js/app.js"></script>
- <script src="js/controllers.js"></script>
- <script src="js/filters.js"></script>
- <script src="js/services.js"></script>
- 
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.5">
+	<title>PhoPhlo</title>
+	<link rel="stylesheet" type="text/css" href="phophlo_assets/style/dashboard.css">
+
 </head>
 <body id="app" class="phophlobody" ng-controller="MainCtrl">
-	<div id="navbar-example" class="navbar navbar-static" ng-show="testing == 'false'">
-		<div class="navbar-inner">
-			<div class="container">
-				<a class="brand" href="#">PhoPhlo</a>
-				<ul class="nav" role="navigation">
-					
-					<li class="dropdown"><a href="results_prototype.html" ng-click="searching = 'true'" id="drop2" role="button"
-						class="dropdown-toggle" data-toggle="dropdown">Reports</a>
-					</li>
-				</ul>
-				<ul class="nav pull-right">
-					<li id="fat-menu" class="dropdown"><a href="#/register" id="drop3"
-						role="button" class="dropdown-toggle" data-toggle="dropdown"><i
-							class="icon-user"></i></a>
-					</li>
-				</ul>
+	<div data-montage-id="main" data-montage-skin="light" class="Main" id="app" class="phophlobody">
+		<div class="phophlobody fill">
+			<div id="experiment" class="phophlomenu">
+				<span href="https://chrome.google.com/webstore/detail/sailsalpha/jomfcamkmbgcghldgfomkfcjgppdkhll?authuser=1" id="goToSails" class="SAILS-start-button"><img src="../../phophlo_assets/img/ic_sails128.png"/></span>
+				<span href="https://chrome.google.com/webstore/detail/tcpp-alpha/jncgnkagdomlmpplacfehdcbhicfmlpo?authuser=1"  id="goToTcpp" class="TCPP-start-button"><img src="../../phophlo_assets/img/ic_tcpp128.png"/></span>
+				<br/>
+				<span href="https://chrome.google.com/webstore/detail/tdfp-alpha/ampkfjfofjhlgjaooobnngejoipmaofj?authuser=1"  id="goToTdfp" class="TDFP-start-button"><img src="../../phophlo_assets/img/ic_tdfp128.png"/></span>
+				<span href="https://chrome.google.com/webstore/detail/tdfmalpha/famcfcnneinieafjgobjclgkifpdgdlp?authuser=1"  id="goToTdfm" class="TDFM-start-button"><img src="../../phophlo_assets/img/ic_tdfm128.png"/></span>
+				<br> <span href="http://www.medicine.mcgill.ca/srvachew/"  id="goToMcgill" ><img src="../../phophlo_assets/img/phophlo.png" height="128"></span>
 			</div>
 		</div>
-	</div>
-
-<ng-view></ng-view>
-
-	<!-- Le javascript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-
-
-
+	<script src="core/chrome_open_page.js"></script>
 
 </body>
 </html>

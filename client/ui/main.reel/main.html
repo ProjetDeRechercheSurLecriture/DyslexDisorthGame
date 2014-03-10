@@ -3,20 +3,122 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>Main</title>
-
+    <link rel="stylesheet" type="text/css" href="../../node_modules/oprime-montage/assets/fonts/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="main.css">
-
+    <link rel="stylesheet" type="text/css" href="../../assets/style/dashboard.css">
     <script type="text/montage-serialization">
-        {
-            "owner": {
-                "properties": {
-                    "element": {"#": "main"}
+    {
+
+        "owner": {
+            "properties": {
+                "element": {"#": "main"}
+            }
+        },
+
+        "sails": {
+            "prototype": "pre-sails/ui/sails.reel",
+            "properties": {
+                "element": {"#": "sails"}
+            }
+        },
+
+        "tcpp": {
+            "prototype": "pre-tcpp/ui/tcpp.reel",
+            "properties": {
+                "element": {"#": "tcpp"}
+            }
+        },
+
+        "tdfp": {
+            "prototype": "pre-tdfp/ui/tdfp.reel",
+            "properties": {
+                "element": {"#": "tdfp"}
+            }
+        },
+
+        "tdfm": {
+            "prototype": "pre-tdfm/ui/tdfm.reel",
+            "properties": {
+                "element": {"#": "tdfm"}
+            }
+        },
+
+        "montageVersion": {
+            "prototype": "ui/version.reel",
+            "properties": {
+                "element": {"#": "montageVersion"}
+            },
+            "bindings": {
+                "classList.has('montage-invisible')": {
+                    "<-": "@owner.application.currentAudience.key == 'participant'"
+                }
+            }
+        },
+
+        "chooseLanguage": {
+            "prototype": "montage/ui/text.reel",
+            "properties": {
+                "element": {"#": "chooseLanguage"}
+            },
+            "bindings": {
+                "value": {"<-": "@owner.contextualizer.localize('change_language')"}
+            }
+        },
+
+        "locales": {
+            "prototype": "oprime-montage/ui/dialects.reel",
+            "properties": {
+                "element": {"#": "locales"},
+                "globalKey": "interfaceLocale",
+                "selectedIso": "fr"
+            },
+            "bindings": {
+                "classList.has('montage-invisible')": {
+                    "<-": "@owner.application.currentAudience.key == 'participant'"
+                }
+            }
+        },
+
+        "locale": {
+            "prototype": "montage/ui/text.reel",
+            "properties": {
+                "element": {"#": "locale"}
+            },
+            "bindings": {
+                "value": {"<-": "@owner.application.interfaceLocale.iso"},
+                "classList.has('montage-invisible')": {
+                    "<-": "@owner.application.currentAudience.key == 'participant'"
                 }
             }
         }
+    }
     </script>
 </head>
 <body>
-    <div data-montage-id="main" data-montage-skin="light" class="Main"></div>
+    <div data-montage-id="main" data-montage-skin="light" class="Main" id="app" class="phophlobody">
+        <div class="phophlobody fill">
+            <div id="experiment" class="phophlomenu">
+                <span href="node_modules/pre-sails/sandbox.html" id="goToSails" class="SAILS-start-button"><img src="../../assets/img/ic_sails128.png"/></span>
+                <a href="node_modules/pre-tcpp/sandbox.html" class="TCPP-start-button"><img src="../../assets/img/ic_tcpp128.png"/></a>
+                <br/>
+                <a href="node_modules/pre-tdfp/sandbox.html" class="TDFP-start-button"><img src="../../assets/img/ic_tdfp128.png"/></a>
+                <a href="node_modules/pre-tdfm/sandbox.html" class="TDFM-start-button"><img src="../../assets/img/ic_tdfm128.png"/></a>
+                <br> <a href="http://www.medicine.mcgill.ca/srvachew/"><img src="../../assets/img/phophlo.png" height="128"></a>
+            </div>
+        </div>
+        <div data-montage-id="sails" hidden></div>
+        <div data-montage-id="tcpp" hidden></div>
+        <div data-montage-id="tdfp" hidden></div>
+        <div data-montage-id="tdfm" hidden></div>
+        <div data-montage-id="montageVersion" class="version"></div>
+        <span class="chooseLocale">
+            <span hidden data-montage-id="chooseLanguage"></span>
+            <select data-montage-id="locales" ></select>
+            <span data-montage-id="locale"></span>
+        </span>
+    </div>
+
+
+
 </body>
 </html>

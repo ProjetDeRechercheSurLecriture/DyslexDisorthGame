@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
     <title>PhoPhlo</title>
 
-    <link rel="stylesheet" href="assets/style/style.css" />
+    <link rel="stylesheet" href="node_modules/oprime-montage/bower_components/normalize-css/normalize.css" />
+    <link rel="stylesheet" href="node_modules/oprime-montage/assets/style/chromeapp.css" />
 
-    <script src="node_modules/montage/montage.js"></script>
+    <!-- Android install to homescreen options-->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" sizes="128x128" href="assets/img/icon128.png">
+
+    <!-- iOS install to homescreen options-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" sizes="128x128" href="assets/img/icon128.png">
+
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon" />
+
+    <meta data-insertcordovahere="" />
+    <script src="node_modules/oprime-montage/lib/chrome-app-sandbox-support.js" async></script>
+    <script src="node_modules/montage/montage.js" async></script>
     <script type="text/montage-serialization">
     {
         "owner": {

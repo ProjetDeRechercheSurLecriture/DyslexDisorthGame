@@ -1,19 +1,31 @@
 {
-  "name": "PhoPhlo",
+  "name": "PhoPhloalpha",
   "description": "PhoPhlo is a screening test for early indications of reading troubles, before kids learn to read.",
-  "version": "1.0",
-  "manifest_version" : 2,
-  "content_security_policy" : "img-src 'self' https://senhorzinho.iriscouch.com; default-src 'self' https://wentworthinspections.iriscouch.com/ https://senhorzinho.iriscouch.com; script-src 'self' https://senhorzinho.iriscouch.com; connect-src 'self' https://wentworthinspections.iriscouch.com/ https://senhorzinho.iriscouch.com ; object-src 'self' https://senhorzinho.iriscouch.com ; style-src 'self' https://senhorzinho.iriscouch.com;",
+  "version": "0.1.0",
   "app": {
-    "launch": {
-      "local_path" : "report.html"
+    "background": {
+      "scripts": ["background.js"]
     }
   },
-  "icons": {
-    "128": "img/ic_phophlo128.png"
-  },
+
+  "offline_enabled": true,
   "permissions": [
-    "https://senhorzinho.iriscouch.com/",
-    "https://wentworthinspections.iriscouch.com/"
-  ]
+    "unlimitedStorage", "tabs"
+  ],
+
+  "icons": {
+    "16": "phophlo_assets/img/ic_phophlo16.png",
+    "48": "phophlo_assets/img/ic_phophlo48.png",
+    "128": "phophlo_assets/img/ic_phophlo128.png"
+  },
+
+  "sandbox": {
+    "pages": ["index.html",
+      "results_prototype.html",
+      "node_modules/pre-sails/index.html",
+      "node_modules/pre-tcpp/index.html",
+      "node_modules/pre-tdfp/index.html",
+      "node_modules/pre-tdfm/index.html"
+    ]
+  }
 }
