@@ -1,1 +1,0 @@
-App-wide participant module

@@ -2,8 +2,13 @@
     "name": "PhoPhlo",
     "version": "0.1.0",
     "dependencies": {
-        "montage": "~0.13.1",
-        "digit": "~0.2.0"
+        "montage": "https://github.com/cesine/montage.git#chromeApp",
+        "digit": "~0.4.0",
+        "oprime-montage": "https://github.com/ProjetDeRechercheSurLecriture/OPrime.git",
+        "pre-sails": "https://github.com/ProjetDeRechercheSurLecriture/SAILS.git",
+        "pre-tcpp": "https://github.com/ProjetDeRechercheSurLecriture/TCPP.git",
+        "pre-tdfp": "https://github.com/ProjetDeRechercheSurLecriture/TDFP.git",
+        "pre-tdfm": "https://github.com/ProjetDeRechercheSurLecriture/TDFM.git"
     },
     "devDependencies": {
         "montage-testing": "0.2.0"
