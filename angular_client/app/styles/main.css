@@ -1,79 +1,135 @@
-/* Space out content a bit */
-body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+@font-face {
+  font-family: 'Finger Paint';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/FingerPaint-Regular.ttf');
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
+.phophlobody {
+  background-color: #0176A0;
+  background-image: -moz-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
+  background-image: -webkit-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
+  background-image: -o-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
+  background-image: -ms-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
+  background-image: radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#029CC9', endColorstr=GradientType=0 );
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
+.resultsbody {
+  background-color: #f6e6b4;
+  background-image: -moz-radial-gradient(center, ellipse cover, #f6e6b4 0%, #ed9017 100%);
+  background-image: -webkit-radial-gradient(center, ellipse cover, #f6e6b4 0%, #ed9017 100%);
+  background-image: -o-radial-gradient(center, ellipse cover, #f6e6b4 0%, #ed9017 100%);
+  background-image: -ms-radial-gradient(center, ellipse cover, #f6e6b4 0%, #ed9017 100%);
+  background-image: radial-gradient(center, ellipse cover, #f6e6b4 0%, #ed9017 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6e6b4', endColorstr=GradientType=0 );
 }
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+.sailsbody {
+  background-color: #fff;
+  background-image: -moz-radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
+  background-image: -webkit-radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
+  background-image: -o-radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
+  background-image: -ms-radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
+  background-image: radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr=GradientType=0 );
 }
 
-/* Customize container */
-@media (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-}
-.container-narrow > hr {
-  margin: 30px 0;
+h1,h2,h3,h4 {
+  font-family: 'Finger Paint', cursive;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
+.well {
+  color: #555;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+html {
+  height: 100%
+}
+
+.phophlomenu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -200px;
+  margin-left: -128px;
+}
+
+.participant_glimpse {
+  color: #ccc;
+  font-size: 0.7em;
+}
+
+.experimenter_glimpse {
+  color: #ccc;
+  font-size: 0.7em;
+}
+
+.child_specific_results {
+  font-family: 'Finger Paint', cursive;
+}
+
+.box {
+  border: 1px solid #E5E5E5;
+}
+
+div { /* text-align: center; */
+
+}
+
+footer {
+  background-color: #333;
+  color: #999;
+  padding: 1em;
+}
+
+.credits p {
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
+  width: 80%;
+  margin: auto;
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
+footer a {
+  color: #c3b381;
+  font-weight: bold;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
+.gravatar {
+  height: 3em;
+}
+
+progress {
+  width: 100%;
+}
+
+.border-left {
+  border-left: 1px solid #E5E5E5;
+}
+
+.bordered {
+  border: 1px solid #E5E5E5;
+}
+
+.reinforcement { /* background-color: #ddd; */
+  height: 100%;
+}
+
+@media print {
+  .exec_summary {
+    display: none !important;
   }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
+  .navbar {
+    display: none !important;
   }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
+  .results_sidebar {
+    display: none !important;
+  }
+  .well {
+    border: 0px !important;
+    box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.05) !important;
+  }
+  .pdfSpacer {
+    padding: 11em;
   }
 }

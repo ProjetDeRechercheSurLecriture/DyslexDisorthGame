@@ -9,34 +9,212 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="/styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="adminDashboardApp">
+  <body ng-app="adminDashboardApp" class="phophlobody">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="/">Home</a></li>
-          <li><a ng-href="/about">About</a></li>
-          <li><a ng-href="/about/contact">Contact</a></li>
-        </ul>
-        <h3 class="text-muted">adminDashboard</h3>
-      </div>
-
-      <div ng-view=""></div>
-
-      <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">
+          Toggle navigation
+        </span>
+        <span class="icon-bar">
+        </span>
+        <span class="icon-bar">
+        </span>
+        <span class="icon-bar">
+        </span>
+      </button>
+      <a class="navbar-brand" href="#">
+        Phophlo
+      </a>
     </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="dropdown" ng-show="authenticated">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Run
+            <span class="caret">
+            </span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="#">
+                Écoute
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Ils aiment quoi
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Qu’est-ce que c’est
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Qu’est-ce qu’ils font
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown" ng-show="authenticated">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Customize
+            <span class="caret">
+            </span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="#">
+                Organization
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Test Administrators
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Parents
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Children
+              </a>
+            </li>
+            <li class="divider">
+            </li>
+            <li>
+              <a href="#">
+                Clear all customization
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <form hidden class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">
+          Submit
+        </button>
+      </form>
+      <form class="navbar-form navbar-right" ng-hide="authenticated" role="login">
+        <div class="form-group">
+          <table cellspacing="0">
+            <tbody>
+              <tr>
+                <td >
+                  <label for="username">
+                    Utilisateur
+                  </label>
+                </td>
+                <td >
+                  <label for="pass">
+                    Mot de pass
+                  </label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="text" class="form-control" name="username" value="" tabindex="1">
+                </td>
+                <td>
+                  &nbsp;<input type="password"  class="form-control" name="password" id="pass" tabindex="2">
+                </td>
+                <td>
+                  &nbsp;<button type="submit" class="btn btn-default" tabindex="3">
+                    Connexion
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td class="login_form_label_field">
+                </td>
+                <td class="login_form_label_field">
+                  <a rel="nofollow" href="http://get.phophlo.ca/contact">
+                    Vous ne pouvez pas vous connecter?
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" ng-show="authenticated">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-user">
+            </i>
+            <span class="caret">
+            </span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="#">
+                View as Organization
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                View as Test Administrator
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                View as Parent
+              </a>
+            </li>
+            <li class="divider">
+            </li>
+            <li>
+              <a href="#">
+                View as Child
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>
+<div ng-view="" class="container "></div>
+<footer class="footer">
+    <ul class="list-unstyled">
+      <li>Experimental Design &copy; Rvachew, Royle et al. All rights
+        reserved.
+      </li>
+      <li>Illustrations &copy; Edith Lebel. All rights reserved.</li>
+      <li>The Phophlo Source Code is free and open sourced on GitHub,
+        licensed under the <a
+        href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache
+        License v2.0</a>. Documentation is also open and licensed under the
+        Creative Commons public domain license <a
+        href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+      </li>
+    </ul>
+</footer>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
