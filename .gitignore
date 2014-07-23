@@ -18,32 +18,46 @@ dyslexdisorthgame_debug.crt
 couchkeys.js
 everyauthconfig.js
 
+# private constants #
+*NonPublic*
+*nonpublic*
+
+# Stimuli #
+##########
+*.png
+*.ico
+*.wav
+*.mp3
+*.jpg
+*.bmp
+*.ogg
+*.mov
+*.mp4
+*stimuli*
+*stimulus*
+
 # Experimental Design Files #
 #############################
 audio_stimuli
 image_stimuli
-image_reinforcement
 *design.json
-experiment_designs
 
-# Branding image Files #
-########################
-*phophlo*.png
-*sails*.png
-*tcpp*.png
-*tdfp*.png
-*tdfm*.png
-*.png
-!headphones.png
+# Dont ignore Stock audio #
+!gammatone.wav	
+!pageflip2.mp3
 
 .idea
 .project
 .settings
 .classpath
 proguard.cfg
-.externalToolBuilders
 
 node_modules
+bower_components
+
+
+##### Mop Files ####
+builds
 
 # Android files #
 bin/
@@ -97,6 +111,9 @@ target
 *.gz
 *.iso
 *.jar
+!android-gdata-1.30.0.jar
+!bursaq-goto.jar
+!libGoogleAnalytics.jar
 *.rar
 *.tar
 *.zip
@@ -109,7 +126,10 @@ target
 
 # OS generated files #
 ######################
-.DS_Store
+*.DS_Store?
+
+*/.DS_Store
+*.DS_Store
 ehthumbs.db
 Icon?
 Thumbs.db
