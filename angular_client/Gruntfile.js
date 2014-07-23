@@ -1,221 +1,412 @@
-module.exports = function(grunt) {
-  // Project configuration.
+// Generated on 2014-07-23 using generator-angular 0.9.5
+'use strict';
 
-  'use strict';
+// # Globbing
+// for performance reasons we're only matching one level down:
+// 'test/spec/{,*/}*.js'
+// use this if you want to recursively match all subfolders:
+// 'test/spec/**/*.js'
 
+module.exports = function (grunt) {
+
+  // Load grunt tasks automatically
+  require('load-grunt-tasks')(grunt);
+
+  // Time how long tasks take. Can help when optimizing build times
+  require('time-grunt')(grunt);
+
+  // Configurable paths for the application
+  var appConfig = {
+    app: require('./bower.json').appPath || 'app',
+    dist: 'dist'
+  };
+
+  // Define the configuration for all the tasks
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
-    requirejs: {
-      sails: {
+
+    // Project settings
+    yeoman: appConfig,
+
+    // Watches files for changes and runs tasks based on the changed files
+    watch: {
+      bower: {
+        files: ['bower.json'],
+        tasks: ['wiredep']
+      },
+      js: {
+        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
+        tasks: ['newer:jshint:all'],
         options: {
-          findNestedDependencies: true,
-          mainConfigFile: 'app/modules/sails/sails.js',
-          baseUrl: './',
-          name: 'app/modules/sails/sails',
-          out: 'build/sails_build_dev/sails.js',
-          optimize: 'none'
+          livereload: '<%= connect.options.livereload %>'
         }
       },
-      test_sails: {
-        options: {
-          findNestedDependencies: true,
-          mainConfigFile: 'app/modules/sails/test_sails.js',
-          baseUrl: './',
-          name: 'app/modules/sails/test_sails',
-          out: 'build/sails_build_dev/sails.js',
-          optimize: 'none'
-        }
-      }
-    },
-    uglify: {
-      options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
-        mangle: false
+      jsTest: {
+        files: ['test/spec/{,*/}*.js'],
+        tasks: ['newer:jshint:test', 'karma']
       },
-      sails: {
-        files: {
-          'release/sails_release/sails.js': ['build/sails_build_dev/sails.js']
-        }
-      }
-    },
-    copy: {
-      sails: {
-        files: [{
-          expand: true,
-          cwd: 'app/fonts/',
-          src: ['**'],
-          dest: 'release/sails_release/fonts/'
-        }, {
-          expand: true,
-          cwd: 'app/modules/sails/audio_stimuli/',
-          src: ['**'],
-          dest: 'release/sails_release/audio_stimuli/'
-        }, {
-          expand: true,
-          cwd: 'app/modules/sails/image_reinforcement/',
-          src: ['**'],
-          dest: 'release/sails_release/image_reinforcement/'
-        }, {
-          expand: true,
-          cwd: 'app/modules/sails/img/',
-          src: ['**'],
-          dest: 'release/sails_release/img/'
-        }, {
-          expand: true,
-          cwd: 'app/libs/font-awesome/',
-          src: ['**'],
-          dest: 'release/sails_release/libs/font-awesome/'
-        }, {
-          src: ['app/libs/require.js'],
-          dest: 'release/sails_release/require.js'
-        }, {
-          src: ['app/modules/sails/sails_design.json'],
-          dest: 'release/sails_release/sails_design.json'
-        }, {
-          src: ['app/modules/sails/manifest-build.json'],
-          dest: 'release/sails_release/manifest.json'
-        }]
+      styles: {
+        files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
+        tasks: ['newer:copy:styles', 'autoprefixer']
       },
-      sails_build_only: {
-        files: [{
-          src: ['build/sails_build_dev/sails.js'],
-          dest: 'release/sails_release/sails.js'
-        }]
-      }
-    },
-    cssmin: {
-      sails: {
+      gruntfile: {
+        files: ['Gruntfile.js']
+      },
+      livereload: {
         options: {
-          report: 'min'
+          livereload: '<%= connect.options.livereload %>'
         },
-        files: {
-          'release/sails_release/css/app.css': [
-            'app/modules/sails/css/SAILS.css', 'app/css/app.css'
-          ]
-        }
+        files: [
+          '<%= yeoman.app %>/{,*/}*.html',
+          '.tmp/styles/{,*/}*.css',
+          '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+        ]
       }
     },
-    htmlmin: {
-      sails: {
-        options: {
-          removeComments: true,
-          collapseWhitespace: true
-        },
-        files: [{
-          expand: true,
-          cwd: 'app/modules/sails/',
-          src: ['*.html', 'partials/**/*.html'],
-          dest: 'release/sails_release/'
-        }]
-      }
-    },
-    jshint: {
-      files: ['Gruntfile.js'],
-      sails: {
-        src: ['app/modules/sails/js/**/*.js', 'app/modules/sails/test/**/*.js'],
-        options: {
-          // options here to override JSHint defaults
-          globals: {
-            jQuery: true,
-            console: true,
-            module: true,
-            document: true
-          },
-          // Ignore functions inside of loops (to allow for closures)
-          loopfunc: true
-        }
-      }
-    },
+
+    // The actual grunt server settings
     connect: {
+      options: {
+        port: 9000,
+        // Change this to '0.0.0.0' to access the server from outside.
+        hostname: 'localhost',
+        livereload: 35729
+      },
+      livereload: {
+        options: {
+          open: true,
+          middleware: function (connect) {
+            return [
+              connect.static('.tmp'),
+              connect().use(
+                '/bower_components',
+                connect.static('./bower_components')
+              ),
+              connect.static(appConfig.app)
+            ];
+          }
+        }
+      },
       test: {
-        port: 8000
+        options: {
+          port: 9001,
+          middleware: function (connect) {
+            return [
+              connect.static('.tmp'),
+              connect.static('test'),
+              connect().use(
+                '/bower_components',
+                connect.static('./bower_components')
+              ),
+              connect.static(appConfig.app)
+            ];
+          }
+        }
+      },
+      dist: {
+        options: {
+          open: true,
+          base: '<%= yeoman.dist %>'
+        }
       }
     },
-    jasmine: {
-      sails: {
+
+    // Make sure code styles are up to par and there are no obvious mistakes
+    jshint: {
+      options: {
+        jshintrc: '.jshintrc',
+        reporter: require('jshint-stylish')
+      },
+      all: {
         src: [
-          './release/sails_release/*.js'
-        ],
+          'Gruntfile.js',
+          '<%= yeoman.app %>/scripts/{,*/}*.js'
+        ]
+      },
+      test: {
         options: {
-          specs: 'test/sails_test/*.unit.test.js',
-          host: 'http://127.0.0.1:8000/',
-          template: require('grunt-template-jasmine-requirejs'),
-          junit: {
-            path: 'test/sails_test/output/testresults'
+          jshintrc: 'test/.jshintrc'
+        },
+        src: ['test/spec/{,*/}*.js']
+      }
+    },
+
+    // Empties folders to start fresh
+    clean: {
+      dist: {
+        files: [{
+          dot: true,
+          src: [
+            '.tmp',
+            '<%= yeoman.dist %>/{,*/}*',
+            '!<%= yeoman.dist %>/.git*'
+          ]
+        }]
+      },
+      server: '.tmp'
+    },
+
+    // Add vendor prefixed styles
+    autoprefixer: {
+      options: {
+        browsers: ['last 1 version']
+      },
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '.tmp/styles/',
+          src: '{,*/}*.css',
+          dest: '.tmp/styles/'
+        }]
+      }
+    },
+
+    // Automatically inject Bower components into the app
+    wiredep: {
+      options: {
+        cwd: '<%= yeoman.app %>'
+      },
+      app: {
+        src: ['<%= yeoman.app %>/index.html'],
+        ignorePath:  /\.\.\//
+      }
+    },
+
+    // Renames files for browser caching purposes
+    filerev: {
+      dist: {
+        src: [
+          '<%= yeoman.dist %>/scripts/{,*/}*.js',
+          '<%= yeoman.dist %>/styles/{,*/}*.css',
+          '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+          '<%= yeoman.dist %>/styles/fonts/*'
+        ]
+      }
+    },
+
+    // Reads HTML for usemin blocks to enable smart builds that automatically
+    // concat, minify and revision files. Creates configurations in memory so
+    // additional tasks can operate on them
+    useminPrepare: {
+      html: '<%= yeoman.app %>/index.html',
+      options: {
+        dest: '<%= yeoman.dist %>',
+        flow: {
+          html: {
+            steps: {
+              js: ['concat', 'uglifyjs'],
+              css: ['cssmin']
+            },
+            post: {}
           }
         }
       }
     },
-    karma: {
-      sails: {
-        configFile: 'test/sails_test/karma.conf.sails.js'
+
+    // Performs rewrites based on filerev and the useminPrepare configuration
+    usemin: {
+      html: ['<%= yeoman.dist %>/{,*/}*.html'],
+      css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
+      options: {
+        assetsDirs: ['<%= yeoman.dist %>','<%= yeoman.dist %>/images']
       }
     },
-    watch: {
-      files: ['<%= jshint.files %>'],
-      tasks: ['jshint', 'qunit']
+
+    // The following *-min tasks will produce minified files in the dist folder
+    // By default, your `index.html`'s <!-- Usemin block --> will take care of
+    // minification. These next options are pre-configured if you do not wish
+    // to use the Usemin blocks.
+    // cssmin: {
+    //   dist: {
+    //     files: {
+    //       '<%= yeoman.dist %>/styles/main.css': [
+    //         '.tmp/styles/{,*/}*.css'
+    //       ]
+    //     }
+    //   }
+    // },
+    // uglify: {
+    //   dist: {
+    //     files: {
+    //       '<%= yeoman.dist %>/scripts/scripts.js': [
+    //         '<%= yeoman.dist %>/scripts/scripts.js'
+    //       ]
+    //     }
+    //   }
+    // },
+    // concat: {
+    //   dist: {}
+    // },
+
+    imagemin: {
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.app %>/images',
+          src: '{,*/}*.{png,jpg,jpeg,gif}',
+          dest: '<%= yeoman.dist %>/images'
+        }]
+      }
+    },
+
+    svgmin: {
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.app %>/images',
+          src: '{,*/}*.svg',
+          dest: '<%= yeoman.dist %>/images'
+        }]
+      }
+    },
+
+    htmlmin: {
+      dist: {
+        options: {
+          collapseWhitespace: true,
+          conservativeCollapse: true,
+          collapseBooleanAttributes: true,
+          removeCommentsFromCDATA: true,
+          removeOptionalTags: true
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.dist %>',
+          src: ['*.html', 'views/{,*/}*.html'],
+          dest: '<%= yeoman.dist %>'
+        }]
+      }
+    },
+
+    // ngmin tries to make the code safe for minification automatically by
+    // using the Angular long form for dependency injection. It doesn't work on
+    // things like resolve or inject so those have to be done manually.
+    ngmin: {
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '.tmp/concat/scripts',
+          src: '*.js',
+          dest: '.tmp/concat/scripts'
+        }]
+      }
+    },
+
+    // Replace Google CDN references
+    cdnify: {
+      dist: {
+        html: ['<%= yeoman.dist %>/*.html']
+      }
+    },
+
+    // Copies remaining files to places other tasks can use
+    copy: {
+      dist: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.app %>',
+          dest: '<%= yeoman.dist %>',
+          src: [
+            '*.{ico,png,txt}',
+            '.htaccess',
+            '*.html',
+            'views/{,*/}*.html',
+            'images/{,*/}*.{webp}',
+            'fonts/*'
+          ]
+        }, {
+          expand: true,
+          cwd: '.tmp/images',
+          dest: '<%= yeoman.dist %>/images',
+          src: ['generated/*']
+        }, {
+          expand: true,
+          cwd: 'bower_components/bootstrap/dist',
+          src: 'fonts/*',
+          dest: '<%= yeoman.dist %>'
+        }]
+      },
+      styles: {
+        expand: true,
+        cwd: '<%= yeoman.app %>/styles',
+        dest: '.tmp/styles/',
+        src: '{,*/}*.css'
+      }
+    },
+
+    // Run some tasks in parallel to speed up the build process
+    concurrent: {
+      server: [
+        'copy:styles'
+      ],
+      test: [
+        'copy:styles'
+      ],
+      dist: [
+        'copy:styles',
+        'imagemin',
+        'svgmin'
+      ]
+    },
+
+    // Test settings
+    karma: {
+      unit: {
+        configFile: 'test/karma.conf.js',
+        singleRun: true
+      }
     }
   });
 
 
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-requirejs');
-  grunt.loadNpmTasks('grunt-contrib-htmlmin');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-contrib-jasmine');
-  grunt.loadNpmTasks('grunt-template-jasmine-requirejs');
-  grunt.loadNpmTasks('grunt-karma');
-  grunt.loadNpmTasks('karma-ng-scenario');
+  grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
+    if (target === 'dist') {
+      return grunt.task.run(['build', 'connect:dist:keepalive']);
+    }
 
-
-  grunt.registerTask('default', 'Log some stuff.', function() {
-    grunt.log.write('You must specify a module: main, sails, tcpp, tdfm, tdfp; for a quick build with no minification or testing, prefix the module name with build-').ok();
+    grunt.task.run([
+      'clean:server',
+      'wiredep',
+      'concurrent:server',
+      'autoprefixer',
+      'connect:livereload',
+      'watch'
+    ]);
   });
 
-
-  grunt.registerTask('sails', ['jshint:sails', 'requirejs:sails', 'uglify:sails', 'copy:sails', 'htmlmin:sails', 'cssmin:sails']);
-  grunt.registerTask('build-sails', ['requirejs:sails', 'copy:sails', 'copy:sails_build_only', 'htmlmin:sails', 'cssmin:sails']);
-  grunt.registerTask('test-sails', ['requirejs:test_sails', 'copy:sails', 'copy:sails_build_only', 'htmlmin:sails', 'cssmin:sails', 'connect', 'jasmine:sails', 'karma:sails']);
-
-
-  // Replace the following tasks when modules are ready
-
-  grunt.registerTask('main', 'Log some stuff.', function() {
-    grunt.log.write('main module not yet ready.').ok();
+  grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
+    grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
+    grunt.task.run(['serve:' + target]);
   });
 
-  grunt.registerTask('build-main', 'Log some stuff.', function() {
-    grunt.log.write('main module not yet ready.').ok();
-  });
+  grunt.registerTask('test', [
+    'clean:server',
+    'concurrent:test',
+    'autoprefixer',
+    'connect:test',
+    'karma'
+  ]);
 
-  grunt.registerTask('tcpp', 'Log some stuff.', function() {
-    grunt.log.write('tcpp module not yet ready.').ok();
-  });
+  grunt.registerTask('build', [
+    'clean:dist',
+    'wiredep',
+    'useminPrepare',
+    'concurrent:dist',
+    'autoprefixer',
+    'concat',
+    'ngmin',
+    'copy:dist',
+    'cdnify',
+    'cssmin',
+    'uglify',
+    'filerev',
+    'usemin',
+    'htmlmin'
+  ]);
 
-  grunt.registerTask('build-tcpp', 'Log some stuff.', function() {
-    grunt.log.write('tcpp module not yet ready.').ok();
-  });
-
-  grunt.registerTask('tdfm', 'Log some stuff.', function() {
-    grunt.log.write('tdfm module not yet ready.').ok();
-  });
-
-  grunt.registerTask('build-tdfm', 'Log some stuff.', function() {
-    grunt.log.write('tdfm module not yet ready.').ok();
-  });
-
-  grunt.registerTask('tdfp', 'Log some stuff.', function() {
-    grunt.log.write('tdfp module not yet ready.').ok();
-  });
-
-  grunt.registerTask('build-tdfp', 'Log some stuff.', function() {
-    grunt.log.write('tdfp module not yet ready.').ok();
-  });
-
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.registerTask('default', [
+    'newer:jshint',
+    'test',
+    'build'
+  ]);
 };
