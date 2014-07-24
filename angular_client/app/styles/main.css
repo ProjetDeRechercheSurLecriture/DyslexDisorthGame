@@ -6,13 +6,17 @@
 }
 
 .phophlobody {
+  color: #ffffff;
   background-color: #0176A0;
   background-image: -moz-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
   background-image: -webkit-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
   background-image: -o-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
   background-image: -ms-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
-  background-image: radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#029CC9', endColorstr=GradientType=0 );
+  background-image: -webkit-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
+}
+
+.phophlobody a {
+  color: #ffffff;
 }
 
 .resultsbody {
@@ -113,6 +117,44 @@ progress {
 
 .reinforcement { /* background-color: #ddd; */
   height: 100%;
+}
+
+.features-icon {
+  font-size: 2em;
+}
+.navbar-inverse label{
+  color: #ffffff;
+}
+.signup input{
+  margin-bottom: .5em;
+}
+
+body > .container{
+  padding-top: 60px;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 100px;
+  padding: 0;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 100px;
+}
+
+.feature-description{
+  margin-bottom: 1em;
 }
 
 @media print {
