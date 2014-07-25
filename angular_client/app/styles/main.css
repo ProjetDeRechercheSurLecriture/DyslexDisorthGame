@@ -1,0 +1,182 @@
+@font-face {
+  font-family: 'Finger Paint';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/FingerPaint-Regular.ttf');
+}
+
+.phophlobody {
+  color: #ffffff;
+  background-color: #0176A0;
+  background-image: -moz-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
+  background-image: -webkit-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
+  background-image: -o-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
+  background-image: -ms-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
+  background-image: -webkit-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
+}
+
+.phophlobody a {
+  color: #ffffff;
+}
+
+.resultsbody {
+  background-color: #f6e6b4;
+  background-image: -moz-radial-gradient(center, ellipse cover, #f6e6b4 0%, #ed9017 100%);
+  background-image: -webkit-radial-gradient(center, ellipse cover, #f6e6b4 0%, #ed9017 100%);
+  background-image: -o-radial-gradient(center, ellipse cover, #f6e6b4 0%, #ed9017 100%);
+  background-image: -ms-radial-gradient(center, ellipse cover, #f6e6b4 0%, #ed9017 100%);
+  background-image: radial-gradient(center, ellipse cover, #f6e6b4 0%, #ed9017 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6e6b4', endColorstr=GradientType=0 );
+}
+
+.sailsbody {
+  background-color: #fff;
+  background-image: -moz-radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
+  background-image: -webkit-radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
+  background-image: -o-radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
+  background-image: -ms-radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
+  background-image: radial-gradient(center, ellipse cover, #ffffff 0%, #999999 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr=GradientType=0 );
+}
+
+h1,h2,h3,h4 {
+  font-family: 'Finger Paint', cursive;
+}
+
+.well {
+  color: #555;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+html {
+  height: 100%
+}
+
+.phophlomenu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -200px;
+  margin-left: -128px;
+}
+
+.participant_glimpse {
+  color: #ccc;
+  font-size: 0.7em;
+}
+
+.experimenter_glimpse {
+  color: #ccc;
+  font-size: 0.7em;
+}
+
+.child_specific_results {
+  font-family: 'Finger Paint', cursive;
+}
+
+.box {
+  border: 1px solid #E5E5E5;
+}
+
+div { /* text-align: center; */
+
+}
+
+footer {
+  background-color: #333;
+  color: #999;
+  padding: 1em;
+}
+
+.credits p {
+  text-align: center;
+  width: 80%;
+  margin: auto;
+}
+
+footer a {
+  color: #c3b381;
+  font-weight: bold;
+}
+
+.gravatar {
+  height: 3em;
+}
+
+progress {
+  width: 100%;
+}
+
+.border-left {
+  border-left: 1px solid #E5E5E5;
+}
+
+.bordered {
+  border: 1px solid #E5E5E5;
+}
+
+.reinforcement { /* background-color: #ddd; */
+  height: 100%;
+}
+
+.features-icon {
+  font-size: 2em;
+}
+.navbar-inverse label{
+  color: #ffffff;
+}
+.signup input{
+  margin-bottom: .5em;
+}
+
+body > .container{
+  padding-top: 60px;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 100px;
+  padding: 0;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 100px;
+}
+
+.feature-description{
+  margin-bottom: 1em;
+}
+
+.status {
+  text-align: center;
+  opacity: 0.8;
+}
+
+@media print {
+  .exec_summary {
+    display: none !important;
+  }
+  .navbar {
+    display: none !important;
+  }
+  .results_sidebar {
+    display: none !important;
+  }
+  .well {
+    border: 0px !important;
+    box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.05) !important;
+  }
+  .pdfSpacer {
+    padding: 11em;
+  }
+}
