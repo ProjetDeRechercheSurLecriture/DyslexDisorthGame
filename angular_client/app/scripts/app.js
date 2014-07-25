@@ -1,4 +1,5 @@
 'use strict';
+/* globals FieldDB */
 
 /**
  * @ngdoc overview
@@ -15,9 +16,10 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'fielddbAngularApp'
   ])
-  .config(function ($routeProvider, $locationProvider) {
+  .config(function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
 
     $routeProvider
@@ -40,8 +42,16 @@ angular
       .when('/bienvenu', {
         templateUrl: 'views/signup.html',
         controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
       });
+
+    if (FieldDB && FieldDB.Router) {
+      for (var when in FieldDB.Router.routes) {
+        FieldDB.Router.routes[when].angularRoute.controller = 'MainCtrl';
+        $routeProvider.when(FieldDB.Router.routes[when].path, FieldDB.Router.routes[when].angularRoute);
+      }
+      if (FieldDB.Router.otherwise) {
+        $routeProvider.otherwise(FieldDB.Router.otherwise);
+      }
+    }
+
   });

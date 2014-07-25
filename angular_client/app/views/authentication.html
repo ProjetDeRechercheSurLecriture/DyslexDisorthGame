@@ -1,0 +1,42 @@
+<form class="navbar-form navbar-right" ng-hide="authentication.user.authenticated" role="login">
+  <div class="form-group">
+    <table cellspacing="0">
+      <tbody>
+        <tr>
+          <td >
+            <label for="username">
+              Utilisateur
+            </label>
+          </td>
+          <td >
+            <label for="pass">
+              Mot de pass
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="text" class="form-control" name="username" value="" tabindex="1">
+          </td>
+          <td>
+            &nbsp;<input type="password"  class="form-control" name="password" id="pass" tabindex="2">
+          </td>
+          <td>
+            &nbsp;<button type="submit" class="btn btn-default" tabindex="3">
+            Connexion
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td class="login_form_label_field">
+        </td>
+        <td class="login_form_label_field">
+          <a rel="nofollow" href="http://get.phophlo.ca/connexion/contact">
+            Vous ne pouvez pas vous connecter?
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</form>

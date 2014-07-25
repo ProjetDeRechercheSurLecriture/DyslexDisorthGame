@@ -8,10 +8,9 @@
  * Controller of the adminDashboardApp
  */
 angular.module('adminDashboardApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function() {
+    // fielddbStorage.getCollection('participants_with_results').then(function(result) {
+    //   console.log(result);
+
+    // });
   });
