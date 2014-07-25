@@ -36,8 +36,7 @@ angular
         controller: 'AboutCtrl'
       })
       .when('/welcome', {
-        templateUrl: 'views/signup.html',
-        controller: 'AboutCtrl'
+        redirectTo: '/bienvenu'
       })
       .when('/bienvenu', {
         templateUrl: 'views/signup.html',
