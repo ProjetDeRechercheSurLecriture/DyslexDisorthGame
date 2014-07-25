@@ -357,6 +357,20 @@ module.exports = function(grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
+    },
+
+    compress: {
+      dist: {
+        options: {
+          archive: '../../Releases/dyslex_disorth_app.zip'
+        },
+        files: [{
+          expand: true,
+          cwd: 'dist/',
+          src: ['**'],
+          dest: ''
+        }]
+      }
     }
   });
 
@@ -391,7 +405,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'wiredep',
+    // 'wiredep',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
@@ -403,7 +417,8 @@ module.exports = function(grunt) {
     'uglify',
     // 'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'compress'
   ]);
 
   grunt.registerTask('default', [
