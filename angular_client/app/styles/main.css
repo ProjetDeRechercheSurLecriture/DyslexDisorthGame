@@ -157,6 +157,11 @@ body {
   margin-bottom: 1em;
 }
 
+.status {
+  text-align: center;
+  opacity: 0.8;
+}
+
 @media print {
   .exec_summary {
     display: none !important;
