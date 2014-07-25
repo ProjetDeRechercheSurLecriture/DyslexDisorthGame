@@ -1,5 +1,5 @@
-<form class="navbar-form navbar-right" ng-hide="authentication.user.authenticated" role="login">
-  <div class="form-group">
+<form class="navbar-form navbar-right" role="login">
+  <div class="form-group" ng-hide="authentication.user.authenticated" >
     <table cellspacing="0">
       <tbody>
         <tr>
@@ -16,15 +16,18 @@
         </tr>
         <tr>
           <td>
-            <input type="text" class="form-control" name="username" value="" tabindex="1">
+            <input type="text" class="form-control" ng-model="loginDetails.username" name="username" value="" tabindex="1">
           </td>
           <td>
-            &nbsp;<input type="password"  class="form-control" name="password" id="pass" tabindex="2">
+            &nbsp;<input type="password" class="form-control" ng-model="loginDetails.password" name="password" id="pass" tabindex="2">
           </td>
           <td>
-            &nbsp;<button type="submit" class="btn btn-default" tabindex="3">
+            &nbsp;<button type="submit" class="btn btn-default" ng-click="authenticate(loginDetails)" tabindex="3">
             Connexion
           </button>
+          <span ng-show="isContactingServer" >
+            <img class="img" src="https://fbstatic-a.akamaihd.net/rsrc.php/v2/yb/r/GsNJNwuI-UM.gif" alt="" width="16" height="11">
+          </span>
         </td>
       </tr>
       <tr>
@@ -39,4 +42,8 @@
     </tbody>
   </table>
 </div>
+{{status}}
+<button ng-show="authentication.user.authenticated"  type="submit" class="btn btn-default" ng-click="logout()" tabindex="3">
+  Déconnexion
+</button>
 </form>
