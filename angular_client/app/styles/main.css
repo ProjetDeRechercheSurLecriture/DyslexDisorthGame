@@ -157,6 +157,12 @@ body {
   margin-bottom: 1em;
 }
 
+.error {
+  text-align: center;
+  opacity: 0.8;
+  color: #ff0000;
+}
+
 .status {
   text-align: center;
   opacity: 0.8;

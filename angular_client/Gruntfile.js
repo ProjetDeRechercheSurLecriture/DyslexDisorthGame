@@ -32,11 +32,19 @@ module.exports = function(grunt) {
     watch: {
       bower: {
         files: ['bower.json'],
-        tasks: ['wiredep']
+        tasks: ['']
+        // tasks: ['wiredep']
       },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'bower_components/fielddb-angular/dist/scripts/{,*/}*.js', 'bower_components/fielddb/{,*/}*.js'],
         tasks: ['newer:jshint:all'],
+        options: {
+          livereload: '<%= connect.options.livereload %>'
+        }
+      },
+      templates: {
+        files: ['<%= yeoman.app %>/views/{,*/}*.html'],
+        tasks: ['ngtemplates', 'copy:templates'],
         options: {
           livereload: '<%= connect.options.livereload %>'
         }
@@ -116,12 +124,18 @@ module.exports = function(grunt) {
     jshint: {
       options: {
         jshintrc: '.jshintrc',
-        reporter: require('jshint-stylish')
+        reporter: require('jshint-stylish'),
+        ignores: [
+        '<%= yeoman.app %>/scripts/templates.js'
+        ]
       },
       all: {
         src: [
           'Gruntfile.js',
           '<%= yeoman.app %>/scripts/{,*/}*.js'
+        ],
+        ignores: [
+        '<%= yeoman.app %>/scripts/templates.js'
         ]
       },
       test: {
@@ -261,21 +275,20 @@ module.exports = function(grunt) {
       }
     },
 
-    htmlmin: {
-      dist: {
-        options: {
-          collapseWhitespace: true,
-          conservativeCollapse: true,
-          collapseBooleanAttributes: true,
-          removeCommentsFromCDATA: true,
-          removeOptionalTags: true
+    ngtemplates: {
+      app: {
+        options : {
+          htmlmin: {
+            collapseWhitespace: true,
+            collapseBooleanAttributes: true,
+            removeCommentsFromCDATA: true,
+            removeOptionalTags: true
+          },
+          module: 'adminDashboardApp',
         },
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.dist %>',
-          src: ['*.html', 'views/{,*/}*.html'],
-          dest: '<%= yeoman.dist %>'
-        }]
+        cwd: 'app',
+        src: 'views/**.html',
+        dest: '<%= yeoman.dist %>/scripts/templates.js'
       }
     },
 
@@ -327,6 +340,10 @@ module.exports = function(grunt) {
           src: 'fonts/*',
           dest: '<%= yeoman.dist %>'
         }]
+      },
+      templates: {
+        src:['<%= yeoman.dist %>/scripts/templates.js'],
+        dest: '<%= yeoman.app %>/scripts/templates.js'
       },
       styles: {
         expand: true,
@@ -382,7 +399,7 @@ module.exports = function(grunt) {
 
     grunt.task.run([
       'clean:server',
-      'wiredep',
+      // 'wiredep',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
@@ -405,6 +422,8 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'ngtemplates',
+    'copy:templates',
     // 'wiredep',
     'useminPrepare',
     'concurrent:dist',
@@ -417,7 +436,7 @@ module.exports = function(grunt) {
     'uglify',
     // 'filerev',
     'usemin',
-    'htmlmin',
+    // 'htmlmin',
     'compress'
   ]);
 

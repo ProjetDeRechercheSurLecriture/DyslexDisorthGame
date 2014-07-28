@@ -22,7 +22,7 @@
             &nbsp;<input type="password" class="form-control" ng-model="loginDetails.password" name="password" id="pass" tabindex="2">
           </td>
           <td>
-            &nbsp;<button type="submit" class="btn btn-default" ng-click="authenticate(loginDetails)" tabindex="3">
+            &nbsp;<button type="submit" class="btn btn-default" ng-click="login(loginDetails)" tabindex="3">
             Connexion
           </button>
           <span ng-show="isContactingServer" >
@@ -42,7 +42,7 @@
     </tbody>
   </table>
 </div>
-{{status}}
+{{authentication.error}}
 <button ng-show="authentication.user.authenticated"  type="submit" class="btn btn-default" ng-click="logout()" tabindex="3">
   Déconnexion
 </button>
