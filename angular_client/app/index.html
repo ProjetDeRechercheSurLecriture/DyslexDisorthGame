@@ -10,13 +10,14 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="/bower_components/fielddb-angular/dist/styles/main.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="/styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="adminDashboardApp" class="phophlobody" ng-controller="FieldDBController">
+  <body ng-app="adminDashboardApp" ng-class="{phophlobody: !authentication.user.authenticated, resultsbody: authentication.user.authenticated}" ng-controller="FieldDBController">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -37,7 +38,7 @@
         <span class="icon-bar">
         </span>
       </button>
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="http://get.phophlo.ca" target="_blank">
         Phophlo
       </a>
     </div>
@@ -46,65 +47,183 @@
       <ul class="nav navbar-nav">
         <li class="dropdown" ng-show="authentication.user.authenticated">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            Run
+            <img class="nav-icon" src="http://phophlo.ca/phophlo_assets/img/ic_phophlo128.png" title="Phophlo"/> Jouer
             <span class="caret">
             </span>
           </a>
           <ul class="dropdown-menu" role="menu">
             <li>
-              <a href="#">
-                Écoute
+              <a href="/jouer/phophlo" target="_blank">
+               <img src="http://phophlo.ca/phophlo_assets/img/ic_phophlo128.png" title="Phophlo"/>
+              </a>
+            </li>
+            <li class="divider">
+            </li>
+            <li>
+              <a href="/jouer/ecoute" target="_blank">
+               <img src="http://phophlo.ca/phophlo_assets/img/ic_sails128.png" title="Écoute"/>
               </a>
             </li>
             <li>
-              <a href="#">
-                Ils aiment quoi
+              <a href="/jouer/ils-aiment-quoi" target="_blank">
+               <img src="http://phophlo.ca/phophlo_assets/img/ic_tcpp128.png" title="Ils aiment quoi"/>
               </a>
             </li>
             <li>
-              <a href="#">
-                Qu’est-ce que c’est
+              <a href="/jouer/quest-ce-que-cest" target="_blank">
+               <img src="http://phophlo.ca/phophlo_assets/img/ic_tdfp128.png" title="Qu’est-ce que c’est"/>
               </a>
             </li>
             <li>
-              <a href="#">
-                Qu’est-ce qu’ils font
+              <a href="/jouer/quest-ce-quils-font" target="_blank">
+               <img src="http://phophlo.ca/phophlo_assets/img/ic_tdfm128.png" title="Qu’est-ce qu’ils font"/>
               </a>
             </li>
           </ul>
         </li>
         <li class="dropdown" ng-show="authentication.user.authenticated">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            Customize
+            <i class="fa fa-tasks"></i> Rapports
             <span class="caret">
             </span>
           </a>
           <ul class="dropdown-menu" role="menu">
             <li>
-              <a href="#">
-                Organization
+              <a href="/{{currentCorpusDashboard}}/rapports/classes">
+                <i class="fa fa-group"></i> Classes
               </a>
             </li>
             <li>
-              <a href="#">
-                Test Administrators
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Parents
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Children
+              <a href="/{{currentCorpusDashboard}}/rapports/eleves">
+                <i class="fa fa-user"></i> Éleves
               </a>
             </li>
             <li class="divider">
             </li>
             <li>
-              <a href="#">
-                Clear all customization
+              <a href="/{{currentCorpusDashboard}}/rapports/phophlo">
+                <img class="nav-icon" src="http://phophlo.ca/phophlo_assets/img/ic_phophlo128.png" title="Phophlo"/> Phophlo
+              </a>
+            </li>
+            <li>
+              <a href="/{{currentCorpusDashboard}}/rapports/ecoute">
+               <img class="nav-icon" src="http://phophlo.ca/phophlo_assets/img/ic_sails128.png" title="Écoute"/> Écoute
+              </a>
+            </li>
+            <li>
+              <a href="/{{currentCorpusDashboard}}/rapports/ils-aiment-quoi">
+               <img class="nav-icon" src="http://phophlo.ca/phophlo_assets/img/ic_tcpp128.png" title="Ils aiment quoi"/> Ils aiment quoi
+              </a>
+            </li>
+            <li>
+              <a href="/{{currentCorpusDashboard}}/rapports/quest-ce-que-cest">
+               <img class="nav-icon" src="http://phophlo.ca/phophlo_assets/img/ic_tdfp128.png" title="Qu’est-ce que c’est"/> Qu’est-ce que c’est
+              </a>
+            </li>
+            <li>
+              <a href="/{{currentCorpusDashboard}}/rapports/quest-ce-quils-font">
+               <img class="nav-icon" src="http://phophlo.ca/phophlo_assets/img/ic_tdfm128.png" title="Qu’est-ce qu’ils font"/> Qu’est-ce qu’ils font
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown" ng-show="authentication.user.authenticated">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-gears"></i> Customiser
+            <span class="caret">
+            </span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="/{{currentCorpusDashboard}}/institution">
+                <i class="fa fa-institution"></i> Affichage de l'institution
+              </a>
+            </li>
+            <li class="divider">
+            </li>
+            <li>
+              <a href="/{{currentCorpusDashboard}}/customizer">
+                <i class="fa fa-tasks"></i> Affichage de Rapports
+              </a>
+            </li>
+            <li>
+              <a href="/{{currentCorpusDashboard}}/customizer/template-dossier">
+                <i class="fa fa-file-pdf-o"></i> Dossier des Resultas Scolaire
+              </a>
+            </li>
+            <li>
+              <a href="/{{currentCorpusDashboard}}/customizer/template-fiche-parents">
+                <i class="fa fa-file-pdf-o"></i> Fiche informative aux parents
+              </a>
+            </li>
+            <li>
+              <a href="/{{currentCorpusDashboard}}/customizer/template-certificat-eleve">
+                <i class="fa fa-certificate"></i> Certificat de participation pour des éleves
+              </a>
+            </li>
+            <li class="divider">
+            </li>
+            <li>
+              <a href="">
+                <i class="fa fa-trash"></i> Effacer toutes les customisations
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown" ng-show="authentication.user.authenticated">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-plus-circle"></i> Nouveau
+            <span class="caret">
+            </span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="/{{currentCorpusDashboard}}/nouveau/classe">
+                <i class="fa fa-group"></i> Classe <!-- Import Participants -->
+              </a>
+            </li>
+            <li>
+              <a href="/{{currentCorpusDashboard}}/nouveau/eleve">
+                <i class="fa fa-user"></i> Éleve <!-- Participant -->
+              </a>
+            </li>
+            <li>
+              <a href="/{{currentCorpusDashboard}}/nouveau/administrateur-de-test">
+                <i class="fa fa-user"></i> Administrateur de test <!-- User -->
+              </a>
+            </li>
+            <li>
+              <a href="/{{currentCorpusDashboard}}/nouveau/membre-dequipe">
+                <i class="fa fa-share-alt"></i> Membre d'equipe <!-- User -->
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li hidden class="dropdown" ng-show="(false &&  authentication.user.authenticated)">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-magic"></i> Gérer
+            <span class="caret">
+            </span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="/{{currentCorpusDashboard}}/gerer/test-block">
+                <i class="fa fa-thumb-tack"></i> Test Block <!-- Psycholinguistics Data list -->
+              </a>
+            </li>
+            <li>
+              <a href="/{{currentCorpusDashboard}}/gerer/stimuli">
+                <i class="fa fa-list-alt"></i> Stimuli <!-- Psycholinguistics Datum -->
+              </a>
+            </li>
+            <li>
+              <a href="/{{currentCorpusDashboard}}/gerer/institution">
+                <i class="fa fa-sitemap"></i> Institution <!-- Team -->
+              </a>
+            </li>
+            <li>
+              <a href="/{{currentCorpusDashboard}}/gerer/bds">
+                <i class="fa fa-cloud"></i> Base de données <!-- Corpus -->
               </a>
             </li>
           </ul>
@@ -123,7 +242,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown" ng-show="authentication.user.authenticated">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <i class="fa fa-user">
+            <i class="fa fa-eye">
             </i>
             <span class="caret">
             </span>
@@ -131,7 +250,7 @@
           <ul class="dropdown-menu" role="menu">
             <li>
               <a href="#">
-                View as Organization
+                View as Institution
               </a>
             </li>
             <li>
