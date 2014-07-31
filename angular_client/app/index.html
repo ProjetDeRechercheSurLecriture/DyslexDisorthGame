@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="adminDashboardApp" ng-class="{phophlobody: !authentication.user.authenticated, resultsbody: authentication.user.authenticated}" ng-controller="FieldDBController">
+  <body ng-app="adminDashboardApp" ng-cloak ng-class="{phophlobody: !authentication.user.authenticated, resultsbody: authentication.user.authenticated}" ng-controller="FieldDBController">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -336,6 +336,9 @@
     <script src="/bower_components/angular-route/angular-route.js"></script>
     <script src="/bower_components/fielddb/fielddb.js"></script>
     <script src="/bower_components/ng-file-upload/angular-file-upload.js"></script>
+    <script src="/bower_components/angular-contenteditable/angular-contenteditable.js"></script>
+    <script src="/bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="/bower_components/angular-dragdrop/src/angular-dragdrop.js"></script>
     <script src="/bower_components/fielddb-angular/dist/scripts/scripts.js"></script>
     <script src="/bower_components/fielddb-angular/dist/scripts/templates.js"></script>
     <!-- endbower -->
