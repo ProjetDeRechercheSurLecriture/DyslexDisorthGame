@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ProjetDeRechercheSurLecriture/DyslexDisorthGame.png)](https://travis-ci.org/ProjetDeRechercheSurLecriture/DyslexDisorthGame)
+
 DyslexDisorthGame 
 =================
 
