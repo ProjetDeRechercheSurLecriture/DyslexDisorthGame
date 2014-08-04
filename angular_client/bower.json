@@ -2,21 +2,8 @@
   "name": "admin-dashboard",
   "version": "0.0.0",
   "dependencies": {
-    "angular": "1.2.16",
-    "json3": "~3.3.1",
-    "es5-shim": "~3.1.0",
-    "bootstrap": "~3.2.0",
-    "angular-resource": "1.2.16",
-    "angular-cookies": "1.2.16",
-    "angular-sanitize": "1.2.16",
-    "angular-animate": "1.2.16",
-    "angular-touch": "1.2.16",
-    "angular-route": "1.2.16",
-    "font-awesome": "~4.1.0",
-    "ng-file-upload-shim": "~1.6.4",
-    "ng-file-upload": "~1.6.4",
-    "angular-contenteditable": "~0.3.7",
-    "angular-dragdrop": "~1.0.7"
+    "fielddb-angular": "*",
+    "font-awesome": "~4.1.0"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",

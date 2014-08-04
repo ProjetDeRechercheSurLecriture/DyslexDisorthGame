@@ -11,3 +11,4 @@ angular.module('adminDashboardApp')
   .controller('AboutCtrl', function () {
 
   });
+

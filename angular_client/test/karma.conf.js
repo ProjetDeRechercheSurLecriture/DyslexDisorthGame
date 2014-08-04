@@ -18,28 +18,18 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'bower_components/ng-file-upload-shim/angular-file-upload-shim.js',
-      'bower_components/angular/angular.js',
-      'bower_components/angular-mocks/angular-mocks.js',
-      'bower_components/angular-animate/angular-animate.js',
-      'bower_components/angular-resource/angular-resource.js',
-      'bower_components/angular-cookies/angular-cookies.js',
-      'bower_components/angular-touch/angular-touch.js',
-      'bower_components/angular-sanitize/angular-sanitize.js',
-      'bower_components/angular-route/angular-route.js',
-      'bower_components/angular-contenteditable/angular-contenteditable.js',
-      'bower_components/fielddb/fielddb.js',
-      'bower_components/ng-file-upload/angular-file-upload.js',
-      'bower_components/jquery/dist/jquery.js',
-      'bower_components/jquery-ui/jquery-ui.js',
-      'bower_components/angular-dragdrop/src/angular-dragdrop.js',
+      'bower_components/fielddb-angular/dist/scripts/vendor.js',
       'bower_components/fielddb-angular/dist/scripts/scripts.js',
       'bower_components/fielddb-angular/dist/scripts/templates.js',
+      'bower_components/angular-mocks/angular-mocks.js',
 
-
+      'app/scripts/*.js',
       'app/scripts/**/*.js',
       // 'test/mock/**/*.js',
-      'test/spec/**/*.js'
+      'test/spec/**/*.js',
+
+      //location of templates
+      'app/views/**/*.html'
     ],
 
     // list of files / patterns to exclude
