@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ProjetDeRechercheSurLecriture/DyslexDisorthGame.png)](https://travis-ci.org/ProjetDeRechercheSurLecriture/DyslexDisorthGame)
+
 DyslexDisorthGame 
 =================
 
@@ -6,9 +8,6 @@ This repository contains the OpenSource code base for PRÉ (Projet de Recherche 
 Le PRÉ «Projet de Recherche sur l'Écriture» est un projet conçu par Susan Rvachew, Laura Gonnerman (Child Phonology Lab, Université McGill) en collaboration Phaedra Royle et Alexandra Marquis (École d'orthophonie et d'audiologie de la Faculté de médecine de l'Université de Montréal) visant à développer un outil de dépistage de la dysorthographie basé sur des compétences multiples du langage oral normé et validé pour le français québécois.
 
 Ce projet a amené à la création de l'outil de dépistage «Phophlo», qui vise à prévenir les difficultés de dysorthographie chez les enfants en début de scolarisation. Cet outil évalue certaines capacités langagières orales, notamment la perception de la parole, la production phonologique, la conscience phonologique et la production morphologique, qui sont toutes reconnues comme étant prédictives de difficultés orthographiques à l'écrit. Le « Phophlo » contient quatre tests; « Écoute! » évalue la perception de la parole, « Qu'est-ce que c'est? » évalue la production phonologique, « Ils aiment quoi? » évalue la conscience phonologique et « Qu'est-ce qu'ils font? » évalue la production morphologique. L'outil de dépistage Phophlo est conçu pour le personnel des écoles primaires, notamment pour les enseignants qui souhaitent valider leurs doutes sur les difficultés au niveau langagier chez certains enfants, ainsi que pour les orthophonistes et orthopédagogues qui souhaitent obtenir un peu plus d'informations sur les difficultés langagières des enfants qu'ils rencontrent. L'outil est disponible au grand public sur Apple Store, Android Store et Chrome Store.
-
-# What is DyslexDisorthGame?
-DyslexDisorthGame is an long term research project developed by the Child Phonology Lab - McGill and gamified in collaboration with iLanguage Lab LTD to make a modular, user-friendly game which can be used by SLPs to diagnose dyslexdisorthgameica in pre-literate children in Quebec in both official languages.
 
 # Who can I use DyslexDisorthGame with?
 * DyslexDisorthGame is a Android app and a Chrome app, which means it works on Windows, Mac, Linux, and Android.
@@ -19,7 +18,7 @@ DyslexDisorthGame is an long term research project developed by the Child Phonol
 
 # Join our Beta Testers
 
-DyslexDisorthGame beta will be officially launched in English and French at the end of the Fall Semester 2012. So far we have had input from SLPs working on in the Montreal and Laval regions, if you would like to become a beta tester let us know at dyslexdisorthgame@ilanguage.ca 
+DyslexDisorthGame beta was officially launched in French at the end of the Fall Semester 2012. So far we have had input from SLPs working on in the Montreal and Laval regions, if you would like to become a beta tester let us know at dyslexdisorthgame@ilanguage.ca 
 
 # Team
 * [Susan Rvachew](http://www.medicine.mcgill.ca/srvachew/) (McGill - School of Communication Sciences and Disorders)
