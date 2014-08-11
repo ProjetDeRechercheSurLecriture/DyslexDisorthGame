@@ -1,8 +1,38 @@
-<p class="text-center">
-  <img ng-src="https://secure.gravatar.com/avatar/{{user.gravatar}}?d=identicon" alt="{{user.name}}" class="img-polaroid">
-</p>
-<div >
-  <h1> {{user.firstname}} {{user.lastname}}</h1>
-  <p>{{user.username}}</p>
-</div>
-
+<i class="fa pull-right" ng-class="{'fa-eye': !user.decryptedMode, 'fa-eye-slash': user.decryptedMode}" ng-click="toggleViewDecryptedDetails()"></i>
+<h3>
+ <i class="fa fa-child"></i>  Élève
+</h3>
+<ul class='list-unstyled'>
+  <li title="{{user.fields.firstname.help}}">
+    {{user.fields.firstname.label}}:
+    <span class="child_specific_results" contenteditable="true">
+      {{user.firstname}}
+    </span>
+  </li>
+  <li title="{{user.fields.lastname.help}}">
+    {{user.fields.lastname.label}}:
+    <span class="child_specific_results" contenteditable="true">
+      {{user.lastname}}
+    </span>
+  </li>
+  <li title="{{user.fields.dateOfBirth.help}}">
+    {{user.fields.dateOfBirth.label}}:
+    <span class="child_specific_results" contenteditable="true">
+      {{user.dateOfBirth}}
+    </span>
+  </li>
+  <li title="{{user.fields.anonymousCode.help}}">
+    {{user.fields.anonymousCode.label}}:
+    <span class="" contenteditable="true">
+      {{user.anonymousCode}}
+    </span>
+  </li>
+  <li>
+    <span contenteditable="true">
+      Add new:
+    </span>
+    <span class="child_specific_results" contenteditable="true">
+      another field here
+    </span>
+  </li>
+</ul>
