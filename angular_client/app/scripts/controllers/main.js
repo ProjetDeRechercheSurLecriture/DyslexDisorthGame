@@ -2,15 +2,14 @@
 
 /**
  * @ngdoc function
- * @name adminDashboardApp.controller:MainCtrl
+ * @name adminDashboardApp.controller:MainController
  * @description
- * # MainCtrl
+ * # MainController
  * Controller of the adminDashboardApp
  */
 angular.module('adminDashboardApp')
-  .controller('MainCtrl', function() {
-    // fielddbStorage.getCollection('participants_with_results').then(function(result) {
-    //   console.log(result);
-
-    // });
+  .controller('MainController', function($scope) {
+    $scope.connection = $scope.connection;
+    $scope.connection.brand = 'Phophlo';
+    $scope.connection.website = 'http://get.phophlo.ca';
   });
