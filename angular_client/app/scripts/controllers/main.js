@@ -9,7 +9,9 @@
  */
 angular.module('adminDashboardApp')
   .controller('MainController', function($scope) {
-    $scope.connection = $scope.connection;
+    if (!$scope.connection) {
+      return;
+    }
     $scope.connection.brand = 'Phophlo';
     $scope.connection.website = 'http://get.phophlo.ca';
   });
