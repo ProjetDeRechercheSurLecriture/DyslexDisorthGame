@@ -19,8 +19,16 @@ angular
     'ngTouch',
     'fielddbAngularApp'
   ])
-  .config(function($routeProvider, $locationProvider) {
+  .config(function($routeProvider, $locationProvider, $sceDelegateProvider) {
     $locationProvider.html5Mode(true);
+
+    $sceDelegateProvider.resourceUrlWhitelist([
+      // Allow same origin resource loads.
+      'self',
+      // Allow loading from outer domain.
+      'https://*.lingsync.org/**',
+      'https://*.phophlo.ca/**'
+    ]);
 
     $routeProvider
       .when('/', {
