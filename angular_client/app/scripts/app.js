@@ -49,6 +49,9 @@ angular
       .when('/bienvenu', {
         templateUrl: 'views/signup.html',
         controller: 'AboutCtrl'
+      })
+      .when('/:team/:corpusid/nouveau/classe', {
+        redirectTo: '/:team/:corpusid/import/participants'
       });
 
     if (FieldDB && FieldDB.Router) {
