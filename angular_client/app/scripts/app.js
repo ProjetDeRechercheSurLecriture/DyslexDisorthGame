@@ -55,6 +55,12 @@ angular
       })
       .when('/:team/:corpusid/rapports/classe', {
         redirectTo: '/:team/:corpusid/reports/participants'
+      })
+      .when('/:team/:corpusid/gerer/test-block', {
+        redirectTo: '/:team/:corpusid/datalists'
+      })
+      .when('/:team/:corpusid/gerer/stimuli', {
+        redirectTo: '/:team/:corpusid/data'
       });
 
     if (FieldDB && FieldDB.Router) {
