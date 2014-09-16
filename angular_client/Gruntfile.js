@@ -43,7 +43,7 @@ module.exports = function(grunt) {
         }
       },
       templates: {
-        files: ['<%= yeoman.app %>/views/{,*/}*.html'],
+        files: ['index.html','<%= yeoman.app %>/views/{,*/}*.html'],
         tasks: ['ngtemplates', 'copy:templates'],
         options: {
           livereload: '<%= connect.options.livereload %>'
