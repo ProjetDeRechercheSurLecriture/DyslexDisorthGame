@@ -44,7 +44,7 @@ module.exports = function(grunt) {
       },
       templates: {
         files: ['index.html','<%= yeoman.app %>/views/{,*/}*.html'],
-        tasks: ['ngtemplates', 'copy:templates'],
+        tasks: ['ngtemplates','copy:templates'],
         options: {
           livereload: '<%= connect.options.livereload %>'
         }
@@ -424,8 +424,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'ngtemplates',
-    'copy:templates',
     // 'wiredep',
     'useminPrepare',
     'concurrent:dist',
@@ -436,6 +434,8 @@ module.exports = function(grunt) {
     'copy:dist',
     'cdnify',
     'cssmin',
+    'ngtemplates',
+    'copy:templates',
     // 'uglify',
     // 'filerev',
     'usemin',
