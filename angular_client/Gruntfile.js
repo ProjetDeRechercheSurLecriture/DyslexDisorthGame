@@ -36,7 +36,7 @@ module.exports = function(grunt) {
         // tasks: ['wiredep']
       },
       js: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'bower_components/fielddb-angular/dist/scripts/{,*/}*.js', 'bower_components/fielddb/{,*/}*.js'],
+        files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'bower_components/fielddb-angular/dist/scripts/{,*/}*.js'],
         tasks: ['newer:jshint:all'],
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -91,7 +91,7 @@ module.exports = function(grunt) {
                 '/bower_components',
                 connect.static('./bower_components')
               ),
-              connect.static(appConfig.dist)
+              connect.static(appConfig.app)
             ];
           }
         }
@@ -326,6 +326,7 @@ module.exports = function(grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             '*.html',
+            'jouer/*/**',
             'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
             'fonts/*'
@@ -431,6 +432,7 @@ module.exports = function(grunt) {
     'autoprefixer',
     'concat',
     'ngmin',
+    /* TODO use exec to mop dependant games */
     'copy:dist',
     'cdnify',
     'cssmin',
