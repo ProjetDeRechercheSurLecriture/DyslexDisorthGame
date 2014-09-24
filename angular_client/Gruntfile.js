@@ -383,7 +383,7 @@ module.exports = function(grunt) {
     compress: {
       dist: {
         options: {
-          archive: '../../Releases/dyslex_disorth_app_v<%= yeoman.version %>.zip'
+          archive: '../../Releases/dyslex_disorth_app_v<%= yeoman.version + new Date()%>.zip'
         },
         files: [{
           expand: true,
