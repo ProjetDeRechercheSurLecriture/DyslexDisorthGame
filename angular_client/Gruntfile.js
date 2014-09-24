@@ -19,7 +19,8 @@ module.exports = function(grunt) {
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
-    dist: 'dist'
+    dist: 'dist',
+    version: require('./bower.json').version
   };
 
   // Define the configuration for all the tasks
@@ -382,7 +383,7 @@ module.exports = function(grunt) {
     compress: {
       dist: {
         options: {
-          archive: '../../Releases/dyslex_disorth_app.zip'
+          archive: '../../Releases/dyslex_disorth_app_v<%= yeoman.version %>.zip'
         },
         files: [{
           expand: true,
