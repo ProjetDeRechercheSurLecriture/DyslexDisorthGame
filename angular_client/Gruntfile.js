@@ -19,7 +19,8 @@ module.exports = function(grunt) {
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
-    dist: 'dist'
+    dist: 'dist',
+    version: require('./bower.json').version
   };
 
   // Define the configuration for all the tasks
@@ -43,8 +44,8 @@ module.exports = function(grunt) {
         }
       },
       templates: {
-        files: ['<%= yeoman.app %>/views/{,*/}*.html'],
-        tasks: ['ngtemplates', 'copy:templates'],
+        files: ['index.html','<%= yeoman.app %>/views/{,*/}*.html'],
+        tasks: ['ngtemplates','copy:templates'],
         options: {
           livereload: '<%= connect.options.livereload %>'
         }
@@ -85,7 +86,8 @@ module.exports = function(grunt) {
           open: true,
           middleware: function(connect) {
             return [
-              modRewrite(['^[^\\.]*$ /index.html [L]']),
+              connect.static('http://phophlo.ca'),
+              modRewrite(['^[^(:\/\/)]*[^\\.]*$ /index.html [L]']),
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
@@ -381,7 +383,7 @@ module.exports = function(grunt) {
     compress: {
       dist: {
         options: {
-          archive: '../../Releases/dyslex_disorth_app.zip'
+          archive: '../../Releases/dyslex_disorth_app_v<%= yeoman.version + new Date()%>.zip'
         },
         files: [{
           expand: true,
@@ -424,8 +426,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'ngtemplates',
-    'copy:templates',
     // 'wiredep',
     'useminPrepare',
     'concurrent:dist',
@@ -436,6 +436,8 @@ module.exports = function(grunt) {
     'copy:dist',
     'cdnify',
     'cssmin',
+    'ngtemplates',
+    'copy:templates',
     // 'uglify',
     // 'filerev',
     'usemin',
