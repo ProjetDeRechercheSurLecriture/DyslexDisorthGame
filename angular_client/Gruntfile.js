@@ -330,6 +330,8 @@ module.exports = function(grunt) {
             '*.html',
             'jouer/*/**',
             'views/{,*/}*.html',
+            'assets/*/*.mp3',
+            'assets/*/*.png',
             'images/{,*/}*.{webp}',
             'fonts/*'
           ]
