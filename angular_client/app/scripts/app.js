@@ -9,7 +9,7 @@
  *
  * Main module of the application.
  */
-var app = angular
+angular
   .module('adminDashboardApp', [
     'ngAnimate',
     'ngCookies',
@@ -27,12 +27,8 @@ var app = angular
       'self',
       // Allow loading from outer domain.
       'https://*.lingsync.org/**',
-      'http://*.phophlo.ca/**',
       'https://*.phophlo.ca/**'
     ]);
-
-    //Dont show alerts when in this app, until we have error modals or something
-    FieldDB.FieldDBObject.bug = FieldDB.FieldDBObject.prototype.todo;
 
     $routeProvider
       .when('/', {
@@ -77,26 +73,4 @@ var app = angular
       }
     }
 
-    // FieldDB.FieldDBObject.application.contextualizer.addUrls(['en/messages.json','fr/messages.json']).then(function(){
-    //   console.log('Added urls');
-    // });
-
   });
-
-console.log(app);
-
-// app.run(['$route', '$rootScope', '$location',
-//   function($route, $rootScope, $location) {
-//     var original = $location.path;
-//     $location.path = function(path, reload) {
-//       if (reload === false) {
-//         var lastRoute = $route.current;
-//         var un = $rootScope.$on('$locationChangeSuccess', function() {
-//           $route.current = lastRoute;
-//           un();
-//         });
-//       }
-//       return original.apply($location, [path]);
-//     };
-//   }
-// ]);
