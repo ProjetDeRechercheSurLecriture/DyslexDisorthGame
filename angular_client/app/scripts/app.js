@@ -36,23 +36,13 @@ var app = angular
 
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainController'
-      })
-      .when('/about/contact', {
-        templateUrl: 'views/main.html',
-        controller: 'MainController'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+        templateUrl: 'views/main.html'
       })
       .when('/welcome', {
         redirectTo: '/bienvenu'
       })
       .when('/bienvenu', {
-        templateUrl: 'views/signup.html',
-        controller: 'AboutCtrl'
+        templateUrl: 'views/signup.html'
       })
       .when('/:team/:corpusid/nouveau/classe', {
         redirectTo: '/:team/:corpusid/import/participants'
@@ -65,6 +55,10 @@ var app = angular
       })
       .when('/:team/:corpusid/gerer/stimuli', {
         redirectTo: '/:team/:corpusid/data'
+      })
+      .when('/:team/:corpusid/rapports/ecoute', {
+        templateUrl: 'views/sails_report.html',
+        controller: 'SAILSReportController'
       });
 
     if (FieldDB && FieldDB.Router) {
