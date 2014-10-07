@@ -10,6 +10,8 @@
  */
 angular.module('adminDashboardApp')
   .controller('MainController', function() {
-    FieldDB.FieldDBObject.application.brand = 'Example';
-    FieldDB.FieldDBObject.application.website = 'http://get.example.ca';
+    if (FieldDB && FieldDB.FieldDBObject && FieldDB.FieldDBObject.application) {
+      FieldDB.FieldDBObject.application.brand = 'Example';
+      FieldDB.FieldDBObject.application.website = 'http://get.example.ca';
+    }
   });
