@@ -1,3 +1,4 @@
+/* globals FieldDB */
 'use strict';
 
 /**
@@ -8,10 +9,7 @@
  * Controller of the adminDashboardApp
  */
 angular.module('adminDashboardApp')
-  .controller('MainController', function($scope) {
-    if (!$scope.connection) {
-      return;
-    }
-    $scope.connection.brand = 'Phophlo';
-    $scope.connection.website = 'http://get.phophlo.ca';
+  .controller('MainController', function() {
+    FieldDB.FieldDBObject.application.brand = 'Example';
+    FieldDB.FieldDBObject.application.website = 'http://get.example.ca';
   });
