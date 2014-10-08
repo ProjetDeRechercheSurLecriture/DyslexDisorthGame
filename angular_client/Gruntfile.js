@@ -329,6 +329,7 @@ module.exports = function(grunt) {
             '*htaccess',
             '*.html',
             'jouer/*/**',
+            'sample/*.csv',
             'views/{,*/}*.html',
             'assets/*/*.mp3',
             'assets/*/*.png',
