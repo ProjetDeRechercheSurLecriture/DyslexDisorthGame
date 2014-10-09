@@ -10,9 +10,10 @@
  */
 angular.module('adminDashboardApp').controller('SAILSReportController', function($scope, $timeout) {
   $scope.loading = true;
+
   $scope.options = {
     chart: {
-      type: 'scatterChart',
+      type: 'lineChart',
       height: 450,
       margin: {
         top: 20,
@@ -30,7 +31,7 @@ angular.module('adminDashboardApp').controller('SAILSReportController', function
         }
       },
       y: function(stimulusResponse) {
-        console.log('getting y', stimulusResponse);
+        // console.log('getting y', stimulusResponse);
         if (stimulusResponse && stimulusResponse.response && stimulusResponse.response.reactionTimeAudioOffset) {
           return stimulusResponse.response.reactionTimeAudioOffset;
         } else {
@@ -55,11 +56,11 @@ angular.module('adminDashboardApp').controller('SAILSReportController', function
           // } else {
           //   return "NA";
           // }
-          if (stimulusNumberInExperiment && stimulusNumberInExperiment) {
-            return stimulusNumberInExperiment;
-          } else {
-            return 'NA';
-          }
+          // if (stimulusNumberInExperiment && stimulusNumberInExperiment) {
+          return stimulusNumberInExperiment;
+          // } else {
+          //   return 'NA';
+          // }
 
           //todo DONT make it a date
           // return d3.time.format('%m/%d/%y')(new Date(d));
@@ -72,7 +73,8 @@ angular.module('adminDashboardApp').controller('SAILSReportController', function
         axisLabel: 'Reaction Time Post Audio Offset (ms)',
         tickFormat: function(reactionTimeAudioOffset) {
           // return reactionTimeAudioOffset;
-          return d3.format(',f')(reactionTimeAudioOffset);
+          var formatted = d3.format(',f')(reactionTimeAudioOffset);
+          return formatted;
           // return d3.format(',.1%')(reactionTimeAudioOffset);
         },
         showMaxMin: true,
@@ -116,10 +118,10 @@ angular.module('adminDashboardApp').controller('SAILSReportController', function
           var participantId = response[1].participant;
           $scope.participants[participantId] = $scope.participants[participantId] || {
             key: participantId,
-            values: []
+            values: [{}]
           };
-          if (!isOutlier(response)) {
-            $scope.participants[participantId].values.push(response[1]);
+          if (!isOutlier(response) && response[1].itemNumberInExperiment) {
+            $scope.participants[participantId].values[response[1].itemNumberInExperiment] = response[1];
           }
         });
         var totalResponseTimeSum = 0;
@@ -135,8 +137,8 @@ angular.module('adminDashboardApp').controller('SAILSReportController', function
             }
           });
           totalResponseTimeSum = totalResponseTimeSum + participantResponseTimeSum;
-          totalResponseCount = totalResponseCount + $scope.participants[participant].values.length;
-          $scope.participants[participant].mean = participantResponseTimeSum / $scope.participants[participant].values.length;
+          totalResponseCount = totalResponseCount + $scope.participants[participant].values.length - 1;
+          $scope.participants[participant].mean = participantResponseTimeSum / $scope.participants[participant].values.length - 1;
           $scope.data.push($scope.participants[participant]);
         }
         $scope.totalResponseCount = totalResponseCount;
