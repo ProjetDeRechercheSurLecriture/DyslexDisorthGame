@@ -11,6 +11,15 @@
 angular.module('adminDashboardApp').controller('SAILSReportController', function($scope, $timeout) {
   $scope.loading = true;
 
+  var stimuliDataList = new FieldDB.DataList({
+    title: 'Stimuli',
+    docsAreReorderable: false,
+    showDocCheckboxes: false
+  });
+
+  $scope.stimuliCorpus = new FieldDB.Corpus();
+  $scope.stimuliCorpus.loadOrCreateCorpusByPouchName('sails-fr-ca');
+
   $scope.options = {
     chart: {
       type: 'lineChart',
@@ -123,19 +132,25 @@ angular.module('adminDashboardApp').controller('SAILSReportController', function
           if (!isOutlier(response) && response[1].itemNumberInExperiment) {
             $scope.participants[participantId].values[response[1].itemNumberInExperiment] = response[1];
           }
+
+          if (response[1] && response[1].stimulusId && stimuliDataList.docIds.indexOf(response[1].stimulusId) === -1) {
+            stimuliDataList.docIds.push(response[1].stimulusId);
+          }
+
         });
         var totalResponseTimeSum = 0;
         var totalResponseCount = 0;
+        var sumReactionTimes = function(response) {
+          if (response && response.response && response.response.reactionTimeAudioOffset) {
+            participantResponseTimeSum = participantResponseTimeSum + response.response.reactionTimeAudioOffset;
+          }
+        };
         for (var participant in $scope.participants) {
           if (!$scope.participants.hasOwnProperty(participant)) {
             continue;
           }
           var participantResponseTimeSum = 0;
-          $scope.participants[participant].values.map(function(response) {
-            if (response && response.response && response.response.reactionTimeAudioOffset) {
-              participantResponseTimeSum = participantResponseTimeSum + response.response.reactionTimeAudioOffset;
-            }
-          });
+          $scope.participants[participant].values.map(sumReactionTimes);
           totalResponseTimeSum = totalResponseTimeSum + participantResponseTimeSum;
           totalResponseCount = totalResponseCount + $scope.participants[participant].values.length - 1;
           $scope.participants[participant].mean = participantResponseTimeSum / $scope.participants[participant].values.length - 1;
@@ -145,8 +160,19 @@ angular.module('adminDashboardApp').controller('SAILSReportController', function
         $scope.totalResponseTimeSum = totalResponseTimeSum;
         $scope.overallResponseTimeMean = totalResponseTimeSum / totalResponseCount;
         console.log('Mean overall response time ', $scope.overallResponseTimeMean);
+        $scope.stimuliDataList = stimuliDataList;
+
         if (!$scope.$$phase) {
           $scope.$digest(); //$digest or $apply
+
+          d3.selectAll('circle').on('click', function(item) {
+            console.log('clicked', item);
+            if (item && item.stimulusId) {
+              console.log(item.prime.audioFile);
+              $scope.stimuliDataList.docs[item.stimulusId].play();
+            }
+          });
+
         }
       });
 

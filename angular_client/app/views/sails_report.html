@@ -1,15 +1,14 @@
 
 <div ng-controller="SAILSReportController">
   <h1>Écoute</h1>
-  loading: {{loading}}
-  corpus: {{application.corpus.dbname}}
-  count: {{totalResponseCount}}
-  total: {{totalResponseTimeSum}}
-  mean: {{overallResponseTimeMean}}
+
+  Mean response time (post audio offset) across stimuli and participants: {{overallResponseTimeMean}}
 
   <nvd3 options='options' data='data'></nvd3>
 
-  <pre class="well" ng-repeat="result in results">
+  <div class="well" data-fielddb-datalist json="stimuliDataList" corpus="stimuliCorpus"></div>
+
+  <pre class="well scrollable" ng-repeat="result in results">
     Date: {{result.startTime | fielddbPrettyDate }}
     Experimenter: {{result.experimenter}},
     Participant: {{result.participant}},
@@ -22,12 +21,11 @@
     </div>
   </pre>
 
-
-  <pre>
+  <div>
+    Debugging data
+    <pre class="well scrollable" >
       {{data | json}}
-  </pre>
-
-
-  <pre>{{results | json}}</pre>
+    </pre>
+  </div>
 
 </div>
