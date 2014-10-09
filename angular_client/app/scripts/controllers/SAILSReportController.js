@@ -101,10 +101,10 @@ angular.module('adminDashboardApp').controller('SAILSReportController', function
 
       FieldDB.FieldDBObject.application.corpus.fetchCollection('responses').then(function(responses) {
 
-        var fossil = {};
-        responses = fossil.rows.map(function(doc) {
-          return doc.value;
-        });
+        // var fossil = {};
+        // responses = fossil.rows.map(function(doc) {
+        //   return doc.value;
+        // });
         $scope.data = [];
         $scope.participants = {};
 
