@@ -32,14 +32,14 @@ angular.module('adminDashboardApp').controller('SAILSReportController', function
       y: function(stimulusResponse) {
         console.log('getting y', stimulusResponse);
         if (stimulusResponse && stimulusResponse.response && stimulusResponse.response.reactionTimeAudioOffset) {
-          return stimulusResponse.response.reactionTimeAudioOffset ;
+          return stimulusResponse.response.reactionTimeAudioOffset;
         } else {
           return 0;
         }
       },
       average: function(d) {
         // return d.mean;
-        return d.mean ;
+        return d.mean;
       },
 
       color: d3.scale.category10().range(),
@@ -58,7 +58,7 @@ angular.module('adminDashboardApp').controller('SAILSReportController', function
           if (stimulusNumberInExperiment && stimulusNumberInExperiment) {
             return stimulusNumberInExperiment;
           } else {
-            return "NA";
+            return 'NA';
           }
 
           //todo DONT make it a date
@@ -84,6 +84,9 @@ angular.module('adminDashboardApp').controller('SAILSReportController', function
   $scope.data = [];
 
   var isOutlier = function(response) {
+    if (!response) {
+      return true;
+    }
     return false;
   };
   $timeout(function() {
@@ -139,7 +142,7 @@ angular.module('adminDashboardApp').controller('SAILSReportController', function
         $scope.totalResponseCount = totalResponseCount;
         $scope.totalResponseTimeSum = totalResponseTimeSum;
         $scope.overallResponseTimeMean = totalResponseTimeSum / totalResponseCount;
-        console.log("Mean overall response time ", $scope.overallResponseTimeMean);
+        console.log('Mean overall response time ', $scope.overallResponseTimeMean);
         if (!$scope.$$phase) {
           $scope.$digest(); //$digest or $apply
         }
