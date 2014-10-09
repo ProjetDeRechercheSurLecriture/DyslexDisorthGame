@@ -9,10 +9,7 @@
 
   <nvd3 options='options' data='data'></nvd3>
 
-
-
   <pre class="well" ng-repeat="result in results">
-    {{data | json}}
     Date: {{result.startTime | fielddbPrettyDate }}
     Experimenter: {{result.experimenter}},
     Participant: {{result.participant}},
@@ -25,6 +22,10 @@
     </div>
   </pre>
 
+
+  <pre>
+      {{data | json}}
+  </pre>
 
 
   <pre>{{results | json}}</pre>
