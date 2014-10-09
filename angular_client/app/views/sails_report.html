@@ -1,18 +1,32 @@
-<h1>Écoute</h1>
 
-<pre class="well" ng-repeat="result in results">
-  Date: {{result.startTime | fielddbPrettyDate }}
-  Experimenter: {{result.experimenter}},
-  Participant: {{result.participant}},
-  Practice Score: {{result.subexperiments[0].score}}
-  Test Score: {{result.subexperiments[1].score}}
-  <div ng-repeat="subexperiment in result.subexperiments">
-    <span ng-repeat="stimulus in subexperiment.results">
-      {{stimulus.target}} -> {{stimulus.response}}  = {{stimulus.score}}
-    </span>
-  </div>
-</pre>
+<div ng-controller="SAILSReportController">
+  <h1>Écoute</h1>
+  loading: {{loading}}
+  corpus: {{application.corpus.dbname}}
+  count: {{totalResponseCount}}
+  total: {{totalResponseTimeSum}}
+  mean: {{overallResponseTimeMean}}
+
+  <nvd3 options='options' data='data'></nvd3>
 
 
 
-<pre>{{results | json}}</pre>
+  <pre class="well" ng-repeat="result in results">
+    {{data | json}}
+    Date: {{result.startTime | fielddbPrettyDate }}
+    Experimenter: {{result.experimenter}},
+    Participant: {{result.participant}},
+    Practice Score: {{result.subexperiments[0].score}}
+    Test Score: {{result.subexperiments[1].score}}
+    <div ng-repeat="subexperiment in result.subexperiments">
+      <span ng-repeat="stimulus in subexperiment.results">
+        {{stimulus.target}} -> {{stimulus.response}}  = {{stimulus.score}}
+      </span>
+    </div>
+  </pre>
+
+
+
+  <pre>{{results | json}}</pre>
+
+</div>
