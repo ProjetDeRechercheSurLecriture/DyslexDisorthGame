@@ -329,6 +329,7 @@ module.exports = function(grunt) {
             '*htaccess',
             '*.html',
             'jouer/*/**',
+            'sample/*.csv',
             'views/{,*/}*.html',
             'assets/*/*.mp3',
             'assets/*/*.png',
@@ -442,8 +443,13 @@ module.exports = function(grunt) {
     'copy:templates',
     // 'uglify',
     // 'filerev',
-    'usemin',
+    'usemin'
     // 'htmlmin',
+  ]);
+
+  grunt.registerTask('dist', [
+    'test',
+    'build',
     'compress'
   ]);
 

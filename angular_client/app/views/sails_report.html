@@ -1,18 +1,31 @@
-<h1>Écoute</h1>
 
-<pre class="well" ng-repeat="result in results">
-  Date: {{result.startTime | fielddbPrettyDate }}
-  Experimenter: {{result.experimenter}},
-  Participant: {{result.participant}},
-  Practice Score: {{result.subexperiments[0].score}}
-  Test Score: {{result.subexperiments[1].score}}
-  <div ng-repeat="subexperiment in result.subexperiments">
-    <span ng-repeat="stimulus in subexperiment.results">
-      {{stimulus.target}} -> {{stimulus.response}}  = {{stimulus.score}}
-    </span>
+<div ng-controller="SAILSReportController">
+  <h1>Écoute</h1>
+
+  Mean response time (post audio offset) across stimuli and participants: {{overallResponseTimeMean}}
+
+  <nvd3 options='reactionTimeLineChart.options' data='reactionTimeLineChart.participants'></nvd3>
+
+  <div ng-hide="true" class="well" data-fielddb-datalist json="stimuliDataList" corpus="stimuliCorpus"></div>
+
+  <pre class="well scrollable" ng-repeat="result in results">
+    Date: {{result.startTime | fielddbPrettyDate }}
+    Experimenter: {{result.experimenter}},
+    Participant: {{result.participant}},
+    Practice Score: {{result.subexperiments[0].score}}
+    Test Score: {{result.subexperiments[1].score}}
+    <div ng-repeat="subexperiment in result.subexperiments">
+      <span ng-repeat="stimulus in subexperiment.results">
+        {{stimulus.target}} -> {{stimulus.response}}  = {{stimulus.score}}
+      </span>
+    </div>
+  </pre>
+
+  <div>
+    Debugging data
+    <pre class="well scrollable" >
+      {{data | json}}
+    </pre>
   </div>
-</pre>
 
-
-
-<pre>{{results | json}}</pre>
+</div>

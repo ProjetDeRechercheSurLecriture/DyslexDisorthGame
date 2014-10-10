@@ -17,7 +17,8 @@ var app = angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'fielddbAngularApp'
+    'fielddbAngularApp',
+    'nvd3'
   ])
   .config(function($routeProvider, $locationProvider, $sceDelegateProvider) {
     $locationProvider.html5Mode(true);
@@ -58,7 +59,7 @@ var app = angular
       })
       .when('/:team/:corpusid/rapports/ecoute', {
         templateUrl: 'views/sails_report.html',
-        controller: 'SAILSReportController'
+        controller: 'FieldDBController'
       });
 
     if (FieldDB && FieldDB.Router) {
