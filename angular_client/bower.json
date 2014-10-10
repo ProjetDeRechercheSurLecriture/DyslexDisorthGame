@@ -2,7 +2,7 @@
   "name": "admin-dashboard",
   "version": "0.9.0",
   "dependencies": {
-    "fielddb-angular": "~2.14.0",
+    "fielddb-angular": "~2.24.0",
     "font-awesome": "~4.1.0",
     "angular-nvd3": "http://github.com/cesine/angular-nvd3.git#~0.1.0"
   },
