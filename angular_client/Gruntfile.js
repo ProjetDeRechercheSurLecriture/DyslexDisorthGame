@@ -443,8 +443,13 @@ module.exports = function(grunt) {
     'copy:templates',
     // 'uglify',
     // 'filerev',
-    'usemin',
+    'usemin'
     // 'htmlmin',
+  ]);
+
+  grunt.registerTask('dist', [
+    'test',
+    'build',
     'compress'
   ]);
 
