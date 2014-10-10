@@ -163,12 +163,14 @@ describe('Controller: SAILSReportController', function() {
     ]);
     expect(scope.participants['2014-10-09_17.25_1412889940161']).toBeDefined();
     expect(scope.reactionTimeLineChart.participants.length).toEqual(2);
-    expect(scope.reactionTimeLineChart.participants[0].values.length).toEqual(14);
-    expect(scope.reactionTimeLineChart.participants[0].values[0]).toEqual({});
-    expect(scope.reactionTimeLineChart.participants[0].values[2]).toEqual(undefined);
+    expect(scope.reactionTimeLineChart.participants[0].values.length).toEqual(21);
+    expect(scope.reactionTimeLineChart.participants[0].values[0]).toEqual({
+      itemNumberInExperiment: 0
+    });
+    expect(scope.reactionTimeLineChart.participants[0].values[2].itemNumberInExperiment).toEqual(2);
     expect(scope.reactionTimeLineChart.participants[1].values[10].stimulusId).toEqual('4e06b60e129dff5c7bb4bb234990fc37');
     expect(scope.reactionTimeLineChart.participants[0].values[13].stimulusId).toEqual('4e06b60e129dff5c7bb4bb2349916da1');
-    expect(scope.reactionTimeLineChart.participants[0].mean).toEqual(136.34642857142856);
+    expect(scope.reactionTimeLineChart.participants[0].mean).toEqual(90.56428571428572);
     expect(scope.reactionTimeLineChart.participants[0].key).toEqual('2014-10-09_15.55_1412884516311');
     expect(scope.reactionTimeLineChart.participants[1].key).toEqual('2014-10-09_17.25_1412889940161');
   });

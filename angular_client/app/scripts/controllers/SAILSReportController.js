@@ -97,7 +97,7 @@ angular.module('adminDashboardApp').controller('SAILSReportController', function
 
   $scope.isOutlier = function(response) {
     if (!response || !response.response) {
-      console.warn("The response was missing a touch response");
+      console.warn('The response was missing a touch response');
       return true;
     }
     return false;
@@ -113,7 +113,7 @@ angular.module('adminDashboardApp').controller('SAILSReportController', function
     $scope.participants = {};
 
     responses.map(function(response) {
-      console.log("looking at response", response);
+      // console.log("looking at response", response);
       if (!response || !response[1] || !response[1].participant) {
         console.warn('this response contains no participant. not including it', response);
         return;
@@ -121,7 +121,7 @@ angular.module('adminDashboardApp').controller('SAILSReportController', function
       var participantId = response[1].participant;
       $scope.participants[participantId] = $scope.participants[participantId] || {
         key: participantId,
-        values: [{}]
+        values: [{itemNumberInExperiment:0},{itemNumberInExperiment:1},{itemNumberInExperiment:2},{itemNumberInExperiment:3},{itemNumberInExperiment:4},{itemNumberInExperiment:5},{itemNumberInExperiment:6},{itemNumberInExperiment:7},{itemNumberInExperiment:8},{itemNumberInExperiment:9},{itemNumberInExperiment:10},{itemNumberInExperiment:11},{itemNumberInExperiment:12},{itemNumberInExperiment:13},{itemNumberInExperiment:14},{itemNumberInExperiment:15},{itemNumberInExperiment:16},{itemNumberInExperiment:17},{itemNumberInExperiment:18},{itemNumberInExperiment:19},{itemNumberInExperiment:20}]
       };
       if (!$scope.isOutlier(response[1]) && response[1].itemNumberInExperiment) {
         $scope.participants[participantId].values[response[1].itemNumberInExperiment] = response[1];
