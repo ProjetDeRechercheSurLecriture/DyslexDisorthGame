@@ -11,14 +11,17 @@
 angular.module('adminDashboardApp').controller('SAILSReportController', function($scope, $timeout) {
   $scope.loading = true;
 
-  var stimuliDataList = new FieldDB.DataList({
+  var stimuliDataList = {
     title: 'Stimuli',
     docsAreReorderable: false,
     showDocCheckboxes: false
-  });
-
-  $scope.stimuliCorpus = new FieldDB.Corpus();
-  $scope.stimuliCorpus.loadOrCreateCorpusByPouchName('sails-fr-ca');
+  };
+  if (FieldDB && FieldDB.DataList) {
+    stimuliDataList = new FieldDB.DataList(stimuliDataList);
+    $scope.stimuliCorpus = new FieldDB.Corpus();
+    $scope.stimuliCorpus.loadOrCreateCorpusByPouchName('sails-fr-ca');
+  }
+  stimuliDataList.docIds = stimuliDataList.docIds || [];
 
   $scope.reactionTimeLineChart = {
     options: {
@@ -121,7 +124,49 @@ angular.module('adminDashboardApp').controller('SAILSReportController', function
       var participantId = response[1].participant;
       $scope.participants[participantId] = $scope.participants[participantId] || {
         key: participantId,
-        values: [{itemNumberInExperiment:0},{itemNumberInExperiment:1},{itemNumberInExperiment:2},{itemNumberInExperiment:3},{itemNumberInExperiment:4},{itemNumberInExperiment:5},{itemNumberInExperiment:6},{itemNumberInExperiment:7},{itemNumberInExperiment:8},{itemNumberInExperiment:9},{itemNumberInExperiment:10},{itemNumberInExperiment:11},{itemNumberInExperiment:12},{itemNumberInExperiment:13},{itemNumberInExperiment:14},{itemNumberInExperiment:15},{itemNumberInExperiment:16},{itemNumberInExperiment:17},{itemNumberInExperiment:18},{itemNumberInExperiment:19},{itemNumberInExperiment:20}]
+        values: [{
+          itemNumberInExperiment: 0
+        }, {
+          itemNumberInExperiment: 1
+        }, {
+          itemNumberInExperiment: 2
+        }, {
+          itemNumberInExperiment: 3
+        }, {
+          itemNumberInExperiment: 4
+        }, {
+          itemNumberInExperiment: 5
+        }, {
+          itemNumberInExperiment: 6
+        }, {
+          itemNumberInExperiment: 7
+        }, {
+          itemNumberInExperiment: 8
+        }, {
+          itemNumberInExperiment: 9
+        }, {
+          itemNumberInExperiment: 10
+        }, {
+          itemNumberInExperiment: 11
+        }, {
+          itemNumberInExperiment: 12
+        }, {
+          itemNumberInExperiment: 13
+        }, {
+          itemNumberInExperiment: 14
+        }, {
+          itemNumberInExperiment: 15
+        }, {
+          itemNumberInExperiment: 16
+        }, {
+          itemNumberInExperiment: 17
+        }, {
+          itemNumberInExperiment: 18
+        }, {
+          itemNumberInExperiment: 19
+        }, {
+          itemNumberInExperiment: 20
+        }]
       };
       if (!$scope.isOutlier(response[1]) && response[1].itemNumberInExperiment) {
         $scope.participants[participantId].values[response[1].itemNumberInExperiment] = response[1];
