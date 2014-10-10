@@ -4,7 +4,7 @@
   "dependencies": {
     "fielddb-angular": "~2.14.0",
     "font-awesome": "~4.1.0",
-    "angular-nvd3": "git@github.com:cesine/angular-nvd3.git#~0.1.0"
+    "angular-nvd3": "http://github.com/cesine/angular-nvd3.git#~0.1.0"
   },
   "devDependencies": {
     "angular-mocks": "1.2.21",
