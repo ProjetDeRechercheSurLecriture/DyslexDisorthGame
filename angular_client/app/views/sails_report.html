@@ -8,24 +8,74 @@
 
   <div ng-hide="true" class="well" data-fielddb-datalist json="stimuliDataList" corpus="stimuliCorpus"></div>
 
-  <pre class="well scrollable" ng-repeat="result in results">
-    Date: {{result.startTime | fielddbPrettyDate }}
-    Experimenter: {{result.experimenter}},
-    Participant: {{result.participant}},
-    Practice Score: {{result.subexperiments[0].score}}
-    Test Score: {{result.subexperiments[1].score}}
-    <div ng-repeat="subexperiment in result.subexperiments">
-      <span ng-repeat="stimulus in subexperiment.results">
-        {{stimulus.target}} -> {{stimulus.response}}  = {{stimulus.score}}
-      </span>
-    </div>
-  </pre>
 
-  <div>
-    Debugging data
-    <pre class="well scrollable" >
-      {{data | json}}
+
+  <table>
+    <tr>
+      <th colspan="2">
+        Réponses de l’enfant
+      </th>
+      <tr>
+        <th>
+          La phase de practique <small>{{subexperiment.score}}</small>
+        </th>
+        <th>
+          La phase de test <small>{{subexperiment.score}}</small>
+        </th>
+      </tr>
+      <tr>
+        <td ng-repeat="subexperiment in results">
+
+          <div class="TableReport-bordered-table">
+            <div class="TableReport-bordered-table-row">
+              <div class="TableReport-bordered-table-cell">Item
+              </div>
+              <div class="TableReport-bordered-table-cell">Image appropriées
+              </div>
+              <div class="TableReport-bordered-table-cell">Item touchées
+              </div>
+            </div>
+          </div>
+          <ul class="TableReport-bordered-table" >
+            <li ng-repeat="stimulusResponse in subexperiment.results" class="TableReport-bordered-table-row">
+              <div data-montage-id="owner" >
+                <div class="TableReport-bordered-table-cell">/
+                  <span>{{stimulusResponse.target}} </span>/
+                </div>
+                <div class="TableReport-bordered-table-cell">/
+                  <span>{{stimulusResponse.appropriateImage}} </span>/
+                </div>
+                <div class="TableReport-bordered-table-cell">/
+                  <span>{{stimulusResponse.chosenImage}} </span>/
+                </div>
+              </div>
+            </li>
+          </ul>
+
+        </td>
+
+      </tr>
+    </table>
+
+
+    <pre class="well scrollable" ng-repeat="result in results">
+      Date: {{result.startTime | fielddbPrettyDate }}
+      Experimenter: {{result.experimenter}},
+      Participant: {{result.participant}},
+      Practice Score: {{result.subexperiments[0].score}}
+      Test Score: {{result.subexperiments[1].score}}
+      <div ng-repeat="subexperiment in result.subexperiments">
+        <span ng-repeat="stimulus in subexperiment.results">
+          {{stimulus.target}} -> {{stimulus.response}}  = {{stimulus.score}}
+        </span>
+      </div>
     </pre>
-  </div>
 
-</div>
+    <div>
+      Debugging data
+      <pre class="well scrollable" >
+        {{data | json}}
+      </pre>
+    </div>
+
+  </div>
