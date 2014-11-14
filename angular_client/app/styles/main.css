@@ -242,6 +242,18 @@ body {
   text-align: center;
   vertical-align: center;
 }
+
+.TableReport-fullwidth {
+  width: 100%;
+}
+
+.Report-correct {
+  color: #009900;
+}
+
+.Report-incorrect {
+  color: #990000;
+}
 /*
 div.table {
   border: 1px solid black;
