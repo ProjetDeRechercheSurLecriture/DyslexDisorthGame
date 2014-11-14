@@ -1,6 +1,5 @@
 /* globals FieldDB, d3 */
 'use strict';
-
 /**
  * @ngdoc function
  * @name adminDashboardApp.controller:SAILSReportController
@@ -32,7 +31,10 @@ angular.module('adminDashboardApp').controller('SAILSReportController', function
       FieldDB.FieldDBObject.application.stimuliCorpus.stimuliDataList = new FieldDB.DataList(stimuliDataList);
     }
   }
-  FieldDB.FieldDBObject.application.stimuliCorpus.stimuliDataList.docIds = FieldDB.FieldDBObject.application.stimuliCorpus.stimuliDataList.docIds || [];
+  if (FieldDB || FieldDB.FieldDBObject && FieldDB.FieldDBObject.application && FieldDB.FieldDBObject.application.stimuliCorpus && FieldDB.FieldDBObject.application.stimuliCorpus.stimuliDataList) {
+    FieldDB.FieldDBObject.application.stimuliCorpus.stimuliDataList.docIds = FieldDB.FieldDBObject.application.stimuliCorpus.stimuliDataList.docIds || [];
+  }
+
   $scope.stimuliCorpus = FieldDB.FieldDBObject.application.stimuliCorpus;
   $scope.stimuliDataList = FieldDB.FieldDBObject.application.stimuliCorpus.stimuliDataList;
 
@@ -228,7 +230,9 @@ angular.module('adminDashboardApp').controller('SAILSReportController', function
     console.log('Mean overall response time ', $scope.overallResponseTimeMean);
 
     /* keep the results so that they wont need to be fetched again */
-    FieldDB.FieldDBObject.application.sailsResponsesList.fossil = $scope.reactionTimeLineChart.participants;
+    if (FieldDB && FieldDB.FieldDBObject && FieldDB.FieldDBObject.application && FieldDB.FieldDBObject.application.sailsResponsesList) {
+      FieldDB.FieldDBObject.application.sailsResponsesList.fossil = $scope.reactionTimeLineChart.participants;
+    }
 
     if (!$scope.$$phase) {
       $scope.$digest(); //$digest or $apply
