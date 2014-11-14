@@ -11,17 +11,44 @@
 angular.module('adminDashboardApp').controller('SAILSReportController', function($scope, $timeout) {
   $scope.loading = true;
 
+  /*
+  load stimuliDataList from globals (to reduce multiple network requests and re-parsing of data) or initialize it
+  */
   var stimuliDataList = {
     title: 'Stimuli',
     docsAreReorderable: false,
     showDocCheckboxes: false
   };
   if (FieldDB && FieldDB.DataList) {
-    stimuliDataList = new FieldDB.DataList(stimuliDataList);
-    $scope.stimuliCorpus = new FieldDB.Corpus();
-    $scope.stimuliCorpus.loadOrCreateCorpusByPouchName('sails-fr-ca');
+    if (!FieldDB.FieldDBObject.application) {
+      console.warn('The FieldDB application is undefined, this is problematic');
+      return;
+    }
+    if (!FieldDB.FieldDBObject.application.stimuliCorpus) {
+      FieldDB.FieldDBObject.application.stimuliCorpus = new FieldDB.Corpus();
+      FieldDB.FieldDBObject.application.stimuliCorpus.loadOrCreateCorpusByPouchName('sails-fr-ca');
+    }
+    if (!FieldDB.FieldDBObject.application.stimuliCorpus.stimuliDataList) {
+      FieldDB.FieldDBObject.application.stimuliCorpus.stimuliDataList = new FieldDB.DataList(stimuliDataList);
+    }
   }
-  stimuliDataList.docIds = stimuliDataList.docIds || [];
+  FieldDB.FieldDBObject.application.stimuliCorpus.stimuliDataList.docIds = FieldDB.FieldDBObject.application.stimuliCorpus.stimuliDataList.docIds || [];
+  $scope.stimuliCorpus = FieldDB.FieldDBObject.application.stimuliCorpus;
+  $scope.stimuliDataList = FieldDB.FieldDBObject.application.stimuliCorpus.stimuliDataList;
+
+  $scope.playStimulus = function(stimulusResponse) {
+    if (stimulusResponse && stimulusResponse.stimulusId && $scope.stimuliDataList && $scope.stimuliDataList.docs) {
+      var stimulusObject = $scope.stimuliDataList.docs[stimulusResponse.stimulusId];
+      if (stimulusObject && typeof stimulusObject.play === 'function') {
+        stimulusObject.debug('Playing stimulus audio ', stimulusResponse.stimulusId);
+        stimulusObject.play();
+      } else {
+        console.warn('Unable to play stimulus audio', stimulusResponse);
+      }
+    } else {
+      console.warn('Unable to find stimulus audio', stimulusResponse);
+    }
+  };
 
   $scope.reactionTimeLineChart = {
     options: {
@@ -35,8 +62,8 @@ angular.module('adminDashboardApp').controller('SAILSReportController', function
           left: 65
         },
         x: function(stimulusResponse) {
-          // "itemNumberInExperiment": 9,
-          //       "subexperimentLabel": "Test"
+          // 'itemNumberInExperiment': 9,
+          //       'subexperimentLabel': 'Test'
           if (stimulusResponse && stimulusResponse.itemNumberInExperiment) {
             return stimulusResponse.itemNumberInExperiment;
           } else {
@@ -67,7 +94,7 @@ angular.module('adminDashboardApp').controller('SAILSReportController', function
             // if (stimulusResponse && stimulusResponse.stimulusId) {
             //   return stimulusResponse.stimulusId;
             // } else {
-            //   return "NA";
+            //   return 'NA';
             // }
             // if (stimulusNumberInExperiment && stimulusNumberInExperiment) {
             return stimulusNumberInExperiment;
@@ -172,8 +199,8 @@ angular.module('adminDashboardApp').controller('SAILSReportController', function
         $scope.participants[participantId].values[response[1].itemNumberInExperiment] = response[1];
       }
 
-      if (response[1] && response[1].stimulusId && stimuliDataList.docIds.indexOf(response[1].stimulusId) === -1) {
-        stimuliDataList.docIds.push(response[1].stimulusId);
+      if (response[1] && response[1].stimulusId && $scope.stimuliDataList.docIds.indexOf(response[1].stimulusId) === -1) {
+        $scope.stimuliDataList.docIds.push(response[1].stimulusId);
       }
 
     });
@@ -199,31 +226,78 @@ angular.module('adminDashboardApp').controller('SAILSReportController', function
     $scope.totalResponseTimeSum = totalResponseTimeSum;
     $scope.overallResponseTimeMean = totalResponseTimeSum / totalResponseCount;
     console.log('Mean overall response time ', $scope.overallResponseTimeMean);
-    $scope.stimuliDataList = stimuliDataList;
+
+    /* keep the results so that they wont need to be fetched again */
+    FieldDB.FieldDBObject.application.sailsResponsesList.fossil = $scope.reactionTimeLineChart.participants;
 
     if (!$scope.$$phase) {
       $scope.$digest(); //$digest or $apply
-
-      d3.selectAll('circle').on('click', function(item) {
-        console.log('clicked', item);
-        if (item && item.stimulusId) {
-          console.log(item.prime.audioFile);
-          $scope.stimuliDataList.docs[item.stimulusId].play();
-        }
-      });
-
     }
+
+    $timeout(function() {
+      console.log('adding on clicks for reactiontime chart');
+      d3.selectAll('circle').on('click', function(stimulusResponse) {
+        $scope.playStimulus(stimulusResponse);
+      });
+    }, 1000);
+
   };
 
   $timeout(function() {
+    $timeout(function() {
+      console.log('adding on clicks for reactiontime chart');
+      d3.selectAll('circle').on('click', function(stimulusResponse) {
+        $scope.playStimulus(stimulusResponse);
+      });
+    }, 1000);
+
     if (FieldDB && FieldDB.FieldDBObject && FieldDB.FieldDBObject.application && FieldDB.FieldDBObject.application.corpus) {
-      FieldDB.FieldDBObject.application.corpus.fetchCollection('experiments', null, null, null, null, 'sails').then(function(results) {
-        $scope.results = results;
-        if (!$scope.$$phase) {
-          $scope.$digest(); //$digest or $apply
+      if (FieldDB.FieldDBObject.application.sailsExperimentsResultsList && FieldDB.FieldDBObject.application.sailsExperimentsResultsList.fossil && FieldDB.FieldDBObject.application.sailsExperimentsResultsList.fossil.length > 0) {
+        console.log('Sails experiment have already been downloaded.');
+        $scope.results = FieldDB.FieldDBObject.application.sailsExperimentsResultsList.fossil;
+
+      } else {
+        FieldDB.FieldDBObject.application.corpus.fetchCollection('experiments', null, null, null, null, 'sails').then(function(results) {
+          $scope.results = results;
+
+          FieldDB.FieldDBObject.application.sailsExperimentsResultsList = FieldDB.FieldDBObject.application.sailsExperimentsResultsList || new FieldDB.DataList({
+            title: {
+              default: 'Écoute experiment results'
+            },
+            description: {
+              default: 'This list contains all simplified SAILS results in tabular format'
+            }
+          });
+          FieldDB.FieldDBObject.application.sailsExperimentsResultsList.fossil = results;
+
+
+          if (!$scope.$$phase) {
+            $scope.$digest(); //$digest or $apply
+            $timeout(function() {
+              console.log('adding on clicks for reactiontime chart');
+              d3.selectAll('circle').on('click', function(stimulusResponse) {
+                $scope.playStimulus(stimulusResponse);
+              });
+            }, 1000);
+          }
+        });
+      }
+
+      $scope.loading = false;
+
+      if (FieldDB.FieldDBObject.application.sailsResponsesList && FieldDB.FieldDBObject.application.sailsResponsesList.fossil && FieldDB.FieldDBObject.application.sailsResponsesList.fossil.length > 0) {
+        console.log('Sails responses have already been downloaded.');
+        $scope.reactionTimeLineChart.participants = FieldDB.FieldDBObject.application.sailsResponsesList.fossil;
+        return;
+      }
+      FieldDB.FieldDBObject.application.sailsResponsesList = FieldDB.FieldDBObject.application.sailsResponsesList || new FieldDB.DataList({
+        title: {
+          default: 'Écoute stimulus responses'
+        },
+        description: {
+          default: 'This list contains all participants\'s SAILS stimulus-response pairs in reaction time format'
         }
       });
-      $scope.loading = false;
       FieldDB.FieldDBObject.application.corpus.fetchCollection('responses').then($scope.loadResponses);
     }
   }, 1000);

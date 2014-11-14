@@ -6,7 +6,6 @@
 
   <nvd3 options='reactionTimeLineChart.options' data='reactionTimeLineChart.participants'></nvd3>
 
-  <div ng-hide="true" class="well" data-fielddb-datalist json="stimuliDataList" corpus="stimuliCorpus"></div>
 
 
   <div class="well" ng-repeat="result in results">
@@ -55,8 +54,8 @@
                 </div>
               </div>
             </div>
-            <ul class="TableReport-bordered-table unstyled" >
-              <li ng-repeat="stimulusResponse in subexperiment.calculatedResults" class="TableReport-bordered-table-row">
+            <ul class="TableReport-bordered-table unstyled">
+              <li ng-repeat="stimulusResponse in subexperiment.calculatedResults" class="TableReport-bordered-table-row" ng-click="playStimulus(stimulusResponse)">
                 <div class="TableReport-bordered-table-cell">/
                   <span>{{stimulusResponse.target}} </span>/
                 </div>
@@ -97,5 +96,8 @@
         {{data | json}}
       </pre>
     </div>
+
+    <div class="well" data-fielddb-datalist json="stimuliDataList" corpus="stimuliCorpus"></div>
+
 
   </div>
