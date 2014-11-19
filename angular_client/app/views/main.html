@@ -1,4 +1,59 @@
-<div class="row">
+ <h1 class="page-header">
+  Phophlo: Prédiction des Habiletés Orthographiques  Par des Habiletés Langage Oral.
+</h1>
+<div class="col-md-4 text-center">
+  <img src="http://phophlo.ca/phophlo_assets/img/ic_sails128.png">
+  <img src="http://phophlo.ca/phophlo_assets/img/ic_tcpp128.png">
+  <br/>
+  <img src="http://phophlo.ca/phophlo_assets/img/ic_tdfp128.png">
+  <img src="http://phophlo.ca/phophlo_assets/img/ic_tdfm128.png">
+  <br/>
+  <img src="http://phophlo.ca/phophlo_assets/img/phophlo.png" height="128">
+</div>
+<div class="lead"> Veuiller choisir une base de données
+  <ul class="list-unstyled">
+    <li ng-repeat="dbname in application.authentication.user.accessibleDBS">
+      <a href="/{{dbname}}">
+        <i class="fa fa-cloud"></i> {{dbname}}
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+<!--
+<div class="col-md-4 lead">
+  <a class="feature-description" href="/{{application.currentCorpusDashboard}}/rapports/ecoute">
+    <i class="features-icon fa fa-tasks"></i><br/>
+    <strong>
+      Gérer
+    </strong>
+    <span>
+      les rapports Phophlo de vos élèves.
+    </span>
+  </a>
+  <div class="feature-description">
+    <i class="features-icon fa fa-certificate"></i><br/>
+    <strong>
+      Imprimer
+    </strong>
+    <span>
+      les certificats pour les enfants et les parents
+    </span>
+  </div>
+  <div class="feature-description">
+    <i class="features-icon fa fa-table"></i>
+    <i class="features-icon fa fa-file-pdf-o"></i><br/>
+    <strong>
+      Exporter
+    </strong>
+    <span>
+     les résultats des élèves en format Excel ou PDF pour les dossiers de l'école
+   </span>
+ </div>
+</div>
+-->
+<!-- <div class="row">
   <div class="col-md-3 results_sidebar">
     <ul class="nav nav-list bs-docs-sidenav affix">
       <li>
@@ -336,3 +391,4 @@
       </div>
     </div>
 
+  -->

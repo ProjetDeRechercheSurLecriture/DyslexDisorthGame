@@ -45,19 +45,19 @@ var app = angular
       .when('/bienvenu', {
         templateUrl: 'views/signup.html'
       })
-      .when('/:team/:corpusid/nouveau/classe', {
-        redirectTo: '/:team/:corpusid/import/participants'
+      .when('/:team/:corpusidentifier/nouveau/classe', {
+        redirectTo: '/:team/:corpusidentifier/import/participants'
       })
-      .when('/:team/:corpusid/rapports/classe', {
-        redirectTo: '/:team/:corpusid/reports/participants'
+      .when('/:team/:corpusidentifier/rapports/classe', {
+        redirectTo: '/:team/:corpusidentifier/reports/participants'
       })
-      .when('/:team/:corpusid/gerer/test-block', {
-        redirectTo: '/:team/:corpusid/datalists'
+      .when('/:team/:corpusidentifier/gerer/test-block', {
+        redirectTo: '/:team/:corpusidentifier/datalists'
       })
-      .when('/:team/:corpusid/gerer/stimuli', {
-        redirectTo: '/:team/:corpusid/data'
+      .when('/:team/:corpusidentifier/gerer/stimuli', {
+        redirectTo: '/:team/:corpusidentifier/data'
       })
-      .when('/:team/:corpusid/rapports/ecoute', {
+      .when('/:team/:corpusidentifier/rapports/ecoute', {
         templateUrl: 'views/sails_report.html',
         controller: 'FieldDBController'
       });
@@ -71,6 +71,10 @@ var app = angular
         $routeProvider.otherwise(FieldDB.Router.otherwise);
       }
     }
+
+
+    FieldDB.FieldDBObject.application.participantsList.title.default = 'Élèves';
+    FieldDB.FieldDBObject.application.participantsList.description.default = 'Voici tous les élèves de votre base de données. Pour importer davantage d\'élèves, utiliser les menus Nouveau > Classe';
 
     // FieldDB.FieldDBObject.application.contextualizer.addUrls(['en/messages.json','fr/messages.json']).then(function(){
     //   console.log('Added urls');
