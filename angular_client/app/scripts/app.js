@@ -74,7 +74,7 @@ var app = angular
 
 
     FieldDB.FieldDBObject.application.participantsList.title.default = 'Élèves';
-    FieldDB.FieldDBObject.application.participantsList.description.default = 'Voici tous les élèves de votre base de données. Pour importer d\'advantage d\'étudants, utiliser les menus Nouveau > Classe';
+    FieldDB.FieldDBObject.application.participantsList.description.default = 'Voici tous les élèves de votre base de données. Pour importer d\'advantage d\'élèves, utiliser les menus Nouveau > Classe';
 
     // FieldDB.FieldDBObject.application.contextualizer.addUrls(['en/messages.json','fr/messages.json']).then(function(){
     //   console.log('Added urls');
