@@ -18,9 +18,9 @@
     ,"https://localhost:6984/*"
   ],
    "icons": { 
-    "16": "images/ic_phophlo16.png",
-    "48": "images/ic_phophlo48.png",
-    "128": "images/ic_phophlo128.png" 
+    "16": "images/ic_dyslexdisorth16.png",
+    "48": "images/ic_dyslexdisorth48.png",
+    "128": "images/ic_dyslexdisorth128.png" 
   },
    "manifest_version" : 2,
   "content_security_policy" : "default-src 'self' ;"

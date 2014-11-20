@@ -36,7 +36,7 @@
 		        0 );
 }
 
-.phophlobody {
+.dyslexdisorthbody {
 	background-color: #0176A0;
 	background-image: -moz-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
 	background-image: -webkit-radial-gradient(center, ellipse cover, #029CC9 0%, #005077 100%);
@@ -183,7 +183,7 @@ html {
 	height: 100%
 }
 
-.phophlomenu {
+.dyslexdisorthmenu {
 	position: fixed;
 	top: 50%;
 	left: 50%;

@@ -2,7 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('PhoPhloApp', ['searchFilters', 'phophloServices']).
+angular.module('DyslexDysorthApp', ['searchFilters', 'dyslexdisorthServices']).
 	config(['$routeProvider', function($routeProvider) {
 	$routeProvider.
 		when('/test', {templateUrl: 'modules/experiment/partials/main_menu.html'}).

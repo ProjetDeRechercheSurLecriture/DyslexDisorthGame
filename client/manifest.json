@@ -1,6 +1,6 @@
 {
-  "name": "PhoPhloalpha",
-  "description": "PhoPhlo Prédiction des Habiletés Orthographiques  Par des Habiletés Langage Oral.",
+  "name": "DyslexDysorthalpha",
+  "description": "DyslexDysorth a gamified screening test for dyslexia and disorthographia",
   "version": "0.1.0",
   "app": {
     "background": {
@@ -14,9 +14,9 @@
   ],
 
   "icons": {
-    "16": "phophlo_assets/img/ic_phophlo16.png",
-    "48": "phophlo_assets/img/ic_phophlo48.png",
-    "128": "phophlo_assets/img/ic_phophlo128.png"
+    "16": "dyslexdisorth_assets/img/ic_dyslexdisorth16.png",
+    "48": "dyslexdisorth_assets/img/ic_dyslexdisorth48.png",
+    "128": "dyslexdisorth_assets/img/ic_dyslexdisorth128.png"
   },
 
   "sandbox": {

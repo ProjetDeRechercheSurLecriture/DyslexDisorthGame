@@ -55,7 +55,7 @@ exports.Main = ContextualizableComponent.specialize( /** @lends Main# */ {
 
 
 // var goToCorpusPagesApp = function(){
-// 	var action_url = "https://www.lingsync.org/public";
+// 	var action_url = "https://www.example.org/public";
 // 	chrome.tabs.create({
 // 		url: action_url
 // 	});
@@ -65,7 +65,7 @@ exports.Main = ContextualizableComponent.specialize( /** @lends Main# */ {
 
 
 // var goToSpreadsheetApp = function(){
-// 	var action_url = "http://app.lingsync.org";
+// 	var action_url = "http://app.example.org";
 // 	chrome.tabs.create({
 // 		url: action_url
 // 	});

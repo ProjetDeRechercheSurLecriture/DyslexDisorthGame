@@ -2,7 +2,7 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Tableau de bord</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="adminDashboardApp" ng-cloak ng-class="{phophlobody: !application.authentication.user.authenticated, resultsbody: application.authentication.user.authenticated}" ng-controller="FieldDBController">
+  <body ng-app="adminDashboardApp" ng-cloak ng-class="{dyslexdisorthbody: !application.authentication.user.authenticated, resultsbody: application.authentication.user.authenticated}" ng-controller="FieldDBController">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -48,36 +48,36 @@
       <ul class="nav navbar-nav">
         <li class="dropdown" ng-show="application.authentication.user.authenticated">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img class="nav-icon" src="http://phophlo.ca/phophlo_assets/img/ic_phophlo128.png" title="Phophlo"/> Jouer
+            <img class="nav-icon" ng-src="http://{{application.brandLowerCase}}.ca/{{application.brandLowerCase}}_assets/img/ic_{{application.brandLowerCase}}128.png" title="{{application.brand}}"/> Jouer
             <span class="caret">
             </span>
           </a>
           <ul class="dropdown-menu" role="menu">
             <li>
-              <a href="/jouer/phophloindex.html#/{{application.currentCorpusDashboard}}/next/tcpp" target="_blank">
-               <img src="http://phophlo.ca/phophlo_assets/img/ic_phophlo128.png" title="Phophlo"/>
+              <a href="/jouer/ecoute/index.html#/{{application.currentCorpusDashboard}}/next/tcpp" target="_blank">
+               <img ng-src="http://{{application.brandLowerCase}}.ca/{{application.brandLowerCase}}_assets/img/ic_{{application.brandLowerCase}}128.png" title="{{application.brand}}"/>
               </a>
             </li>
             <li class="divider">
             </li>
             <li>
               <a href="/jouer/ecoute/index.html#/{{application.currentCorpusDashboard}}" target="_blank">
-               <img src="http://phophlo.ca/phophlo_assets/img/ic_sails128.png" title="Écoute"/>
+               <img ng-src="http://{{application.brandLowerCase}}.ca/{{application.brandLowerCase}}_assets/img/ic_sails128.png" title="Écoute"/>
               </a>
             </li>
             <li>
               <a href="/jouer/ils-aiment-quoi" target="_blank">
-               <img src="http://phophlo.ca/phophlo_assets/img/ic_tcpp128.png" title="Ils aiment quoi"/>
+               <img ng-src="http://{{application.brandLowerCase}}.ca/{{application.brandLowerCase}}_assets/img/ic_tcpp128.png" title="Ils aiment quoi"/>
               </a>
             </li>
             <li>
               <a href="/jouer/quest-ce-que-cest" target="_blank">
-               <img src="http://phophlo.ca/phophlo_assets/img/ic_tdfp128.png" title="Qu’est-ce que c’est"/>
+               <img ng-src="http://{{application.brandLowerCase}}.ca/{{application.brandLowerCase}}_assets/img/ic_tdfp128.png" title="Qu’est-ce que c’est"/>
               </a>
             </li>
             <li>
               <a href="/jouer/quest-ce-quils-font" target="_blank">
-               <img src="http://phophlo.ca/phophlo_assets/img/ic_tdfm128.png" title="Qu’est-ce qu’ils font"/>
+               <img ng-src="http://{{application.brandLowerCase}}.ca/{{application.brandLowerCase}}_assets/img/ic_tdfm128.png" title="Qu’est-ce qu’ils font"/>
               </a>
             </li>
           </ul>
@@ -102,28 +102,28 @@
             <li class="divider">
             </li>
             <li>
-              <a href="/{{application.currentCorpusDashboard}}/rapports/phophlo">
-                <img class="nav-icon" src="http://phophlo.ca/phophlo_assets/img/ic_phophlo128.png" title="Phophlo"/> Phophlo
+              <a href="/{{application.currentCorpusDashboard}}/rapports/{{application.brandLowerCase}}">
+                <img class="nav-icon" ng-src="http://{{application.brandLowerCase}}.ca/{{application.brandLowerCase}}_assets/img/ic_{{application.brandLowerCase}}128.png" title="{{application.brand}}"/> {{application.brand}}
               </a>
             </li>
             <li>
               <a href="/{{application.currentCorpusDashboard}}/rapports/ecoute">
-               <img class="nav-icon" src="http://phophlo.ca/phophlo_assets/img/ic_sails128.png" title="Écoute"/> Écoute
+               <img class="nav-icon" ng-src="http://{{application.brandLowerCase}}.ca/{{application.brandLowerCase}}_assets/img/ic_sails128.png" title="Écoute"/> Écoute
               </a>
             </li>
             <li>
               <a href="/{{application.currentCorpusDashboard}}/rapports/ils-aiment-quoi">
-               <img class="nav-icon" src="http://phophlo.ca/phophlo_assets/img/ic_tcpp128.png" title="Ils aiment quoi"/> Ils aiment quoi
+               <img class="nav-icon" ng-src="http://{{application.brandLowerCase}}.ca/{{application.brandLowerCase}}_assets/img/ic_tcpp128.png" title="Ils aiment quoi"/> Ils aiment quoi
               </a>
             </li>
             <li>
               <a href="/{{application.currentCorpusDashboard}}/rapports/quest-ce-que-cest">
-               <img class="nav-icon" src="http://phophlo.ca/phophlo_assets/img/ic_tdfp128.png" title="Qu’est-ce que c’est"/> Qu’est-ce que c’est
+               <img class="nav-icon" ng-src="http://{{application.brandLowerCase}}.ca/{{application.brandLowerCase}}_assets/img/ic_tdfp128.png" title="Qu’est-ce que c’est"/> Qu’est-ce que c’est
               </a>
             </li>
             <li>
               <a href="/{{application.currentCorpusDashboard}}/rapports/quest-ce-quils-font">
-               <img class="nav-icon" src="http://phophlo.ca/phophlo_assets/img/ic_tdfm128.png" title="Qu’est-ce qu’ils font"/> Qu’est-ce qu’ils font
+               <img class="nav-icon" ng-src="http://{{application.brandLowerCase}}.ca/{{application.brandLowerCase}}_assets/img/ic_tdfm128.png" title="Qu’est-ce qu’ils font"/> Qu’est-ce qu’ils font
               </a>
             </li>
           </ul>
@@ -333,7 +333,7 @@
         reserved.
       </li>
       <li>Illustrations &copy; Edith Lebel. All rights reserved.</li>
-      <li>The Phophlo Source Code is free and open sourced on GitHub,
+      <li>The {{application.brand}} Source Code is free and open sourced on GitHub,
         licensed under the <a
         href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache
         License v2.0</a>. Documentation is also open and licensed under the

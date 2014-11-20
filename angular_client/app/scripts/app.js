@@ -27,9 +27,9 @@ var app = angular
       // Allow same origin resource loads.
       'self',
       // Allow loading from outer domain.
-      'https://*.lingsync.org/**',
-      'http://*.phophlo.ca/**',
-      'https://*.phophlo.ca/**'
+      'https://*.example.org/**',
+      'http://*.dyslexdisorth.ca/**',
+      'https://*.dyslexdisorth.ca/**'
     ]);
 
     //Dont show alerts when in this app, until we have error modals or something

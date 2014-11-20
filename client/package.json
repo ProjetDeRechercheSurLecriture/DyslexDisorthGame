@@ -1,5 +1,5 @@
 {
-    "name": "PhoPhlo",
+    "name": "DyslexDysorth",
     "version": "0.1.0",
     "dependencies": {
         "montage": "https://github.com/cesine/montage.git#chromeApp",

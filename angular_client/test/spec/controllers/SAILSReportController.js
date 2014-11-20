@@ -13,7 +13,7 @@ describe('Controller: SAILSReportController', function() {
       stimulusId: '4e06b60e129dff5c7bb4bb234990fc37',
       stimulusRev: '3-51c1a0a46b6bba5fa990410deaa42aa3',
       prime: {
-        audioFile: 'https://speechdev.lingsync.org/sails-fr-ca/GR02A_Gris_MOD.mp3',
+        audioFile: 'https://speechdev.example.org/sails-fr-ca/GR02A_Gris_MOD.mp3',
         imageFile: '',
         orthography: 'gris',
         utterance: 'gʁi'
@@ -21,8 +21,8 @@ describe('Controller: SAILSReportController', function() {
       target: {
         orthography: 'gris',
         utterance: 'gʁi',
-        imageFile: 'https://speechdev.lingsync.org/sails-fr-ca/gris.png',
-        audioFile: 'https://speechdev.lingsync.org/sails-fr-ca/GR02A_Gris_MOD.mp3',
+        imageFile: 'https://speechdev.example.org/sails-fr-ca/gris.png',
+        audioFile: 'https://speechdev.example.org/sails-fr-ca/GR02A_Gris_MOD.mp3',
         visualChoice: 'visualChoiceA'
       },
       response: {
@@ -37,8 +37,8 @@ describe('Controller: SAILSReportController', function() {
         choice: {
           orthography: 'gris',
           utterance: 'gʁi',
-          imageFile: 'https://speechdev.lingsync.org/sails-fr-ca/gris.png',
-          audioFile: 'https://speechdev.lingsync.org/sails-fr-ca/GR02A_Gris_MOD.mp3',
+          imageFile: 'https://speechdev.example.org/sails-fr-ca/gris.png',
+          audioFile: 'https://speechdev.example.org/sails-fr-ca/GR02A_Gris_MOD.mp3',
           visualChoice: 'visualChoiceA'
         },
         score: 1
@@ -85,7 +85,7 @@ describe('Controller: SAILSReportController', function() {
         'stimulusId': '4e06b60e129dff5c7bb4bb2349916da1',
         'stimulusRev': '3-35925209be0c47a47782939a7996afa6',
         'prime': {
-          'audioFile': 'https://speechdev.lingsync.org/sails-fr-ca/GR17A_Gris_MOD.mp3',
+          'audioFile': 'https://speechdev.example.org/sails-fr-ca/GR17A_Gris_MOD.mp3',
           'imageFile': '',
           'orthography': 'gris',
           'utterance': 'gji'
@@ -93,8 +93,8 @@ describe('Controller: SAILSReportController', function() {
         'target': {
           'orthography': 'gris',
           'utterance': 'gji',
-          'imageFile': 'https://speechdev.lingsync.org/sails-fr-ca/pas_gris.png',
-          'audioFile': 'https://speechdev.lingsync.org/sails-fr-ca/GR17A_Gris_MOD.mp3',
+          'imageFile': 'https://speechdev.example.org/sails-fr-ca/pas_gris.png',
+          'audioFile': 'https://speechdev.example.org/sails-fr-ca/GR17A_Gris_MOD.mp3',
           'visualChoice': 'visualChoiceB'
         },
         'response': {
@@ -125,7 +125,7 @@ describe('Controller: SAILSReportController', function() {
         'stimulusId': '4e06b60e129dff5c7bb4bb234990fc37',
         'stimulusRev': '3-51c1a0a46b6bba5fa990410deaa42aa3',
         'prime': {
-          'audioFile': 'https://speechdev.lingsync.org/sails-fr-ca/GR02A_Gris_MOD.mp3',
+          'audioFile': 'https://speechdev.example.org/sails-fr-ca/GR02A_Gris_MOD.mp3',
           'imageFile': '',
           'orthography': 'gris',
           'utterance': 'gʁi'
@@ -133,8 +133,8 @@ describe('Controller: SAILSReportController', function() {
         'target': {
           'orthography': 'gris',
           'utterance': 'gʁi',
-          'imageFile': 'https://speechdev.lingsync.org/sails-fr-ca/gris.png',
-          'audioFile': 'https://speechdev.lingsync.org/sails-fr-ca/GR02A_Gris_MOD.mp3',
+          'imageFile': 'https://speechdev.example.org/sails-fr-ca/gris.png',
+          'audioFile': 'https://speechdev.example.org/sails-fr-ca/GR02A_Gris_MOD.mp3',
           'visualChoice': 'visualChoiceA'
         },
         'response': {
@@ -149,8 +149,8 @@ describe('Controller: SAILSReportController', function() {
           'choice': {
             'orthography': 'gris',
             'utterance': 'gʁi',
-            'imageFile': 'https://speechdev.lingsync.org/sails-fr-ca/gris.png',
-            'audioFile': 'https://speechdev.lingsync.org/sails-fr-ca/GR02A_Gris_MOD.mp3',
+            'imageFile': 'https://speechdev.example.org/sails-fr-ca/gris.png',
+            'audioFile': 'https://speechdev.example.org/sails-fr-ca/GR02A_Gris_MOD.mp3',
             'visualChoice': 'visualChoiceA'
           },
           'score': 1

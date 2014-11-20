@@ -6,7 +6,7 @@
  */
  chrome.app.runtime.onLaunched.addListener(function(launchData) {
 
- 	chrome.app.window.create('phophlo.html', {
+ 	chrome.app.window.create('dyslexdisorth.html', {
  		frame: "none",
  		width: 1280,
  		height: 800,

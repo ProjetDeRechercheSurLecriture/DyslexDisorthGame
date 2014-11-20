@@ -86,7 +86,7 @@ module.exports = function(grunt) {
           open: true,
           middleware: function(connect) {
             return [
-              connect.static('http://phophlo.ca'),
+              connect.static('http://dyslexdisorth.ca'),
               modRewrite(['^[^(:\/\/)]*[^\\.]*$ /index.html [L]']),
               connect.static('.tmp'),
               connect().use(
