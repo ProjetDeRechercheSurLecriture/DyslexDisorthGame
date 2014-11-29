@@ -51,6 +51,7 @@ image_stimuli
 .settings
 .classpath
 proguard.cfg
+local.properties
 
 node_modules
 bower_components
@@ -101,6 +102,13 @@ target
 *.exe
 *.o
 *.so
+
+# Android Studio #
+##################
+.gradle
+*.iml
+android/build/
+.idea
 
 # Packages #
 ############
