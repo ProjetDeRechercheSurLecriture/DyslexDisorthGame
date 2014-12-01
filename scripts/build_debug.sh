@@ -1,5 +1,8 @@
 #!/bin/bash
 
-cd android/assets/
+# cd ../
 
-bash compile_html5_debug.sh
+# ./scripts/build_angular_client.sh
+
+cd android
+./gradlew
