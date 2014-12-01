@@ -5,21 +5,33 @@ node_js:
 
 jdk: oraclejdk7
 
+# Travis supports running a real browser (Firefox) with a virtual screen. Just update your .travis.yml to set up the virtual screen like this:
+# before_script:
+#   - export DISPLAY=:99.0
+#   - sh -e /etc/init.d/xvfb start
+
 # whitelist
-branches:
-  only:
-    - travis
+# branches:
+#   only:
+#     - travis
+
+# notifications:
+#   email:
+#     recipients:
+#       - lingsync-support@googlegroups.com
+#     on_success: change
+#     on_failure: always
 
 env:
   matrix:
     # see set_up_new_machine.sh
-    
+
 before_install:
   # Download and configure android among other deps
   - ./scripts/set_up_new_machine.sh
- 
+
 before_script:
   # Make sure the emulator has started before running tests
   - ./scripts/wait_for_emulator.sh
 
-script: grunt everything
+script: npm test

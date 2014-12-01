@@ -24,7 +24,7 @@
     "android"
   ],
   "scripts": {
-    "test": "bash scripts/build_angular_client.sh"
+    "test": "bash scripts/build_debug.sh"
   },
   "license": "Apache 2.0",
   "licenses": [
