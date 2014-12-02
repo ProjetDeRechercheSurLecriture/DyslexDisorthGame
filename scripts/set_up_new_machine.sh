@@ -22,7 +22,7 @@ which android || {
         mv android-sdk-macosx android-sdk
         echo 'export ANDROID_HOME=$HOME/android-sdk'  >> $HOME/.bash_profile
         echo 'PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools'  >> $HOME/.bash_profile
-        source .bash_profile
+        source $HOME/.bash_profile
     } elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then {
         echo "   This is a linux machine"
         cd $HOME
@@ -35,11 +35,11 @@ which android || {
             sudo apt-get install -qq lib32z1 lib32ncurses5 lib32bz2-1.0  lib32stdc++6;
         } fi
         wget http://dl.google.com/android/android-sdk_r23.0.2-linux.tgz
-        tar xzf android-sdk_r23.0.2-linux.tgz
+        tar -xzf android-sdk_r23.0.2-linux.tgz
         mv android-sdk-linux android-sdk
         echo 'export ANDROID_HOME=$HOME/android-sdk'  >> $HOME/.bashrc
         echo 'PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools'  >> $HOME/.bashrc
-        source .bashrc
+        source $HOME/.bashrc
     } elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then {
         # Do something under Windows NT platform
         echo "   The Windows instructions to get android are unknown by us. Please download and set them up yourself."
@@ -49,7 +49,7 @@ which android || {
 
 ### Step 2: Download sdk 20 if necessary
 echo ""
-echo "Installed of android sdks"
+echo "Installed android sdks"
 ls $ANDROID_HOME/platforms || {
     echo $PATH
     which adb
