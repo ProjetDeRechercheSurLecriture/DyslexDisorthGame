@@ -22,6 +22,7 @@ which android || {
         mv android-sdk-macosx android-sdk
         echo 'export ANDROID_HOME=$HOME/android-sdk'  >> $HOME/.bash_profile
         echo 'PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools'  >> $HOME/.bash_profile
+        cat $HOME/.bash_profile
         source $HOME/.bash_profile
     } elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then {
         echo "   This is a linux machine"
@@ -36,9 +37,11 @@ which android || {
         } fi
         wget http://dl.google.com/android/android-sdk_r23.0.2-linux.tgz
         tar -xzf android-sdk_r23.0.2-linux.tgz
+        ls
         mv android-sdk-linux android-sdk
         echo 'export ANDROID_HOME=$HOME/android-sdk'  >> $HOME/.bashrc
         echo 'PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools'  >> $HOME/.bashrc
+        cat $HOME/.bashrc
         source $HOME/.bashrc
     } elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then {
         # Do something under Windows NT platform
@@ -72,6 +75,7 @@ if [ -z "$SIKULI_IDE_JAR" ]; then {
         echo "   This is a mac"
         ls /Applications/SikuliX-IDE.app/Contents/sikuli-ide.jar && {
             echo 'export SIKULI_IDE_JAR=/Applications/SikuliX-IDE.app/Contents/sikuli-ide.jar'  >> $HOME/.bash_profile
+            cat $HOME/.bash_profile
             source $HOME/.bash_profile
         } || {
             echo "TODO test download mac sikuli and install it in Applications"
@@ -80,6 +84,7 @@ if [ -z "$SIKULI_IDE_JAR" ]; then {
             echo Y | hdiutil mount sikuli-r930-osx-10.6.dmg
             sudo cp -R "/Volumes/Sikuli-r930-osx-10.6/SikuliX-IDE.app" /Applications
             echo 'export SIKULI_IDE_JAR=/Applications/SikuliX-IDE.app/Contents/sikuli-ide.jar'  >> $HOME/.bash_profile
+            cat $HOME/.bash_profile
             source $HOME/.bash_profile
         }
     } elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then {
@@ -95,6 +100,7 @@ if [ -z "$SIKULI_IDE_JAR" ]; then {
         wget http://nightly.sikuli.de/sikulixsetup-1.1.0.jar
         java -jar sikulixsetup-1.1.0.jar options 1.1
         echo 'export SIKULI_IDE_JAR=$HOME/sikuli/sikuli-ide.jar'  >> $HOME/.bashrc
+        cat $HOME/.bashrc
         source $HOME/.bashrc
     } elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then {
         echo "   The Windows instructions to get sikuli are unknown by us. Please download and set them up yourself."
