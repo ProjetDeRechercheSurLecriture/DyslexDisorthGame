@@ -1,5 +1,5 @@
 #!/bin/bash
-ANDROID_TARGET=android-18  
+ANDROID_TARGET=android-20  
 ANDROID_ABI=armeabi-v7a
 
 # Create and start emulator
