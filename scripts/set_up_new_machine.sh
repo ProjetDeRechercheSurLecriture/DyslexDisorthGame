@@ -15,7 +15,7 @@ export ANDROID_ABI=armeabi-v7a
 echo "Location of android tools"
 which android || {
     if [ "$(uname)" == "Darwin" ]; then {
-        echo " This is a mac"
+        echo "   This is a mac"
         cd $HOME
         curl -O --retry 999 --retry-max-time 0 -C - http://dl.google.com/android/android-sdk_r23.0.2-macosx.zip
         tar -xvf android-sdk_r23.0.2-macosx.tgz 
@@ -24,7 +24,7 @@ which android || {
         echo 'PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools'  >> $HOME/.bash_profile
         source .bash_profile
     } elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then {
-        echo " This is a linux machine"
+        echo "   This is a linux machine"
         cd $HOME
         # sudo npm install -g grunt-cli
 
@@ -33,8 +33,7 @@ which android || {
         if [ `uname -m` = x86_64 ]; then { 
             # sudo apt-get install -qq libstdc++6:i386 lib32z1;
             sudo apt-get install -qq lib32z1 lib32ncurses5 lib32bz2-1.0  lib32stdc++6;
-        }
-        fi
+        } fi
         wget http://dl.google.com/android/android-sdk_r23.0.2-linux.tgz
         tar xzf android-sdk_r23.0.2-linux.tgz
         mv android-sdk-linux android-sdk
@@ -43,10 +42,9 @@ which android || {
         source .bashrc
     } elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then {
         # Do something under Windows NT platform
-        echo " The Windows instructions to get android are unknown. Please download and set them up yourself."
+        echo "   The Windows instructions to get android are unknown by us. Please download and set them up yourself."
         exit 1
-    }
-    fi
+    } fi
 }
 
 ### Step 2: Download sdk 20 if necessary
@@ -58,13 +56,49 @@ ls $ANDROID_HOME/platforms || {
     which android && {
         echo y | android update sdk --filter platform-tools,build-tools-20.0.1,android-20,sysimg-20 --no-ui --force > /dev/null
     } || {
-        echo " Setting the path didn't work."
+        echo "   Setting the path didn't work."
         exit 2
     }
 } || {
-    echo " Setting the android dependancies didn't work."
+    echo "   Setting the android dependancies didn't work."
     exit 2
 }
+
+
+echo ""
+echo "Location of sikuli"
+if [ -z "$SIKULI_IDE_JAR" ]; then {
+    if [ "$(uname)" == "Darwin" ]; then {
+        echo "   This is a mac"
+        ls /Applications/SikuliX-IDE.app/Contents/sikuli-ide.jar && {
+            echo 'export SIKULI_IDE_JAR=/Applications/SikuliX-IDE.app/Contents/sikuli-ide.jar'  >> $HOME/.bash_profile
+            source $HOME/.bash_profile
+        } || {
+            echo "TODO download mac sikuli and install it in Applications"
+        }
+    } elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then {
+        echo "   This is a linux machine"
+        cd $HOME
+        sudo apt-get install build-essential
+        sudo apt-get install tesseract-ocr-eng libswing-layout-java jruby jython junit
+        sudo apt-get install libpng-dev
+        sudo apt-get install libjpeg-dev
+        sudo apt-get install libtesseract-dev libopencv-dev 
+        mkdir sikuli
+        cd sikuli
+        wget http://nightly.sikuli.de/sikulixsetup-1.1.0.jar
+        java -jar sikulixsetup-1.1.0.jar options 1.1
+        echo 'export SIKULI_IDE_JAR=$HOME/sikuli/sikuli-ide.jar'  >> $HOME/.bashrc
+        source $HOME/.bashrc
+    } elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then {
+        echo "   The Windows instructions to get sikuli are unknown by us. Please download and set them up yourself."
+        exit 1
+    } fi
+} fi
+echo "Location of sikuli"
+echo $SIKULI_IDE_JAR 
+
+
 
 # If the git user name isnt set, use jenkins      
 echo ""

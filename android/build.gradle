@@ -26,6 +26,7 @@ allprojects {
  */
 task testLoginLogout(type: JavaExec) {
     main = '-jar'
-    args '/Applications/SikuliX-IDE.app/Contents/sikuli-ide.jar', '-r', "/$System.env.HOME/phophlohome/dyslex-disorth-game-sikuli/android-login-logout-onscreen-keyboard.sikuli"
+    println "Location of sikuli-ide jar $System.env.SIKULI_IDE_JAR"
+    args "$System.env.SIKULI_IDE_JAR", '-r', "/$System.env.HOME/phophlohome/dyslex-disorth-game-sikuli/android-login-logout-onscreen-keyboard.sikuli"
 }
 
