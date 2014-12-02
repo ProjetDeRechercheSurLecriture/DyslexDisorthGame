@@ -21,6 +21,7 @@ which android || {
         tar -xvf android-sdk_r23.0.2-macosx.tgz 
         mv android-sdk-macosx android-sdk
         echo 'export ANDROID_HOME="$HOME/android-sdk"'  >> $HOME/.bash_profile
+        source $HOME/.bash_profile
         echo 'export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"'  >> $HOME/.bash_profile
         cat $HOME/.bash_profile
         source $HOME/.bash_profile
@@ -40,6 +41,7 @@ which android || {
         ls
         mv android-sdk-linux android-sdk
         echo 'export ANDROID_HOME="$HOME/android-sdk"'  >> $HOME/.bashrc
+        source $HOME/.bashrc
         echo 'export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"'  >> $HOME/.bashrc
         cat $HOME/.bashrc
         source $HOME/.bashrc
@@ -51,6 +53,7 @@ which android || {
 }
 if [ -z "$ANDROID_HOME" ]; then {
     echo "   Setting the android dependancies didn't work."
+    echo $PATH
     exit 2
 } fi
 
