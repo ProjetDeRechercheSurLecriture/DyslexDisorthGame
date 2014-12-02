@@ -5,11 +5,6 @@ node_js:
 
 jdk: oraclejdk7
 
-# Travis supports running a real browser (Firefox) with a virtual screen. Just update your .travis.yml to set up the virtual screen like this:
-# before_script:
-#   - export DISPLAY=:99.0
-#   - sh -e /etc/init.d/xvfb start
-
 # whitelist
 # branches:
 #   only:
@@ -33,5 +28,10 @@ before_install:
 before_script:
   # Make sure the emulator has started before running tests
   - ./scripts/wait_for_emulator.sh
+
+  # Travis supports running a real browser (Firefox) with a virtual screen. Just update your .travis.yml to set up the virtual screen like this:
+  # Use a dsiplay so sikuli can have  a screen
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
 
 script: npm test
