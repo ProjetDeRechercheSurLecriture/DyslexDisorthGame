@@ -20,8 +20,8 @@ which android || {
         curl -O --retry 999 --retry-max-time 0 -C - http://dl.google.com/android/android-sdk_r23.0.2-macosx.zip
         tar -xvf android-sdk_r23.0.2-macosx.tgz 
         mv android-sdk-macosx android-sdk
-        echo 'export ANDROID_HOME=$HOME/android-sdk'  >> $HOME/.bash_profile
-        echo 'PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools'  >> $HOME/.bash_profile
+        echo 'export ANDROID_HOME="$HOME/android-sdk"'  >> $HOME/.bash_profile
+        echo 'export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"'  >> $HOME/.bash_profile
         cat $HOME/.bash_profile
         source $HOME/.bash_profile
     } elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then {
@@ -39,8 +39,8 @@ which android || {
         tar -xzf android-sdk_r23.0.2-linux.tgz
         ls
         mv android-sdk-linux android-sdk
-        echo 'export ANDROID_HOME=$HOME/android-sdk'  >> $HOME/.bashrc
-        echo 'PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools'  >> $HOME/.bashrc
+        echo 'export ANDROID_HOME="$HOME/android-sdk"'  >> $HOME/.bashrc
+        echo 'export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"'  >> $HOME/.bashrc
         cat $HOME/.bashrc
         source $HOME/.bashrc
     } elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then {
@@ -49,24 +49,25 @@ which android || {
         exit 1
     } fi
 }
+if [ -z "$ANDROID_HOME" ]; then {
+    echo "   Setting the android dependancies didn't work."
+    exit 2
+} fi
 
 ### Step 2: Download sdk 20 if necessary
 echo ""
-echo "Installed android sdks"
-ls $ANDROID_HOME/platforms || {
-    echo $PATH
-    which adb
-    which android && {
-        echo y | android update sdk --filter platform-tools,build-tools-20.0.1,android-20,sysimg-20 --no-ui --force > /dev/null
-    } || {
-        echo "   Setting the path didn't work."
-        exit 2
-    }
-} || {
-    echo "   Setting the android dependancies didn't work."
-    exit 2
-}
+echo "Installed android sdks: "
+ls $ANDROID_HOME/platforms 
 
+echo "PATH is currently: "
+echo $PATH
+
+which android && {
+    echo y | android update sdk --filter platform-tools,build-tools-20.0.1,android-20,sysimg-20 --no-ui --force > /dev/null
+} || {
+    echo "   Setting the path didn't work."
+    exit 3
+}
 
 echo ""
 echo "Location of sikuli"
@@ -74,7 +75,7 @@ if [ -z "$SIKULI_IDE_JAR" ]; then {
     if [ "$(uname)" == "Darwin" ]; then {
         echo "   This is a mac"
         ls /Applications/SikuliX-IDE.app/Contents/sikuli-ide.jar && {
-            echo 'export SIKULI_IDE_JAR=/Applications/SikuliX-IDE.app/Contents/sikuli-ide.jar'  >> $HOME/.bash_profile
+            echo 'export SIKULI_IDE_JAR="/Applications/SikuliX-IDE.app/Contents/sikuli-ide.jar"'  >> $HOME/.bash_profile
             cat $HOME/.bash_profile
             source $HOME/.bash_profile
         } || {
@@ -83,7 +84,7 @@ if [ -z "$SIKULI_IDE_JAR" ]; then {
             curl -O --retry 999 --retry-max-time 0 -C - http://www.sikuli.org/uploads/1/3/6/8/13689586/sikuli-r930-osx-10.6.dmg
             echo Y | hdiutil mount sikuli-r930-osx-10.6.dmg
             sudo cp -R "/Volumes/Sikuli-r930-osx-10.6/SikuliX-IDE.app" /Applications
-            echo 'export SIKULI_IDE_JAR=/Applications/SikuliX-IDE.app/Contents/sikuli-ide.jar'  >> $HOME/.bash_profile
+            echo 'export SIKULI_IDE_JAR="/Applications/SikuliX-IDE.app/Contents/sikuli-ide.jar"'  >> $HOME/.bash_profile
             cat $HOME/.bash_profile
             source $HOME/.bash_profile
         }
@@ -99,7 +100,7 @@ if [ -z "$SIKULI_IDE_JAR" ]; then {
         cd sikuli
         wget http://nightly.sikuli.de/sikulixsetup-1.1.0.jar
         java -jar sikulixsetup-1.1.0.jar options 1.1
-        echo 'export SIKULI_IDE_JAR=$HOME/sikuli/sikuli-ide.jar'  >> $HOME/.bashrc
+        echo 'export SIKULI_IDE_JAR="$HOME/sikuli/sikuli-ide.jar"'  >> $HOME/.bashrc
         cat $HOME/.bashrc
         source $HOME/.bashrc
     } elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then {
