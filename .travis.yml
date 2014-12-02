@@ -1,5 +1,9 @@
-# try builds on mac
-osx_image: xcode61
+os:
+  - linux
+  - osx
+
+# try builds on new mac images
+# osx_image: xcode61
 
 language: java
 
