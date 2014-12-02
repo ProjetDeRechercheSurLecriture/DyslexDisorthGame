@@ -31,7 +31,8 @@ which android || {
         # Install 32 bit libs so we can run the emulator on Linux
         sudo apt-get update -qq
         if [ `uname -m` = x86_64 ]; then { 
-            sudo apt-get install -qq libstdc++6:i386 lib32z1;
+            # sudo apt-get install -qq libstdc++6:i386 lib32z1;
+            sudo apt-get install -qq lib32z1 lib32ncurses5 lib32bz2-1.0  lib32stdc++6;
         }
         fi
         wget http://dl.google.com/android/android-sdk_r23.0.2-linux.tgz
