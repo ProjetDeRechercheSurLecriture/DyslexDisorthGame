@@ -74,7 +74,13 @@ if [ -z "$SIKULI_IDE_JAR" ]; then {
             echo 'export SIKULI_IDE_JAR=/Applications/SikuliX-IDE.app/Contents/sikuli-ide.jar'  >> $HOME/.bash_profile
             source $HOME/.bash_profile
         } || {
-            echo "TODO download mac sikuli and install it in Applications"
+            echo "TODO test download mac sikuli and install it in Applications"
+            cd $HOME/Downloads
+            curl -O --retry 999 --retry-max-time 0 -C - http://www.sikuli.org/uploads/1/3/6/8/13689586/sikuli-r930-osx-10.6.dmg
+            echo Y | hdiutil mount sikuli-r930-osx-10.6.dmg
+            sudo cp -R "/Volumes/Sikuli-r930-osx-10.6/SikuliX-IDE.app" /Applications
+            echo 'export SIKULI_IDE_JAR=/Applications/SikuliX-IDE.app/Contents/sikuli-ide.jar'  >> $HOME/.bash_profile
+            source $HOME/.bash_profile
         }
     } elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then {
         echo "   This is a linux machine"
@@ -95,7 +101,8 @@ if [ -z "$SIKULI_IDE_JAR" ]; then {
         exit 1
     } fi
 } fi
-echo "Location of sikuli"
+
+echo "Location of sikuli now:"
 echo $SIKULI_IDE_JAR 
 
 

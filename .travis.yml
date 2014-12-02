@@ -1,3 +1,6 @@
+# try builds on mac
+osx_image: xcode61
+
 language: java
 
 node_js:
