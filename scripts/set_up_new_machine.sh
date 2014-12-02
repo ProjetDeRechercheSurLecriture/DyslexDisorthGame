@@ -42,7 +42,13 @@ which android || {
         mv android-sdk-linux android-sdk
         echo 'export ANDROID_HOME="$HOME/android-sdk"'  >> $HOME/.bashrc
         source $HOME/.bashrc
-        echo 'export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"'  >> $HOME/.bashrc
+        echo "Android sdks contents should be non-empty: "
+        echo $ANDROID_HOME
+
+        echo " Contents of the home directory"
+        ls ~/
+        
+        echo 'export PATH="$PATH:~/android-sdk/tools:~/android-sdk/platform-tools"'  >> $HOME/.bashrc
         cat $HOME/.bashrc
         source $HOME/.bashrc
     } elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then {
