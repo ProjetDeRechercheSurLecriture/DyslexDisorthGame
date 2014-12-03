@@ -18,7 +18,7 @@ which android || {
         echo "   This is a mac"
         cd $HOME
         curl -O --retry 999 --retry-max-time 0 -C - http://dl.google.com/android/android-sdk_r23.0.2-macosx.zip
-        tar -xvf android-sdk_r23.0.2-macosx.tgz 
+        unzip android-sdk_r23.0.2-macosx.zip 
         mv android-sdk-macosx android-sdk
         echo 'export ANDROID_HOME="$HOME/android-sdk"'  >> $HOME/.bash_profile
         source $HOME/.bash_profile
