@@ -138,8 +138,10 @@ git config --get user.email ||{
 
 echo ""
 echo "Completed verification of Android install"
-# Download all the code and updates for the first time
-# cd ../
-# git clone https://github.com/ProjetDeRechercheSurLecriture/dyslex-disorth-game-sikuli.git
+
+echo ""
+echo "Downloading all the tests"
+cd ../
+git clone https://github.com/ProjetDeRechercheSurLecriture/dyslex-disorth-game-sikuli.git
 
 
