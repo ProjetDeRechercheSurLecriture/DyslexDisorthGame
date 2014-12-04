@@ -61,7 +61,7 @@ before_install:
   # Travis supports running a real browser (Firefox) with a virtual screen. Just update your .travis.yml to set up the virtual screen like this:
   # Use a dsiplay so sikuli can have  a screen
   - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+  # - sh -e /etc/init.d/xvfb start
 
 before_script:
   # Make sure the emulator has started before running tests
