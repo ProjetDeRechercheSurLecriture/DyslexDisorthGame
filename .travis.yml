@@ -5,10 +5,37 @@ os:
 # try builds on new mac images
 # osx_image: xcode61
 
-language: java
+language: 
+ - java
+ - android
 
 node_js:
   - 0.10
+
+# http://docs.travis-ci.com/user/languages/android/
+android:
+  components:
+    # Uncomment the lines below if you want to
+    # use the latest revision of Android SDK Tools
+    # - platform-tools
+    # - tools
+
+    # The BuildTools version used by your project
+    - build-tools-20.0.0
+
+    # The SDK version used to compile your project
+    - android-20
+
+    # Additional components
+    - extra-google-google_play_services
+    - extra-google-m2repository
+    - extra-android-m2repository
+    - addon-google_apis-google-19
+
+    # Specify at least one system image,
+    # if you need to run emulator(s) during your tests
+    - sys-img-armeabi-v7a-android-19
+    # - sys-img-x86-android-17
 
 # jdk: oraclejdk7
 
@@ -31,14 +58,14 @@ env:
 before_install:
   # Download and configure android among other deps
   - ./scripts/set_up_new_machine.sh
+  # Travis supports running a real browser (Firefox) with a virtual screen. Just update your .travis.yml to set up the virtual screen like this:
+  # Use a dsiplay so sikuli can have  a screen
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
 
 before_script:
   # Make sure the emulator has started before running tests
   - ./scripts/wait_for_emulator.sh
 
-  # Travis supports running a real browser (Firefox) with a virtual screen. Just update your .travis.yml to set up the virtual screen like this:
-  # Use a dsiplay so sikuli can have  a screen
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
 
 script: npm test
