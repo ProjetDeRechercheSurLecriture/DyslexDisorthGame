@@ -95,9 +95,9 @@ if [ -z "$SIKULI_IDE_JAR" ]; then {
             cd $HOME/Downloads
             curl -O --retry 999 --retry-max-time 0 -C - http://www.sikuli.org/uploads/1/3/6/8/13689586/sikuli-r930-osx-10.6.dmg
             echo Y | hdiutil mount sikuli-r930-osx-10.6.dmg
-            sudo cp -R "/Volumes/Sikuli-r930-osx-10.6/SikuliX-IDE.app" /Applications
-            echo 'export SIKULI_IDE_JAR="/Applications/SikuliX-IDE.app/Contents/sikuli-ide.jar"'  >> $HOME/.bash_profile
-            export SIKULI_IDE_JAR="/Applications/SikuliX-IDE.app/Contents/sikuli-ide.jar"
+            sudo cp -R "/Volumes/Sikuli-r930-osx-10.6/Sikuli-IDE.app" /Applications
+            echo 'export SIKULI_IDE_JAR="/Applications/Sikuli-IDE.app/Contents/sikuli-ide.jar"'  >> $HOME/.bash_profile
+            export SIKULI_IDE_JAR="/Applications/Sikuli-IDE.app/Contents/sikuli-ide.jar"
             # tail $HOME/.bash_profile
             source $HOME/.bash_profile
         }
