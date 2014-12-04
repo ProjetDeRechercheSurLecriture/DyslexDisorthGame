@@ -74,7 +74,7 @@ echo "PATH is currently: "
 echo $PATH
 
 which android && {
-    echo y | android update sdk --filter platform-tools,build-tools-20.0.1,android-20,sysimg-20 --no-ui --force > /dev/null
+    echo y | android update sdk --filter platform-tools,build-tools-20.0.0,android-20,sysimg-19 --no-ui --force > /dev/null
 } || {
     echo "   Setting the path didn't work."
     exit 3
