@@ -22,9 +22,14 @@ public class Main extends Activity {
         setContentView(R.layout.activity_main);
 
         myWebView = (WebView) findViewById(R.id.webview);
+
         myWebView.setWebViewClient(new WebViewClient());
+
         WebSettings webSettings = myWebView.getSettings();
+        webSettings.setAllowFileAccess(true);
+        webSettings.setAllowContentAccess(true);
         webSettings.setJavaScriptEnabled(true);
+
         myWebView.loadUrl("http://app.phophlo.ca");
     }
 
