@@ -54,6 +54,7 @@ android:
 env:
   matrix:
     # see set_up_new_machine.sh
+    SIKULI_IDE_JAR=/home/travis/sikuli/sikuli-ide.jar
 
 before_install:
   # Download and configure android among other deps
