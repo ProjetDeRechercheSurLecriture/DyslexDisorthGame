@@ -71,4 +71,4 @@ before_script:
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
 
-script: SIKULI_IDE_JAR=/home/travis/sikuli/sikuli-ide.jar && npm test
+script: npm test

@@ -18,4 +18,5 @@ echo "Building and installing android app on emulator"
 
 echo ""
 echo "Running sikuli test for login and logout on the emulator" 
+SIKULI_IDE_JAR=/home/travis/sikuli/sikuli-ide.jar 
 ./gradlew testLoginLogout
