@@ -1,6 +1,6 @@
 {
   "name": "admin-dashboard",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "dependencies": {
     "fielddb-angular": "2.30.0",
     "font-awesome": "~4.1.0",
