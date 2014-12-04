@@ -54,6 +54,7 @@ android:
 env:
   matrix:
     # see set_up_new_machine.sh
+    DYSLEXDISORTH_HOME=$HOME
 
 before_install:
   # Download and configure android among other deps

@@ -24,11 +24,11 @@ allprojects {
  * Requires the user to change the focus to the android emulator.
  *
  * Commandline version:
- * java -jar /Applications/SikuliX-IDE.app/Contents/sikuli-ide.jar -r ../../dyslex-disorth-game-sikuli/android-login-logout-onscreen-keyboard.sikuli
+ * java -jar $SIKULI_IDE_JAR -r $DYSLEXDISORTH_HOME/dyslex-disorth-game-sikuli/android-login-logout-onscreen-keyboard.sikuli
  */
 task testLoginLogout(type: JavaExec) {
     main = '-jar'
     println "Location of sikuli-ide jar $System.env.SIKULI_IDE_JAR"
-    args "$System.env.SIKULI_IDE_JAR", '-r', "/$System.env.HOME/dyslex-disorth-game-sikuli/android-login-logout-onscreen-keyboard.sikuli"
+    args "$System.env.SIKULI_IDE_JAR", '-r', "/$System.env.DYSLEXDISORTH_HOME/dyslex-disorth-game-sikuli/android-login-logout-onscreen-keyboard.sikuli"
 }
 
