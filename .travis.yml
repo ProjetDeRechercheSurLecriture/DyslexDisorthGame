@@ -1,17 +1,65 @@
-language: node_js
+#############################################################################
+# This file contains options for both Javascript builds and Android builds. #
+#############################################################################
 
+os:
+  - linux
+  # - osx
+
+# try builds on new mac images
+# osx_image: xcode61
+
+
+##########################################################################
+##########################################################################
+##########################################################################
+
+
+##########################################################################
+#                                 Javascript                             #
+##########################################################################
+language: node_js
 node_js:
   - 0.10
 
-# Travis supports running a real browser (Firefox) with a virtual screen. Just update your .travis.yml to set up the virtual screen like this:
-before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+##########################################################################
+#                                 Android                                #
+##########################################################################
+# language: android
+#  # - java
+#  # - android
+#  
+# # http://docs.travis-ci.com/user/languages/android/
+# android:
+#   components:
+#     # Uncomment the lines below if you want to
+#     # use the latest revision of Android SDK Tools
+#     # - platform-tools
+#     # - tools
+#
+#     # The BuildTools version used by your project
+#     - build-tools-20.0.0
+#
+#     # The SDK version used to compile your project
+#     - android-20
+#
+#     # Additional components
+#     - extra-google-google_play_services
+#     - extra-google-m2repository
+#     - extra-android-m2repository
+#     - addon-google_apis-google-19
+#
+#     # Specify at least one system image,
+#     # if you need to run emulator(s) during your tests
+#     - sys-img-armeabi-v7a-android-19
+#     - sys-img-x86-android-19
+#
+# jdk: oraclejdk7
 
 # whitelist
-#branches:
-#  only:
-#    - tests
+# branches:
+#   only:
+#     - travis
 
 notifications:
   email:
@@ -23,14 +71,56 @@ notifications:
 env:
   matrix:
     # see set_up_new_machine.sh
+    DYSLEXDISORTH_HOME=$HOME
 
+
+##########################################################################
+##########################################################################
+##########################################################################
+
+
+##########################################################################
+#                                 Javascript                             #
+##########################################################################
 before_install:
-  # Download and configure deps
-  npm install -g grunt-cli &&
-  npm install -g bower &&
-  npm install
+  - npm install -g grunt-cli
+  - npm install -g bower
 
+
+##########################################################################
+#                                 Android                                #
+##########################################################################
+# before_install:
+# Download and configure android among other deps
+#   - ./scripts/set_up_new_machine.sh
+# Travis supports running a real browser (Firefox) with a virtual screen. Just update your .travis.yml to set up the virtual screen like this:
+# Use a dsiplay so sikuli can have  a screen
+#   - export DISPLAY=:99.0
+# - sh -e /etc/init.d/xvfb start
+
+
+##########################################################################
+##########################################################################
+##########################################################################
+
+
+##########################################################################
+#                                 Javascript                             #
+##########################################################################
+# Travis supports running a real browser (Firefox) with a virtual screen. Just update your .travis.yml to set up the virtual screen like this:
 before_script:
-  # Make sure the emulator has started before running tests
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+
+##########################################################################
+#                                 Android                                #
+##########################################################################
+# before_script:
+#   # Make sure the emulator has started before running tests
+#   # - ./scripts/wait_for_emulator.sh
+#   - echo no | android create avd --force -n test -t android-19 --abi armeabi-v7a
+#   - emulator -avd test -no-skin -no-audio -no-window &
+#   - android-wait-for-emulator
+#   - adb shell input keyevent 82 &
 
 script: npm test

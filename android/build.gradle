@@ -17,3 +17,18 @@ allprojects {
         jcenter()
     }
 }
+
+/**
+ * Execute sikuli jar with the login test
+ *
+ * Requires the user to change the focus to the android emulator.
+ *
+ * Commandline version:
+ * java -jar $SIKULI_IDE_JAR -r $DYSLEXDISORTH_HOME/dyslex-disorth-game-sikuli/android-login-logout-onscreen-keyboard.sikuli
+ */
+task testLoginLogout(type: JavaExec) {
+    main = '-jar'
+    println "Location of sikuli-ide jar $System.env.SIKULI_IDE_JAR"
+    args "$System.env.SIKULI_IDE_JAR", '-r', "/$System.env.DYSLEXDISORTH_HOME/dyslex-disorth-game-sikuli/android-login-logout-onscreen-keyboard.sikuli"
+}
+
