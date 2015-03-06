@@ -12,9 +12,9 @@
 </div>
 <div class="lead"> Veuiller choisir une base de données
   <ul class="list-unstyled">
-    <li ng-repeat="dbname in application.authentication.user.accessibleDBS">
-      <a href="/{{dbname}}">
-        <i class="fa fa-cloud"></i> {{dbname}}
+    <li ng-repeat="corpus in application.authentication.user.corpora">
+      <a href="/{{corpus.dbname}}">
+        <i class="fa fa-cloud"></i> {{corpus}}
       </a>
     </li>
   </ul>
