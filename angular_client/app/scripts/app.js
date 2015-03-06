@@ -21,7 +21,7 @@ var app = angular
     'nvd3'
   ])
   .config(function($routeProvider, $locationProvider, $sceDelegateProvider) {
-    $locationProvider.html5Mode(true);
+    // $locationProvider.html5Mode(true);
 
     $sceDelegateProvider.resourceUrlWhitelist([
       // Allow same origin resource loads.

@@ -1,6 +1,6 @@
 // Generated on 2014-07-23 using generator-angular 0.9.5
 'use strict';
-var modRewrite = require('connect-modrewrite');
+// var modRewrite = require('connect-modrewrite');
 
 // # Globbing
 // for performance reasons we're only matching one level down:
@@ -86,8 +86,8 @@ module.exports = function(grunt) {
           open: true,
           middleware: function(connect) {
             return [
-              connect.static('http://dyslexdisorth.ca'),
-              modRewrite(['^[^(:\/\/)]*[^\\.]*$ /index.html [L]']),
+              connect.static('http://example.ca'),
+              // modRewrite(['^[^(:\/\/)]*[^\\.]*$ /index.html [L]']),
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
