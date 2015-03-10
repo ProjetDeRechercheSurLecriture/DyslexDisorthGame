@@ -10,16 +10,15 @@
   <br/>
   <img ng-src="http://{{application.brandLowerCase}}.ca/{{application.brandLowerCase}}_assets/img/{{application.brandLowerCase}}.png" height="128">
 </div>
-<div class="lead"> Veuiller choisir une base de données
+<div ng-show="application.authentication.user.authenticated" class="lead"> Veuiller choisir une base de données
   <ul class="list-unstyled">
-    <li ng-repeat="corpus in application.authentication.user.corpora">
-      <a href="/{{corpus.dbname}}">
-        <i class="fa fa-cloud"></i> {{corpus}}
+    <li ng-repeat="corpus in application.authentication.user.corpora._collection" ng-hide="corpus.dbname.indexOf('lingllama') > -1">
+      <a href="{{application.basePathname}}/{{corpus.owner}}/{{corpus.titleAsUrl}}">
+        <i class="fa fa-cloud"></i> {{corpus.title}}
       </a>
     </li>
   </ul>
 </div>
-
 
 <!--
 <div class="col-md-4 lead">
