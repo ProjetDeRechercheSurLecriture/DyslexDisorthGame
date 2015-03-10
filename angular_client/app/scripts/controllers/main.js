@@ -10,12 +10,6 @@
  */
 angular.module('adminDashboardApp')
   .controller('MainController', function($scope, $location, $timeout) {
-    if (FieldDB && FieldDB.FieldDBObject && FieldDB.FieldDBObject.application) {
-      FieldDB.FieldDBObject.application.brand = 'Phophlo';
-      FieldDB.FieldDBObject.application.brandLowerCase = 'phophlo';
-      FieldDB.FieldDBObject.application.website = 'http://get.phophlo.ca';
-      FieldDB.FieldDBObject.application.tagline = 'Prédiction des Habiletés Orthographiques  Par des Habiletés Langage Oral';
-    }
 
     // Listen for the event.
     document.addEventListener('authenticated', function() {
