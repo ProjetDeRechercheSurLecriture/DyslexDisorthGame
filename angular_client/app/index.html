@@ -324,7 +324,7 @@
 <div ng-view="" class="container">
 </div>
 
-<footer class="footer">
+<footer class="footer" ng-show='!!error || !!application.authentication.error'>
   <p class="error" ng-show='!!error || !!application.authentication.error'>
     {{application.authentication.error}}
     {{error}}
