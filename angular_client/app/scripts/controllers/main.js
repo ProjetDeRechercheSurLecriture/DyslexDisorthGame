@@ -35,7 +35,7 @@ angular.module('adminDashboardApp')
         $scope.$apply(function() {
           console.log('  Redirecting the user to the most likely dashboard they will want to see', redirectToMostLikelyDashboard);
           //http://joelsaupe.com/programming/angularjs-change-path-without-reloading/
-          $location.path(FieldDB.FieldDBObject.application.basePathname + '/' + redirectToMostLikelyDashboard, false);
+          $location.path('/' + redirectToMostLikelyDashboard, false);
         });
       }
 
