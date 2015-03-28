@@ -23,25 +23,7 @@ var app = angular
   .config(function($routeProvider, $locationProvider, $sceDelegateProvider) {
     // $locationProvider.html5Mode(true);
 
-    if (FieldDB && FieldDB.FieldDBObject && FieldDB.FieldDBObject.application) {
-      FieldDB.FieldDBObject.application.brand = 'DyslexDysorth';
-      FieldDB.FieldDBObject.application.brandLowerCase = 'dyslexdisorth';
-      FieldDB.FieldDBObject.application.website = 'http://get.dyslexdisorth.ca';
-      FieldDB.FieldDBObject.application.faq = FieldDB.FieldDBObject.application.website +'/faq';
-      FieldDB.FieldDBObject.application.tagline = 'Prédiction des Habiletés Orthographiques  Par des Habiletés Langage Oral';
-    }
-
-    $sceDelegateProvider.resourceUrlWhitelist([
-      // Allow same origin resource loads.
-      'self',
-      // Allow loading from outer domain.
-      'https://*.example.org/**',
-      'http://*.dyslexdisorth.ca/**',
-      'https://*.dyslexdisorth.ca/**'
-    ]);
-
-    //Dont show alerts when in this app, until we have error modals or something
-    FieldDB.FieldDBObject.bug = FieldDB.FieldDBObject.prototype.todo;
+    $sceDelegateProvider.resourceUrlWhitelist(FieldDB.FieldDBObject.application.resourceUrlWhitelist);
 
     $routeProvider
       .when('/', {
@@ -79,14 +61,6 @@ var app = angular
         $routeProvider.otherwise(FieldDB.Router.otherwise);
       }
     }
-
-
-    FieldDB.FieldDBObject.application.participantsList.title.default = 'Élèves';
-    FieldDB.FieldDBObject.application.participantsList.description.default = 'Voici tous les élèves de votre base de données. Pour importer davantage d\'élèves, utiliser les menus Nouveau > Classe';
-
-    // FieldDB.FieldDBObject.application.contextualizer.addUrls(['en/messages.json','fr/messages.json']).then(function(){
-    //   console.log('Added urls');
-    // });
 
   });
 
