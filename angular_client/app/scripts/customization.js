@@ -1,14 +1,17 @@
 'use strict';
-/* globals FieldDB */
+/* globals FieldDB, window */
 
 if (FieldDB &&
   FieldDB.FieldDBObject &&
   FieldDB.PsycholinguisticsApp &&
   FieldDB.Contextualizer &&
-  FieldDB.User) {
+  FieldDB.Authentication) {
 
   FieldDB.FieldDBObject.warn = function(message, message2, message3, message4) {
     var type = this.fieldDBtype || this._id || 'UNKNOWNTYPE';
+    if (type === 'DatumField') {
+      return;
+    }
     console.warn(type.toUpperCase() + ' WARN: ' + message);
     if (message2) {
       console.warn(message2);
@@ -37,17 +40,11 @@ if (FieldDB &&
   // FieldDB.Database.prototype.BASE_AUTH_URL = 'https://apidev.example.org';
   // FieldDB.AudioVideo.prototype.BASE_SPEECH_URL = 'https://speech.example.org';
 
-  var fieldDBApp = new FieldDB.PsycholinguisticsApp({
-    authentication: {
-      user: new FieldDB.User({
-        authenticated: false
-      })
-    },
-    contextualizer: new FieldDB.Contextualizer().loadDefaults(),
+  var fieldDBAppSettings = {
     online: true,
     apiURL: FieldDB.Database.prototype.BASE_AUTH_URL,
     offlineCouchURL: 'https://localhost:6984',
-    brand: 'DyslexDysorth',
+    brand: 'DyslexDisorth',
     brandLowerCase: 'dyslexdisorth',
     website: 'http://get.dyslexdisorth.ca',
     faq: 'http://get.dyslexdisorth.ca/faq',
@@ -60,10 +57,42 @@ if (FieldDB &&
       'https://*.example.org/**',
       'https://*.dyslexdisorth.ca/**'
     ]
-  });
+  };
+
+  console.log("Ensuring FieldDB app is ready. ");
+  if (!FieldDB.FieldDBObject.application) {
+    console.log("    Creating a PsycholinguisticsApp ");
+    FieldDB.FieldDBObject.application = new FieldDB.PsycholinguisticsApp(fieldDBAppSettings);
+  } else {
+    console.log("    An application is already available, it might be a Montage application, or a fielddb app.", FieldDB.FieldDBObject.application);
+    for (var property in fieldDBAppSettings) {
+      if (!fieldDBAppSettings.hasOwnProperty(property)) {
+        continue;
+      }
+      FieldDB.FieldDBObject.application[property] = fieldDBAppSettings[property];
+    }
+  }
+
+  if (!FieldDB.FieldDBObject.application.authentication || !(FieldDB.FieldDBObject.application.authentication instanceof FieldDB.Authentication)) {
+    FieldDB.FieldDBObject.application.authentication = new FieldDB.Authentication({
+      user: {
+        authenticated: false
+      }
+    });
+    console.log("    Authentication was not available", FieldDB.FieldDBObject.application.authentication);
+  } else {
+    console.log("    Authentication was available", FieldDB.FieldDBObject.application.authentication);
+  }
+
+  if (!FieldDB.FieldDBObject.application.contextualizer || !(FieldDB.FieldDBObject.application.contextualizer instanceof FieldDB.Contextualizer)) {
+    FieldDB.FieldDBObject.application.contextualizer = new FieldDB.Contextualizer().loadDefaults();
+    console.log("    Contextualizer was not available", FieldDB.FieldDBObject.application);
+  } else {
+    console.log("    Contextualizer was available", FieldDB.FieldDBObject.application.contextualizer);
+  }
 
   if (window.location.pathname.indexOf('android_asset') > -1) {
-    fieldDBApp.basePathname = window.location.pathname;
+    fieldDBAppSettings.basePathname = window.location.pathname;
   }
 
   FieldDB.FieldDBObject.application.participantsList.title.default = 'Élèves';
