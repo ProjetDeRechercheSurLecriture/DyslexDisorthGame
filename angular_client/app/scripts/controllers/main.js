@@ -21,8 +21,12 @@ angular.module('adminDashboardApp')
         $location.path().indexOf('bienvenu') > -1 ||
         window.location.pathname.indexOf('welcome') > -1 ||
         window.location.pathname.indexOf('bienvenu') > -1) {
-        var mostRecentConnection = FieldDB.FieldDBObject.application.authentication.user.corpora._collection[0];
-        redirectToMostLikelyDashboard = mostRecentConnection.owner + '/' + mostRecentConnection.titleAsUrl;
+        if (FieldDB && FieldDB.FieldDBObject && FieldDB.FieldDBObject.application && FieldDB.FieldDBObject.application.authentication && FieldDB.FieldDBObject.application.authentication.user && FieldDB.FieldDBObject.application.authentication.user.corpora && FieldDB.FieldDBObject.application.authentication.user.corpora._collection && FieldDB.FieldDBObject.application.authentication.user.corpora._collection[0]) {
+          var mostRecentConnection = FieldDB.FieldDBObject.application.authentication.user.corpora._collection[0];
+          redirectToMostLikelyDashboard = mostRecentConnection.owner + '/' + mostRecentConnection.titleAsUrl;
+        } else {
+          $scope.application.error = 'There was a problem identifying your most recent dashboard, please report this.';
+        }
       }
 
       if (showStimuliEditingDashboard) {
