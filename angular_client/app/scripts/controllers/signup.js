@@ -9,7 +9,24 @@
  * Controller of the adminDashboardApp
  */
 angular.module('adminDashboardApp')
-  .controller('SignupController', function($scope, $rootScope) {
+  .controller('SignupController', function($scope, $rootScope, $timeout, $location) {
+
+
+    $timeout(function() {
+      if ((location.path() === "/welcome" || $location.path() === "/bienvenu") &&
+        FieldDB &&
+        FieldDB.FieldDBObject &&
+        FieldDB.FieldDBObject.application &&
+        FieldDB.FieldDBObject.application.authentication &&
+        FieldDB.FieldDBObject.application.authentication.user &&
+        FieldDB.FieldDBObject.application.authentication.user.authenticated) {
+        $scope.$apply(function() {
+          console.log("  The user is loggged in. Redirecting the user to the base page");
+          //http://joelsaupe.com/programming/angularjs-change-path-without-reloading/
+          $location.path("/", false);
+        });
+      }
+    }, 500);
 
     $scope.registerDetails = {
       firstname: '',
