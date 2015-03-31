@@ -1,9 +1,9 @@
 'use strict';
 
-describe('Controller: SAILSReportController', function() {
+xdescribe('Controller: SAILSReportController', function() {
 
   // load the controller's module
-  beforeEach(module('adminDashboardApp'));
+  beforeEach(module('adminDashboardApp', 'app/scripts/customization.js'));
 
   var SAILSReportController,
     scope,
