@@ -49,7 +49,8 @@ if (FieldDB &&
     website: 'http://get.dyslexdisorth.ca',
     faq: 'http://get.dyslexdisorth.ca/faq',
     tagline: 'Prédiction des Habiletés Orthographiques  Par des Habiletés Langage Oral',
-    basePathname: window.location.origin + '/#',
+    // basePathname: window.location.origin + '/#',
+    basePathname: window.location.origin + '/',
     resourceUrlWhitelist: [
       // Allow same origin resource loads.
       'self',
