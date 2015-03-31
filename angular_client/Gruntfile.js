@@ -37,7 +37,7 @@ module.exports = function(grunt) {
         // tasks: ['wiredep']
       },
       js: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'bower_components/fielddb-angular/dist/scripts/{,*/}*.js'],
+        files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'app/bower_components/fielddb-angular/dist/scripts/{,*/}*.js'],
         tasks: ['newer:jshint:all'],
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
         tasks: ['newer:jshint:test', 'karma']
       },
       styles: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.css', 'bower_components/fielddb-angular/dist/styles/main.css'],
+        files: ['<%= yeoman.app %>/styles/{,*/}*.css', 'app/bower_components/fielddb-angular/dist/styles/main.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
       },
       gruntfile: {
@@ -89,10 +89,10 @@ module.exports = function(grunt) {
               connect.static('http://example.ca'),
               // modRewrite(['^[^(:\/\/)]*[^\\.]*$ /index.html [L]']),
               connect.static('.tmp'),
-              connect().use(
-                '/bower_components',
-                connect.static('./bower_components')
-              ),
+              // connect().use(
+              //   '/bower_components',
+              //   connect.static('./bower_components')
+              // ),
               connect.static(appConfig.app)
             ];
           }
@@ -343,7 +343,7 @@ module.exports = function(grunt) {
           src: ['generated/*']
         }, {
           expand: true,
-          cwd: 'bower_components/bootstrap/dist',
+          cwd: 'app/bower_components/bootstrap/dist',
           src: 'fonts/*',
           dest: '<%= yeoman.dist %>'
         }]

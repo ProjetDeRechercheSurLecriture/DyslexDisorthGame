@@ -18,14 +18,14 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'bower_components/fielddb-angular/dist/scripts/vendor.js',
-      'bower_components/fielddb-angular/dist/scripts/scripts.js',
-      'bower_components/fielddb-angular/dist/scripts/templates.js',
-      'bower_components/d3/d3.js',
-      'bower_components/nvd3/nv.d3.js',
-      'bower_components/angular-nvd3/dist/angular-nvd3.js',
+      'app/bower_components/fielddb-angular/dist/scripts/vendor.js',
+      'app/bower_components/fielddb-angular/dist/scripts/scripts.js',
+      'app/bower_components/fielddb-angular/dist/scripts/templates.js',
+      'app/bower_components/d3/d3.js',
+      'app/bower_components/nvd3/nv.d3.js',
+      'app/bower_components/angular-nvd3/dist/angular-nvd3.js',
 
-      'bower_components/angular-mocks/angular-mocks.js',
+      'app/bower_components/angular-mocks/angular-mocks.js',
       'app/scripts/*.js',
       'app/scripts/**/*.js',
       // 'test/mock/**/*.js',
