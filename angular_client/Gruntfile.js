@@ -328,7 +328,7 @@ module.exports = function(grunt) {
             '*.{ico,png,txt}',
             '*htaccess',
             '*.html',
-            'jouer/*/**',
+            // 'jouer/*/**',
             'sample/*.csv',
             'views/{,*/}*.html',
             'assets/*/*.mp3',
