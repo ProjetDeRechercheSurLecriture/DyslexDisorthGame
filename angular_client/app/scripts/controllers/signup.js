@@ -13,7 +13,7 @@ angular.module('adminDashboardApp')
 
 
     $timeout(function() {
-      if ((location.path() === "/welcome" || $location.path() === "/bienvenu") &&
+      if (($location.path() === "/welcome" || $location.path() === "/bienvenu") &&
         FieldDB &&
         FieldDB.FieldDBObject &&
         FieldDB.FieldDBObject.application &&
