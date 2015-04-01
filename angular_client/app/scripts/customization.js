@@ -51,12 +51,14 @@ if (FieldDB &&
     tagline: 'Prédiction des Habiletés Orthographiques  Par des Habiletés Langage Oral',
     // basePathname: window.location.origin + '/#',
     basePathname: window.location.origin + '/',
-    resourceUrlWhitelist: [
+    whiteListCORS: [
       // Allow same origin resource loads.
       'self',
       // Allow loading from outer domain.
       'https://*.example.org/**',
-      'https://*.dyslexdisorth.ca/**'
+      'http://*.example.org/**',
+      'https://*.dyslexdisorth.ca/**',
+      'http://*.dyslexdisorth.ca/**'
     ]
   };
 

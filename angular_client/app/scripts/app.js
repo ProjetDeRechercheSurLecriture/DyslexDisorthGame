@@ -23,7 +23,7 @@ var app = angular
   .config(function($routeProvider, $locationProvider, $sceDelegateProvider) {
     $locationProvider.html5Mode(true);
 
-    $sceDelegateProvider.resourceUrlWhitelist(FieldDB.FieldDBObject.application.resourceUrlWhitelist);
+    $sceDelegateProvider.resourceUrlWhitelist(FieldDB.FieldDBObject.application.whiteListCORS);
 
     $routeProvider
       .when('/', {
