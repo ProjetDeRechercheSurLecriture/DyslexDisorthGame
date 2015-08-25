@@ -32,22 +32,22 @@ if (FieldDB &&
   FieldDB.Database.prototype.BASE_AUTH_URL = 'https://localhost:3183';
   FieldDB.AudioVideo.prototype.BASE_SPEECH_URL = 'https://localhost:3184';
 
-  // FieldDB.Database.prototype.BASE_DB_URL = 'https://corpus.example.org';
-  // FieldDB.Database.prototype.BASE_AUTH_URL = 'https://auth.example.org';
-  // FieldDB.AudioVideo.prototype.BASE_SPEECH_URL = 'https://speech.example.org';
+  // FieldDB.Database.prototype.BASE_DB_URL = 'https://corpus.lingsync.org';
+  // FieldDB.Database.prototype.BASE_AUTH_URL = 'https://auth.lingsync.org';
+  // FieldDB.AudioVideo.prototype.BASE_SPEECH_URL = 'https://speech.lingsync.org';
 
-  // FieldDB.Database.prototype.BASE_DB_URL = 'https://corpusdev.example.org';
-  // FieldDB.Database.prototype.BASE_AUTH_URL = 'https://apidev.example.org';
-  // FieldDB.AudioVideo.prototype.BASE_SPEECH_URL = 'https://speech.example.org';
+  // FieldDB.Database.prototype.BASE_DB_URL = 'https://corpusdev.lingsync.org';
+  // FieldDB.Database.prototype.BASE_AUTH_URL = 'https://apidev.lingsync.org';
+  // FieldDB.AudioVideo.prototype.BASE_SPEECH_URL = 'https://speech.lingsync.org';
 
   var fieldDBAppSettings = {
     online: true,
     apiURL: FieldDB.Database.prototype.BASE_AUTH_URL,
     offlineCouchURL: 'https://localhost:6984',
-    brand: 'DyslexDisorth',
-    brandLowerCase: 'dyslexdisorth',
-    website: 'http://get.dyslexdisorth.ca',
-    faq: 'http://get.dyslexdisorth.ca/faq',
+    brand: 'Phophlo',
+    brandLowerCase: 'phophlo',
+    website: 'http://get.phophlo.ca',
+    faq: 'http://get.phophlo.ca/faq',
     tagline: 'Prédiction des Habiletés Orthographiques  Par des Habiletés Langage Oral',
     // basePathname: window.location.origin + '/#',
     basePathname: window.location.origin + '/',
@@ -55,10 +55,10 @@ if (FieldDB &&
       // Allow same origin resource loads.
       'self',
       // Allow loading from outer domain.
-      'https://*.example.org/**',
-      'http://*.example.org/**',
-      'https://*.dyslexdisorth.ca/**',
-      'http://*.dyslexdisorth.ca/**'
+      'https://*.lingsync.org/**',
+      'http://*.lingsync.org/**',
+      'https://*.phophlo.ca/**',
+      'http://*.phophlo.ca/**'
     ]
   };
 
@@ -101,6 +101,7 @@ if (FieldDB &&
   FieldDB.FieldDBObject.application.participantsList.title.default = 'Élèves';
   FieldDB.FieldDBObject.application.participantsList.description.default = 'Voici tous les élèves de votre base de données. Pour importer davantage d\'élèves, utiliser les menus Nouveau > Classe';
 
+  // FieldDB.FieldDBObject.application.authentication.dispatchEvent("appready");
 
   // FieldDB.FieldDBObject.application.contextualizer.addUrls(['en/messages.json','fr/messages.json']).then(function(){
   //   console.log('Added urls');

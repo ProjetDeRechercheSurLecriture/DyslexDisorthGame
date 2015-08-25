@@ -1,6 +1,7 @@
-// Generated on 2014-07-23 using generator-angular 0.9.5
+// Generated on 2014-07-23 using generator-angular 0.9.5, updated dependancies on Aug 25 2015
 'use strict';
 var modRewrite = require('connect-modrewrite');
+var serveStatic = require('serve-static');
 
 // # Globbing
 // for performance reasons we're only matching one level down:
@@ -34,7 +35,7 @@ module.exports = function(grunt) {
       bower: {
         files: ['bower.json'],
         tasks: ['']
-        // tasks: ['wiredep']
+          // tasks: ['wiredep']
       },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'app/bower_components/fielddb-angular/dist/scripts/{,*/}*.js'],
@@ -44,8 +45,8 @@ module.exports = function(grunt) {
         }
       },
       templates: {
-        files: ['index.html','<%= yeoman.app %>/views/{,*/}*.html'],
-        tasks: ['ngtemplates','copy:templates'],
+        files: ['index.html', '<%= yeoman.app %>/views/{,*/}*.html'],
+        tasks: ['ngtemplates', 'copy:templates'],
         options: {
           livereload: '<%= connect.options.livereload %>'
         }
@@ -84,34 +85,49 @@ module.exports = function(grunt) {
       livereload: {
         options: {
           open: true,
-          middleware: function(connect) {
-            return [
-              connect.static('http://example.ca'),
-              modRewrite(['^[^(:\/\/)]*[^\\.]*$ /index.html [L]']),
-              connect.static('.tmp'),
-              // connect().use(
-              //   '/bower_components',
-              //   connect.static('./bower_components')
-              // ),
-              connect.static(appConfig.app)
-            ];
+          base: appConfig.app,
+          middleware: function(connect, options, middlewares) {
+            // connect().use(serveStatic(appConfig.app));
+            // connect().use(serveStatic('http://example.ca'));
+            middlewares.unshift(modRewrite(['^[^(:\/\/)]*[^\\.]*$ /index.html [L]']));
+            // connect().use(serveStatic('.tmp'));
+            // // connect().use(
+            // //   '/bower_components',
+            // //   connect.static('./bower_components')
+            // // );
+
+            // // inject a custom middleware into the array of default middlewares
+            // middlewares.unshift(function(req, res, next) {
+            //   if (req.url === '/welcome') {
+            //     res.send("index.html");
+            //   }
+            //   next();
+            // });
+            return middlewares;
           }
         }
       },
       test: {
         options: {
           port: 9001,
-          middleware: function(connect) {
-            return [
-              connect.static('.tmp'),
-              connect.static('test'),
-              connect().use(
-                '/bower_components',
-                connect.static('./bower_components')
-              ),
-              connect.static(appConfig.app)
-            ];
-          }
+          middleware: function(connect, options, middlewares) {
+            connect().use(serveStatic('.tmp'));
+            connect().use(serveStatic('test'));
+            // connect().use(
+            //   '/bower_components',
+            //   connect.static('./bower_components')
+            // );
+            connect().use(serveStatic(appConfig.app));
+
+            // inject a custom middleware into the array of default middlewares
+            middlewares.unshift(function(req, res, next) {
+              if (req.url !== '/unused/route') {
+                return next();
+              }
+              res.end('Overwriding unused route, from port #' + options.port + '!');
+            });
+            return middlewares;
+          },
         }
       },
       dist: {
@@ -128,7 +144,7 @@ module.exports = function(grunt) {
         jshintrc: '.jshintrc',
         reporter: require('jshint-stylish'),
         ignores: [
-        '<%= yeoman.app %>/scripts/templates.js'
+          '<%= yeoman.app %>/scripts/templates.js'
         ]
       },
       all: {
@@ -137,7 +153,7 @@ module.exports = function(grunt) {
           '<%= yeoman.app %>/scripts/{,*/}*.js'
         ],
         ignores: [
-        '<%= yeoman.app %>/scripts/templates.js'
+          '<%= yeoman.app %>/scripts/templates.js'
         ]
       },
       test: {
@@ -280,7 +296,7 @@ module.exports = function(grunt) {
 
     ngtemplates: {
       app: {
-        options : {
+        options: {
           htmlmin: {
             collapseWhitespace: true,
             collapseBooleanAttributes: true,
@@ -318,6 +334,10 @@ module.exports = function(grunt) {
 
     // Copies remaining files to places other tasks can use
     copy: {
+      fontawesome: {
+        src: ['<%= yeoman.app %>/bower_components/font-awesome/fonts/fontawesome-webfont.woff'],
+        dest: '<%= yeoman.dist %>/fonts/fontawesome-webfont.woff'
+      },
       dist: {
         files: [{
           expand: true,
@@ -349,7 +369,7 @@ module.exports = function(grunt) {
         }]
       },
       templates: {
-        src:['<%= yeoman.dist %>/scripts/templates.js'],
+        src: ['<%= yeoman.dist %>/scripts/templates.js'],
         dest: '<%= yeoman.app %>/scripts/templates.js'
       },
       styles: {
@@ -435,6 +455,7 @@ module.exports = function(grunt) {
     'autoprefixer',
     'concat',
     'ngmin',
+    'copy:fontawesome',
     /* TODO use exec to mop dependant games */
     'copy:dist',
     'cdnify',
