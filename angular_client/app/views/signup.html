@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" ng-controller="SignupController" ng-hide="application.authentication.user.authenticated">
     <p>&nbsp;<br/>&nbsp;</p>
 
   <h1 class="page-header">
@@ -43,7 +43,7 @@
       </span>
     </div>
   </div>
-  <div class=" col-md-4 hide hidden" hidden >
+  <div class=" col-md-4 " >
     <h1 class="mbs _3ma _6n _6s _6v" style="font-size: 36px">
       Inscription
     </h1>
@@ -54,35 +54,38 @@
         </noscript>
         <div >
           <div >
-            <form class="signup">
+            <form class="signup" role="validateRegistrationDetails">
               <div  class="col-sm-12">
                 <div class="row ">
-                  <input type="text" class="col-sm-5 form-control" data-type="text" name="firstname" aria-required="1"  aria-label="Prénom" placeholder="Prénom">
-                  <input type="text" class="col-sm-5 form-control" data-type="text" name="lastname" placeholder="Nom de famille" aria-required="1" aria-label="Nom de famille">
+                  <input type="text" class="col-sm-5 form-control" ng-model="registerDetails.firstname" name="firstname" required ng-change="baseUsernameOnFirstAndALastName()" aria-label="Prénom" placeholder="Prénom">
+                  <input type="text" class="col-sm-5 form-control" ng-model="registerDetails.lastname" name="lastname" placeholder="Nom de famille" required ng-change="baseUsernameOnFirstAndALastName()" aria-label="Nom de famille">
                 </div>
                 <div class="row">
-                  <input type="text" class="col-sm-12 form-control" data-type="text" name="reg_email__" aria-required="1" placeholder="Email"  aria-label="Email">
+                  <input type="email" class="col-sm-12 form-control" ng-model="registerDetails.email" name="email" required placeholder="Email"  aria-label="Email">
                 </div>
                 <div class="row">
-                  <input type="password" class="col-sm-12 form-control" data-type="text" name="reg_passwd__" aria-required="1" placeholder="Mot de passe"  aria-label="Mot de passe">
+                  <input type="text" class="col-sm-12 form-control" ng-model="registerDetails.username" name="username" required placeholder="Username"  aria-label="Username">
                 </div>
                 <div class="row">
-                  <input type="password" class="col-sm-12 form-control" data-type="text" name="reg_passwd__" aria-required="1" placeholder="Confirmer mot de passe"  aria-label="Confirmer mot de passe">
+                  <input type="password" class="col-sm-12 form-control" ng-model="registerDetails.password" name="password" required placeholder="Mot de passe"  aria-label="Mot de passe">
+                </div>
+                <div class="row">
+                  <input type="password" class="col-sm-12 form-control" ng-model="registerDetails.confirmPassword" name="confirmPassword" required placeholder="Confirmer mot de passe"  aria-label="Confirmer mot de passe">
                 </div>
 
                 <div >
                   <small>
                     En cliquant sur Inscription, vous acceptez nos
-                    <a href="http://get.{{application.brandLowerCase}}.ca/connexion/conditions" target="_blank" rel="nofollow">Conditions</a> et indiquez que vous avez lu notre
-                    <a href="http://get.{{application.brandLowerCase}}.ca/connexion/confidentialite" target="_blank" rel="nofollow">Politique d’utilisation des données</a>.
+                    <a href="{{application.website}}/connexion/conditions" target="_blank" rel="nofollow">Conditions</a> et indiquez que vous avez lu notre
+                    <a href="{{application.website}}/connexion/confidentialite" target="_blank" rel="nofollow">Politique d’utilisation des données</a>.
                   </small>
                 </div>
                 <div >
-                  <button type="submit" class="btn btn-default" >
+                  <button type="submit" class="btn btn-default" ng-click="validateRegistrationDetails()" disabled ng-disabled="true" title="Registration is currently not permitted.">
                     Inscription
                   </button>
                   <span class="hidden" >
-                    <img class="img" ng-src="https://fbstatic-a.akamaihd.net/rsrc.php/v2/yb/r/GsNJNwuI-UM.gif" alt="" width="16" height="11">
+                    <img class="img" ng-src="/images/loader.gif" alt="" height="16">
                   </span>
                 </div>
               </div>

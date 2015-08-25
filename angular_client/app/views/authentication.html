@@ -25,8 +25,8 @@
             &nbsp;<button type="submit" class="btn btn-default" ng-click="login(loginDetails)" tabindex="3">
             Connexion
           </button>
-          <span ng-show="isContactingServer" >
-            <img class="img" src="https://fbstatic-a.akamaihd.net/rsrc.php/v2/yb/r/GsNJNwuI-UM.gif" alt="" width="16" height="11">
+          <span ng-show="application.authentication.loading" >
+            <img class="img" src="/images/loader.gif" alt="" height="16">
           </span>
         </td>
       </tr>
@@ -42,7 +42,6 @@
     </tbody>
   </table>
 </div>
-{{application.authentication.error}}
 <span ng-show="application.authentication.user.authenticated" data-fielddb-locales></span>
 <button ng-show="application.authentication.user.authenticated"  type="submit" class="btn btn-default" ng-click="logout()" tabindex="3">
   Déconnexion

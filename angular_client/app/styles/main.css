@@ -131,7 +131,7 @@ progress {
 }
 
 body > .container{
-  padding-top: 60px;
+  padding-top: 7em;
 }
 
 /* Sticky footer styles
@@ -142,7 +142,7 @@ html {
 }
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 100px;
+  margin-bottom: 0px;
   padding: 0;
 }
 
@@ -151,7 +151,7 @@ body {
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 100px;
+  height: 7em;
 }
 
 .feature-description{
@@ -162,6 +162,12 @@ body {
   text-align: center;
   opacity: 0.8;
   color: #ff0000;
+}
+
+footer .error {
+  text-align: center;
+  opacity: 0.8;
+  color: #ffffff;
 }
 
 .status {

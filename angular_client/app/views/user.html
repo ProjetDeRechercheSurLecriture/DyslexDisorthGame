@@ -27,6 +27,12 @@
       {{user.anonymousCode}}
     </span>
   </li>
+  <li ng-repeat="field in user.fields._collection" title="{{field.help}}" ng-show="field.value">
+    {{field.labelExperimenters}}:
+    <span class="" contenteditable="true">
+      {{field.value}}
+    </span>
+  </li>
   <!--<li>
     <span contenteditable="true">
       Add new:
