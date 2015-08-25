@@ -28,13 +28,13 @@ if (FieldDB &&
   FieldDB.FieldDBObject.bug = FieldDB.FieldDBObject.prototype.todo;
 
 
-  FieldDB.Database.prototype.BASE_DB_URL = 'https://localhost:6984';
-  FieldDB.Database.prototype.BASE_AUTH_URL = 'https://localhost:3183';
-  FieldDB.AudioVideo.prototype.BASE_SPEECH_URL = 'https://localhost:3184';
+  // FieldDB.Database.prototype.BASE_DB_URL = 'https://localhost:6984';
+  // FieldDB.Database.prototype.BASE_AUTH_URL = 'https://localhost:3183';
+  // FieldDB.AudioVideo.prototype.BASE_SPEECH_URL = 'https://localhost:3184';
 
-  // FieldDB.Database.prototype.BASE_DB_URL = 'https://corpus.lingsync.org';
-  // FieldDB.Database.prototype.BASE_AUTH_URL = 'https://auth.lingsync.org';
-  // FieldDB.AudioVideo.prototype.BASE_SPEECH_URL = 'https://speech.lingsync.org';
+  FieldDB.Database.prototype.BASE_DB_URL = 'https://corpus.lingsync.org';
+  FieldDB.Database.prototype.BASE_AUTH_URL = 'https://auth.lingsync.org';
+  FieldDB.AudioVideo.prototype.BASE_SPEECH_URL = 'https://speech.lingsync.org';
 
   // FieldDB.Database.prototype.BASE_DB_URL = 'https://corpusdev.lingsync.org';
   // FieldDB.Database.prototype.BASE_AUTH_URL = 'https://apidev.lingsync.org';
