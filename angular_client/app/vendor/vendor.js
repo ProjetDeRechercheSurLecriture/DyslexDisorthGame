@@ -36589,6 +36589,10 @@ FieldDBObject.prototype = Object.create(Object.prototype, {
       }).then(function(result) {
           self.fetching = false;
           self.loaded = true;
+          if (result.confidential && result.confidential.secretkey) {
+          	self.todo("workaround for confidential not being merged into corpus");
+          	self.confidential = result.confidential;
+          }
           self.merge("self", result, "overwrite");
           deferred.resolve(self);
         },
@@ -38727,7 +38731,7 @@ App.prototype = Object.create(FieldDBObject.prototype, /** @lends App.prototype 
   isCouchApp: {
     get: function() {
       try {
-        return window.location.href.indexOf("_design/pages") > -1;
+        return window.location.href.indexOf("_design/deprecated") > -1;
       } catch (e) {
         this.warn("Cant determine app type isCouchApp, " + e);
         return false;
@@ -40926,134 +40930,134 @@ Corpus.prototype = Object.create(CorpusMask.prototype, /** @lends Corpus.prototy
     value: function() {
       return {
         // activities: {
-        //   url: "/_design/pages/_view/activities",
+        //   url: "/_design/deprecated/_view/activities",
         //   map: requireoff("./../../couchapp_dev/views/activities/map")
         // },
         // add_synctactic_category: {
-        //   url: "/_design/pages/_view/add_synctactic_category",
+        //   url: "/_design/deprecated/_view/add_synctactic_category",
         //   map: requireoff("./../../couchapp_dev/views/add_synctactic_category/map")
         // },
         // audioIntervals: {
-        //   url: "/_design/pages/_view/audioIntervals",
+        //   url: "/_design/deprecated/_view/audioIntervals",
         //   map: requireoff("./../../couchapp_dev/views/audioIntervals/map")
         // },
         // byCollection: {
-        //   url: "/_design/pages/_view/byCollection",
+        //   url: "/_design/deprecated/_view/byCollection",
         //   map: requireoff("./../../couchapp_dev/views/byCollection/map")
         // },
         // by_date: {
-        //   url: "/_design/pages/_view/by_date",
+        //   url: "/_design/deprecated/_view/by_date",
         //   map: requireoff("./../../couchapp_dev/views/by_date/map")
         // },
         // by_rhyming: {
-        //   url: "/_design/pages/_view/by_rhyming",
+        //   url: "/_design/deprecated/_view/by_rhyming",
         //   map: requireoff("./../../couchapp_dev/views/by_rhyming/map"),
         //   reduce: requireoff("./../../couchapp_dev/views/by_rhyming/reduce")
         // },
         // cleaning_example: {
-        //   url: "/_design/pages/_view/cleaning_example",
+        //   url: "/_design/deprecated/_view/cleaning_example",
         //   map: requireoff("./../../couchapp_dev/views/cleaning_example/map")
         // },
         // corpuses: {
-        //   url: "/_design/pages/_view/corpuses",
+        //   url: "/_design/deprecated/_view/corpuses",
         //   map: requireoff("./../../couchapp_dev/views/corpuses/map")
         // },
         // datalists: {
-        //   url: "/_design/pages/_view/datalists",
+        //   url: "/_design/deprecated/_view/datalists",
         //   map: requireoff("./../../couchapp_dev/views/datalists/map")
         // },
         // datums: {
-        //   url: "/_design/pages/_view/datums",
+        //   url: "/_design/deprecated/_view/datums",
         //   map: requireoff("./../../couchapp_dev/views/datums/map")
         // },
         // datums_by_user: {
-        //   url: "/_design/pages/_view/datums_by_user",
+        //   url: "/_design/deprecated/_view/datums_by_user",
         //   map: requireoff("./../../couchapp_dev/views/datums_by_user/map"),
         //   reduce: requireoff("./../../couchapp_dev/views/datums_by_user/reduce")
         // },
         // datums_chronological: {
-        //   url: "/_design/pages/_view/datums_chronological",
+        //   url: "/_design/deprecated/_view/datums_chronological",
         //   map: requireoff("./../../couchapp_dev/views/datums_chronological/map")
         // },
         // deleted: {
-        //   url: "/_design/pages/_view/deleted",
+        //   url: "/_design/deprecated/_view/deleted",
         //   map: requireoff("./../../couchapp_dev/views/deleted/map")
         // },
         // export_eopas_xml: {
-        //   url: "/_design/pages/_view/export_eopas_xml",
+        //   url: "/_design/deprecated/_view/export_eopas_xml",
         //   map: requireoff("./../../couchapp_dev/views/export_eopas_xml/map"),
         //   reduce: requireoff("./../../couchapp_dev/views/export_eopas_xml/reduce")
         // },
         // get_corpus_datum_tags: {
-        //   url: "/_design/pages/_view/get_corpus_datum_tags",
+        //   url: "/_design/deprecated/_view/get_corpus_datum_tags",
         //   map: requireoff("./../../couchapp_dev/views/get_corpus_datum_tags/map"),
         //   reduce: requireoff("./../../couchapp_dev/views/get_corpus_datum_tags/reduce")
         // },
         // get_corpus_fields: {
-        //   url: "/_design/pages/_view/get_corpus_fields",
+        //   url: "/_design/deprecated/_view/get_corpus_fields",
         //   map: requireoff("./../../couchapp_dev/views/get_corpus_fields/map")
         // },
         // get_corpus_validationStati: {
-        //   url: "/_design/pages/_view/get_corpus_validationStati",
+        //   url: "/_design/deprecated/_view/get_corpus_validationStati",
         //   map: requireoff("./../../couchapp_dev/views/get_corpus_validationStati/map"),
         //   reduce: requireoff("./../../couchapp_dev/views/get_corpus_validationStati/reduce")
         // },
         // get_datum_fields: {
-        //   url: "/_design/pages/_view/get_datum_fields",
+        //   url: "/_design/deprecated/_view/get_datum_fields",
         //   map: requireoff("./../../couchapp_dev/views/get_datum_fields/map")
         // },
         // get_datums_by_session_id: {
-        //   url: "/_design/pages/_view/get_datums_by_session_id",
+        //   url: "/_design/deprecated/_view/get_datums_by_session_id",
         //   map: requireoff("./../../couchapp_dev/views/get_datums_by_session_id/map")
         // },
         // get_frequent_fields: {
-        //   url: "/_design/pages/_view/get_frequent_fields",
+        //   url: "/_design/deprecated/_view/get_frequent_fields",
         //   map: requireoff("./../../couchapp_dev/views/get_frequent_fields/map"),
         //   reduce: requireoff("./../../couchapp_dev/views/get_frequent_fields/reduce")
         // },
         // get_search_fields_chronological: {
-        //   url: "/_design/pages/_view/get_search_fields_chronological",
+        //   url: "/_design/deprecated/_view/get_search_fields_chronological",
         //   map: requireoff("./../../couchapp_dev/views/get_search_fields_chronological/map")
         // },
         // glosses_in_utterance: {
-        //   url: "/_design/pages/_view/glosses_in_utterance",
+        //   url: "/_design/deprecated/_view/glosses_in_utterance",
         //   map: requireoff("./../../couchapp_dev/views/glosses_in_utterance/map"),
         //   reduce: requireoff("./../../couchapp_dev/views/glosses_in_utterance/reduce")
         // },
         // lexicon_create_tuples: {
-        //   url: "/_design/pages/_view/lexicon_create_tuples",
+        //   url: "/_design/deprecated/_view/lexicon_create_tuples",
         //   map: requireoff("./../../couchapp_dev/views/lexicon_create_tuples/map"),
         //   reduce: requireoff("./../../couchapp_dev/views/lexicon_create_tuples/reduce")
         // },
         // morpheme_neighbors: {
-        //   url: "/_design/pages/_view/morpheme_neighbors",
+        //   url: "/_design/deprecated/_view/morpheme_neighbors",
         //   map: requireoff("./../../couchapp_dev/views/morpheme_neighbors/map"),
         //   reduce: requireoff("./../../couchapp_dev/views/morpheme_neighbors/reduce")
         // },
         // morphemes_in_gloss: {
-        //   url: "/_design/pages/_view/morphemes_in_gloss",
+        //   url: "/_design/deprecated/_view/morphemes_in_gloss",
         //   map: requireoff("./../../couchapp_dev/views/morphemes_in_gloss/map"),
         //   reduce: requireoff("./../../couchapp_dev/views/morphemes_in_gloss/reduce")
         // },
         // recent_comments: {
-        //   url: "/_design/pages/_view/recent_comments",
+        //   url: "/_design/deprecated/_view/recent_comments",
         //   map: requireoff("./../../couchapp_dev/views/recent_comments/map")
         // },
         // sessions: {
-        //   url: "/_design/pages/_view/sessions",
+        //   url: "/_design/deprecated/_view/sessions",
         //   map: requireoff("./../../couchapp_dev/views/sessions/map")
         // },
         // users: {
-        //   url: "/_design/pages/_view/users",
+        //   url: "/_design/deprecated/_view/users",
         //   map: requireoff("./../../couchapp_dev/views/users/map")
         // },
         // word_list: {
-        //   url: "/_design/pages/_view/word_list",
+        //   url: "/_design/deprecated/_view/word_list",
         //   map: requireoff("./../../couchapp_dev/views/word_list/map"),
         //   reduce: requireoff("./../../couchapp_dev/views/word_list/reduce")
         // },
         // couchapp_dev_word_list_rdf: {
-        //   url: "/_design/pages/_view/couchapp_dev_word_list_rdf",
+        //   url: "/_design/deprecated/_view/couchapp_dev_word_list_rdf",
         //   map: requireoff("./../../couchapp_dev/views/word_list_rdf/map"),
         //   reduce: requireoff("./../../couchapp_dev/views/word_list_rdf/reduce")
         // }
@@ -41111,7 +41115,7 @@ Corpus.prototype = Object.create(CorpusMask.prototype, /** @lends Corpus.prototy
    * This function takes in a dbname, which could be different
    * from the current corpus incase there is a master corpus wiht
    * more representative datum
-   * example : https://corpusdev.lingsync.org/lingllama-cherokee/_design/pages/_view/get_frequent_fields?group=true
+   * example : https://corpusdev.lingsync.org/lingllama-cherokee/_design/deprecated/_view/get_frequent_fields?group=true
    *
    * It takes the values stored in the corpus, if set, otherwise it will take the values from this corpus since the window was last refreshed
    *
@@ -41130,7 +41134,7 @@ Corpus.prototype = Object.create(CorpusMask.prototype, /** @lends Corpus.prototy
    * This function takes in a dbname, which could be different
    * from the current corpus incase there is a master corpus wiht
    * more representative datum
-   * example : https://corpusdev.lingsync.org/lingllama-cherokee/_design/pages/_view/get_corpus_validationStati?group=true
+   * example : https://corpusdev.lingsync.org/lingllama-cherokee/_design/deprecated/_view/get_corpus_validationStati?group=true
    *
    * It takes the values stored in the corpus, if set, otherwise it will take the values from this corpus since the window was last refreshed
    *
@@ -41216,7 +41220,7 @@ Corpus.prototype = Object.create(CorpusMask.prototype, /** @lends Corpus.prototy
    * This function takes in a dbname, which could be different
    * from the current corpus incase there is a master corpus wiht
    * more representative datum
-   * example : https://corpusdev.lingsync.org/lingllama-cherokee/_design/pages/_view/get_corpus_validationStati?group=true
+   * example : https://corpusdev.lingsync.org/lingllama-cherokee/_design/deprecated/_view/get_corpus_validationStati?group=true
    *
    * It takes the values stored in the corpus, if set, otherwise it will take the values from this corpus since the window was last refreshed
    *
@@ -41613,7 +41617,7 @@ var Database = function Database(options) {
   FieldDBObject.apply(this, arguments);
 };
 
-var DEFAULT_COLLECTION_MAPREDUCE = "_design/pages/_view/COLLECTION?descending=true";
+var DEFAULT_COLLECTION_MAPREDUCE = "_design/deprecated/_view/COLLECTION?descending=true";
 var DEFAULT_BASE_AUTH_URL = "https://localhost:3181";
 var DEFAULT_BASE_DB_URL = "https://localhost:6984";
 Database.prototype = Object.create(FieldDBObject.prototype, /** @lends Database.prototype */ {
@@ -46709,7 +46713,7 @@ Import.prototype = Object.create(FieldDBObject.prototype, /** @lends Import.prot
         self.documentCollection._collection.map(function(builtDoc) {
           if (self.importType === "participants") {
             builtDoc.id = builtDoc.anonymousCode || Date.now();
-            builtDoc.url = "https://corpusdev.lingsync.org/" + self.corpus.dbname;
+            builtDoc.url = FieldDB.Database.prototype.BASE_DB_URL +"/" + self.corpus.dbname;
             self.debug(" saving", builtDoc.id);
             self.progress.total++;
             self.datalist.docs.add(builtDoc);
@@ -68334,7 +68338,7 @@ angular.module('fielddbAngularApp').run(['$templateCache', function($templateCac
 
 
   $templateCache.put('views/import-page.html',
-    "<p class=\"lead\">Import Dashboard</p><div class=\"row well\" data-fielddb-datalist json=\"datumsList\" ng-show=\"application.importer.importType == application.datumsList.api\"></div><div class=\"row well\" data-fielddb-datalist json=\"application.participantsList\" ng-show=\"application.importer.importType == application.participantsList.api\"></div><div class=\"row well\" data-fielddb-import json=\"application.importer\"></div>"
+    "<p class=\"lead\">Import Dashboard</p><div class=\"row well\" data-fielddb-datalist json=\"datumsList\" ng-show=\"application.importer.importType == application.datumsList.api\"></div><div class=\"row well\" data-fielddb-datalist json=\"application.participantsList\" corpus=\"application.corpus\" ng-show=\"application.importer.importType == application.participantsList.api\"></div><div class=\"row well\" data-fielddb-import json=\"application.importer\"></div>"
   );
 
 
