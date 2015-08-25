@@ -78,9 +78,9 @@ if (FieldDB &&
 
   if (!FieldDB.FieldDBObject.application.authentication || !(FieldDB.FieldDBObject.application.authentication instanceof FieldDB.Authentication)) {
     FieldDB.FieldDBObject.application.authentication = new FieldDB.Authentication({
-      user: {
+      user: new FieldDB.User({
         authenticated: false
-      }
+      })
     });
     console.log("    Authentication was not available", FieldDB.FieldDBObject.application.authentication);
   } else {

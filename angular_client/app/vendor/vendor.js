@@ -37711,6 +37711,7 @@ var App = function App(options) {
   this.team = this.team || null;
   this.corpus = this.corpus || null;
   this.thisyear = (new Date()).getFullYear();
+  this.whiteListCORS = this.whiteListCORS || ["self"];
 
   var self = this;
   Q.nextTick(function() {
@@ -37718,7 +37719,7 @@ var App = function App(options) {
   });
 
 };
-
+App.Authentication = Authentication;
 App.prototype = Object.create(FieldDBObject.prototype, /** @lends App.prototype */ {
   constructor: {
     value: App
@@ -38440,7 +38441,7 @@ App.prototype = Object.create(FieldDBObject.prototype, /** @lends App.prototype 
           self.debug("Failed to download corpus details.", result);
 
           self.status = self.corpus.status = "Failed to download corpus details. Are you sure this is the corpus you wanted to see: " + self.corpus.dbname;
-          self.loginDetails.username = self.team.username;
+          // self.loginDetails.username = self.team.username;
           self.render();
         }).catch(function(error) {
           self.warn("catch error", error);
@@ -46058,8 +46059,10 @@ var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? 
   var Q = require("q");
 
   var FieldDB = {};
+  window.FieldDB = FieldDB;
 
   FieldDB.App = App;
+  FieldDB.Authentication = App.Authentication;
   FieldDB.PsycholinguisticsApp = PsycholinguisticsApp;
   FieldDB.Export = Export;
   FieldDB.FieldDBObject = FieldDBObject;
@@ -46093,22 +46096,43 @@ var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? 
   exports.FieldDB = FieldDB;
   global.FieldDB = FieldDB;
 
-  console.log("------------------------------------------------------------------------");
-  console.log("------------------------------------------------------------------------");
-  console.log("------------------------------------------------------------------------");
-  console.log("                     ___ _     _    _ ___  ___ ");
-  console.log("                    | __(_)___| |__| |   \\| _ )");
-  console.log("                    | _|| / -_) / _` | |) | _ \\");
-  console.log("                    |_| |_\\___|_\\__,_|___/|___/");
-  console.log("-----------------------------------------------loaded.------------------");
-  console.log("------------------------------------------------------------------------");
-  console.log("-----------------------Welcome to the power user console! Type----------");
-  console.log("--------------------------FieldDB.--------------------------------------");
-  // console.log("------------------",FieldDB);
-  // FieldDB["Response"] = Response;
-  console.log("---------------------------for available models/functionality-----------");
-  console.log("------------------------------------------------------------------------");
-  console.log("------------------------------------------------------------------------");
+  setTimeout(function() {
+    var brandname = "FieldDB";
+    if (FieldDB && FieldDB["FieldDBObject"] && FieldDB["FieldDBObject"].application && FieldDB["FieldDBObject"].application.brand) {
+      brandname = FieldDB["FieldDBObject"].application.brand.replace(/\W/g, "_");
+      try {
+        window[brandname] = FieldDB;
+      } catch (e) {
+        console.warn("Couldnt attach the FieldDB library as " + brandname, e);
+      }
+    }
+    console.log("-----------------------------------------------------");
+    console.log("-----------------------------------------------------");
+    console.log("-----------------------------------------------------");
+    console.log("   ___                      _   _            _    ");
+    console.log("  | _ \\_____ __ _____ _ _  | | | |______ _ _( )___");
+    console.log("  |  _/ _ \\ V  V / -_| '_| | |_| (_-/ -_| '_|/(_-<");
+    console.log("  |_| \\___/\\_/\\_/\\___|_|    \\___//__\\___|_|   /__/");
+    console.log("    ___     _                   _   _         ");
+    console.log("   |_ _|_ _| |_ ___ _ _ __ _ __| |_(___ _____ ");
+    console.log("    | || ' |  _/ -_| '_/ _` / _|  _| \\ V / -_)");
+    console.log("   |___|_||_\\__\\___|_| \\__,_\\__|\\__|_|\\_/\\___|");
+    console.log("         ___                 _     ");
+    console.log("        / __|___ _ _  ______| |___ ");
+    console.log("       | (__/ _ | ' \\(_-/ _ | / -_)");
+    console.log("        \\___\\__.|_||_|__\\__.|_\\___|");
+    console.log("                                                                                                                  ");
+    console.log("-----Power User's Interactive Console loaded " +
+      new FieldDB["FieldDBObject"]().version);
+    console.log("-----------------------------------------------------");
+    console.log("-----for available models/functionality, type--------");
+    console.log("                            " + brandname + ".");
+    console.log("-----------------------------------------------------");
+    console.log("-----------------------------------------------------");
+    console.log("-----------------------------------------------------");
+    console.log("-----------------------------------------------------");
+  }, 1000);
+
 }(typeof exports === "object" && exports || this));
 
 },{"./CORS":1,"./FieldDBConnection":3,"./FieldDBObject":4,"./Router":5,"./app/App":7,"./app/PsycholinguisticsApp":8,"./audio_video/AudioVideo":10,"./audio_video/AudioVideoRecorder":11,"./corpus/Corpus":17,"./corpus/CorpusMask":18,"./corpus/Database":19,"./corpus/PsycholinguisticsDatabase":20,"./data_list/DataList":23,"./data_list/SubExperimentDataList":24,"./datum/Datum":25,"./datum/Document":32,"./datum/Response":34,"./datum/Stimulus":35,"./export/Export":36,"./import/Import":42,"./locales/Contextualizer":44,"./search/Search":49,"./user/Consultant":52,"./user/Participant":53,"./user/Speaker":54,"./user/Team":55,"./user/User":56,"./user/UserMask":57,"q":77}],38:[function(require,module,exports){
@@ -66859,29 +66883,46 @@ var app = angular.module("fielddbAngularApp", [
 ]).config(function($routeProvider, $sceDelegateProvider) {
   // console.log($routeProvider);
 
-  $sceDelegateProvider.resourceUrlWhitelist([
-    // Allow same origin resource loads.
-    "self",
-    // Allow loading from outer domain.
-    "https://*.lingsync.org/**"
-  ]);
+  // $sceDelegateProvider.resourceUrlWhitelist([
+  //   // Allow same origin resource loads.
+  //   "self",
+  //   // Allow loading from outer domain.
+  //   "https://*.lingsync.org/**"
+  // ]);
 
-  new FieldDB.PsycholinguisticsApp({
-    authentication: {
-      user: new FieldDB.User({
-        authenticated: false
-      })
-    },
-    contextualizer: new FieldDB.Contextualizer().loadDefaults(),
-    online: true,
-    apiURL: "https://localhost:3181/v2/",
-    offlineCouchURL: "https://localhost:6984",
-    brand: "LingSync",
-    website: "http://lingsync.org"
-  });
+  // new FieldDB.PsycholinguisticsApp({
+  //   authentication: {
+  //     user: new FieldDB.User({
+  //       authenticated: false
+  //     })
+  //   },
+  //   contextualizer: new FieldDB.Contextualizer().loadDefaults(),
+  //   online: true,
+  //   apiURL: "https://localhost:3181/v2/",
+  //   offlineCouchURL: "https://localhost:6984",
+  //   brand: "LingSync",
+  //   website: "http://lingsync.org"
+  // });
 
-  FieldDB.Database.prototype.BASE_DB_URL = "https://corpusdev.lingsync.org";
-  FieldDB.Database.prototype.BASE_AUTH_URL = "https://authdev.lingsync.org";
+
+  /* Set up white list of urls where resources (such as images, audio, video or other primary data)
+  can be displayed in the app */
+  // fieldDBApp.whiteListCORS = fieldDBApp.whiteListCORS || [];
+  // fieldDBApp.whiteListCORS = fieldDBApp.whiteListCORS.concat([
+  //   "https://youtube.com/**",
+  //   "https://youtu.be/**",
+  //   "https://soundcloud.com/**",
+  //   "http://fielddb.github.io/**",
+  //   "http://*.example.org/**",
+  //   "https://*.example.org/**",
+  //   "https://localhost:3184/**",
+  //   "https://localhost/**"
+  // ]);
+  // $sceDelegateProvider.resourceUrlWhitelist(fieldDBApp.whiteListCORS);
+
+
+  // FieldDB.Database.prototype.BASE_DB_URL = "https://corpusdev.lingsync.org";
+  // FieldDB.Database.prototype.BASE_AUTH_URL = "https://authdev.lingsync.org";
   // FieldDB.AudioVideo.prototype.BASE_SPEECH_URL = "https://speechdev.lingsync.org";
 
 });
